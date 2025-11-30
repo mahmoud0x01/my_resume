@@ -6,7 +6,6 @@ This guide explains how to deploy your Hugo portfolio site to Vercel.
 
 1. A Vercel account ([vercel.com](https://vercel.com))
 2. Your repository pushed to GitHub, GitLab, or Bitbucket
-3. Hugo Extended version installed (Vercel will auto-detect and install it)
 
 ## Quick Setup Steps
 
@@ -15,16 +14,20 @@ This guide explains how to deploy your Hugo portfolio site to Vercel.
 1. Go to [vercel.com](https://vercel.com) and sign in
 2. Click **"Add New..."** → **"Project"**
 3. Import your Git repository
-4. Vercel will auto-detect Hugo settings
 
 ### 2. Configure Build Settings
 
-Vercel should auto-detect Hugo, but verify these settings:
+The project includes a `build.sh` script that automatically installs Hugo Extended and builds the site. Verify these settings in Vercel:
 
-- **Framework Preset**: Hugo (or leave as "Other")
-- **Build Command**: `hugo --gc --minify --cleanDestinationDir`
-- **Output Directory**: `public`
-- **Install Command**: Leave empty (Hugo doesn't need npm install)
+- **Framework Preset**: Other (or leave as default)
+- **Build Command**: `./build.sh` (automatically set via `vercel.json`)
+- **Output Directory**: `public` (automatically set via `vercel.json`)
+- **Install Command**: Leave empty
+
+**Note**: The `build.sh` script will:
+- Download and install the latest Hugo Extended version
+- Clean build artifacts
+- Build the site with minification and garbage collection
 
 ### 3. Environment Variables (Optional)
 
@@ -71,12 +74,14 @@ The `vercel.json` file is configured with:
 
 ```json
 {
-  "buildCommand": "hugo --gc --minify --cleanDestinationDir",
+  "buildCommand": "./build.sh",
   "outputDirectory": "public"
 }
 ```
 
-This will:
+The `build.sh` script will:
+- Download and install the latest Hugo Extended version
+- Clean previous build artifacts (`public/`, `resources/_gen/`, `.hugo_build.lock`)
 - Run Hugo with garbage collection (`--gc`)
 - Minify output (`--minify`)
 - Clean destination directory before build (`--cleanDestinationDir`)
@@ -105,9 +110,10 @@ Once connected:
 1. Check **Deployments** tab in Vercel dashboard
 2. Click on failed deploy to see build logs
 3. Common issues:
-   - **Hugo version**: Vercel auto-installs Hugo Extended, but you can specify version in environment variables
-   - **Missing theme**: Ensure submodule is properly configured
+   - **Hugo not found**: The `build.sh` script should install Hugo automatically. If it fails, check the build logs for download errors
+   - **Missing theme**: Ensure submodule is properly configured and "Install Git Submodules" is enabled
    - **Base URL issues**: Check `hugo.yaml` baseURL setting
+   - **Permission errors**: The `build.sh` script should be executable (chmod +x). If committed to git, it should preserve permissions
 
 ### Theme Not Found
 
@@ -140,8 +146,8 @@ vercel --prod
 
 ## Current Configuration
 
-- **Hugo Version**: Latest (auto-detected by Vercel)
-- **Build Command**: `hugo --gc --minify --cleanDestinationDir`
+- **Hugo Version**: Latest (automatically downloaded by `build.sh`)
+- **Build Command**: `./build.sh` (installs Hugo and builds)
 - **Output Directory**: `public`
 - **Base URL**: `https://mahmoudouf.com/` (from `hugo.yaml`)
 

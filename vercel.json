@@ -1,5 +1,5 @@
 {
-  "buildCommand": "hugo --gc --minify --cleanDestinationDir",
+  "buildCommand": "./build.sh",
   "outputDirectory": "public",
   "framework": null,
   "headers": [
