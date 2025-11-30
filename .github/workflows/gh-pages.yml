@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 defaults:
   run:
@@ -68,6 +68,13 @@ jobs:
             --cleanDestinationDir \
             --baseURL "$BASE_URL"
 
+      - name: Verify build content
+        run: |
+          echo "Checking built content..."
+          ls -la public/ || echo "Public directory not found!"
+          echo "Blog posts in public:"
+          ls public/blogs/ || echo "No blogs directory"
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
