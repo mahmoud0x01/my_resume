@@ -18,9 +18,9 @@ mkdir -p ~/bin
 
 # Download and install Hugo Extended
 echo "Downloading Hugo Extended..."
-wget -q "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz" -O hugo.tar.gz
+curl -L -s "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz" -o hugo.tar.gz
 
-if [ ! -f hugo.tar.gz ]; then
+if [ ! -f hugo.tar.gz ] || [ ! -s hugo.tar.gz ]; then
   echo "Error: Failed to download Hugo"
   exit 1
 fi
