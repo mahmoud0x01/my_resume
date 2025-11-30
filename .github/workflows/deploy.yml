@@ -43,23 +43,30 @@ jobs:
         run: |
           # Try to extract baseURL from hugo.yaml first
           if grep -q "^baseURL:" hugo.yaml; then
-            BASE_URL=$(grep "^baseURL:" hugo.yaml | sed 's/^baseURL:[[:space:]]*"\(.*\)"/\1/' | sed 's/^baseURL:[[:space:]]*\(.*\)/\1/')
-            # Remove quotes if present
-            BASE_URL=$(echo "$BASE_URL" | sed 's/^"\(.*\)"$/\1/')
-            # Ensure it ends with a single slash
+            # Extract baseURL: get the line, remove baseURL: prefix, remove quotes, trim whitespace and control chars
+            BASE_URL=$(grep "^baseURL:" hugo.yaml | sed -E 's/^baseURL:[[:space:]]*"([^"]+)"[[:space:]]*$/\1/' | sed -E 's/^baseURL:[[:space:]]*([^[:space:]]+)[[:space:]]*$/\1/' | tr -d '\r\n\t ')
+            # Remove trailing slash if present, then add one
             BASE_URL="${BASE_URL%/}/"
-            echo "Using baseURL from hugo.yaml: ${BASE_URL}"
+            echo "Using baseURL from hugo.yaml: '${BASE_URL}'"
           elif [ -f "static/CNAME" ]; then
             # Fallback: Check if CNAME exists (custom domain)
-            DOMAIN=$(cat static/CNAME | tr -d '[:space:]')
+            DOMAIN=$(cat static/CNAME | tr -d '[:space:\r\n\t]')
             BASE_URL="https://${DOMAIN%/}/"
-            echo "Using baseURL from CNAME: ${BASE_URL}"
+            echo "Using baseURL from CNAME: '${BASE_URL}'"
           else
             # Fallback: Use Pages URL
             BASE_URL="${{ steps.pages.outputs.base_url }}"
             BASE_URL="${BASE_URL%/}/"
-            echo "Using baseURL from Pages: ${BASE_URL}"
+            echo "Using baseURL from Pages: '${BASE_URL}'"
           fi
+          # Clean any remaining control characters
+          BASE_URL=$(printf '%s' "$BASE_URL" | tr -d '\r\n\t')
+          # Verify the URL is not empty
+          if [ -z "$BASE_URL" ]; then
+            echo "Error: baseURL is empty!"
+            exit 1
+          fi
+          echo "Final baseURL: '${BASE_URL}'"
           echo "base_url=${BASE_URL}" >> $GITHUB_OUTPUT
 
       - name: Verify theme
