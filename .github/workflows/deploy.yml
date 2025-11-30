@@ -101,6 +101,43 @@ jobs:
             else
               echo "✗ typingEffect.js NOT found!"
             fi
+            if [ -f "public/js/visitorCounter.js" ]; then
+              echo "✓ visitorCounter.js exists"
+            else
+              echo "✗ visitorCounter.js NOT found!"
+            fi
+            # Check if CSS files are present
+            if [ -f "public/css/index.css" ]; then
+              echo "✓ index.css exists"
+            else
+              echo "✗ index.css NOT found!"
+            fi
+            # Check HTML for script tags
+            echo "Checking HTML for script references:"
+            grep -o 'src="[^"]*\.js"' public/index.html | head -10 || echo "No JS scripts found in HTML"
+            # Check for hero section
+            if grep -q "hero-name\|hero-subtitle" public/index.html; then
+              echo "✓ Hero section found in HTML"
+              # Check if hero text is present
+              if grep -q "Mahmoud" public/index.html; then
+                echo "✓ Hero title text found in HTML"
+              else
+                echo "⚠ Hero title text not found in HTML (might be cleared by JS)"
+              fi
+            else
+              echo "✗ Hero section NOT found in HTML!"
+            fi
+            # Check for staticPath in generated HTML - should be empty or root-relative
+            echo "Checking staticPath usage in HTML:"
+            grep -o 'src="[^"]*js/[^"]*"' public/index.html | head -5 || echo "No JS paths found"
+            # Verify typingEffect.js path
+            if grep -q 'typingEffect.js' public/index.html; then
+              echo "✓ typingEffect.js referenced in HTML"
+              TYPING_PATH=$(grep -o 'src="[^"]*typingEffect.js"' public/index.html | head -1)
+              echo "  Path: $TYPING_PATH"
+            else
+              echo "✗ typingEffect.js NOT referenced in HTML!"
+            fi
           else
             echo "✗ index.html NOT found!"
             exit 1
