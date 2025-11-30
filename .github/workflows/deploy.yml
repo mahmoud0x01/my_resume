@@ -41,24 +41,63 @@ jobs:
       - name: Determine baseURL
         id: baseurl
         run: |
-          # Check if CNAME exists (custom domain)
-          if [ -f "static/CNAME" ]; then
+          # Try to extract baseURL from hugo.yaml first
+          if grep -q "^baseURL:" hugo.yaml; then
+            BASE_URL=$(grep "^baseURL:" hugo.yaml | sed 's/^baseURL:[[:space:]]*"\(.*\)"/\1/' | sed 's/^baseURL:[[:space:]]*\(.*\)/\1/')
+            # Remove quotes if present
+            BASE_URL=$(echo "$BASE_URL" | sed 's/^"\(.*\)"$/\1/')
+            # Ensure it ends with a single slash
+            BASE_URL="${BASE_URL%/}/"
+            echo "Using baseURL from hugo.yaml: ${BASE_URL}"
+          elif [ -f "static/CNAME" ]; then
+            # Fallback: Check if CNAME exists (custom domain)
             DOMAIN=$(cat static/CNAME | tr -d '[:space:]')
-            echo "base_url=https://$DOMAIN/" >> $GITHUB_OUTPUT
+            BASE_URL="https://${DOMAIN%/}/"
+            echo "Using baseURL from CNAME: ${BASE_URL}"
           else
-            echo "base_url=${{ steps.pages.outputs.base_url }}/" >> $GITHUB_OUTPUT
+            # Fallback: Use Pages URL
+            BASE_URL="${{ steps.pages.outputs.base_url }}"
+            BASE_URL="${BASE_URL%/}/"
+            echo "Using baseURL from Pages: ${BASE_URL}"
           fi
+          echo "base_url=${BASE_URL}" >> $GITHUB_OUTPUT
+
+      - name: Verify theme
+        run: |
+          if [ ! -d "themes/hugo-profile" ]; then
+            echo "Error: Theme not found!"
+            exit 1
+          fi
+          echo "Theme found at: themes/hugo-profile"
+          ls -la themes/hugo-profile/static/js/ | head -10
 
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENABLEGITINFO: true
         run: |
+          echo "Building with baseURL: ${{ steps.baseurl.outputs.base_url }}"
           hugo \
             --gc \
             --minify \
             --cleanDestinationDir \
             --baseURL "${{ steps.baseurl.outputs.base_url }}"
+          
+          # Verify build output
+          echo "Build completed. Checking public directory:"
+          ls -la public/ | head -10
+          if [ -f "public/index.html" ]; then
+            echo "✓ index.html exists"
+            # Check if JS files are present
+            if [ -f "public/js/typingEffect.js" ]; then
+              echo "✓ typingEffect.js exists"
+            else
+              echo "✗ typingEffect.js NOT found!"
+            fi
+          else
+            echo "✗ index.html NOT found!"
+            exit 1
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

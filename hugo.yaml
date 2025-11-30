@@ -56,7 +56,7 @@ Menus:
 params:
   title: "Mahmoud - Penetration Tester"
   description: Experienced Penetration Tester specializing in web, mobile, and network security assessments. Proven track record of identifying critical vulnerabilities for leading organizations including Pinterest, Verisign, and Dell.
-  # staticPath: ""  # The path to serve the static files from
+  staticPath: ""  # The path to serve the static files from (empty = root)
   favicon: "/fav.png"
 
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
