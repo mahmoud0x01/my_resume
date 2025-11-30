@@ -1,0 +1,30 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/home/mahmoud/portfolio-dev/public"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "hugo --gc --minify --cleanDestinationDir --baseURL https://mahmoudouf.com/"
+
+[build.environment]
+HUGO_VERSION = "latest"
+HUGO_ENV = "production"
+HUGO_ENABLEGITINFO = "true"
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]

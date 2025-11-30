@@ -128,7 +128,7 @@ params:
   # Hero
   hero:
     enable: true
-    intro: "Hi, my name is"
+    intro: ""
     title: "Mahmoud."
     subtitle: "Penetration Tester"
     content: "Experienced Penetration Tester specializing in web, mobile, and network security assessments, with a proven track record of identifying critical vulnerabilities for leading organizations including Pinterest, Verisign, and Dell."
@@ -198,6 +198,16 @@ params:
         - "C/C++"
         - "Assembly"
         - "SQL"
+    languages:
+      enable: true
+      title: "Language Proficiency:"
+      items:
+        - language: "Arabic"
+          level: "Native"
+        - language: "English"
+          level: "C2 — Proficient"
+        - language: "Russian"
+          level: "C1 — Advanced"
 
   # Experience
   experience:
