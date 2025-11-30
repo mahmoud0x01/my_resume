@@ -138,6 +138,20 @@ jobs:
             else
               echo "✗ typingEffect.js NOT referenced in HTML!"
             fi
+            # Verify visitorCounter.js path
+            if grep -q 'visitorCounter.js' public/index.html; then
+              echo "✓ visitorCounter.js referenced in HTML"
+              COUNTER_PATH=$(grep -o 'src="[^"]*visitorCounter.js"' public/index.html | head -1)
+              echo "  Path: $COUNTER_PATH"
+            else
+              echo "✗ visitorCounter.js NOT referenced in HTML!"
+            fi
+            # Check hero-intro element
+            if grep -q 'hero-intro' public/index.html; then
+              echo "✓ hero-intro element found in HTML"
+            else
+              echo "✗ hero-intro element NOT found in HTML!"
+            fi
           else
             echo "✗ index.html NOT found!"
             exit 1
