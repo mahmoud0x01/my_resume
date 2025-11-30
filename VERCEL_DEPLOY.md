@@ -42,13 +42,13 @@ Common variables:
 
 Since you're using the `hugo-profile` theme as a submodule:
 
-**Option A: Auto-detect (Recommended)**
-- Vercel should automatically handle submodules if your `.gitmodules` is configured correctly
-- Make sure your theme submodule is committed properly
+**Important**: The `build.sh` script now automatically initializes submodules, but you should also:
 
-**Option B: Manual Configuration**
-- In Vercel project settings, go to **Git**
-- Enable **"Install Git Submodules"** option
+1. In Vercel project settings, go to **Settings** → **Git**
+2. Enable **"Install Git Submodules"** option
+3. This ensures submodules are available during the build process
+
+**Note**: If icons or layout appear in the wrong place on Vercel but work locally, it's likely a submodule initialization issue. The build script will handle this automatically, but make sure the submodule is properly committed in your repository.
 
 ### 5. Custom Domain Configuration
 

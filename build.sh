@@ -38,6 +38,10 @@ export PATH="$HOME/bin:$PATH"
 echo "Verifying Hugo installation..."
 hugo version
 
+# Initialize git submodules (for theme)
+echo "Initializing git submodules..."
+git submodule update --init --recursive || echo "Warning: Submodule update failed, continuing..."
+
 # Clean previous build artifacts
 echo "Cleaning build artifacts..."
 rm -rf public
