@@ -36,6 +36,12 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - name: Clean build artifacts
+        run: |
+          rm -rf public
+          rm -rf resources/_gen
+          rm -rf .hugo_build.lock
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
@@ -45,8 +51,9 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          # Clean any existing public directory
+          # Clean any existing public directory and resources
           rm -rf public
+          rm -rf resources/_gen
           # Use custom domain if CNAME exists, otherwise use GitHub Pages URL
           if [ -f static/CNAME ]; then
             DOMAIN=$(cat static/CNAME)
@@ -54,9 +61,11 @@ jobs:
           else
             BASE_URL="${{ steps.pages.outputs.base_url }}/"
           fi
+          # Build with clean cache
           hugo \
             --gc \
             --minify \
+            --cleanDestinationDir \
             --baseURL "$BASE_URL"
 
       - name: Upload artifact
