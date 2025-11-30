@@ -1,0 +1,430 @@
+baseURL: "https://mahmoudouf.com/"
+languageCode: "en-us"
+title: "Mahmoud - Penetration Tester"
+theme: hugo-profile
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+  page:
+    - "HTML"
+    - "RSS"
+
+enableRobotsTXT: true
+
+#services:
+  #googleAnalytics:
+    #id: G-MEASUREMENT_ID
+  #disqus:
+    #shortname: your-disqus-shortname
+
+pagination:
+  pagerSize: 3
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+Menus:
+  main:
+    - identifier: blog
+      name: Blog
+      title: Blog posts
+      url: /blogs
+      weight: 1
+    #Dropdown menu
+    # - identifier: dropdown
+    #   title: Example dropdown menu
+    #   name: Dropdown
+    #   weight: 3
+    # - identifier: dropdown1
+    #   title: example dropdown 1
+    #   name: example 1
+    #   url: /#
+    #   parent: dropdown
+    #   weight: 1
+    # - identifier: dropdown2
+    #   title: example dropdown 2
+    #   name: example 2
+    #   url: /#
+    #   parent: dropdown
+    #   weight: 2
+
+params:
+  title: "Mahmoud - Penetration Tester"
+  description: Experienced Penetration Tester specializing in web, mobile, and network security assessments. Proven track record of identifying critical vulnerabilities for leading organizations including Pinterest, Verisign, and Dell.
+  # staticPath: ""  # The path to serve the static files from
+  favicon: "/fav.png"
+
+  # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
+  # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
+  # Note the lack of "" in true, it should be of boolean type.
+  useBootstrapCDN: false
+
+  # If you want to load dynamically responsive images from Cloudinary
+  # This requires your images to be uploaded + hosted on Cloudinary
+  # Uncomment and change YOUR_CLOUD_NAME to the Cloud Name in your Cloudinary console
+  # cloudinary_cloud_name: "YOUR_CLOUD_NAME"
+
+  # Whether to add mathjax support on all pages. Alternatively, you can opt-in per page by adding `mathjax: true` in the frontmatter.
+  mathjax: false
+
+  # Whether the fade animations on the home page will be enabled
+  animate: true
+
+  theme:
+    # disableThemeToggle: true
+    # defaultTheme: "light" # dark
+
+  font:
+    fontSize: 1rem # default: 1rem
+    fontWeight: 400 # default: 400
+    lineHeight: 1.5 # default: 1.5
+    textAlign: left # default: left
+
+  # color preference
+  # When using hex codes for colors, quotations must be used along with the # sign
+  # color:
+  #   textColor: "#343a40"
+  #   secondaryTextColor: "#6c757d"
+  #   textLinkColor: "#007bff"
+  #   backgroundColor: "#eaedf0"
+  #   secondaryBackgroundColor: "#64ffda1a"
+  #   primaryColor: "#007bff"
+  #   secondaryColor: "#f8f9fa"
+
+  #   darkmode:
+  #     textColor: "#e4e6eb"
+  #     secondaryTextColor: "#b0b3b8"
+  #     textLinkColor: "#ffffff"
+  #     backgroundColor: "#18191a"
+  #     secondaryBackgroundColor: "#212529"
+  #     primaryColor: "#ffffff"
+  #     secondaryColor: "#212529"
+
+  # If you want to customize the menu, you can change it here
+  navbar:
+    align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
+    # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
+    showBrandLogo: false # Show brand logo in nav bar | default is true
+    brandName: "Mahmoud" # Brand name for the brand | default is the title variable
+    disableSearch: false
+    # searchPlaceholder: "Search"
+    stickyNavBar:
+      enable : true
+      showOnScrollUp : true
+    enableSeparator: false
+    menus:
+      disableAbout: false
+      disableExperience: false
+      disableEducation: false
+      disableProjects: true
+      disableAchievements: false
+      disableContact: true
+
+  # Hero
+  hero:
+    enable: true
+    intro: "Hi, my name is"
+    title: "Mahmoud."
+    subtitle: "Penetration Tester"
+    content: "Experienced Penetration Tester specializing in web, mobile, and network security assessments, with a proven track record of identifying critical vulnerabilities for leading organizations including Pinterest, Verisign, and Dell."
+    image: /images/5864118673042246735.jpg
+    bottomImage:
+      enable: true
+    # roundImage: true # Make hero image circular | default false
+    button:
+      enable: true
+      name: "Resume"
+      url: /MahmoudAdelResume.pdf
+      download: true
+      newPage: false
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: fab fa-github
+          url: https://github.com/mahmoud0x01
+        - icon: fab fa-linkedin
+          url: https://www.linkedin.com/in/mahmoudadelOx01/
+        - icon: fab fa-instagram
+          url: https://instagram.com/0xkernel
+        - icon: fab fa-telegram
+          url: https://t.me/rdmsr
+        - icon: fa fa-envelope
+          url: mailto:contact@mahmoudouf.com
+
+  # About
+  about:
+    enable: true
+    title: "About Me"
+    image: "/images/5864118673042246735.jpg"
+    content: |-
+      Experienced Penetration Tester specializing in comprehensive security assessments across web applications, mobile platforms, and network infrastructure. Proven track record of identifying critical vulnerabilities for leading organizations including Pinterest, Verisign, and Dell through responsible disclosure programs. Proficient in advanced penetration testing methodologies aligned with OWASP and MITRE ATT&CK frameworks. Actively engaged in continuous skill development through competitive platforms and hands-on security research, with strong technical expertise in Python, web development, and offensive security tools.
+    skills:
+      enable: true
+      title: "Technologies & Skills:"
+      items:
+        - "TCP/IP"
+        - "Windows"
+        - "Linux"
+        - "Network Security"
+        - "Active Directory"
+        - "OWASP"
+        - "Red Team"
+        - "MITRE ATT&CK"
+        - "Privilege Escalation"
+        - "Vulnerability Assessment"
+        - "Exploit Development"
+        - "Presentation Skills"
+        - "Problem Solving"
+        - "System Administration"
+        - "Burp Suite"
+        - "Metasploit"
+        - "Cobalt Strike"
+        - "Sliver"
+        - "Ghidra"
+        - "Nmap"
+        - "Wireshark"
+        - "BloodHound"
+        - "Impacket"
+        - "SQLMap"
+        - "Nuclei"
+        - "ffuf"
+        - "Python"
+        - "Bash"
+        - "JavaScript"
+        - "C/C++"
+        - "Assembly"
+        - "SQL"
+
+  # Experience
+  experience:
+    enable: true
+    # title: "Custom Name"
+    items:
+      - company: "Bastion Cybersec Solutions"
+        companyUrl: "https://example.com"
+        jobs:
+          - name: "Penetration Tester, Intern"
+            date: "May 2024 - Sep 2024"
+            content: |
+              Executed comprehensive security assessments across application and network infrastructure, identifying and documenting critical vulnerabilities in enterprise environments.
+
+              - Achieved Top 5 ranking among 100 participants in internal CTF competitions, demonstrating advanced penetration testing capabilities and technical expertise.
+              - Performed comprehensive security assessments on web applications and network systems, identifying vulnerabilities including authentication bypasses, privilege escalation vectors, and injection flaws.
+              - Executed advanced exploitation techniques achieving root-level access on both Linux and Windows environments, demonstrating proficiency in system-level security testing.
+              - Developed and delivered technical presentations on security vulnerabilities and exploitation methodologies, contributing to team knowledge sharing and security awareness initiatives.
+              - Successfully completed intensive internship program with certification, validating practical penetration testing competencies.
+
+  # Education
+  education:
+    enable: true
+    # title: "Custom Name"
+    index: false
+    items:
+      - title: "Bachelor of Software Engineering"
+        school:
+          name: "Tomsk State University"
+          url: "https://www.tsu.ru"
+        date: "Sep 2022 - Jul 2026"
+
+  # Courses
+  courses:
+    enable: true
+    title: "Courses & Training"
+    index: false
+    items:
+      - title: "ISC2 Candidate"
+        school:
+          name: "ISC2"
+          url: "https://www.isc2.org"
+        date: "2024"
+      - title: "Jr Penetration Tester"
+        school:
+          name: "TryHackMe"
+          url: "https://tryhackme.com/"
+        date: "2024"
+      - title: "CompTIA Linux+"
+        school:
+          name: "CompTIA"
+          url: "https://www.comptia.org"
+        date: "2024"
+      - title: "IBM Cyber Threat Intelligence Certification"
+        school:
+          name: "IBM"
+          url: "https://www.ibm.com"
+        date: "2023"
+      - title: "Penetration Testing, Incident Response and Forensics"
+        school:
+          name: "IBM"
+          url: "https://www.ibm.com"
+        date: "2023"
+      - title: "SecurityBlue Blue Team Junior Analyst"
+        school:
+          name: "SecurityBlue"
+          url: "https://securityblue.team"
+        date: "2023"
+      - title: "CCNA"
+        school:
+          name: "Cisco"
+          url: "https://www.cisco.com"
+        date: "2023"
+      - title: "CompTIA Pentest+"
+        school:
+          name: "CompTIA"
+          url: "https://www.comptia.org"
+        date: "2023"
+
+  # Achievements (Certifications)
+  achievements:
+    enable: true
+    title: "Certifications"
+    items:
+      - title: "Jr Pentester Completion"
+        content: Junior Penetration Tester certification from TryHackMe, demonstrating proficiency in penetration testing methodologies and techniques.
+        url: https://tryhackme.com/
+        image: /images/certificates/thm-jr-pentester.png
+      - title: "Cyber Threat Intelligence by IBM"
+        content: IBM certification in Cyber Threat Intelligence, covering threat analysis, intelligence gathering, and security assessment methodologies.
+        url: https://www.credly.com/badges/3f520809-a774-46de-84bb-c90cf66e30ad
+      - title: "SecurityBlue Blue Team Junior Analyst"
+        content: SecurityBlue Team Junior Analyst certification, demonstrating skills in blue team operations, incident response, and security monitoring.
+        url: https://elearning.securityblue.team/home/certificate/762758116
+
+  # projects
+  projects:
+    enable: false
+    # title: "Custom Name"
+    items:
+      - title: TicketPro - Full Stack Support Ticket Management System
+        content: Developed a full-stack support ticket management system with real-time features, ticket tracking, and role-based access control. Features include user authentication with different roles, complete ticket lifecycle management (Open/In Progress/Resolved/Closed), real-time chat between users and support staff, ticket prioritization (Low, Medium, High, Urgent), notification system for ticket status updates, analytics dashboard with performance metrics, SLA compliance monitoring and automatic escalation.
+        image: /images/projects/profile.png
+        badges:
+          - "Python"
+          - "Django"
+          - "Django REST Framework"
+          - "WebSockets"
+          - "PostgreSQL"
+          - "Tailwind CSS"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01/Ticket_Support_full_stack
+
+      - title: Full Stack Restaurant Delivery Web Application
+        content: Developed a full-stack API project for an online restaurant delivery service with complete authentication system, dish management, shopping cart, and ratings. Features include user authentication, dish management, shopping cart functionality, order processing, rating system, security features, and settings configuration. Full API endpoints documentation available via OpenAPI/Swagger.
+        image: /images/projects/converter.jpg
+        badges:
+          - "C#"
+          - ".NET"
+          - "PostgreSQL"
+          - "JavaScript"
+          - "HTML/CSS"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01/restaurant_website
+
+      - title: CashFlow - Financial Management System
+        content: Developed a Django web application for managing cash flow records with support for statuses, types, categories, and subcategories. Features include adding and editing income and expense records, assigning statuses (e.g., "pending", "completed"), classifying records by type (income/expense), managing categories and subcategories for organizing records, viewing overall cash flow statistics, filtering and searching by various parameters, admin interface for data management, and superuser creation capability.
+        image: /images/projects/profile2.jpg
+        badges:
+          - "Python"
+          - "Django"
+          - "SQLite3"
+          - "Bootstrap"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01/finance_management_system
+
+      - title: Telegram News Aggregation Bot
+        content: Developed a Telegram bot that aggregates news from various sources and provides users with the ability to receive updates via subscription with flexible interval settings. Features include fetching news by command `/news <source>`, setting default source for quick access, subscribing to automatic news distribution with interval, managing subscriptions (unsubscribe, viewing active subscriptions), viewing available sources via `/listsources` command, storing user data and subscriptions in PostgreSQL database, and Docker Compose deployment.
+        image: /images/projects/profile.png
+        badges:
+          - "Python"
+          - "aiogram"
+          - "SQLAlchemy"
+          - "PostgreSQL"
+          - "Docker"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01/news_bot_telegram
+
+      - title: Social Network Backend API
+        content: Developed a RESTful API for a social network website using Python with FastAPI and SQLAlchemy. Features include user creation and login, posting and editing posts, adding and removing comments, user authorization (editing posts, deleting comments), secure password storage in database, user data protection with authorization mechanism, data encryption to prevent leaks, and business logic error fixes (e.g., preventing double likes).
+        image: /images/projects/converter.jpg
+        badges:
+          - "Python"
+          - "FastAPI"
+          - "SQLAlchemy"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01/myrestful
+
+      - title: Automated Cryptocurrency Trading Bot with Telegram Support
+        content: Developed a cryptocurrency trading bot supporting automatic and manual trading of multiple assets via Telegram commands. Features include receiving trading signals from TradingView via Mailgun, automatic order execution through Bybit API, stop-loss and take-profit support, bot management through Telegram (start, pause, stop), trading statistics tracking (realized/unrealized profit, fees), ability to run multiple bot instances for different trading pairs, simulation mode for testing strategies without risk, and secure access by chat ID with ability to add new authorized users.
+        image: /images/projects/profile2.jpg
+        badges:
+          - "Python"
+          - "Bybit API"
+          - "Mailgun API"
+          - "Telegram Bot API"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01/Crypto_bot_telegram
+
+  #Contact
+  contact:
+    enable: false
+    # title: "Custom Name"
+    content: My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+    btnName: Mail me
+    btnLink: mailto:contact@mahmoudouf.com
+    # formspree:
+    #   enable: true # `contact.email` value will be ignored
+    #   formId: abcdefgh # Take it from your form's endpoint, like 'https://formspree.io/f/abcdefgh'
+    #   emailCaption: "Enter your email address"
+    #   messageCaption: "Enter your message here"
+    #   messageRows: 5
+
+  footer:
+    recentPosts:
+      path: "blogs"
+      count: 3
+      title: Recent Posts
+      enable: true
+      disableFeaturedImage: false
+    socialNetworks:
+      github: https://github.com/mahmoud0x01
+      linkedin: https://www.linkedin.com/in/mahmoudadelOx01/
+
+  # List pages like blogs and posts
+  listPages:
+    disableFeaturedImage: false
+
+  # Single pages like blog and post
+  singlePages:
+    socialShare: true
+    readTime:
+      enable: true
+      content: "min read"
+    scrollprogress:
+      enable: true
+    tags:
+      openInNewTab: true
+
+  # For translations
+  terms:
+    read: "Read"
+    toc: "Table Of Contents"
+    copyright: "All rights reserved"
+    pageNotFound: "Page not found"
+    emailText: "Check out this site"
+
+  datesFormat:
+    article: "Jan 2, 2006"
+    articleList: "Jan 2, 2006"
+    articleRecent: "Jan 2, 2006"
+
+  #customScripts: -| # You can add custom scripts which will be added before </body> tag
+  #  <script type="text/javascript"><!-- any script here --></script>
