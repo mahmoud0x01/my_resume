@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Mahmoud - Penetration Tester</title>
+    <link>http://localhost:1313/tags/security/</link>
+    <description>Recent content in Security on Mahmoud - Penetration Tester</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Jan 2024 10:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Two Captcha Bypasses — IDOR and Token Reuse</title>
+      <link>http://localhost:1313/blogs/two-captcha-bypasses-idor-and-token-reuse/</link>
+      <pubDate>Thu, 25 Jan 2024 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/two-captcha-bypasses-idor-and-token-reuse/</guid>
+      <description>This is my first write-up here. I will talk about how I bypassed captcha on two companies.&#xA;First One (Captcha Token Reuse) While testing a site.example.com, I found that signing up on their site had a captcha. I solved the captcha challenge and captured the request with credentials, and I saw the captcha response token.&#xA;It was like:&#xA;&amp;amp;g-recaptcha-response=03AJpayVGwtrg6bOlwaMCLZ9-vHQcM0jxbgdU_JcPyQI4e4QZlBbj7WrWHw8I13IW5qT6yd-g8txCFoThxlzDB8b-aGvX16idgAktxU5459HNgVFC5n8h0-aHGPH1eOCWJuw5c0mo5sGI9DflNPGfnK5Rq90Zj4gFtCU9y5IGks4SWLH2iA0OGIQ9gISptqd8QuMqKcYROgNQ3huLb-gikJX7VQBvfR2Tw24TAP8OX5LQofNYaFE8sDx77Smtrf7fF9pVvqwVYoETDkoeA8exu2V90YMAw0apTtNhVy2SCikb3aTZI5bt7ZYJVgdObNDDwFTU3nonAJM88GRMA-vmX3atBhGGoQw56QaooPGjVMcJnly-LK154RoBh4R8S-BBNqLZfk4ivJH7K I tried the same request in Burp Repeater with another email and password, and wow!</description>
+    </item>
+    <item>
+      <title>Evade Network Scanners with Firewall</title>
+      <link>http://localhost:1313/blogs/evade-network-scanners-with-firewall/</link>
+      <pubDate>Sat, 20 Jan 2024 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/evade-network-scanners-with-firewall/</guid>
+      <description>We all know the most common network scanner NMAP. The mechanism that all network scanners work with is testing kernel network transport layer protocol response [ICMP / TCP / UDP / SCTP] across the whole 65,000 ports.&#xA;Now, how do scanners know if a port is open / closed / filtered? If you don&amp;rsquo;t know, I will explain in the TCP layer. For example, if there is a socket listening in the kernel on machine 192.</description>
+    </item>
+    <item>
+      <title>Computer Security &amp; Binary Hacking Concepts and Basics</title>
+      <link>http://localhost:1313/blogs/computer-security-binary-hacking-concepts-and-basics/</link>
+      <pubDate>Mon, 15 Jan 2024 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/computer-security-binary-hacking-concepts-and-basics/</guid>
+      <description>Hey! I am an Egyptian computer security researcher and I wanted to share knowledge about binary hacking for you all.&#xA;Facebook: https://www.facebook.com/mahmoudadel0x&#xA;Let&amp;rsquo;s start. I will talk about three topics for now, and in the next session I will continue:&#xA;Computer memory and virtual addressing OS functionality and control overview Buffer overflows Computer Memory and Virtual Addressing Every program gets executed by an already running program and it inherits environment variables from it.</description>
+    </item>
+  </channel>
+</rss>

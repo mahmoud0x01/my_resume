@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/fav.png type="image/gif">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+<script data-goatcounter="https://0xkernel.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+
+  
+
+
+<meta property="og:url" content="http://localhost:1313/blogs/computer-security-binary-hacking-concepts-and-basics/">
+  <meta property="og:site_name" content="Mahmoud - Penetration Tester">
+  <meta property="og:title" content="Computer Security &amp; Binary Hacking Concepts and Basics">
+  <meta property="og:description" content="A comprehensive guide covering fundamental security principles, binary exploitation techniques, and practical hacking methodologies for aspiring security researchers.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blogs">
+    <meta property="article:published_time" content="2024-01-15T10:00:00+00:00">
+    <meta property="article:modified_time" content="2024-01-15T10:00:00+00:00">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Binary Hacking">
+    <meta property="article:tag" content="Penetration Testing">
+    <meta property="article:tag" content="Cybersecurity">
+    <meta property="article:tag" content="Exploitation">
+    <meta property="article:tag" content="Buffer Overflow">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Computer Security &amp; Binary Hacking Concepts and Basics">
+  <meta name="twitter:description" content="A comprehensive guide covering fundamental security principles, binary exploitation techniques, and practical hacking methodologies for aspiring security researchers.">
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --text-link-color: #007bff;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --text-link-color-dark: #ffffff;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        height: 0px;
+        width: 8px;
+        background-color: var(--background-color);
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background: #b0b0b0;
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+
+
+<meta name="description" content="A comprehensive guide covering fundamental security principles, binary exploitation techniques, and practical hacking methodologies for aspiring security researchers.">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-6/all-6.4.2.js"></script>
+
+
+  
+  
+
+  <title>
+Computer Security &amp; Binary Hacking Concepts and Basics | Mahmoud - Penetration Tester
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            document.documentElement.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
+
+
+
+
+<script>
+    var prevScrollPos = window.pageYOffset;
+    window.addEventListener("scroll", function showHeaderOnScroll() {
+        let profileHeaderElem = document.getElementById("profileHeader");
+        let currentScrollPos = window.pageYOffset;
+        let resetHeaderStyle = false;
+        let showNavBarOnScrollUp =  true ;
+        let showNavBar = showNavBarOnScrollUp ? prevScrollPos > currentScrollPos : currentScrollPos > 0;
+        if (showNavBar) {
+            profileHeaderElem.classList.add("showHeaderOnTop");
+        } else {
+            resetHeaderStyle = true;
+        }
+        if(currentScrollPos === 0) {
+            resetHeaderStyle = true;
+        }
+        if(resetHeaderStyle) {
+            profileHeaderElem.classList.remove("showHeaderOnTop");
+        }
+        prevScrollPos = currentScrollPos;
+    });
+</script>
+
+
+
+<header id="profileHeader">
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                Mahmoud
+                
+            </a>
+
+            
+                <div>
+                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder='Ctrl &#43; k to Search...'
+                        aria-label="Search" oninput="searchOnChange(event)">
+                </div>
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Ctrl &#43; k to Search...' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#about" aria-label="about">
+                            About Me
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#experience"
+                            aria-label="experience">
+                            Experience
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#education"
+                            aria-label="education">
+                            Education
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/#achievements"
+                            aria-label="achievements">
+                            Certifications
+                        </a>
+                    </li>
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="/blogs" title="Blog posts">
+                            
+                            Blog
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">Computer Security &amp; Binary Hacking Concepts and Basics</h1>
+            <div class="text-center">
+              
+                Mahmoud Adel
+                <small>|</small>
+              
+              Jan 15, 2024
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid mx-auto d-block" src="/images/virtual-memory-management.jpeg" alt="Computer Security &amp; Binary Hacking Concepts and Basics">
+          </div>
+          
+          <article class="page-content  p-2">
+          <p>Hey! I am an Egyptian computer security researcher and I wanted to share knowledge about binary hacking for you all.</p>
+<p><strong>Facebook</strong>: <a href="https://www.facebook.com/mahmoudadel0x">https://www.facebook.com/mahmoudadel0x</a></p>
+<p>Let&rsquo;s start. I will talk about three topics for now, and in the next session I will continue:</p>
+<ol>
+<li>Computer memory and virtual addressing</li>
+<li>OS functionality and control overview</li>
+<li>Buffer overflows</li>
+</ol>
+<h2 id="computer-memory-and-virtual-addressing">Computer Memory and Virtual Addressing</h2>
+<p>Every program gets executed by an already running program and it inherits environment variables from it. This is how the algorithms work. The already running program is the interface for you—it may be the GUI or TTY login shell, etc.</p>
+<p>Once a program gets executed by a kernel system call (responsible for this—we will talk about that later), the program moves into the physical RAM and its instructions get executed line by line.</p>
+<p>The program can call any function within its segment by its address like <code>0x774ffffffffff</code>. So how could the kernel manage that access? If any program can access any other program&rsquo;s segment and steal data! For this, there is virtual addressing. It&rsquo;s a kernel job to create managed pages containing virtual address space and corresponding physical RAM address space. If the program tries to access out of its page, it gets itself in an interrupt handler.</p>
+<p><img src="/images/virtual-memory-management.jpeg" alt="Virtual Memory Management"></p>
+<p><em>Image explains the management operation</em></p>
+<h2 id="cpu-modes-and-os-functionality-control-overview">CPU Modes and OS Functionality, Control Overview</h2>
+<p>Now let&rsquo;s talk about how a program actually works in a programmatic way. Example: writing to a file.</p>
+<p>When you write to a file in C or PHP or other languages, actually when the code gets compiled/interpreted, it just calls a defined functionality in the OS to do the operation. It is called a system call. You can read about system calls more in Google/Wiki or Linux man pages. That call just gets handled by the kernel—it&rsquo;s possible in different ways. For example, I will explain an assembly program:</p>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">mov eax, 4  
+mov ebx, 1  
+mov ecx, dispMsg  
+mov edx, lenDispMsg  
+int 80h
+</code></pre><p>The following instructions are adding number 4 in the eax CPU register, which is a system call number that has a corresponding function in the kernel. It is the <code>sys_write</code> call. Move 1 to the ebx register, which is a file descriptor number which is here STDOUT (the terminal virtual device in this situation to show you the message on the screen).</p>
+<p>And the length to ecx and the actual message to edx. Now the most important part: <code>int 80h</code>, which is equal to <code>int 0x80</code>. This is a software interrupt (search Google for further info). This interrupt already has a defined section in the kernel interrupt handler table, and so once the CPU executes this, it directs execution to the kernel and the kernel does the rest and takes arguments from CPU registers!</p>
+<p>Now to finish the control part: probably you asked, is the application itself able to access that file on the disk? No, because of CPU modes! The kernel is running in a different hardware execution level that allows it to communicate with hardware and BIOS. The kernel has access to the hardware, but the application cannot. So the application in CPU protected mode actually cannot do anything further than what the kernel offers by system calls! Controlling these modes is done by a CPU register called <code>cr0</code> (search in Google/Wiki for it). This <code>cr0</code> is a CPU control register. As I said, it gives you control, so you cannot use it from a user application (user space). You can write kernel space code and insert a module into the kernel.</p>
+<h2 id="buffer-overflows">Buffer Overflows</h2>
+<p>Now you have the basics. Let&rsquo;s go into the targeted topic: the buffer overflow. What actually happens is using dangerous system calls without bound checking or any limit! Calls like <code>gets()</code>, for example. Not in every situation can you exploit the buffer overflow—no, you cannot always, and you can just cause a denial of service only! In the next session, I will explain the exploitation way. Now let&rsquo;s understand first.</p>
+<p>When a program calls a function, it uses <code>call</code> and <code>ret</code> CPU instructions. When <code>call</code> happens, the CPU switches the next instruction to be executed to the first instruction in the called function. After the function is finished, <code>ret</code> gets executed, which means return to the caller. How does the CPU know the caller address? By saving it in the STACK! Example: <code>save eip=0xcaller</code>. When a buffer overflow occurs, the data in the stack segment gets overwritten, so that address gets changed to a new address. Simple C program:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">4</span>];  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> var <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">scanf</span>(<span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#f92672">&amp;</span>buffer);  
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;overflowed var = 0x%x</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, var);
+</span></span></code></pre></div><p>This program declares an array of 4 type characters and a variable named <code>var</code> of type integer and equal to zero, and calls the kernel by <code>scanf</code> system call to take user input with no bound checking. Let&rsquo;s see the result in the debugger:</p>
+<p><img src="/images/segmentation-fault.png" alt="Segmentation Fault"></p>
+<p>Look for segmentation fault and see the stack—we overwritten the stack!</p>
+<p>Now this is enough to be able to understand these things. I hope you now understand what happens well. In the next session, I will take you deeper into binary hacking protections and bypasses. Don&rsquo;t forget to support me by following me on Facebook and Twitter. I am at <a href="https://twitter.com/buff3r_overflow">https://twitter.com/buff3r_overflow</a>, thanks.</p>
+
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div id="stickySideBar" class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#computer-memory-and-virtual-addressing">Computer Memory and Virtual Addressing</a></li>
+    <li><a href="#cpu-modes-and-os-functionality-control-overview">CPU Modes and OS Functionality, Control Overview</a></li>
+    <li><a href="#buffer-overflows">Buffer Overflows</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item"><a href="http://localhost:1313/tags/security"
+                target="_blank"
+              >Security</a></li>
+              
+              <li class="list-inline-item"><a href="http://localhost:1313/tags/binary-hacking"
+                target="_blank"
+              >Binary Hacking</a></li>
+              
+              <li class="list-inline-item"><a href="http://localhost:1313/tags/penetration-testing"
+                target="_blank"
+              >Penetration Testing</a></li>
+              
+              <li class="list-inline-item"><a href="http://localhost:1313/tags/cybersecurity"
+                target="_blank"
+              >Cybersecurity</a></li>
+              
+              <li class="list-inline-item"><a href="http://localhost:1313/tags/exploitation"
+                target="_blank"
+              >Exploitation</a></li>
+              
+              <li class="list-inline-item"><a href="http://localhost:1313/tags/buffer-overflow"
+                target="_blank"
+              >Buffer Overflow</a></li>
+              
+            </ul>
+          </aside>
+          
+
+          
+          <aside class="social">
+            <h5>Share</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://www.linkedin.com/feed/?shareActive=true&text=A%20comprehensive%20guide%20covering%20fundamental%20security%20principles%2c%20binary%20exploitation%20techniques%2c%20and%20practical%20hacking%20methodologies%20for%20aspiring%20security%20researchers. http%3a%2f%2flocalhost%3a1313%2fblogs%2fcomputer-security-binary-hacking-concepts-and-basics%2f">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='https://twitter.com/share?text=Computer%20Security%20%26%20Binary%20Hacking%20Concepts%20and%20Basics&url=http%3a%2f%2flocalhost%3a1313%2fblogs%2fcomputer-security-binary-hacking-concepts-and-basics%2f&hashtags=Security%2cBinary%20Hacking%2cPenetration%20Testing%2cCybersecurity%2cExploitation%2cBuffer%20Overflow'>
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=Computer%20Security%20%26%20Binary%20Hacking%20Concepts%20and%20Basics: http%3a%2f%2flocalhost%3a1313%2fblogs%2fcomputer-security-binary-hacking-concepts-and-basics%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=Computer%20Security%20%26%20Binary%20Hacking%20Concepts%20and%20Basics&amp;body=Check%20out%20this%20site http%3a%2f%2flocalhost%3a1313%2fblogs%2fcomputer-security-binary-hacking-concepts-and-basics%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  
+  let stickySideBarElem = document.getElementById("stickySideBar");
+  let stickyNavBar =  true ;
+  if(stickyNavBar) {
+    let headerElem = document.getElementById("profileHeader");
+    let headerHeight = headerElem.offsetHeight + 15;
+    stickySideBarElem.style.top = headerHeight + "px";
+  } else {
+    stickySideBarElem.style.top = "50px";
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    
+ 
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/two-captcha-bypasses-idor-and-token-reuse/">
+                        <img src="/images/post.jpg" class="card-img-top" alt="Two Captcha Bypasses — IDOR and Token Reuse">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/two-captcha-bypasses-idor-and-token-reuse/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Two Captcha Bypasses — IDOR and Token Reuse">Two Captcha Bypasses — …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>This is my first write-up here. I will talk about how I bypassed captcha on two companies.
+First One (Captcha Token Reuse) While testing a site.example.com, I found that signing up on their site had a captcha. I solved the captcha challenge and captured the request with credentials, and I saw the …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jan 25, 2024</span>
+                    <a href="/blogs/two-captcha-bypasses-idor-and-token-reuse/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/evade-network-scanners-with-firewall/">
+                        <img src="/images/firewall-technique.png" class="card-img-top" alt="Evade Network Scanners with Firewall">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/evade-network-scanners-with-firewall/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Evade Network Scanners with Firewall">Evade Network Scanners …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>We all know the most common network scanner NMAP. The mechanism that all network scanners work with is testing kernel network transport layer protocol response [ICMP / TCP / UDP / SCTP] across the whole 65,000 ports.
+Now, how do scanners know if a port is open / closed / filtered? If you don&rsquo;t …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jan 20, 2024</span>
+                    <a href="/blogs/evade-network-scanners-with-firewall/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/blogs/computer-security-binary-hacking-concepts-and-basics/">
+                        <img src="/images/virtual-memory-management.jpeg" class="card-img-top" alt="Computer Security &amp; Binary Hacking Concepts and Basics">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/blogs/computer-security-binary-hacking-concepts-and-basics/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Computer Security &amp; Binary Hacking Concepts and Basics">Computer Security &amp; …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Hey! I am an Egyptian computer security researcher and I wanted to share knowledge about binary hacking for you all.
+Facebook: https://www.facebook.com/mahmoudadel0x
+Let&rsquo;s start. I will talk about three topics for now, and in the next session I will continue:
+Computer memory and virtual …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jan 15, 2024</span>
+                    <a href="/blogs/computer-security-binary-hacking-concepts-and-basics/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="text-center pt-2">
+    
+    <span class="px-1">
+        <a href="https://github.com/mahmoud0x01" target="_blank" aria-label="github">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2.7em" height="2.7em" viewBox="0 0 1792 1792">
+                <path id="footer-socialNetworks-github-svg-path"
+                    d="M522 1352q-8 9-20-3-13-11-4-19 8-9 20 3 12 11 4 19zm-42-61q9 12 0 19-8 6-17-7t0-18q9-7 17 6zm-61-60q-5 7-13 2-10-5-7-12 3-5 13-2 10 5 7 12zm31 34q-6 7-16-3-9-11-2-16 6-6 16 3 9 11 2 16zm129 112q-4 12-19 6-17-4-13-15t19-7q16 5 13 16zm63 5q0 11-16 11-17 2-17-11 0-11 16-11 17-2 17 11zm58-10q2 10-14 14t-18-8 14-15q16-2 18 9zm964-956v960q0 119-84.5 203.5t-203.5 84.5h-224q-16 0-24.5-1t-19.5-5-16-14.5-5-27.5v-239q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 103t.5 68q0 22-11 33.5t-22 13-33 1.5h-224q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z" />
+
+                <metadata>
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                        <rdf:Description about="https://iconscout.com/legal#licenses"
+                            dc:title="Github, Online, Project, Hosting, Square"
+                            dc:description="Github, Online, Project, Hosting, Square" dc:publisher="Iconscout"
+                            dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+                            <dc:creator>
+                                <rdf:Bag>
+                                    <rdf:li>Font Awesome</rdf:li>
+                                </rdf:Bag>
+                            </dc:creator>
+                        </rdf:Description>
+                    </rdf:RDF>
+                </metadata>
+            </svg>
+        </a>
+    </span>
+    
+
+    
+    <span class="px-1">
+        <a href="https://www.linkedin.com/in/mahmoudadelOx01/" target="_blank" aria-label="linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" width='2.4em' height='2.4em' fill="#fff" aria-label="LinkedIn"
+                viewBox="0 0 512 512">
+                <rect width="512" height="512" fill="#0077b5" rx="15%" />
+                <circle cx="142" cy="138" r="37" />
+                <path stroke="#fff" stroke-width="66" d="M244 194v198M142 194v198" />
+                <path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32" />
+            </svg>
+        </a>
+    </span>
+    
+
+    
+
+    
+
+    
+</div><div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            &copy; 2025  All rights reserved
+        </div>
+    </div>
+</div>
+</footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.documentElement.classList.add('dark');
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+        document.documentElement.classList.remove('dark');
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            document.documentElement.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+    <script src="/js/visitorCounter.js"></script>
+    <script src="/js/typingEffect.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>
