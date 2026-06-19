@@ -1,0 +1,112 @@
+/* Courses section - Same style as education but smaller */
+#courses .container > h3 {
+    color: var(--text-secondary-color) !important;
+}
+
+#courses .row .index {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    max-height: 40px;
+    z-index: 2;
+    background-color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+#courses .card * {
+    background-color: var(--secondary-color) !important;
+}
+
+#courses .card {
+    border-radius: 1.2rem;
+    box-shadow: 0px 6px 40px rgb(15 80 100 / 16%);
+    border: 2px solid var(--text-secondary-color) !important;
+    transition: box-shadow .2s linear,opacity .2s linear;
+    transition: transform 0.2s;
+}
+
+#courses .card .card-body {
+    border-radius: 1.2rem;
+    padding: 1.25rem;
+}
+
+@media all and (max-width:768px) {
+    #courses .card .card-body {
+        padding: 1rem 0.75rem;
+    }
+}
+
+#courses .card:hover {
+    transition: 0.3s;
+    box-shadow: 0 3px 8px rgb(15 80 100 / 16%);
+    border: 2px solid var(--primary-color) !important;
+}
+
+#courses .card .card-body .education-content a {
+    color: var(--text-link-color) !important;
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+#courses .card .card-body > a h6 {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-link-color) !important;
+    font-size: 0.9rem;
+}
+
+#courses .card .card-body > a h6::after {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 2px;
+    bottom: 0.37em;
+    background-color: var(--primary-color);
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    opacity: 0.5;
+}
+
+#courses .card .card-body > a h6:hover::after, #courses .card .card-body > a h6:focus::after, #courses .card .card-body > a h6:active::after {
+    width: 100%;
+}
+
+#courses .card .card-body a.btn {
+    opacity: 0.9;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--text-color) !important;
+    border-radius: .6rem;
+    box-shadow: none;
+    transition: none;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+}
+
+#courses .card .card-body a.btn:hover {
+    opacity: 0.8;
+}
+
+#courses .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+#courses .card-body small {
+    font-size: 0.8rem;
+}
+
+#courses .card-body h6 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+#courses .mb-4 {
+    margin-bottom: 1rem !important;
+}
+
+#courses .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+

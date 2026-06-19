@@ -1,0 +1,347 @@
+/* ============================================================
+   PORTFOLIO CONSTELLATION — Detail Panel
+   ============================================================ */
+
+/* ---- Overlay ---- */
+.cpanel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.cpanel-overlay--open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---- Panel ---- */
+.cpanel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    max-width: 90vw;
+    height: 100vh;
+    background-color: var(--secondary-background-color, #fff);
+    border-left: 1px solid rgba(0,0,0,0.08);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.cpanel--open {
+    transform: translateX(0);
+}
+
+/* ---- Close button ---- */
+.cpanel-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    margin: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.08);
+    background-color: var(--secondary-background-color, #fff);
+    color: var(--text-secondary-color, #999);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    z-index: 10;
+}
+
+.cpanel-close:hover {
+    color: var(--text-color, #1a1a1a);
+    border-color: var(--text-secondary-color, #999);
+    background-color: var(--background-color, #f5f4f0);
+}
+
+/* ---- Body ---- */
+.cpanel-body {
+    padding: 1.5rem 1.75rem 2rem;
+    clear: both;
+}
+
+/* ---- Header ---- */
+.cpanel-header {
+    margin-bottom: 1.5rem;
+}
+
+.cpanel-header--me {
+    text-align: center;
+}
+
+.cpanel-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(0,0,0,0.08);
+    margin-bottom: 0.75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.cpanel-project-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.cpanel-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-color, #1a1a1a);
+    margin: 0 0 0.3rem;
+    font-family: var(--font, 'Inter', sans-serif);
+}
+
+.cpanel-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary-color, #999);
+    margin: 0 0 0.5rem;
+}
+
+.cpanel-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary-color, #999);
+    font-family: 'Courier New', monospace;
+    background-color: var(--background-color, #f5f4f0);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.cpanel-icon-lg {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.cpanel-custom-icon {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+}
+
+.cpanel-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 0.15rem 0.6rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ---- Content ---- */
+.cpanel-content {
+    margin-bottom: 1.25rem;
+}
+
+.cpanel-content p {
+    font-size: 0.88rem;
+    color: var(--text-muted, #666);
+    line-height: 1.7;
+    margin: 0;
+    font-family: var(--font, 'Inter', sans-serif);
+}
+
+/* ---- Sections ---- */
+.cpanel-section {
+    margin-bottom: 1.25rem;
+}
+
+.cpanel-section h3 {
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: var(--text-secondary-color, #999) !important;
+    margin: 0 0 0.6rem !important;
+}
+
+/* ---- Project list ---- */
+.cpanel-project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cpanel-project-list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.cpanel-project-list li:last-child {
+    border-bottom: none;
+}
+
+.cpanel-project-list a {
+    color: var(--text-color, #1a1a1a);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s ease;
+}
+
+.cpanel-project-list a:hover {
+    color: var(--text-secondary-color, #666);
+}
+
+.cpanel-project-list a i {
+    font-size: 0.75rem;
+    color: var(--text-secondary-color, #999);
+}
+
+/* ---- Tags ---- */
+.cpanel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.cpanel-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-color, #1a1a1a);
+    background-color: var(--background-color, #f5f4f0);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 100px;
+    padding: 0.15rem 0.55rem;
+    font-family: var(--font, 'Inter', sans-serif);
+}
+
+/* ---- Links ---- */
+.cpanel-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.cpanel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color, #1a1a1a);
+    text-decoration: none;
+    padding: 0.45rem 0.9rem;
+    border: 1.5px solid rgba(0,0,0,0.08);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    font-family: var(--font, 'Inter', sans-serif);
+}
+
+.cpanel-link:hover {
+    border-color: var(--text-secondary-color, #999);
+    background-color: var(--background-color, #f5f4f0);
+}
+
+.cpanel-link--primary {
+    background-color: var(--text-color, #1a1a1a);
+    color: var(--background-color, #f5f4f0);
+    border-color: var(--text-color, #1a1a1a);
+}
+
+.cpanel-link--primary:hover {
+    opacity: 0.85;
+    background-color: var(--text-color, #1a1a1a);
+    color: var(--background-color, #f5f4f0);
+}
+
+/* ---- Dark mode ---- */
+.dark .cpanel {
+    background-color: var(--secondary-background-color, #1a1a1a);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
+}
+
+.dark .cpanel-close {
+    background-color: var(--secondary-background-color, #1a1a1a);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.dark .cpanel-close:hover {
+    background-color: var(--background-color, #111);
+}
+
+.dark .cpanel-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dark .cpanel-avatar {
+    border-color: rgba(255,255,255,0.1);
+}
+
+.dark .cpanel-project-img {
+    border-color: rgba(255,255,255,0.1);
+}
+
+.dark .cpanel-date {
+    background-color: var(--background-color, #111);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.dark .cpanel-tag {
+    background-color: var(--background-color, #111);
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* ---- Mobile bottom sheet ---- */
+@media (max-width: 767px) {
+    .cpanel {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 70vh;
+        max-height: 70vh;
+        border-left: none;
+        border-top: 1px solid rgba(0,0,0,0.08);
+        border-radius: 1.25rem 1.25rem 0 0;
+        transform: translateY(100%);
+        box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .cpanel--open {
+        transform: translateY(0);
+    }
+
+    .cpanel-body {
+        padding: 1rem 1.25rem 2rem;
+    }
+
+    .cpanel-project-img {
+        height: 120px;
+    }
+}

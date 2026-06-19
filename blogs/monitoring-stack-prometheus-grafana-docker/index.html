@@ -1,0 +1,383 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><meta http-equiv=Accept-CH content="DPR, Viewport-Width, Width"><link rel=icon href=/fav.png type=image/gif><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" media=print onload='this.media="all"'><noscript><link href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel=stylesheet></noscript><link rel=stylesheet href=/css/font.css media=all><script data-goatcounter=https://0xkernel.goatcounter.com/count async src=//gc.zgo.at/count.js></script><meta property="og:url" content="https://mahmoudouf.com/blogs/monitoring-stack-prometheus-grafana-docker/"><meta property="og:site_name" content="Mahmoud - Penetration Tester | System Admin"><meta property="og:title" content="Building a Home Lab Monitoring Stack with Prometheus and Grafana"><meta property="og:description" content="Set up a complete monitoring solution with Prometheus, Grafana, and Alertmanager using Docker Compose for your home lab or small infrastructure."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="blogs"><meta property="article:published_time" content="2024-12-10T10:00:00+00:00"><meta property="article:modified_time" content="2024-12-10T10:00:00+00:00"><meta property="article:tag" content="Monitoring"><meta property="article:tag" content="Prometheus"><meta property="article:tag" content="Grafana"><meta property="article:tag" content="Docker"><meta property="article:tag" content="System Administration"><meta property="article:tag" content="DevOps"><meta name=twitter:card content="summary"><meta name=twitter:title content="Building a Home Lab Monitoring Stack with Prometheus and Grafana"><meta name=twitter:description content="Set up a complete monitoring solution with Prometheus, Grafana, and Alertmanager using Docker Compose for your home lab or small infrastructure."><link rel=stylesheet href=/bootstrap-5/css/bootstrap.min.css media=all><link rel=stylesheet href=/css/header.css media=all><link rel=stylesheet href=/css/footer.css media=all><link rel=stylesheet href=/css/theme.css media=all><style>:root{--text-color:#343a40;--text-secondary-color:#6c757d;--text-link-color:#007bff;--background-color:#eaedf0;--secondary-background-color:#64ffda1a;--primary-color:#007bff;--secondary-color:#f8f9fa;--text-color-dark:#e4e6eb;--text-secondary-color-dark:#b0b3b8;--text-link-color-dark:#ffffff;--background-color-dark:#18191a;--secondary-background-color-dark:#212529;--primary-color-dark:#ffffff;--secondary-color-dark:#212529}body{font-size:1rem;font-weight:400;line-height:1.5;text-align:left}html{background-color:var(--background-color)!important}body::-webkit-scrollbar{height:0;width:8px;background-color:var(--background-color)}::-webkit-scrollbar-track{border-radius:1rem}::-webkit-scrollbar-thumb{border-radius:1rem;background:#b0b0b0;outline:1px solid var(--background-color)}#search-content::-webkit-scrollbar{width:.5em;height:.1em;background-color:var(--background-color)}</style><meta name=description content="Set up a complete monitoring solution with Prometheus, Grafana, and Alertmanager using Docker Compose for your home lab or small infrastructure."><link rel=stylesheet href="/css/single.css?v=1781871079"><link rel=stylesheet href="/css/design.css?v=1781871079" media=all><script defer src=/fontawesome-6/all-6.4.2.js></script><script defer src="/js/translate.js?v=1781871079"></script><title>Building a Home Lab Monitoring Stack with Prometheus and Grafana | Mahmoud - Penetration Tester | System Admin</title></head><body class=light><script>let localStorageValue=localStorage.getItem("pref-theme"),mediaQuery=window.matchMedia("(prefers-color-scheme: dark)").matches;switch(localStorageValue){case"dark":document.documentElement.classList.add("dark"),document.body.classList.add("dark");break;case"light":document.body.classList.remove("dark"),document.documentElement.classList.remove("dark");break;default:mediaQuery&&(document.documentElement.classList.add("dark"),document.body.classList.add("dark"));break}</script><script>var prevScrollPos=window.pageYOffset;window.addEventListener("scroll",function(){let s=document.getElementById("profileHeader"),t=window.pageYOffset,n=!1,o=!0,i=o?prevScrollPos>t:t>0;i?s.classList.add("showHeaderOnTop"):n=!0,t===0&&(n=!0),n&&s.classList.remove("showHeaderOnTop"),prevScrollPos=t})</script><header id=profileHeader><nav class="navbar navbar-expand-lg animate"><div class="container-fluid mx-xs-2 mx-sm-4 mx-md-5 mx-lg-5 px-lg-4"><a class="navbar-brand brand-bracket" href=/><span class=brand-bracket-left>[</span><span class=brand-name>maf</span><span class=brand-bracket-right>]</span>
+</a><button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarContent aria-controls=navbarContent aria-expanded=false aria-label="Toggle navigation"><svg aria-hidden="true" height="24" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M1 2.75A.75.75.0 011.75 2h12.5a.75.75.0 110 1.5H1.75A.75.75.0 011 2.75zm0 5A.75.75.0 011.75 7h12.5a.75.75.0 110 1.5H1.75A.75.75.0 011 7.75zM1.75 12a.75.75.0 100 1.5h12.5a.75.75.0 100-1.5H1.75z"/></svg></button><div class="collapse navbar-collapse" id=navbarContent><ul class="navbar-nav mx-auto text-center nav-center-links"><li class=nav-item><a class="nav-link nav-page-link" href=/#about>About Me</a></li><li class=nav-item><a class="nav-link nav-page-link" href=/#experience>Experience</a></li><li class=nav-item><a class="nav-link nav-page-link" href=/#education>Education</a></li><li class=nav-item><a class="nav-link nav-page-link" href=/#awards>Awards</a></li><li class=nav-item><a class="nav-link nav-page-link" href=/blogs>Blog</a></li></ul><ul class="navbar-nav ms-auto text-center nav-social-links align-items-center"><li class=nav-item><a class="nav-link nav-social-icon" href=https://github.com/mahmoud0x01 target=_blank aria-label=social><i class="fab fa-github"></i></a></li><li class=nav-item><a class="nav-link nav-social-icon" href=https://www.linkedin.com/in/mahmoudadelOx01/ target=_blank aria-label=social><i class="fab fa-linkedin"></i></a></li><li class=nav-item><a class="nav-link nav-social-icon" href=https://instagram.com/0xkernel target=_blank aria-label=social><i class="fab fa-instagram"></i></a></li><li class=nav-item><a class="nav-link nav-social-icon" href=https://t.me/rdmsr target=_blank aria-label=social><i class="fab fa-telegram"></i></a></li><li class=nav-item><a class="nav-link nav-social-icon" href=mailto:contact@mahmoudouf.com aria-label=email><i class="fa fa-envelope"></i></a></li><li class=nav-item><button id=lang-toggle-btn class=nav-lang-btn title="Перевести на русский">RU</button></li><li class=nav-item><button id=theme-toggle class=nav-theme-btn><svg id="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></li></ul></div></div></nav></header><div id=content><section id=single><div class=container><div class="row justify-content-center"><div class="col-sm-12 col-md-12 col-lg-9"><div class=pr-lg-4><div class="title mb-5"><h1 class="text-center mb-4">Building a Home Lab Monitoring Stack with Prometheus and Grafana</h1><div class=text-center>Mahmoud Adel
+<small>|</small>
+Dec 10, 2024
+<span id=readingTime>min read</span></div></div><div class=featured-image><img class="img-fluid mx-auto d-block" src=/images/prometheus-grafana-stack.png alt="Building a Home Lab Monitoring Stack with Prometheus and Grafana"></div><article class="page-content p-2"><p>Every system administrator needs visibility into their infrastructure. In this guide, we&rsquo;ll build a complete monitoring stack using Prometheus for metrics collection, Grafana for visualization, and Alertmanager for notifications—all containerized with Docker Compose.</p><h2 id=architecture-overview>Architecture Overview</h2><pre tabindex=0><code>┌─────────────────────────────────────────────────────────┐
+│                    Monitoring Stack                      │
+├─────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │
+│  │   Grafana   │──│  Prometheus │──│  Alertmanager   │  │
+│  │  :3000      │  │  :9090      │  │  :9093          │  │
+│  └─────────────┘  └──────┬──────┘  └─────────────────┘  │
+│                          │                               │
+│  ┌───────────────────────┼───────────────────────────┐  │
+│  │                 Exporters                          │  │
+│  ├─────────────┬─────────────┬─────────────┬─────────┤  │
+│  │ Node        │ cAdvisor    │ Blackbox    │ Custom  │  │
+│  │ Exporter    │ (Docker)    │ Exporter    │ Apps    │  │
+│  │ :9100       │ :8080       │ :9115       │         │  │
+│  └─────────────┴─────────────┴─────────────┴─────────┘  │
+└─────────────────────────────────────────────────────────┘
+</code></pre><h2 id=project-structure>Project Structure</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>monitoring/
+</span></span><span style=display:flex><span>├── docker-compose.yml
+</span></span><span style=display:flex><span>├── prometheus/
+</span></span><span style=display:flex><span>│   ├── prometheus.yml
+</span></span><span style=display:flex><span>│   └── alerts/
+</span></span><span style=display:flex><span>│       └── rules.yml
+</span></span><span style=display:flex><span>├── alertmanager/
+</span></span><span style=display:flex><span>│   └── alertmanager.yml
+</span></span><span style=display:flex><span>├── grafana/
+</span></span><span style=display:flex><span>│   └── provisioning/
+</span></span><span style=display:flex><span>│       ├── dashboards/
+</span></span><span style=display:flex><span>│       │   ├── dashboard.yml
+</span></span><span style=display:flex><span>│       │   └── node-exporter.json
+</span></span><span style=display:flex><span>│       └── datasources/
+</span></span><span style=display:flex><span>│           └── prometheus.yml
+</span></span><span style=display:flex><span>└── .env
+</span></span></code></pre></div><h2 id=docker-compose-configuration>Docker Compose Configuration</h2><p>Create <code>docker-compose.yml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.8&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>monitoring</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>driver</span>: <span style=color:#ae81ff>bridge</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>prometheus_data</span>: {}
+</span></span><span style=display:flex><span>  <span style=color:#f92672>grafana_data</span>: {}
+</span></span><span style=display:flex><span>  <span style=color:#f92672>alertmanager_data</span>: {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>prometheus</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>prom/prometheus:v2.47.0</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>prometheus</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>unless-stopped</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./prometheus/alerts:/etc/prometheus/alerts:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>prometheus_data:/prometheus</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>command</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--config.file=/etc/prometheus/prometheus.yml&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--storage.tsdb.path=/prometheus&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--web.console.libraries=/etc/prometheus/console_libraries&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--web.console.templates=/etc/prometheus/consoles&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--storage.tsdb.retention.time=30d&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--web.enable-lifecycle&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--web.enable-admin-api&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;9090:9090&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>monitoring</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>grafana</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>grafana/grafana:10.1.0</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>grafana</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>unless-stopped</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>grafana_data:/var/lib/grafana</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./grafana/provisioning:/etc/grafana/provisioning:ro</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>GF_USERS_ALLOW_SIGN_UP=false</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>GF_SERVER_ROOT_URL=http://localhost:3000</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-piechart-panel</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;3000:3000&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>monitoring</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>depends_on</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>prometheus</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>alertmanager</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>prom/alertmanager:v0.26.0</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>alertmanager</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>unless-stopped</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>alertmanager_data:/alertmanager</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>command</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--config.file=/etc/alertmanager/alertmanager.yml&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--storage.path=/alertmanager&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;9093:9093&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>monitoring</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>node-exporter</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>prom/node-exporter:v1.6.1</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>node-exporter</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>unless-stopped</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/proc:/host/proc:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/sys:/host/sys:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/:/rootfs:ro</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>command</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--path.procfs=/host/proc&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--path.rootfs=/rootfs&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--path.sysfs=/host/sys&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;9100:9100&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>monitoring</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>cadvisor</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>gcr.io/cadvisor/cadvisor:v0.47.2</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>cadvisor</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>unless-stopped</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>privileged</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>devices</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/dev/kmsg:/dev/kmsg</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/:/rootfs:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/var/run:/var/run:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/sys:/sys:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/var/lib/docker:/var/lib/docker:ro</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/cgroup:/cgroup:ro</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;8080:8080&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>monitoring</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>blackbox-exporter</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>prom/blackbox-exporter:v0.24.0</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>blackbox-exporter</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>unless-stopped</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;9115:9115&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>monitoring</span>
+</span></span></code></pre></div><h2 id=prometheus-configuration>Prometheus Configuration</h2><p>Create <code>prometheus/prometheus.yml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>global</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>scrape_interval</span>: <span style=color:#ae81ff>15s</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>evaluation_interval</span>: <span style=color:#ae81ff>15s</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>external_labels</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>monitor</span>: <span style=color:#e6db74>&#39;home-lab&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>alerting</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>alertmanagers</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>static_configs</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#f92672>targets</span>:
+</span></span><span style=display:flex><span>          - <span style=color:#ae81ff>alertmanager:9093</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>rule_files</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>/etc/prometheus/alerts/*.yml</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>scrape_configs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Prometheus itself</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>job_name</span>: <span style=color:#e6db74>&#39;prometheus&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>static_configs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>targets</span>: [<span style=color:#e6db74>&#39;localhost:9090&#39;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Node Exporter - System metrics</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>job_name</span>: <span style=color:#e6db74>&#39;node-exporter&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>static_configs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>targets</span>: [<span style=color:#e6db74>&#39;node-exporter:9100&#39;</span>]
+</span></span><span style=display:flex><span>    <span style=color:#f92672>relabel_configs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>source_labels</span>: [<span style=color:#ae81ff>__address__]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>target_label</span>: <span style=color:#ae81ff>instance</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>replacement</span>: <span style=color:#e6db74>&#39;home-server&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># cAdvisor - Docker container metrics</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>job_name</span>: <span style=color:#e6db74>&#39;cadvisor&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>static_configs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>targets</span>: [<span style=color:#e6db74>&#39;cadvisor:8080&#39;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Blackbox Exporter - Endpoint monitoring</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>job_name</span>: <span style=color:#e6db74>&#39;blackbox-http&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>metrics_path</span>: <span style=color:#ae81ff>/probe</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>params</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>module</span>: [<span style=color:#ae81ff>http_2xx]</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>static_configs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>targets</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#ae81ff>https://google.com</span>
+</span></span><span style=display:flex><span>        - <span style=color:#ae81ff>https://github.com</span>
+</span></span><span style=display:flex><span>        - <span style=color:#ae81ff>http://localhost:3000 </span> <span style=color:#75715e># Grafana</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>relabel_configs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>source_labels</span>: [<span style=color:#ae81ff>__address__]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>target_label</span>: <span style=color:#ae81ff>__param_target</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>source_labels</span>: [<span style=color:#ae81ff>__param_target]</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>target_label</span>: <span style=color:#ae81ff>instance</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>target_label</span>: <span style=color:#ae81ff>__address__</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>replacement</span>: <span style=color:#ae81ff>blackbox-exporter:9115</span>
+</span></span></code></pre></div><h2 id=alert-rules>Alert Rules</h2><p>Create <code>prometheus/alerts/rules.yml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>groups</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>system-alerts</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>rules</span>:
+</span></span><span style=display:flex><span>      <span style=color:#75715e># High CPU usage</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>alert</span>: <span style=color:#ae81ff>HighCPUUsage</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>expr</span>: <span style=color:#ae81ff>100</span> - <span style=color:#ae81ff>(avg by(instance) (irate(node_cpu_seconds_total{mode=&#34;idle&#34;}[5m])) * 100) &gt; 80</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>for</span>: <span style=color:#ae81ff>5m</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>warning</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>annotations</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>summary</span>: <span style=color:#e6db74>&#34;High CPU usage detected&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;CPU usage is above 80% on {{ $labels.instance }} for more than 5 minutes.&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># High memory usage</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>alert</span>: <span style=color:#ae81ff>HighMemoryUsage</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>expr</span>: <span style=color:#ae81ff>(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 &gt; 85</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>for</span>: <span style=color:#ae81ff>5m</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>warning</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>annotations</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>summary</span>: <span style=color:#e6db74>&#34;High memory usage detected&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;Memory usage is above 85% on {{ $labels.instance }}.&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Low disk space</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>alert</span>: <span style=color:#ae81ff>LowDiskSpace</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>expr</span>: <span style=color:#ae81ff>(node_filesystem_avail_bytes{mountpoint=&#34;/&#34;} / node_filesystem_size_bytes{mountpoint=&#34;/&#34;}) * 100 &lt; 15</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>for</span>: <span style=color:#ae81ff>5m</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>critical</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>annotations</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>summary</span>: <span style=color:#e6db74>&#34;Low disk space&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;Disk space is below 15% on {{ $labels.instance }}.&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Service down</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>alert</span>: <span style=color:#ae81ff>ServiceDown</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>expr</span>: <span style=color:#ae81ff>up == 0</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>for</span>: <span style=color:#ae81ff>1m</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>critical</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>annotations</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>summary</span>: <span style=color:#e6db74>&#34;Service is down&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;{{ $labels.job }} has been down for more than 1 minute.&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>container-alerts</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>rules</span>:
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Container high CPU</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>alert</span>: <span style=color:#ae81ff>ContainerHighCPU</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>expr</span>: <span style=color:#ae81ff>(sum by (name) (rate(container_cpu_usage_seconds_total{name!=&#34;&#34;}[5m])) * 100) &gt; 80</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>for</span>: <span style=color:#ae81ff>5m</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>warning</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>annotations</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>summary</span>: <span style=color:#e6db74>&#34;Container high CPU usage&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;Container {{ $labels.name }} CPU usage is above 80%.&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Container high memory</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>alert</span>: <span style=color:#ae81ff>ContainerHighMemory</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>expr</span>: <span style=color:#ae81ff>(container_memory_usage_bytes{name!=&#34;&#34;} / container_spec_memory_limit_bytes{name!=&#34;&#34;}) * 100 &gt; 80</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>for</span>: <span style=color:#ae81ff>5m</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>warning</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>annotations</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>summary</span>: <span style=color:#e6db74>&#34;Container high memory usage&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;Container {{ $labels.name }} memory usage is above 80%.&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># Container restart</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>alert</span>: <span style=color:#ae81ff>ContainerRestarted</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>expr</span>: <span style=color:#ae81ff>increase(container_last_seen{name!=&#34;&#34;}[5m]) &gt; 2</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>for</span>: <span style=color:#ae81ff>0m</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>warning</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>annotations</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>summary</span>: <span style=color:#e6db74>&#34;Container restarted&#34;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>description</span>: <span style=color:#e6db74>&#34;Container {{ $labels.name }} has restarted.&#34;</span>
+</span></span></code></pre></div><h2 id=alertmanager-configuration>Alertmanager Configuration</h2><p>Create <code>alertmanager/alertmanager.yml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>global</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>resolve_timeout</span>: <span style=color:#ae81ff>5m</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>route</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>group_by</span>: [<span style=color:#e6db74>&#39;alertname&#39;</span>, <span style=color:#e6db74>&#39;severity&#39;</span>]
+</span></span><span style=display:flex><span>  <span style=color:#f92672>group_wait</span>: <span style=color:#ae81ff>10s</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>group_interval</span>: <span style=color:#ae81ff>10s</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>repeat_interval</span>: <span style=color:#ae81ff>1h</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>receiver</span>: <span style=color:#e6db74>&#39;telegram&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>routes</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>match</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>critical</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>receiver</span>: <span style=color:#e6db74>&#39;telegram&#39;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>continue</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>match</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>severity</span>: <span style=color:#ae81ff>warning</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>receiver</span>: <span style=color:#e6db74>&#39;telegram&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>receivers</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#39;telegram&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>telegram_configs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>bot_token</span>: <span style=color:#e6db74>&#39;YOUR_BOT_TOKEN&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>chat_id</span>: <span style=color:#ae81ff>YOUR_CHAT_ID</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>message</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          🚨 *Alert: {{ .Status | toUpper }}*
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          {{ range .Alerts }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          *Alert:* {{ .Labels.alertname }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          *Severity:* {{ .Labels.severity }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          *Instance:* {{ .Labels.instance }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          *Description:* {{ .Annotations.description }}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          {{ end }}</span>          
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Email alternative</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># - name: &#39;email&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#   email_configs:</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#     - to: &#39;admin@example.com&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#       from: &#39;alertmanager@example.com&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#       smarthost: &#39;smtp.gmail.com:587&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#       auth_username: &#39;your-email@gmail.com&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>#       auth_password: &#39;app-password&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>inhibit_rules</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>source_match</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>severity</span>: <span style=color:#e6db74>&#39;critical&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>target_match</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>severity</span>: <span style=color:#e6db74>&#39;warning&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>equal</span>: [<span style=color:#e6db74>&#39;alertname&#39;</span>, <span style=color:#e6db74>&#39;instance&#39;</span>]
+</span></span></code></pre></div><h2 id=grafana-provisioning>Grafana Provisioning</h2><h3 id=datasource>Datasource</h3><p>Create <code>grafana/provisioning/datasources/prometheus.yml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>datasources</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Prometheus</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>prometheus</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>access</span>: <span style=color:#ae81ff>proxy</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>url</span>: <span style=color:#ae81ff>http://prometheus:9090</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>isDefault</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>editable</span>: <span style=color:#66d9ef>false</span>
+</span></span></code></pre></div><h3 id=dashboard-provisioning>Dashboard Provisioning</h3><p>Create <code>grafana/provisioning/dashboards/dashboard.yml</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>providers</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#39;default&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>orgId</span>: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>folder</span>: <span style=color:#e6db74>&#39;&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>type</span>: <span style=color:#ae81ff>file</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>disableDeletion</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>updateIntervalSeconds</span>: <span style=color:#ae81ff>30</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>options</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>path</span>: <span style=color:#ae81ff>/etc/grafana/provisioning/dashboards</span>
+</span></span></code></pre></div><h2 id=deploy-the-stack>Deploy the Stack</h2><p>Create <code>.env</code> file:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>GRAFANA_ADMIN_USER<span style=color:#f92672>=</span>admin
+</span></span><span style=display:flex><span>GRAFANA_ADMIN_PASSWORD<span style=color:#f92672>=</span>your-secure-password
+</span></span></code></pre></div><p>Start everything:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker-compose up -d
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check status</span>
+</span></span><span style=display:flex><span>docker-compose ps
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># View logs</span>
+</span></span><span style=display:flex><span>docker-compose logs -f
+</span></span></code></pre></div><h2 id=access-the-services>Access the Services</h2><table><thead><tr><th>Service</th><th>URL</th><th>Credentials</th></tr></thead><tbody><tr><td>Grafana</td><td>http://localhost:3000</td><td>admin / (from .env)</td></tr><tr><td>Prometheus</td><td>http://localhost:9090</td><td>None</td></tr><tr><td>Alertmanager</td><td>http://localhost:9093</td><td>None</td></tr><tr><td>Node Exporter</td><td>http://localhost:9100</td><td>None</td></tr></tbody></table><h2 id=useful-promql-queries>Useful PromQL Queries</h2><h3 id=cpu-usage>CPU Usage</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-promql data-lang=promql><span style=display:flex><span><span style=color:#ae81ff>100</span> <span style=color:#f92672>-</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>avg</span> <span style=color:#66d9ef>by</span><span style=color:#f92672>(</span>instance<span style=color:#f92672>)</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>irate</span><span style=color:#f92672>(</span>node_cpu_seconds_total{mode<span style=color:#f92672>=</span>&#34;<span style=color:#e6db74>idle</span>&#34;}[<span style=color:#e6db74>5m</span>]<span style=color:#f92672>))</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>100</span><span style=color:#f92672>)</span>
+</span></span></code></pre></div><h3 id=memory-usage>Memory Usage</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-promql data-lang=promql><span style=display:flex><span><span style=color:#f92672>(</span><span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> <span style=color:#f92672>(</span>node_memory_MemAvailable_bytes <span style=color:#f92672>/</span> node_memory_MemTotal_bytes<span style=color:#f92672>))</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>100</span>
+</span></span></code></pre></div><h3 id=disk-usage>Disk Usage</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-promql data-lang=promql><span style=display:flex><span><span style=color:#f92672>(</span><span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> <span style=color:#f92672>(</span>node_filesystem_avail_bytes{mountpoint<span style=color:#f92672>=</span>&#34;<span style=color:#e6db74>/</span>&#34;} <span style=color:#f92672>/</span> node_filesystem_size_bytes{mountpoint<span style=color:#f92672>=</span>&#34;<span style=color:#e6db74>/</span>&#34;}<span style=color:#f92672>))</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>100</span>
+</span></span></code></pre></div><h3 id=network-traffic>Network Traffic</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-promql data-lang=promql><span style=display:flex><span><span style=color:#75715e># Inbound</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>rate</span><span style=color:#f92672>(</span>node_network_receive_bytes_total[<span style=color:#e6db74>5m</span>]<span style=color:#f92672>)</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Outbound</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>rate</span><span style=color:#f92672>(</span>node_network_transmit_bytes_total[<span style=color:#e6db74>5m</span>]<span style=color:#f92672>)</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>8</span>
+</span></span></code></pre></div><h3 id=container-memory>Container Memory</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-promql data-lang=promql><span style=display:flex><span>container_memory_usage_bytes{name<span style=color:#f92672>!=</span>&#34;&#34;} <span style=color:#f92672>/</span> <span style=color:#ae81ff>1024</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>1024</span>
+</span></span></code></pre></div><h2 id=adding-more-targets>Adding More Targets</h2><p>To monitor additional hosts, install Node Exporter on each machine:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># On the target machine</span>
+</span></span><span style=display:flex><span>docker run -d <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --name node-exporter <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --net<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;host&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --pid<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;host&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  -v <span style=color:#e6db74>&#34;/:/host:ro,rslave&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  prom/node-exporter <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --path.rootfs<span style=color:#f92672>=</span>/host
+</span></span></code></pre></div><p>Then add to Prometheus:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>- <span style=color:#f92672>job_name</span>: <span style=color:#e6db74>&#39;remote-nodes&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>static_configs</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>targets</span>: 
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;192.168.1.100:9100&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;192.168.1.101:9100&#39;</span>
+</span></span></code></pre></div><h2 id=conclusion>Conclusion</h2><p>You now have a production-grade monitoring stack that provides:</p><ul><li><strong>Real-time metrics</strong> from all your systems</li><li><strong>Beautiful dashboards</strong> in Grafana</li><li><strong>Instant alerts</strong> via Telegram/Email</li><li><strong>Container monitoring</strong> with cAdvisor</li><li><strong>Endpoint health checks</strong> with Blackbox Exporter</li></ul><p>This setup scales well for home labs and small infrastructures. For larger deployments, consider adding Thanos or Cortex for long-term storage and high availability.</p><p>Happy monitoring! 📊</p></article></div></div><div class="col-sm-12 col-md-12 col-lg-3"><div id=stickySideBar class=sticky-sidebar><aside class=toc><h5>Table Of Contents</h5><div class=toc-content><nav id=TableOfContents><ul><li><a href=#architecture-overview>Architecture Overview</a></li><li><a href=#project-structure>Project Structure</a></li><li><a href=#docker-compose-configuration>Docker Compose Configuration</a></li><li><a href=#prometheus-configuration>Prometheus Configuration</a></li><li><a href=#alert-rules>Alert Rules</a></li><li><a href=#alertmanager-configuration>Alertmanager Configuration</a></li><li><a href=#grafana-provisioning>Grafana Provisioning</a><ul><li><a href=#datasource>Datasource</a></li><li><a href=#dashboard-provisioning>Dashboard Provisioning</a></li></ul></li><li><a href=#deploy-the-stack>Deploy the Stack</a></li><li><a href=#access-the-services>Access the Services</a></li><li><a href=#useful-promql-queries>Useful PromQL Queries</a><ul><li><a href=#cpu-usage>CPU Usage</a></li><li><a href=#memory-usage>Memory Usage</a></li><li><a href=#disk-usage>Disk Usage</a></li><li><a href=#network-traffic>Network Traffic</a></li><li><a href=#container-memory>Container Memory</a></li></ul></li><li><a href=#adding-more-targets>Adding More Targets</a></li><li><a href=#conclusion>Conclusion</a></li></ul></nav></div></aside><aside class=tags><h5>Tags</h5><ul class="tags-ul list-unstyled list-inline"><li class=list-inline-item><a href=https://mahmoudouf.com/tags/monitoring target=_blank>Monitoring</a></li><li class=list-inline-item><a href=https://mahmoudouf.com/tags/prometheus target=_blank>Prometheus</a></li><li class=list-inline-item><a href=https://mahmoudouf.com/tags/grafana target=_blank>Grafana</a></li><li class=list-inline-item><a href=https://mahmoudouf.com/tags/docker target=_blank>Docker</a></li><li class=list-inline-item><a href=https://mahmoudouf.com/tags/system-administration target=_blank>System Administration</a></li><li class=list-inline-item><a href=https://mahmoudouf.com/tags/devops target=_blank>DevOps</a></li><li class=list-inline-item><a href=https://mahmoudouf.com/tags/home-lab target=_blank>Home Lab</a></li></ul></aside><aside class=social><h5>Share</h5><div class=social-content><ul class=list-inline><li class="list-inline-item text-center"><a target=_blank href="https://www.linkedin.com/feed/?shareActive=true&text=Set%20up%20a%20complete%20monitoring%20solution%20with%20Prometheus%2c%20Grafana%2c%20and%20Alertmanager%20using%20Docker%20Compose%20for%20your%20home%20lab%20or%20small%20infrastructure. https%3a%2f%2fmahmoudouf.com%2fblogs%2fmonitoring-stack-prometheus-grafana-docker%2f"><i class="fab fa-linkedin"></i></a></li><li class="list-inline-item text-center"><a target=_blank href='https://twitter.com/share?text=Building%20a%20Home%20Lab%20Monitoring%20Stack%20with%20Prometheus%20and%20Grafana&url=https%3a%2f%2fmahmoudouf.com%2fblogs%2fmonitoring-stack-prometheus-grafana-docker%2f&hashtags=Monitoring%2cPrometheus%2cGrafana%2cDocker%2cSystem%20Administration%2cDevOps%2cHome%20Lab'><i class="fab fa-twitter"></i></a></li><li class="list-inline-item text-center"><a target=_blank href="https://api.whatsapp.com/send?text=Building%20a%20Home%20Lab%20Monitoring%20Stack%20with%20Prometheus%20and%20Grafana: https%3a%2f%2fmahmoudouf.com%2fblogs%2fmonitoring-stack-prometheus-grafana-docker%2f"><i class="fab fa-whatsapp"></i></a></li><li class="list-inline-item text-center"><a target=_blank href='mailto:?subject=Building%20a%20Home%20Lab%20Monitoring%20Stack%20with%20Prometheus%20and%20Grafana&amp;body=Check%20out%20this%20site https%3a%2f%2fmahmoudouf.com%2fblogs%2fmonitoring-stack-prometheus-grafana-docker%2f'><i class="fa fa-envelope"></i></a></li></ul></div></aside></div></div></div><div class=row><div class="col-sm-12 col-md-12 col-lg-9 p-4"></div></div></div><button class="p-2 px-3" onclick=topFunction() id=topScroll>
+<i class="fas fa-angle-up"></i></button></section><div class=progress><div id=scroll-progress-bar class=progress-bar role=progressbar aria-valuenow=0 aria-valuemin=0 aria-valuemax=100></div></div><script src=/js/scrollProgressBar.js></script><script>var topScroll=document.getElementById("topScroll");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?topScroll.style.display="block":topScroll.style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}let stickySideBarElem=document.getElementById("stickySideBar"),stickyNavBar=!0;if(stickyNavBar){let e=document.getElementById("profileHeader"),t=e.offsetHeight+15;stickySideBarElem.style.top=t+"px"}else stickySideBarElem.style.top="50px"</script><script src=/js/readingTime.js></script></div><footer><div class=container><div class=footer-inner><div class=footer-col><p class=footer-col-title>links</p><a href=#about>About</a>
+<a href=#experience>Experience</a>
+<a href=#education>Education</a>
+<a href=#achievements>Achievements</a>
+<a href=#awards>Awards</a></div><div class=footer-col><p class=footer-col-title>networks</p><a href=https://github.com/mahmoud0x01 target=_blank>GitHub</a>
+<a href=https://www.linkedin.com/in/mahmoudadelOx01/ target=_blank>LinkedIn</a>
+<a href=https://instagram.com/0xkernel target=_blank>Instagram</a>
+<a href=https://t.me/rdmsr target=_blank>Telegram</a>
+<a href=mailto:contact@mahmoudouf.com>Email</a></div></div><div class=footer-copyright>&copy; 2026 Mahmoud — All rights reserved</div></div></footer><script src=/bootstrap-5/js/bootstrap.bundle.min.js></script><script>localStorage.getItem("pref-theme")==="dark"?(document.documentElement.classList.add("dark"),document.body.classList.add("dark")):localStorage.getItem("pref-theme")==="light"?(document.body.classList.remove("dark"),document.documentElement.classList.remove("dark")):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&(document.documentElement.classList.add("dark"),document.body.classList.add("dark"))</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),document.documentElement.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),document.documentElement.classList.add("dark"),localStorage.setItem("pref-theme","dark"))});var tooltipTriggerList=[].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')),tooltipList=tooltipTriggerList.map(function(e){return new bootstrap.Tooltip(e)})</script><script src=/js/search.js></script><script src=/js/visitorCounter.js></script><script src=/js/typingEffect.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js></script><script src="/js/portfolio-graph-data.js?v=1"></script><script src="/js/portfolio-panel.js?v=1"></script><script src="/js/portfolio-graph.js?v=1"></script><script src="/js/scroll-animations.js?v=1"></script><script src="/js/single-animations.js?v=1"></script><script src="/js/three-hero.js?v=1"></script><section id=search-content class=py-2><div class=container id=search-results></div></section></body></html>
