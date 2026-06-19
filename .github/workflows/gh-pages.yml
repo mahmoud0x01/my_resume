@@ -44,7 +44,8 @@ jobs:
           rm -rf public
           rm -rf resources/_gen
 
-          export BASE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          export CUSTOM_DOMAIN="mahmoudouf.com"
+          export BASE_URL="https://${CUSTOM_DOMAIN}/"
           BASE_PATH="$(python3 -c 'import os; from urllib.parse import urlparse; print(urlparse(os.environ["BASE_URL"]).path.rstrip("/"))')"
           export BASE_PATH
           export HUGO_PARAMS_STATICPATH="$BASE_PATH"
@@ -55,7 +56,7 @@ jobs:
             --cleanDestinationDir \
             --baseURL "$BASE_URL"
 
-          rm -f public/CNAME
+          printf "%s\n" "$CUSTOM_DOMAIN" > public/CNAME
 
           python3 .github/scripts/fix-pages-paths.py
 
@@ -65,7 +66,7 @@ jobs:
           ls -la public/ || echo "Public directory not found!"
           echo "Blog posts in public:"
           ls public/blogs/ || echo "No blogs directory"
-          test ! -f public/CNAME
+          test "$(cat public/CNAME)" = "mahmoudouf.com"
           test -f public/index.html
 
       - name: Publish gh-pages branch
