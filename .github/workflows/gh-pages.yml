@@ -51,12 +51,8 @@ jobs:
           rm -rf resources/_gen
 
           BASE_URL="${{ steps.pages.outputs.base_url }}/"
-          BASE_PATH="$(python3 - <<'PY'
-from urllib.parse import urlparse
-url = "${{ steps.pages.outputs.base_url }}/"
-print(urlparse(url).path.rstrip("/"))
-PY
-)"
+          export BASE_URL
+          BASE_PATH="$(python3 -c 'import os; from urllib.parse import urlparse; print(urlparse(os.environ["BASE_URL"]).path.rstrip("/"))')"
           export BASE_PATH
           export HUGO_PARAMS_STATICPATH="$BASE_PATH"
 
@@ -68,24 +64,7 @@ PY
 
           rm -f public/CNAME
 
-          python3 - <<'PY'
-import os
-import re
-from pathlib import Path
-
-base = os.environ.get("BASE_PATH", "").rstrip("/")
-if base:
-    asset_re = re.compile(
-        r'(?P<attr>\b(?:src|href)=)(?P<quote>["\']?)/(?P<path>(?:js|images|css|bootstrap-5|fontawesome-6)/[^"\' >]+|fav\.png|404\.png)'
-    )
-    for page in Path("public").rglob("*.html"):
-        text = page.read_text(encoding="utf-8")
-        text = asset_re.sub(
-            lambda m: f'{m.group("attr")}{m.group("quote")}{base}/{m.group("path")}',
-            text,
-        )
-        page.write_text(text, encoding="utf-8")
-PY
+          python3 .github/scripts/fix-pages-paths.py
 
       - name: Verify build content
         run: |
