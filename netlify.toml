@@ -1,0 +1,18 @@
+[build]
+  command = "hugo --gc --minify --cleanDestinationDir --baseURL https://mahmoudouf.com/"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "latest"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.production.environment]
+  HUGO_ENV = "production"
+
+[context.deploy-preview]
+  command = "hugo --gc --minify --cleanDestinationDir --baseURL $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "hugo --gc --minify --cleanDestinationDir --baseURL $DEPLOY_PRIME_URL"
+

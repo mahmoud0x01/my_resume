@@ -1,0 +1,1377 @@
+/* ============================================================
+   DESIGN SYSTEM — inspired by cshStudio portfolio design
+   Clean light aesthetic, Inter font, pastel gradient hero
+   ============================================================ */
+
+/* ----- Google Inter font import ----- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ----- CSS Variables ----- */
+:root {
+    --bg: #f5f4f0;
+    --bg-secondary: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #6b7280;
+    --text-light: #9ca3af;
+    --primary: #1a1a1a;
+    --accent: #111111;
+    --border: #e5e7eb;
+    --border-light: #f3f4f6;
+    --card-bg: #ffffff;
+    --card-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+    --radius: 1rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1.5rem;
+    --hero-gradient: linear-gradient(135deg,
+        rgba(255, 245, 180, 0.55) 0%,
+        rgba(255, 210, 200, 0.45) 30%,
+        rgba(220, 195, 240, 0.40) 60%,
+        rgba(200, 220, 255, 0.35) 100%);
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark {
+    --bg: #111111 !important;
+    --bg-secondary: #1a1a1a !important;
+    --text: #f0f0f0 !important;
+    --text-muted: #9ca3af !important;
+    --text-light: #6b7280 !important;
+    --primary: #ffffff !important;
+    --border: #2a2a2a !important;
+    --border-light: #222222 !important;
+    --card-bg: #1a1a1a !important;
+    --card-shadow: 0 2px 16px rgba(0,0,0,0.3) !important;
+    --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.5) !important;
+    --hero-gradient: linear-gradient(135deg,
+        rgba(40, 35, 20, 0.6) 0%,
+        rgba(50, 25, 30, 0.5) 30%,
+        rgba(35, 20, 55, 0.5) 60%,
+        rgba(20, 30, 55, 0.4) 100%) !important;
+}
+
+/* ----- Base Overrides ----- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    background-color: var(--bg) !important;
+    scroll-behavior: smooth;
+}
+
+body, body.light {
+    font-family: var(--font) !important;
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+body.dark {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+}
+
+/* ----- NAVBAR ----- */
+#profileHeader {
+    position: relative;
+    z-index: 100;
+    background-color: var(--bg) !important;
+}
+
+#profileHeader.showHeaderOnTop {
+    position: sticky;
+    top: 0;
+    background-color: rgba(245, 244, 240, 0.92) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: none;
+}
+
+.dark #profileHeader.showHeaderOnTop {
+    background-color: rgba(17, 17, 17, 0.92) !important;
+    border-bottom: 1px solid var(--border);
+}
+
+#profileHeader nav.navbar {
+    padding: 1rem 0;
+    background-color: transparent !important;
+}
+
+/* Brand [maf] */
+.brand-bracket {
+    font-family: 'Courier New', 'Courier', monospace !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+    color: var(--text) !important;
+    text-decoration: none !important;
+    transition: opacity var(--transition);
+}
+.brand-bracket:hover { opacity: 0.7; }
+.brand-bracket-left,
+.brand-bracket-right {
+    color: var(--text-muted) !important;
+    font-weight: 400 !important;
+}
+.brand-name {
+    color: var(--text) !important;
+    font-weight: 700 !important;
+}
+
+/* Center nav links */
+.nav-center-links .nav-item .nav-page-link {
+    font-family: var(--font) !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    color: var(--text-muted) !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background var(--transition);
+    text-decoration: none !important;
+}
+.nav-center-links .nav-item .nav-page-link:hover {
+    color: var(--text) !important;
+    background-color: var(--border-light) !important;
+}
+
+/* Social icons in nav */
+.nav-social-links .nav-item .nav-social-icon {
+    font-size: 1rem !important;
+    color: var(--text-muted) !important;
+    padding: 0.4rem 0.5rem !important;
+    transition: color var(--transition);
+    text-decoration: none !important;
+}
+.nav-social-links .nav-item .nav-social-icon:hover {
+    color: var(--text) !important;
+}
+
+/* Theme toggle button */
+.nav-theme-btn {
+    background: none !important;
+    border: none !important;
+    padding: 0.4rem 0.5rem !important;
+    cursor: pointer;
+    color: var(--text-muted) !important;
+    transition: color var(--transition);
+    display: flex;
+    align-items: center;
+}
+.nav-theme-btn:hover { color: var(--text) !important; }
+.nav-theme-btn svg { stroke: currentColor; }
+
+/* ----- HERO SECTION ----- */
+#hero {
+    min-height: calc(100vh - 72px);
+    background: var(--hero-gradient), var(--bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-inner {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    padding: 4rem 0 2rem;
+}
+
+.hero-row {
+    min-height: 60vh;
+    gap: 2rem;
+}
+
+.hero-text-col {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.hero-text-col.animate {
+    animation: fadeSlideLeft 0.8s ease-out both;
+}
+
+@keyframes fadeSlideLeft {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.hero-greeting {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+}
+
+.hero-display-name {
+    font-family: var(--font) !important;
+    font-size: clamp(2.4rem, 6vw, 4.5rem) !important;
+    font-weight: 300 !important;
+    line-height: 1.1 !important;
+    color: var(--text) !important;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.03em;
+}
+.hero-display-name strong {
+    font-weight: 800 !important;
+    color: var(--text) !important;
+}
+
+.hero-role {
+    font-size: clamp(1rem, 2.5vw, 1.4rem) !important;
+    font-weight: 400 !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 1.25rem;
+    opacity: 1 !important;
+    letter-spacing: -0.01em;
+}
+
+.hero-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* CTA Buttons */
+.hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+/* Resume button — needs #hero a.btn specificity + !important to beat index.css */
+#hero a.btn.hero-btn-primary,
+#hero .hero-btn-primary {
+    background-color: #1a1a1a !important;
+    color: #f5f4f0 !important;
+    border: 1.5px solid #1a1a1a !important;
+    border-radius: 0.625rem !important;
+    padding: 0.65rem 1.5rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    font-family: var(--font) !important;
+    transition: opacity var(--transition), transform var(--transition) !important;
+    text-decoration: none !important;
+    letter-spacing: 0.01em;
+    margin-top: 0 !important;
+    opacity: 1 !important;
+}
+#hero a.btn.hero-btn-primary:hover,
+#hero .hero-btn-primary:hover {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
+    opacity: 1 !important;
+    transform: translateY(-1px);
+}
+/* Dark mode: white btn with dark text */
+.dark #hero a.btn.hero-btn-primary,
+.dark #hero .hero-btn-primary {
+    background-color: #f0f0f0 !important;
+    color: #111111 !important;
+    border-color: #f0f0f0 !important;
+}
+.dark #hero a.btn.hero-btn-primary:hover,
+.dark #hero .hero-btn-primary:hover {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    border-color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.hero-btn-secondary {
+    background-color: transparent !important;
+    color: var(--text) !important;
+    border: 1.5px solid var(--border) !important;
+    border-radius: 0.625rem !important;
+    padding: 0.65rem 1.5rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    font-family: var(--font) !important;
+    transition: border-color var(--transition), background var(--transition), transform var(--transition) !important;
+    text-decoration: none !important;
+}
+.hero-btn-secondary:hover {
+    border-color: var(--text) !important;
+    background-color: var(--border-light) !important;
+    color: var(--text) !important;
+    transform: translateY(-1px);
+}
+
+/* Social icons in hero */
+.hero-social-row a.btn.social-icon {
+    color: var(--text-muted) !important;
+    border: 1.5px solid var(--border) !important;
+    border-radius: 50% !important;
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0 !important;
+    margin-right: 0.4rem !important;
+    font-size: 0.9rem !important;
+    transition: border-color var(--transition), color var(--transition), transform var(--transition) !important;
+}
+.hero-social-row a.btn.social-icon:hover {
+    color: var(--text) !important;
+    border-color: var(--text) !important;
+    transform: translateY(-2px) !important;
+    background-color: var(--border-light) !important;
+    opacity: 1 !important;
+}
+
+/* Hero image */
+.hero-image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+.hero-image-col.animate {
+    animation: fadeSlideRight 0.9s ease-out 0.2s both;
+}
+@keyframes fadeSlideRight {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.hero-img-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-profile-img {
+    width: clamp(200px, 30vw, 340px) !important;
+    height: clamp(200px, 30vw, 340px) !important;
+    object-fit: cover !important;
+    border-radius: 1.5rem !important;
+    border: 3px solid var(--bg-secondary) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08) !important;
+    transition: box-shadow var(--transition) !important;
+}
+.hero-profile-img.rounded-circle {
+    border-radius: 50% !important;
+}
+.hero-profile-img:hover {
+    box-shadow: 0 24px 70px rgba(0,0,0,0.16), 0 6px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Hero SVG decoration */
+#hero .hero-bottom-svg {
+    opacity: 0.25;
+    position: absolute;
+    bottom: -50px;
+    left: -150px;
+    pointer-events: none;
+}
+#hero .hero-bottom-svg rect { fill: var(--text-muted) !important; }
+
+/* ----- SECTION COMMON ----- */
+section {
+    background-color: var(--bg) !important;
+}
+
+section h3 {
+    font-family: var(--font) !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 2.5rem !important;
+}
+
+/* ----- ABOUT SECTION ----- */
+#about {
+    padding: 5rem 0 !important;
+}
+
+#about h3 {
+    color: var(--text-muted) !important;
+}
+
+#about .image img {
+    border-radius: 1.25rem !important;
+    border: none !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+#about .about-content {
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: var(--text);
+    font-weight: 400;
+}
+
+#about .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+}
+
+#about .skills-list .badge,
+#about .skills-list .badge.badge-secondary {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.55rem 1.15rem !important;
+    font-size: 1.0rem !important;
+    font-weight: 600 !important;
+    font-family: var(--font) !important;
+    border-radius: 100px !important;
+    background-color: var(--border-light) !important;
+    color: var(--text) !important;
+    border: 1.5px solid var(--border) !important;
+    box-shadow: none !important;
+    transition: background var(--transition), border-color var(--transition), transform var(--transition) !important;
+}
+#about .skills-list .badge:hover {
+    background-color: var(--text) !important;
+    color: var(--bg) !important;
+    border-color: var(--text) !important;
+    transform: translateY(-1px) !important;
+}
+
+.dark #about .skills-list .badge,
+.dark #about .skills-list .badge.badge-secondary {
+    background-color: rgba(255,255,255,0.07) !important;
+    color: var(--text) !important;
+    border-color: rgba(255,255,255,0.15) !important;
+}
+.dark #about .skills-list .badge:hover {
+    background-color: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.3) !important;
+}
+
+#about .language-list .fw-bold {
+    font-size: 0.95rem;
+    color: var(--text);
+}
+#about .language-list .text-secondary {
+    color: var(--text-muted) !important;
+    font-size: 0.85rem;
+}
+
+#about a {
+    color: var(--text) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    text-decoration-color: var(--border) !important;
+    transition: text-decoration-color var(--transition) !important;
+}
+#about a:hover {
+    text-decoration-color: var(--text) !important;
+}
+#about a::after { display: none !important; }
+
+/* ----- EXPERIENCE SECTION ----- */
+#experience {
+    padding: 5rem 0 !important;
+    background-color: var(--bg-secondary) !important;
+}
+
+#experience h3 {
+    color: var(--text-muted) !important;
+}
+
+#experience a {
+    color: var(--text) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    text-decoration-color: var(--border) !important;
+}
+#experience a:hover {
+    text-decoration-color: var(--text) !important;
+}
+#experience a::after { display: none !important; }
+
+/* ----- EDUCATION & COURSES ----- */
+#education,
+#courses {
+    padding: 5rem 0 !important;
+}
+
+#education .container > h3,
+#courses .container > h3 {
+    color: var(--text-muted) !important;
+}
+
+#education .card,
+#courses .card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition) !important;
+}
+
+#education .card *,
+#courses .card * {
+    background-color: var(--card-bg) !important;
+}
+
+#education .card:hover,
+#courses .card:hover {
+    box-shadow: var(--card-shadow-hover) !important;
+    border-color: var(--text-muted) !important;
+    transform: translateY(-2px) !important;
+}
+
+#education .card .card-body,
+#courses .card .card-body {
+    border-radius: var(--radius) !important;
+}
+
+#education .card-body > a h6,
+#courses .card-body > a h6 {
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+}
+#education .card-body > a h6::after,
+#courses .card-body > a h6::after { display: none !important; }
+
+#education .row .index,
+#courses .row .index {
+    background-color: var(--text) !important;
+    color: var(--bg) !important;
+    border-radius: 50% !important;
+    font-weight: 700 !important;
+}
+
+/* ----- ACHIEVEMENTS / CERTIFICATES ----- */
+#achievements {
+    padding: 5rem 0 !important;
+    background-color: var(--bg-secondary) !important;
+}
+
+#achievements h3 {
+    color: var(--text-muted) !important;
+}
+
+#achievements .card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition) !important;
+}
+#achievements .card:hover {
+    box-shadow: var(--card-shadow-hover) !important;
+    border-color: var(--text-muted) !important;
+    transform: translateY(-2px) !important;
+}
+#achievements .card h5 {
+    color: var(--text) !important;
+    font-size: 1rem !important;
+}
+#achievements .card-text {
+    background-color: var(--card-bg) !important;
+    color: var(--text-muted) !important;
+    font-size: 0.875rem !important;
+}
+#achievements img {
+    border-radius: var(--radius-sm) !important;
+}
+
+/* ----- PROJECTS SECTION ----- */
+#projects {
+    padding: 5rem 0 !important;
+}
+
+#projects h3 {
+    color: var(--text-muted) !important;
+}
+
+#projects .card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition) !important;
+    overflow: hidden;
+}
+
+#projects .card:hover {
+    box-shadow: var(--card-shadow-hover) !important;
+    border-color: var(--text-muted) !important;
+    transform: translateY(-3px) !important;
+}
+
+#projects .card * {
+    background-color: transparent !important;
+}
+
+#projects .card-head img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0 !important;
+    transition: transform 0.4s ease;
+}
+#projects .card:hover .card-head img {
+    transform: scale(1.03);
+}
+
+#projects .card-body {
+    padding: 1.25rem !important;
+    background-color: var(--card-bg) !important;
+}
+
+#projects .badge.badge-secondary {
+    background-color: var(--border-light) !important;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 100px !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.65rem !important;
+    font-weight: 500 !important;
+    font-family: var(--font) !important;
+}
+
+#projects .card-title {
+    font-size: 0.97rem !important;
+    font-weight: 600 !important;
+    color: var(--text) !important;
+    font-family: var(--font) !important;
+    line-height: 1.4;
+}
+
+#projects .card-text {
+    font-size: 0.85rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.6;
+}
+
+#projects .card-footer {
+    background-color: var(--card-bg) !important;
+    border-top: 1px solid var(--border) !important;
+    padding: 0.85rem 1.25rem !important;
+}
+
+#projects .card-footer a {
+    color: var(--text-muted) !important;
+    font-size: 1.1rem;
+    transition: color var(--transition) !important;
+    text-decoration: none !important;
+}
+#projects .card-footer a:hover {
+    color: var(--text) !important;
+}
+
+#projects .card-footer a.btn {
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    padding: 0.3rem 0.85rem !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text-muted) !important;
+    transition: border-color var(--transition), color var(--transition) !important;
+    text-decoration: none !important;
+}
+#projects .card-footer a.btn:hover {
+    border-color: var(--text) !important;
+    color: var(--text) !important;
+    background-color: var(--border-light) !important;
+}
+
+/* ----- CONTACT SECTION ----- */
+#contact {
+    padding: 5rem 0 !important;
+    background-color: var(--bg-secondary) !important;
+}
+
+#contact h3 {
+    color: var(--text-muted) !important;
+}
+
+#contact .btn {
+    background-color: var(--text) !important;
+    color: var(--bg) !important;
+    border-color: var(--text) !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font) !important;
+    font-weight: 600 !important;
+    transition: opacity var(--transition) !important;
+}
+#contact .btn:hover { opacity: 0.8 !important; }
+
+/* ----- FOOTER ----- */
+footer {
+    background-color: var(--bg) !important;
+    border-top: 1px solid var(--border) !important;
+    padding: 3rem 0 2rem !important;
+}
+
+footer * {
+    background-color: transparent !important;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.footer-col-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.footer-col a {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+    padding: 0.2rem 0;
+    transition: color var(--transition) !important;
+}
+.footer-col a:hover {
+    color: var(--text) !important;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.footer-copyright a {
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+}
+
+/* ----- DARK MODE BACKGROUNDS ----- */
+.dark section,
+.dark #hero,
+.dark #about,
+.dark #projects,
+.dark #education,
+.dark #courses {
+    background-color: var(--bg) !important;
+}
+
+.dark #experience,
+.dark #achievements,
+.dark #contact,
+.dark footer {
+    background-color: var(--bg-secondary) !important;
+}
+
+.dark .experience-container,
+.dark #education .card *,
+.dark #courses .card *,
+.dark #achievements .card,
+.dark #projects .card *,
+.dark #projects .card-body,
+.dark #projects .card-footer,
+.dark #contact .btn {
+    background-color: var(--card-bg) !important;
+}
+
+/* ----- UTILITY / SCROLLBAR ----- */
+body::-webkit-scrollbar { width: 6px; background-color: var(--bg); }
+::-webkit-scrollbar-track { border-radius: 1rem; }
+::-webkit-scrollbar-thumb { border-radius: 1rem; background: var(--border); }
+
+/* ----- BG-TRANSPARENT OVERRIDES (theme compatibility) ----- */
+/* The theme uses bg-transparent class everywhere — we normalize them */
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+/* Section content containers inherit section background */
+#experience .bg-transparent,
+#experience * {
+    background-color: transparent !important;
+}
+
+#experience .experience-container {
+    background-color: var(--card-bg) !important;
+}
+
+#about .bg-transparent {
+    background-color: transparent !important;
+}
+
+#achievements .card-body.bg-transparent,
+#achievements .card-title.bg-transparent,
+#achievements .card-text {
+    background-color: transparent !important;
+    color: var(--text-muted) !important;
+}
+
+#projects .card-body.bg-transparent,
+#projects .card-title.bg-transparent,
+#projects .card-text.bg-transparent,
+#projects .card-head {
+    background-color: transparent !important;
+}
+#projects .card-head {
+    overflow: hidden;
+}
+
+/* ----- FONT OVERRIDE (force Inter on all elements) ----- */
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, div,
+.navbar-text, .nav-link,
+.card-title, .card-text,
+.tab-pane, .nav-item,
+.primary-font, .secondary-font {
+    font-family: var(--font) !important;
+}
+
+/* ----- SECTION HEADING REFINEMENTS ----- */
+#about h3,
+#experience h3,
+#education .container > h3,
+#courses .container > h3,
+#achievements h3,
+#projects h3,
+#contact h3 {
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 3rem !important;
+    position: relative;
+    display: inline-block;
+}
+
+/* ----- ALTERNATING SECTION BACKGROUNDS ----- */
+/* Even: bg / Odd: bg-secondary for visual rhythm */
+#hero    { background: var(--hero-gradient), var(--bg) !important; }
+#about   { background-color: var(--bg) !important; }
+#experience { background-color: var(--bg-secondary) !important; }
+#education  { background-color: var(--bg) !important; }
+#courses    { background-color: var(--bg-secondary) !important; }
+#achievements { background-color: var(--bg) !important; }
+#projects   { background-color: var(--bg-secondary) !important; }
+#contact    { background-color: var(--bg) !important; }
+
+/* ----- CARD UNIFORM BACKGROUND ----- */
+#education .card,
+#education .card .card-body,
+#education .card * { background-color: var(--card-bg) !important; }
+#courses .card,
+#courses .card .card-body,
+#courses .card * { background-color: var(--card-bg) !important; }
+#achievements .card { background-color: var(--card-bg) !important; }
+#achievements .card .card-body,
+#achievements .card .card-title,
+#achievements .card .card-text { background-color: transparent !important; }
+#projects .card { background-color: var(--card-bg) !important; }
+#projects .card .card-body,
+#projects .card .card-footer,
+#projects .card .card-head { background-color: transparent !important; }
+
+/* ----- LIGHT/DARK ALL-BACKGROUND FIX ----- */
+/* Only top-level html/body get the base bg; let sections control their own */
+html, body {
+    background-color: var(--bg) !important;
+}
+
+/* The theme wraps everything in body.light > * { background-color } — override that */
+body.light > #profileHeader { background-color: var(--bg) !important; }
+body.light > #content { background-color: transparent !important; }
+body.light > footer { background-color: var(--bg) !important; }
+body.light > #search-content { background-color: var(--bg) !important; }
+
+/* ----- BORDER-BOTTOM DIVIDER ON SECTIONS ----- */
+#about, #experience, #education, #courses, #achievements, #projects, #contact {
+    border-bottom: 1px solid var(--border-light);
+}
+
+
+/* ----- CARD LINK IN PROJECTS ----- */
+#projects .card > a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* ----- ABOUT CONTENT ul list style override ----- */
+#about ul {
+    grid-template-columns: repeat(2, minmax(120px, 200px));
+}
+#about ul li::before {
+    color: var(--text-muted) !important;
+}
+
+/* ----- Language toggle button ----- */
+.nav-lang-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 26px !important;
+    background: transparent !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 6px !important;
+    color: var(--text) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    font-family: 'Courier New', monospace !important;
+    letter-spacing: 0.08em !important;
+    padding: 0 0.5rem !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+    transition: background var(--transition), color var(--transition), border-color var(--transition) !important;
+}
+.nav-lang-btn:hover {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border-color: var(--text) !important;
+}
+.dark .nav-lang-btn {
+    border-color: rgba(255,255,255,0.25) !important;
+    color: var(--text) !important;
+}
+.dark .nav-lang-btn:hover {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border-color: var(--text) !important;
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 991px) {
+    .hero-inner { padding: 3rem 0 2rem; min-height: auto; }
+    .hero-display-name { font-size: clamp(2rem, 8vw, 3rem) !important; }
+    .hero-image-col { padding: 1rem; }
+    .hero-profile-img {
+        width: clamp(160px, 50vw, 260px) !important;
+        height: clamp(160px, 50vw, 260px) !important;
+    }
+    .footer-inner { grid-template-columns: 1fr 1fr; max-width: 100%; padding: 0 1rem; }
+    section { border-bottom-color: var(--border-light); }
+}
+
+@media (max-width: 767px) {
+    /* On small screens hero stacks — image goes below text */
+    .hero-row { flex-direction: column; min-height: auto; gap: 1.5rem; }
+    .hero-image-col { margin: 0 auto; }
+    .hero-profile-img {
+        width: clamp(150px, 55vw, 240px) !important;
+        height: clamp(150px, 55vw, 240px) !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-cta-row { flex-direction: column; align-items: flex-start; }
+    .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; }
+    .footer-inner { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   FINAL POLISH — edge cases from theme HTML
+   ============================================================ */
+
+/* ----- Education card body deep override ----- */
+#education .card .card-body,
+#education .card .card-body h5,
+#education .card .card-body small,
+#education .card .card-body .float-end,
+#education .card .card-body .education-content {
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+    font-family: var(--font) !important;
+}
+#education .card .card-body small { color: var(--text-muted) !important; }
+#education .card .card-body a h6 { color: var(--text-muted) !important; }
+#education .card .card-body h5 { font-size: 1rem !important; font-weight: 600 !important; }
+
+/* ----- Courses deep override ----- */
+#courses .card .card-body,
+#courses .card .card-body h5,
+#courses .card .card-body small,
+#courses .card .card-body .float-end {
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+    font-family: var(--font) !important;
+}
+#courses .card .card-body small { color: var(--text-muted) !important; }
+#courses .card-title { font-size: 0.97rem !important; font-weight: 600 !important; }
+
+
+/* ----- Projects theme CSS conflicts ----- */
+/* Override projects.css .card styles with our design */
+#projects .card {
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
+    background-color: var(--card-bg) !important;
+}
+#projects .card-img-top {
+    border-radius: 0 !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    width: 100% !important;
+}
+#projects .card-body.bg-transparent {
+    background-color: var(--card-bg) !important;
+}
+#projects .card-title.bg-transparent {
+    background-color: transparent !important;
+    color: var(--text) !important;
+    font-weight: 600 !important;
+    font-size: 0.97rem !important;
+}
+#projects .card-text.bg-transparent.secondary-font {
+    background-color: transparent !important;
+    color: var(--text-muted) !important;
+    font-size: 0.85rem !important;
+}
+#projects .pb-2.bg-transparent { background-color: transparent !important; }
+
+/* ----- Contact section button styling ----- */
+#contact .btn {
+    background-color: var(--text) !important;
+    color: var(--bg) !important;
+    border-color: var(--text) !important;
+    border-radius: 0.625rem !important;
+    font-weight: 600 !important;
+    padding: 0.65rem 1.75rem !important;
+    font-size: 0.9rem !important;
+    transition: opacity var(--transition) !important;
+    box-shadow: none !important;
+}
+#contact .btn:hover { opacity: 0.8 !important; color: var(--bg) !important; }
+#contact .text-center { color: var(--text-muted) !important; font-size: 0.97rem !important; line-height: 1.7 !important; }
+
+/* ----- Hide old hero visitor counter intro line ----- */
+.hero-intro { display: none !important; }
+
+/* ----- Achievements: h3 heading fix ----- */
+#achievements h3 {
+    display: block !important;
+    text-align: center !important;
+}
+
+/* ----- Projects: h3 heading fix ----- */
+#projects h3,
+#experience h3,
+#about h3 {
+    display: block !important;
+    text-align: center !important;
+}
+
+/* ----- Nav active state ----- */
+.nav-page-link.active,
+.nav-page-link:focus {
+    color: var(--text) !important;
+    font-weight: 600 !important;
+}
+
+/* ----- Smooth scrolling offset for sticky nav ----- */
+section[id] {
+    scroll-margin-top: 72px;
+}
+
+/* ----- Hero section heading text shadow (light) ----- */
+.hero-display-name {
+    text-shadow: none !important;
+}
+
+/* ----- Projects card hover image clip ----- */
+#projects .card .card-head {
+    overflow: hidden !important;
+    border-radius: 0 !important;
+}
+
+/* ----- Footer: ensure no theme override bleeds in ----- */
+footer .container { background-color: transparent !important; }
+footer .footer-inner { background-color: transparent !important; }
+footer .footer-col { background-color: transparent !important; }
+footer .footer-copyright { background-color: transparent !important; }
+
+/* ----- Dark mode: card backgrounds fix ----- */
+.dark #education .card,
+.dark #education .card .card-body,
+.dark #education .card * { background-color: var(--card-bg) !important; }
+.dark #courses .card,
+.dark #courses .card .card-body,
+.dark #courses .card * { background-color: var(--card-bg) !important; }
+.dark #achievements .card { background-color: var(--card-bg) !important; }
+.dark #achievements .card .card-body,
+.dark #achievements .card .card-title,
+.dark #achievements .card .card-text { background-color: transparent !important; }
+.dark #projects .card { background-color: var(--card-bg) !important; }
+.dark #projects .card .card-body,
+.dark #projects .card .card-footer,
+.dark #projects .card .card-head,
+.dark #projects .pb-2.bg-transparent { background-color: transparent !important; }
+.dark #experience .timeline-card { background-color: var(--card-bg) !important; }
+.dark #experience .timeline-card * { background-color: transparent !important; }
+
+/* ----- Typography: ensure consistent weights ----- */
+#about .content { font-weight: 400 !important; line-height: 1.8 !important; }
+
+/* ----- Remove stray box shadows from theme ----- */
+#education .card { box-shadow: var(--card-shadow) !important; }
+#courses .card { box-shadow: var(--card-shadow) !important; }
+#achievements .card { box-shadow: var(--card-shadow) !important; }
+
+/* ----- Navbar: light mode bg fix on scroll ----- */
+.showHeaderOnTop {
+    background-color: rgba(245, 244, 240, 0.94) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: none !important;
+}
+.dark .showHeaderOnTop {
+    background-color: rgba(17, 17, 17, 0.94) !important;
+}
+
+/* ============================================================
+   HERO CENTERING FIX
+   ============================================================ */
+.hero-container {
+    max-width: 1100px !important;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* All other sections — use a consistent centered container */
+#about .container,
+#experience .container,
+#education .container,
+#courses .container,
+#achievements .container,
+#projects .container,
+#contact .container {
+    max-width: 1100px !important;
+}
+
+/* ============================================================
+   VISITOR COUNTER
+   ============================================================ */
+.hero-intro {
+    display: inline-block !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    font-family: 'Courier New', monospace !important;
+    color: var(--text-muted) !important;
+    background-color: var(--border-light) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 100px !important;
+    padding: 0.2rem 0.75rem !important;
+    margin-bottom: 1rem !important;
+    letter-spacing: 0.04em !important;
+    opacity: 0;
+    transition: opacity 0.4s ease !important;
+}
+.dark .hero-intro {
+    background-color: rgba(255,255,255,0.06) !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: var(--text-muted) !important;
+}
+
+/* ============================================================
+   EXPERIENCE TIMELINE
+   ============================================================ */
+#experience {
+    padding: 5rem 0 !important;
+}
+
+.experience-timeline {
+    position: relative;
+    padding: 0.5rem 0 0;
+    margin-top: 0.5rem;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 180px 40px 1fr;
+    gap: 0;
+    position: relative;
+    min-height: 80px;
+}
+
+/* Left column: date + company */
+.timeline-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0.25rem 1.25rem 2rem 0;
+    gap: 0.3rem;
+}
+
+.timeline-date {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    font-family: 'Courier New', monospace !important;
+    color: var(--text-muted) !important;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+}
+
+.timeline-company {
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    color: var(--text-light) !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+}
+a.timeline-company:hover {
+    color: var(--text) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+}
+
+/* Center column: dot + vertical line */
+.timeline-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--text) !important;
+    border: 2.5px solid var(--bg-secondary);
+    box-shadow: 0 0 0 3px var(--border);
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+    z-index: 1;
+}
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px var(--border);
+}
+
+.timeline-line {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--border) 0%, var(--border-light) 100%);
+    margin-top: 4px;
+    min-height: 40px;
+}
+
+/* Hide line on last item */
+.timeline-item:last-child .timeline-line {
+    display: none;
+}
+
+/* Right column: card */
+.timeline-right {
+    padding: 0 0 2.5rem 1.25rem;
+}
+
+.timeline-card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 1.25rem 1.5rem !important;
+    box-shadow: var(--card-shadow) !important;
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition) !important;
+}
+.timeline-card:hover {
+    box-shadow: var(--card-shadow-hover) !important;
+    border-color: var(--text-muted) !important;
+    transform: translateY(-2px) !important;
+}
+
+.timeline-role {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: var(--text) !important;
+    margin-bottom: 0.75rem !important;
+    font-family: var(--font) !important;
+}
+
+.timeline-body {
+    font-size: 0.9rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.7 !important;
+    font-family: var(--font) !important;
+}
+.timeline-body * {
+    background-color: transparent !important;
+    font-family: var(--font) !important;
+    font-size: 0.9rem !important;
+    color: var(--text-muted) !important;
+}
+.timeline-body p { margin-bottom: 0.5rem !important; }
+.timeline-body strong {
+    font-weight: 600 !important;
+    color: var(--text) !important;
+}
+.timeline-body ul {
+    padding-left: 0 !important;
+    list-style: none !important;
+    margin: 0.5rem 0 0 !important;
+}
+.timeline-body ul li {
+    position: relative;
+    padding-left: 1.25rem !important;
+    margin-bottom: 0.4rem !important;
+    color: var(--text-muted) !important;
+    font-size: 0.88rem !important;
+}
+.timeline-body ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--text-light) !important;
+    font-size: 0.85rem;
+}
+
+/* Dark mode timeline */
+.dark .timeline-dot {
+    background-color: var(--text) !important;
+    border-color: var(--bg-secondary);
+    box-shadow: 0 0 0 3px var(--border);
+}
+.dark .timeline-card {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border) !important;
+}
+.dark .timeline-line {
+    background: linear-gradient(to bottom, var(--border) 0%, transparent 100%);
+}
+
+/* Responsive timeline */
+@media (max-width: 767px) {
+    .timeline-item {
+        grid-template-columns: 36px 1fr;
+        grid-template-rows: auto auto;
+    }
+    .timeline-left {
+        display: none;
+    }
+    .timeline-center {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+    }
+    .timeline-right {
+        grid-column: 2;
+        padding-left: 1rem;
+        padding-bottom: 2rem;
+    }
+    .timeline-card {
+        padding: 1rem !important;
+    }
+    /* Show date inside card on mobile */
+    .timeline-role::after {
+        content: none;
+    }
+}

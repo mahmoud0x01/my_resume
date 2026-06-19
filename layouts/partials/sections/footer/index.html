@@ -1,0 +1,52 @@
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <!-- Links column -->
+            <div class="footer-col">
+                <p class="footer-col-title">links</p>
+                {{ if .Site.Params.about.enable }}
+                <a href="#about">About</a>
+                {{ end }}
+                {{ if .Site.Params.experience.enable }}
+                <a href="#experience">Experience</a>
+                {{ end }}
+                {{ if .Site.Params.education.enable }}
+                <a href="#education">Education</a>
+                {{ end }}
+                {{ if .Site.Params.projects.enable }}
+                <a href="#projects">Projects</a>
+                {{ end }}
+                {{ if .Site.Params.achievements.enable }}
+                <a href="#achievements">Achievements</a>
+                {{ end }}
+                {{ if .Site.Params.awards.enable }}
+                <a href="#awards">Awards</a>
+                {{ end }}
+            </div>
+
+            <!-- Networks column -->
+            <div class="footer-col">
+                <p class="footer-col-title">networks</p>
+                {{ if .Site.Params.footer.socialNetworks.github }}
+                <a href="{{ .Site.Params.footer.socialNetworks.github }}" target="_blank">GitHub</a>
+                {{ end }}
+                {{ if .Site.Params.footer.socialNetworks.linkedin }}
+                <a href="{{ .Site.Params.footer.socialNetworks.linkedin }}" target="_blank">LinkedIn</a>
+                {{ end }}
+                {{ range .Site.Params.hero.socialLinks.fontAwesomeIcons }}
+                {{ if eq .icon "fab fa-telegram" }}
+                <a href="{{ .url }}" target="_blank">Telegram</a>
+                {{ end }}
+                {{ if eq .icon "fab fa-instagram" }}
+                <a href="{{ .url }}" target="_blank">Instagram</a>
+                {{ end }}
+                {{ end }}
+                <a href="mailto:contact@mahmoudouf.com">Email</a>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            &copy; {{ now.Format "2006" }} Mahmoud — All rights reserved
+        </div>
+    </div>
+</footer>
