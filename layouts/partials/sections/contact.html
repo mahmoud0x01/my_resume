@@ -1,0 +1,29 @@
+{{ $email := .Site.Params.contact.email | default "contact@mahmoudouf.com" }}
+{{ $githubURL := .Site.Params.footer.socialNetworks.github | default "https://github.com/mahmoud0x01" }}
+{{ $linkedinURL := .Site.Params.footer.socialNetworks.linkedin | default "https://www.linkedin.com/in/mahmoudadelOx01/" }}
+<section id="contact" class="recruiter-section recruiter-contact" aria-labelledby="contact-title">
+    <div class="recruiter-container">
+        <div class="contact-card">
+            <div>
+                <p class="section-kicker">Next conversation</p>
+                <h2 id="contact-title">Let's talk about security.</h2>
+                {{ with .Site.Params.contact.content }}
+                <div class="contact-copy">{{ . | markdownify }}</div>
+                {{ else }}
+                <p class="contact-copy">If you are building a security team or need a careful pair of eyes on an application or environment, I would be glad to hear from you.</p>
+                {{ end }}
+            </div>
+            <div class="contact-links" aria-label="Contact links">
+                <a class="contact-link contact-link-primary" href="mailto:{{ $email }}">
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Email Mahmoud
+                </a>
+                <a class="contact-link" href="{{ $linkedinURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+                <a class="contact-link" href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

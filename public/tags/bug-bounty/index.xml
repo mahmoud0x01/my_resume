@@ -1,19 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Bug Bounty on Mahmoud - Penetration Tester</title>
-    <link>http://localhost:1313/tags/bug-bounty/</link>
-    <description>Recent content in Bug Bounty on Mahmoud - Penetration Tester</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jan 2024 10:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/bug-bounty/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Two Captcha Bypasses — IDOR and Token Reuse</title>
-      <link>http://localhost:1313/blogs/two-captcha-bypasses-idor-and-token-reuse/</link>
-      <pubDate>Thu, 25 Jan 2024 10:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/two-captcha-bypasses-idor-and-token-reuse/</guid>
-      <description>This is my first write-up here. I will talk about how I bypassed captcha on two companies.&#xA;First One (Captcha Token Reuse) While testing a site.example.com, I found that signing up on their site had a captcha. I solved the captcha challenge and captured the request with credentials, and I saw the captcha response token.&#xA;It was like:&#xA;&amp;amp;g-recaptcha-response=03AJpayVGwtrg6bOlwaMCLZ9-vHQcM0jxbgdU_JcPyQI4e4QZlBbj7WrWHw8I13IW5qT6yd-g8txCFoThxlzDB8b-aGvX16idgAktxU5459HNgVFC5n8h0-aHGPH1eOCWJuw5c0mo5sGI9DflNPGfnK5Rq90Zj4gFtCU9y5IGks4SWLH2iA0OGIQ9gISptqd8QuMqKcYROgNQ3huLb-gikJX7VQBvfR2Tw24TAP8OX5LQofNYaFE8sDx77Smtrf7fF9pVvqwVYoETDkoeA8exu2V90YMAw0apTtNhVy2SCikb3aTZI5bt7ZYJVgdObNDDwFTU3nonAJM88GRMA-vmX3atBhGGoQw56QaooPGjVMcJnly-LK154RoBh4R8S-BBNqLZfk4ivJH7K I tried the same request in Burp Repeater with another email and password, and wow!</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bug Bounty on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/tags/bug-bounty/</link><description>Recent content in Bug Bounty on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 05 Dec 2024 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/tags/bug-bounty/index.xml" rel="self" type="application/rss+xml"/><item><title>API Security Testing: Finding Vulnerabilities in Modern Web APIs</title><link>https://mahmoudouf.com/blogs/api-security-testing-vulnerabilities/</link><pubDate>Thu, 05 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/api-security-testing-vulnerabilities/</guid><description>&lt;p&gt;APIs are the backbone of modern applications—and a favorite target for attackers. Unlike traditional web apps, APIs often expose more functionality and data, making them high-value targets.&lt;/p&gt;
+&lt;p&gt;This guide covers practical techniques for testing API security, based on the OWASP API Security Top 10.&lt;/p&gt;
+&lt;h2 id="setting-up-your-testing-environment"&gt;Setting Up Your Testing Environment&lt;/h2&gt;
+&lt;h3 id="essential-tools"&gt;Essential Tools&lt;/h3&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Burp Suite - HTTP interception proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Postman - API client for manual testing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# ffuf - Fast web fuzzer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Install httpx for quick probing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Install nuclei for automated scanning&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="intercepting-api-traffic"&gt;Intercepting API Traffic&lt;/h3&gt;
+&lt;p&gt;Configure Burp to intercept mobile app or SPA traffic:&lt;/p&gt;</description></item><item><title>Two Captcha Bypasses — IDOR and Token Reuse</title><link>https://mahmoudouf.com/blogs/two-captcha-bypasses-idor-and-token-reuse/</link><pubDate>Thu, 25 Jan 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/two-captcha-bypasses-idor-and-token-reuse/</guid><description>&lt;p&gt;This is my first write-up here. I will talk about how I bypassed captcha on two companies.&lt;/p&gt;
+&lt;h2 id="first-one-captcha-token-reuse"&gt;First One (Captcha Token Reuse)&lt;/h2&gt;
+&lt;p&gt;While testing a site.example.com, I found that signing up on their site had a captcha. I solved the captcha challenge and captured the request with credentials, and I saw the captcha response token.&lt;/p&gt;
+&lt;p&gt;It was like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;g-recaptcha-response=03AJpayVGwtrg6bOlwaMCLZ9-vHQcM0jxbgdU_JcPyQI4e4QZlBbj7WrWHw8I13IW5qT6yd-g8txCFoThxlzDB8b-aGvX16idgAktxU5459HNgVFC5n8h0-aHGPH1eOCWJuw5c0mo5sGI9DflNPGfnK5Rq90Zj4gFtCU9y5IGks4SWLH2iA0OGIQ9gISptqd8QuMqKcYROgNQ3huLb-gikJX7VQBvfR2Tw24TAP8OX5LQofNYaFE8sDx77Smtrf7fF9pVvqwVYoETDkoeA8exu2V90YMAw0apTtNhVy2SCikb3aTZI5bt7ZYJVgdObNDDwFTU3nonAJM88GRMA-vmX3atBhGGoQw56QaooPGjVMcJnly-LK154RoBh4R8S-BBNqLZfk4ivJH7K&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I tried the same request in Burp Repeater with another email and password, and wow! WTF! The web app just didn&amp;rsquo;t terminate the valid token after it was used. I sent a POST request to Intruder and launched an attack, and I made 100 accounts in less than 40 seconds. I sent a POC video to the company, but unfortunately, it&amp;rsquo;s a duplicate!&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,387 @@
+/* ============================================================
+   TERMINAL FRAMES
+   1. .cterm      — hero "whoami" console under the profile node
+   2. .term-block — macOS-style frame around shell code blocks
+   ============================================================ */
+
+/* ---- LIGHT (default) ---- */
+:root {
+    --term-bg: #ffffff;
+    --term-bar-a: #f2f2f4;
+    --term-bar-b: #e8e8ec;
+    --term-bar-line: rgba(0, 0, 0, 0.09);
+    --term-border: rgba(0, 0, 0, 0.12);
+    --term-text: #1d1d1f;
+    --term-dim: #6e6e73;
+    --term-green: #1a7f37;
+    --term-teal: #0b7285;
+    --term-sheen: rgba(0, 0, 0, 0.02);
+    --term-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.30);
+    --term-inset: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    --term-scroll: rgba(0, 0, 0, 0.18);
+    --term-copy-border: rgba(0, 0, 0, 0.16);
+    --term-copy-hover: rgba(0, 0, 0, 0.05);
+    /* traffic lights are the same in both themes — that's the Apple look */
+    --term-red: #ff5f57;
+    --term-amber: #febc2e;
+    --term-lime: #28c840;
+    --term-font: 'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, Menlo, Consolas, monospace;
+}
+
+/* ---- DARK ---- */
+.dark {
+    --term-bg: #10151c;
+    --term-bar-a: #1e2630;
+    --term-bar-b: #19212b;
+    --term-bar-line: rgba(255, 255, 255, 0.07);
+    --term-border: rgba(255, 255, 255, 0.10);
+    --term-text: #e6edf3;
+    --term-dim: #8b98a5;
+    --term-green: #3fb950;
+    --term-teal: #2dd4bf;
+    --term-sheen: rgba(255, 255, 255, 0.02);
+    --term-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
+    --term-inset: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    --term-scroll: rgba(255, 255, 255, 0.14);
+    --term-copy-border: rgba(255, 255, 255, 0.14);
+    --term-copy-hover: rgba(255, 255, 255, 0.06);
+}
+
+/* ---- Shared chrome ---- */
+.cterm,
+.term-block {
+    background: var(--term-bg);
+    border: 1px solid var(--term-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--term-inset), var(--term-shadow);
+    font-family: var(--term-font);
+    text-align: left;
+}
+
+.cterm-bar,
+.term-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.65rem;
+    background: linear-gradient(180deg, var(--term-bar-a) 0%, var(--term-bar-b) 100%);
+    border-bottom: 1px solid var(--term-bar-line);
+}
+
+.cterm-dot,
+.term-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset;
+}
+
+.cterm-dot--red,
+.term-dot--red { background: var(--term-red); }
+.cterm-dot--amber,
+.term-dot--amber { background: var(--term-amber); }
+.cterm-dot--green,
+.term-dot--green { background: var(--term-lime); }
+
+.cterm-title,
+.term-title {
+    flex: 1 1 auto;
+    text-align: center;
+    font-family: var(--term-font) !important;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--term-dim);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+/* ============================================================
+   1. HERO CONSOLE
+   ============================================================ */
+.cterm {
+    width: min(460px, 86vw);
+    margin-top: 0.15rem;
+}
+
+.cterm-body {
+    padding: 0.6rem 0.8rem 0.7rem;
+    background:
+        linear-gradient(180deg, var(--term-sheen), transparent 40%),
+        var(--term-bg);
+}
+
+.cterm-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    white-space: nowrap;
+}
+
+.cterm-prompt {
+    color: var(--term-green) !important;
+    font-family: var(--term-font) !important;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+.cterm-cmd {
+    color: var(--term-text) !important;
+    font-family: var(--term-font) !important;
+}
+
+.cterm-out {
+    display: block;
+    margin: 0.2rem 0 0.3rem;
+    font-family: var(--term-font) !important;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--term-teal) !important;
+    white-space: normal;
+    word-break: keep-all;
+}
+
+.cterm-out .cterm-sep {
+    color: var(--term-dim) !important;
+    padding: 0 0.1em;
+}
+
+.cterm-role {
+    white-space: nowrap;
+}
+
+.cterm-caret {
+    display: inline-block;
+    width: 8px;
+    height: 0.95em;
+    background: var(--term-green);
+    vertical-align: text-bottom;
+    animation: ctermBlink 1.1s steps(1, end) infinite;
+}
+
+@keyframes ctermBlink {
+    0%, 50%   { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cterm-caret { animation: none; }
+}
+
+/* Interactive prompt line inside the hero terminal */
+.cterm-input-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-top: 0.25rem;
+}
+
+.cterm-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--term-text) !important;
+    font-family: var(--term-font) !important;
+    font-size: inherit;
+    line-height: 1.55;
+    caret-color: var(--term-green);
+}
+
+.cterm-input::placeholder {
+    color: var(--term-dim);
+    opacity: 0.8;
+}
+
+/* On hover/focus the placeholder clears so the blinking caret reads like a
+   real terminal prompt. */
+.cterm-input:focus::placeholder {
+    color: transparent;
+    opacity: 0;
+}
+
+.cterm-echo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    color: var(--term-text);
+    font-family: var(--term-font) !important;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.cterm-response {
+    color: var(--term-green);
+    font-family: var(--term-font) !important;
+    font-weight: 600;
+    margin: 0.1rem 0 0.3rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ============================================================
+    2. CODE-BLOCK CONSOLE
+    ============================================================ */
+.term-block {
+    margin: 1.6rem 0 2rem;
+}
+
+.term-copy {
+    flex: 0 0 auto;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--term-copy-border);
+    border-radius: 6px;
+    color: var(--term-dim);
+    font-family: var(--term-font) !important;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.45rem;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.term-copy:hover {
+    color: var(--term-text);
+    border-color: var(--term-dim);
+    background: var(--term-copy-hover);
+}
+
+.term-copy--done {
+    color: var(--term-green);
+    border-color: currentColor;
+}
+
+.term-body {
+    background: var(--term-bg);
+    max-height: 480px;
+    overflow: auto;
+}
+
+/* Neutralise the theme's <pre> styling inside our frame */
+#single .page-content .term-block pre,
+.term-block pre {
+    margin: 0 !important;
+    padding: 1rem 1.1rem !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    max-height: none !important;
+    color: var(--term-text) !important;
+    font-family: var(--term-font) !important;
+    font-size: 0.84rem;
+    line-height: 1.65;
+    overflow-x: auto;
+}
+
+#single .page-content .term-block pre > code,
+.term-block pre > code {
+    background: transparent !important;
+    color: inherit !important;
+    font-family: var(--term-font) !important;
+    font-size: inherit;
+    padding: 0 !important;
+}
+
+.term-block .highlight,
+.term-block div.highlight {
+    background: transparent !important;
+    margin: 0 !important;
+}
+
+/* Chroma may emit inline colours; keep the shell readable regardless */
+.term-block pre .line,
+.term-block pre .cl {
+    display: block;
+}
+
+.term-body::-webkit-scrollbar { height: 8px; width: 8px; }
+.term-body::-webkit-scrollbar-track { background: transparent; }
+.term-body::-webkit-scrollbar-thumb {
+    background: var(--term-scroll);
+    border-radius: 8px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 767px) {
+    .term-block pre { font-size: 0.76rem; padding: 0.85rem 0.9rem !important; }
+    .term-title { font-size: 0.62rem; }
+}
+
+/* ---- 3. Interactive console line ---- */
+.term-console {
+    border-top: 1px solid var(--term-border);
+    background: var(--term-bg);
+    padding: 0.55rem 1.1rem 0.75rem;
+    font-family: var(--term-font);
+}
+
+.term-output {
+    color: var(--term-text);
+    font-size: 0.84rem;
+    line-height: 1.6;
+    max-height: 180px;
+    overflow-y: auto;
+    margin-bottom: 0.4rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.term-echo {
+    color: var(--term-text);
+}
+
+.term-echo .term-prompt {
+    margin-right: 0.5ch;
+}
+
+.term-response {
+    color: var(--term-green);
+    font-weight: 600;
+    margin: 0.12rem 0 0.4rem;
+}
+
+.term-input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+    font-size: 0.84rem;
+    color: var(--term-text);
+}
+
+.term-prompt {
+    color: var(--term-green);
+    font-weight: 700;
+    flex: 0 0 auto;
+    user-select: none;
+}
+
+.term-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--term-text);
+    font-family: var(--term-font);
+    font-size: inherit;
+    line-height: 1.6;
+    caret-color: var(--term-green);
+}
+
+.term-input::placeholder {
+    color: var(--term-dim);
+    opacity: 0.8;
+}

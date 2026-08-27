@@ -1,0 +1,41 @@
+{{ $writingPages := where .Site.RegularPages "Section" "blogs" }}
+{{ $writingArchiveURL := "blogs/" | relURL }}
+<section id="writing" class="recruiter-section recruiter-writing" aria-labelledby="writing-title">
+    <div class="recruiter-container">
+        <div class="recruiter-section-heading">
+            <p class="section-kicker">Notes & research</p>
+            <h2 id="writing-title">Selected writing</h2>
+            <p class="section-dek">Short, practical write-ups on offensive security, defense, and infrastructure.</p>
+        </div>
+{{ if gt (len $writingPages) 0 }}
+{{ $writingPages = $writingPages.ByDate.Reverse }}
+{{ $dateFormat := .Site.Params.datesFormat.articleList | default "Jan 2, 2006" }}
+        <div class="writing-grid">
+            {{ range first 3 $writingPages }}
+            {{ $description := .Description | plainify }}
+            {{ if not $description }}{{ $description = .Summary | plainify | truncate 160 }}{{ end }}
+            <article class="writing-card">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                {{ with $description }}<p>{{ . }}</p>{{ end }}
+                {{ with .Params.tags }}
+                <ul class="writing-tags" aria-label="Topics">
+                    {{ range first 2 . }}<li>{{ . }}</li>{{ end }}
+                </ul>
+                {{ end }}
+                <a class="writing-read-link" href="{{ .RelPermalink }}" aria-label="Read {{ .Title }}">
+                    Read article <span aria-hidden="true">→</span>
+                </a>
+            </article>
+            {{ end }}
+        </div>
+{{ else }}
+        <div class="writing-empty-state" role="status">
+            <p>No writing published yet.</p>
+        </div>
+{{ end }}
+        <p class="writing-archive-link">
+            <a class="writing-read-link" href="{{ $writingArchiveURL }}">Browse all writing <span aria-hidden="true">→</span></a>
+        </p>
+    </div>
+</section>

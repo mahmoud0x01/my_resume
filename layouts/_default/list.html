@@ -1,0 +1,84 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
+{{ $staticPath := .Site.Params.staticPath | default "" }}
+<link rel="stylesheet" href="{{ $staticPath }}/css/list.css" media="all">
+<link rel="stylesheet" href="{{ $staticPath }}/css/design.css?v={{ now.Unix }}" media="all">
+<link rel="stylesheet" href="{{ $staticPath }}/css/recruiter.css?v={{ now.Unix }}" media="all">
+<link rel="stylesheet" href="{{ $staticPath }}/css/blog.css?v={{ now.Unix }}" media="all">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script defer src="{{ $staticPath }}/fontawesome-6/all-6.4.2.js"></script>
+{{ end }}
+
+{{ define "title" }}
+{{.Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ $paginator := .Paginator }}
+{{ $archivePages := $paginator.Pages }}
+{{ $dateFormat := .Site.Params.datesFormat.articleList | default "January 2, 2006" }}
+<section id="list-page" class="blog-page blog-archive" aria-labelledby="blog-archive-title">
+    <div class="blog-shell">
+        <header class="blog-archive-header">
+            <p class="blog-eyebrow"><span class="blog-eyebrow-mark" aria-hidden="true"></span> Field notes / archive</p>
+            <h1 id="blog-archive-title">Selected writing</h1>
+            <p class="blog-archive-intro">Practical notes on security, software, and the systems that make both possible.</p>
+            <div class="blog-archive-meta">
+                <span>{{ len .Pages }} {{ if eq (len .Pages) 1 }}note{{ else }}notes{{ end }} in the archive</span>
+                <a class="blog-jump-link" href="#blog-archive-grid">Browse archive <span aria-hidden="true">↓</span></a>
+            </div>
+        </header>
+
+        {{ if gt (len $archivePages) 0 }}
+        <div id="blog-archive-grid" class="blog-archive-grid" role="list" aria-label="Writing archive">
+            {{ range $index, $page := $archivePages }}
+            {{ $description := $page.Description | plainify }}
+            {{ if not $description }}{{ $description = $page.Summary | plainify }}{{ end }}
+            <article class="blog-card" role="listitem">
+                {{ if and (not ($page.Site.Params.listPages.disableFeaturedImage | default false)) $page.Params.image }}
+                <a class="blog-card-media" href="{{ $page.RelPermalink }}" aria-label="Read {{ $page.Title }}">
+                    <img src="{{ $page.Params.image }}" alt="{{ $page.Title }}" loading="lazy" decoding="async">
+                    <span class="blog-card-media-label">Open note <span aria-hidden="true">↗</span></span>
+                </a>
+                {{ end }}
+                <div class="blog-card-body">
+                    <div class="blog-card-meta">
+                        <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format $dateFormat }}</time>
+                        <span aria-hidden="true">·</span>
+                        <span>{{ $page.ReadingTime }} min read</span>
+                    </div>
+                    <h2 class="blog-card-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+                    {{ with $description }}<p class="blog-card-description">{{ . | truncate 220 }}</p>{{ end }}
+                    {{ with $page.Params.tags }}
+                    <ul class="blog-card-tags" aria-label="Topics">
+                        {{ range first 3 . }}
+                        <li><a class="blog-tag" href="{{ `tags` | absURL }}/{{ . | urlize }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                    {{ end }}
+                    <div class="blog-card-footer">
+                        <a class="blog-read-link" href="{{ $page.RelPermalink }}">{{ $page.Site.Params.terms.read | default "Read" }} article <span aria-hidden="true">→</span></a>
+                        <span class="blog-card-index" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div class="blog-empty-state" role="status">
+            <span class="blog-empty-icon" aria-hidden="true">∅</span>
+            <h2>No notes published yet</h2>
+            <p>Check back soon for new field notes and practical write-ups.</p>
+        </div>
+        {{ end }}
+
+        <nav class="blog-pagination" aria-label="Writing archive pages">
+            {{ template "_internal/pagination.html" . }}
+        </nav>
+    </div>
+</section>
+{{ end }}

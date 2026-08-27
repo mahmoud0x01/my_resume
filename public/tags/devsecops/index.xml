@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DevSecOps on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/tags/devsecops/</link><description>Recent content in DevSecOps on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 15 Dec 2024 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/tags/devsecops/index.xml" rel="self" type="application/rss+xml"/><item><title>Hardening Linux Servers: A Production-Ready Checklist</title><link>https://mahmoudouf.com/blogs/hardening-linux-servers-production-checklist/</link><pubDate>Sun, 15 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/hardening-linux-servers-production-checklist/</guid><description>&lt;p&gt;When setting up a new Linux server—whether it&amp;rsquo;s a web server, database, or application host—security hardening is non-negotiable. This guide covers the essential steps I follow when preparing any production Linux server.&lt;/p&gt;
+&lt;h2 id="initial-setup"&gt;Initial Setup&lt;/h2&gt;
+&lt;h3 id="create-a-non-root-admin-user"&gt;Create a Non-Root Admin User&lt;/h3&gt;
+&lt;p&gt;Never use root for daily operations. Create a dedicated admin user:&lt;/p&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Create user with sudo privileges&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;useradd -m -s /bin/bash sysadmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;usermod -aG sudo sysadmin &lt;span class="c1"&gt;# Debian/Ubuntu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;usermod -aG wheel sysadmin &lt;span class="c1"&gt;# RHEL/CentOS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Set a strong password&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;passwd sysadmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure sudo without password (optional, for automation)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;sysadmin ALL=(ALL) NOPASSWD: ALL&amp;#34;&lt;/span&gt; &amp;gt; /etc/sudoers.d/sysadmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chmod &lt;span class="m"&gt;440&lt;/span&gt; /etc/sudoers.d/sysadmin&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="update-the-system"&gt;Update the System&lt;/h3&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Debian/Ubuntu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt upgrade -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# RHEL/CentOS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dnf update -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Enable automatic security updates&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;apt install unattended-upgrades -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dpkg-reconfigure -plow unattended-upgrades&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="ssh-hardening"&gt;SSH Hardening&lt;/h2&gt;
+&lt;p&gt;SSH is your gateway—lock it down tight.&lt;/p&gt;</description></item></channel></rss>

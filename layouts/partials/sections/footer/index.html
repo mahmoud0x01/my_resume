@@ -1,0 +1,53 @@
+<footer>
+    {{ $homeURL := .Site.BaseURL | relURL }}
+    <div class="container">
+        <div class="footer-inner">
+            <!-- Links column -->
+            <div class="footer-col">
+                <p class="footer-col-title">links</p>
+                {{ if .Site.Params.about.enable }}
+                <a href="{{ $homeURL }}#about">About</a>
+                {{ end }}
+                {{ if .Site.Params.experience.enable }}
+                <a href="{{ $homeURL }}#experience">Experience</a>
+                {{ end }}
+                {{ if .Site.Params.education.enable }}
+                <a href="{{ $homeURL }}#education">Education</a>
+                {{ end }}
+                {{ if .Site.Params.projects.enable }}
+                <a href="{{ $homeURL }}#projects">Projects</a>
+                {{ end }}
+                {{ if .Site.Params.achievements.enable }}
+                <a href="{{ $homeURL }}#achievements">Achievements</a>
+                {{ end }}
+                {{ if .Site.Params.awards.enable }}
+                <a href="{{ $homeURL }}#awards">Awards</a>
+                {{ end }}
+            </div>
+
+            <!-- Networks column -->
+            <div class="footer-col">
+                <p class="footer-col-title">networks</p>
+                {{ if .Site.Params.footer.socialNetworks.github }}
+                <a href="{{ .Site.Params.footer.socialNetworks.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                {{ end }}
+                {{ if .Site.Params.footer.socialNetworks.linkedin }}
+                <a href="{{ .Site.Params.footer.socialNetworks.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                {{ end }}
+                {{ range .Site.Params.hero.socialLinks.fontAwesomeIcons }}
+                {{ if eq .icon "fab fa-telegram" }}
+                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">Telegram</a>
+                {{ end }}
+                {{ if eq .icon "fab fa-instagram" }}
+                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+                {{ end }}
+                {{ end }}
+                <a href="mailto:contact@mahmoudouf.com">Email</a>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            &copy; {{ now.Format "2006" }} Mahmoud — All rights reserved
+        </div>
+    </div>
+</footer>

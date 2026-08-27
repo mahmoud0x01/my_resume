@@ -1,0 +1,65 @@
+{{ $featuredProjects := slice }}
+{{ range .Site.Params.projects.items }}
+{{ if .featured }}{{ $featuredProjects = $featuredProjects | append . }}{{ end }}
+{{ end }}
+
+{{ if gt (len $featuredProjects) 0 }}
+{{ $allWorkURL := .Site.Params.footer.socialNetworks.github | default "https://github.com/mahmoud0x01" }}
+<section id="projects" class="recruiter-section recruiter-projects" aria-labelledby="projects-title">
+    <div class="recruiter-container">
+        <div class="recruiter-section-heading">
+            <p class="section-kicker">Selected work</p>
+            <h2 id="projects-title">{{ .Site.Params.projects.title | default "Featured projects" }}</h2>
+            <p class="section-dek">A small set of builds that show how I turn security requirements into working systems.</p>
+        </div>
+
+        <div class="projects-grid">
+            {{ range $index, $project := $featuredProjects }}
+            {{ $projectTitle := $project.title | default $project.name | default "Featured project" }}
+            {{ $description := $project.description | default $project.content | default $project.summary | default "Project details available on GitHub." }}
+            {{ $tech := $project.tech | default $project.technologies | default $project.badges }}
+            <article class="project-card">
+                <div class="project-card-topline">
+                    <span class="project-index">0{{ add $index 1 }}</span>
+                    <span class="project-type">Featured build</span>
+                </div>
+                <h3>{{ $projectTitle }}</h3>
+                {{ with $project.securityAngle }}
+                <p class="project-security-angle"><span>Security angle</span>{{ . }}</p>
+                {{ end }}
+                <div class="project-description">{{ $description | markdownify }}</div>
+                {{ with $tech }}
+                <ul class="project-tech" aria-label="Technologies used in {{ $projectTitle }}">
+                    {{ range . }}<li>{{ . }}</li>{{ end }}
+                </ul>
+                {{ end }}
+
+                <div class="project-actions">
+                    {{ if $project.github }}
+                    <a href="{{ $project.github }}" target="_blank" rel="noopener noreferrer" aria-label="View {{ $projectTitle }} source on GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
+                    </a>
+                    {{ else if $project.githubUrl }}
+                    <a href="{{ $project.githubUrl }}" target="_blank" rel="noopener noreferrer" aria-label="View {{ $projectTitle }} source on GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
+                    </a>
+                    {{ else }}
+                    {{ range $project.links }}
+                    {{ if eq .icon "fab fa-github" }}
+                    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="View {{ $projectTitle }} source on GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
+                    </a>
+                    {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </div>
+            </article>
+            {{ end }}
+        </div>
+
+        <a class="projects-all-link" href="{{ $allWorkURL }}" target="_blank" rel="noopener noreferrer">
+            Browse all work on GitHub <span aria-hidden="true">→</span>
+        </a>
+    </div>
+</section>
+{{ end }}

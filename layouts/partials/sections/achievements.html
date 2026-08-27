@@ -1,0 +1,26 @@
+{{ if .Site.Params.achievements.enable | default false }}
+<section id="achievements" class="recruiter-section recruiter-achievements" aria-labelledby="achievements-title">
+    <div class="recruiter-container">
+        <div class="recruiter-section-heading">
+            <p class="section-kicker">Verified learning</p>
+            <h2 id="achievements-title">{{ .Site.Params.achievements.title | default "Credentials" }}</h2>
+            <p class="section-dek">Structured training that complements hands-on testing, systems work, and security research.</p>
+        </div>
+        <div class="credentials-grid">
+            {{ range .Site.Params.achievements.items }}
+            {{ $credential := . }}
+            <article class="credential-card">
+                {{ with .image }}<img src="{{ . }}" alt="{{ $credential.title }} credential" loading="lazy">{{ end }}
+                <div class="credential-card-copy">
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .content }}</p>
+                    {{ with .url }}
+                    <a href="{{ . }}" target="_blank" rel="noopener noreferrer">View credential <span aria-hidden="true">↗</span></a>
+                    {{ end }}
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

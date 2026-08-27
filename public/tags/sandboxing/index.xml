@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sandboxing on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/tags/sandboxing/</link><description>Recent content in Sandboxing on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 20 Dec 2024 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/tags/sandboxing/index.xml" rel="self" type="application/rss+xml"/><item><title>Secure Malware Analysis with Docker: A SysAdmin's Guide</title><link>https://mahmoudouf.com/blogs/secure-malware-analysis-with-docker/</link><pubDate>Fri, 20 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/secure-malware-analysis-with-docker/</guid><description>&lt;p&gt;As a system administrator dealing with security incidents, you&amp;rsquo;ll inevitably encounter situations where you need to analyze suspicious files. Running malware on your production systems? Absolutely not. That&amp;rsquo;s where Docker comes in—providing isolated, disposable environments for safe malware analysis.&lt;/p&gt;
+&lt;h2 id="why-docker-for-malware-analysis"&gt;Why Docker for Malware Analysis?&lt;/h2&gt;
+&lt;p&gt;Docker containers offer several advantages for malware analysis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Isolation&lt;/strong&gt;: Containers run in isolated namespaces, separate from the host&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Disposability&lt;/strong&gt;: Spin up, analyze, destroy—no traces left&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reproducibility&lt;/strong&gt;: Same environment every time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Control&lt;/strong&gt;: Limit CPU, memory, and disk access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network Isolation&lt;/strong&gt;: Complete control over network access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Important&lt;/strong&gt;: Docker is NOT a security boundary like a VM. For highly sophisticated malware, use a proper VM with snapshots. Docker is suitable for initial triage and less sophisticated samples.&lt;/p&gt;</description></item></channel></rss>

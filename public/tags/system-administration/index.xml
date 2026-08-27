@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>System Administration on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/tags/system-administration/</link><description>Recent content in System Administration on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 10 Feb 2025 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/tags/system-administration/index.xml" rel="self" type="application/rss+xml"/><item><title>AppArmor as an RCE Killswitch: A Blue-Team Defense Validation</title><link>https://mahmoudouf.com/blogs/apparmor-rce-mitigation/</link><pubDate>Mon, 10 Feb 2025 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/apparmor-rce-mitigation/</guid><description>&lt;p&gt;This is an &lt;strong&gt;authorized&lt;/strong&gt; blue-team defense-validation exercise: prove a known
+PHP remote-code-execution (RCE) is exploitable, contain it at runtime with
+&lt;strong&gt;AppArmor&lt;/strong&gt;, re-test to confirm the exploit is neutralized, and finally fix the
+root cause in source code. Everything below uses documentation ranges
+(&lt;code&gt;10.0.0.0/8&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;) — sample artifacts only.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Technical note:&lt;/strong&gt; AppArmor is a &lt;em&gt;path- and capability-based&lt;/em&gt; LSM. It
+confines a process by denying &lt;strong&gt;execution of specific binaries&lt;/strong&gt;, file writes,
+and network access — it is &lt;strong&gt;not&lt;/strong&gt; a syscall filter (that is &lt;strong&gt;seccomp&lt;/strong&gt;&amp;rsquo;s
+job). What it &lt;em&gt;does&lt;/em&gt; is stop the web process from ever &lt;code&gt;execve()&lt;/code&gt;-ing
+&lt;code&gt;/bin/sh&lt;/code&gt;, which is exactly what an RCE payload needs. The result is the same
+from the attacker&amp;rsquo;s perspective: the RCE is dead.&lt;/p&gt;</description></item><item><title>Secure Malware Analysis with Docker: A SysAdmin's Guide</title><link>https://mahmoudouf.com/blogs/secure-malware-analysis-with-docker/</link><pubDate>Fri, 20 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/secure-malware-analysis-with-docker/</guid><description>&lt;p&gt;As a system administrator dealing with security incidents, you&amp;rsquo;ll inevitably encounter situations where you need to analyze suspicious files. Running malware on your production systems? Absolutely not. That&amp;rsquo;s where Docker comes in—providing isolated, disposable environments for safe malware analysis.&lt;/p&gt;
+&lt;h2 id="why-docker-for-malware-analysis"&gt;Why Docker for Malware Analysis?&lt;/h2&gt;
+&lt;p&gt;Docker containers offer several advantages for malware analysis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Isolation&lt;/strong&gt;: Containers run in isolated namespaces, separate from the host&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Disposability&lt;/strong&gt;: Spin up, analyze, destroy—no traces left&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reproducibility&lt;/strong&gt;: Same environment every time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Control&lt;/strong&gt;: Limit CPU, memory, and disk access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network Isolation&lt;/strong&gt;: Complete control over network access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Important&lt;/strong&gt;: Docker is NOT a security boundary like a VM. For highly sophisticated malware, use a proper VM with snapshots. Docker is suitable for initial triage and less sophisticated samples.&lt;/p&gt;</description></item><item><title>Hardening Linux Servers: A Production-Ready Checklist</title><link>https://mahmoudouf.com/blogs/hardening-linux-servers-production-checklist/</link><pubDate>Sun, 15 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/hardening-linux-servers-production-checklist/</guid><description>&lt;p&gt;When setting up a new Linux server—whether it&amp;rsquo;s a web server, database, or application host—security hardening is non-negotiable. This guide covers the essential steps I follow when preparing any production Linux server.&lt;/p&gt;
+&lt;h2 id="initial-setup"&gt;Initial Setup&lt;/h2&gt;
+&lt;h3 id="create-a-non-root-admin-user"&gt;Create a Non-Root Admin User&lt;/h3&gt;
+&lt;p&gt;Never use root for daily operations. Create a dedicated admin user:&lt;/p&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Create user with sudo privileges&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;useradd -m -s /bin/bash sysadmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;usermod -aG sudo sysadmin &lt;span class="c1"&gt;# Debian/Ubuntu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;usermod -aG wheel sysadmin &lt;span class="c1"&gt;# RHEL/CentOS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Set a strong password&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;passwd sysadmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Configure sudo without password (optional, for automation)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;sysadmin ALL=(ALL) NOPASSWD: ALL&amp;#34;&lt;/span&gt; &amp;gt; /etc/sudoers.d/sysadmin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chmod &lt;span class="m"&gt;440&lt;/span&gt; /etc/sudoers.d/sysadmin&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="update-the-system"&gt;Update the System&lt;/h3&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Debian/Ubuntu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt upgrade -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# RHEL/CentOS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dnf update -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Enable automatic security updates&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;apt install unattended-upgrades -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;dpkg-reconfigure -plow unattended-upgrades&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="ssh-hardening"&gt;SSH Hardening&lt;/h2&gt;
+&lt;p&gt;SSH is your gateway—lock it down tight.&lt;/p&gt;</description></item><item><title>Building a Home Lab Monitoring Stack with Prometheus and Grafana</title><link>https://mahmoudouf.com/blogs/monitoring-stack-prometheus-grafana-docker/</link><pubDate>Tue, 10 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/monitoring-stack-prometheus-grafana-docker/</guid><description>&lt;p&gt;Every system administrator needs visibility into their infrastructure. In this guide, we&amp;rsquo;ll build a complete monitoring stack using Prometheus for metrics collection, Grafana for visualization, and Alertmanager for notifications—all containerized with Docker Compose.&lt;/p&gt;
+&lt;h2 id="architecture-overview"&gt;Architecture Overview&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;┌─────────────────────────────────────────────────────────┐
+│ Monitoring Stack │
+├─────────────────────────────────────────────────────────┤
+│ ┌─────────────┐ ┌─────────────┐ ┌─────────────────┐ │
+│ │ Grafana │──│ Prometheus │──│ Alertmanager │ │
+│ │ :3000 │ │ :9090 │ │ :9093 │ │
+│ └─────────────┘ └──────┬──────┘ └─────────────────┘ │
+│ │ │
+│ ┌───────────────────────┼───────────────────────────┐ │
+│ │ Exporters │ │
+│ ├─────────────┬─────────────┬─────────────┬─────────┤ │
+│ │ Node │ cAdvisor │ Blackbox │ Custom │ │
+│ │ Exporter │ (Docker) │ Exporter │ Apps │ │
+│ │ :9100 │ :8080 │ :9115 │ │ │
+│ └─────────────┴─────────────┴─────────────┴─────────┘ │
+└─────────────────────────────────────────────────────────┘&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="project-structure"&gt;Project Structure&lt;/h2&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;monitoring/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── docker-compose.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── prometheus/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ ├── prometheus.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── alerts/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── rules.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── alertmanager/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── alertmanager.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── grafana/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── provisioning/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ ├── dashboards/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ │ ├── dashboard.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ │ └── node-exporter.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── datasources/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── prometheus.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;└── .env&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="docker-compose-configuration"&gt;Docker Compose Configuration&lt;/h2&gt;
+&lt;p&gt;Create &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;</description></item></channel></rss>

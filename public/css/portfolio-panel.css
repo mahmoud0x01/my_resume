@@ -1,0 +1,488 @@
+/* ============================================================
+   PORTFOLIO CONSTELLATION — Detail Panel
+   Glass drawer skin ("Gravity Atlas" tokens from
+   portfolio-graph.css :root / .dark custom properties).
+   All selectors match the markup emitted by portfolio-panel.js.
+   ============================================================ */
+
+/* ---- Overlay ---- */
+.cpanel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.dark .cpanel-overlay {
+    background: rgba(2, 4, 10, 0.45);
+}
+
+.cpanel-overlay--open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---- Panel (right glass drawer) ---- */
+.cpanel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(380px, 92vw);
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-left: 1px solid var(--cg-glass-border, rgba(15, 23, 42, 0.08));
+    box-shadow: -12px 0 44px rgba(15, 23, 42, 0.14);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    color: var(--cg-glass-text, #0f172a);
+}
+
+.dark .cpanel {
+    background: rgba(10, 13, 22, 0.82);
+    border-left-color: rgba(255, 255, 255, 0.08);
+    box-shadow: -12px 0 44px rgba(0, 0, 0, 0.5);
+}
+
+.cpanel--open {
+    transform: translateX(0);
+}
+
+.cpanel:not(.cpanel--open) {
+    pointer-events: none;
+}
+
+/* ---- Close button ---- */
+.cpanel-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    margin: 1rem;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--cg-glass-border, rgba(15, 23, 42, 0.08));
+    background: rgba(128, 128, 128, 0.08);
+    color: var(--text-secondary-color, #64748b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: color 0.2s ease, border-color 0.2s ease,
+                background-color 0.2s ease, box-shadow 0.2s ease;
+    z-index: 10;
+}
+
+.cpanel-close i,
+.cpanel-close svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.cpanel-close:hover {
+    color: var(--cg-me, #6366f1);
+    border-color: var(--cg-me, #6366f1);
+    background: rgba(99, 102, 241, 0.10);
+    box-shadow: 0 0 14px rgba(99, 102, 241, 0.25);
+}
+
+.cpanel-close:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 3px;
+}
+
+/* ---- Body ---- */
+.cpanel-body {
+    padding: 1.5rem 1.75rem 2rem;
+    clear: both;
+}
+
+/* ---- Header ---- */
+.cpanel-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--cg-glass-border, rgba(15, 23, 42, 0.08));
+}
+
+.dark .cpanel-header {
+    border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+.cpanel-header--me {
+    text-align: center;
+}
+
+.cpanel-avatar {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(99, 102, 241, 0.35);
+    margin-bottom: 0.75rem;
+    box-shadow: 0 8px 26px rgba(99, 102, 241, 0.30);
+}
+
+.cpanel-project-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 0.85rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--cg-glass-border, rgba(15, 23, 42, 0.08));
+}
+
+.cpanel-title {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-color, var(--cg-glass-text, #0f172a));
+    margin: 0 0 0.3rem;
+}
+
+.cpanel-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary-color, #64748b);
+    margin: 0 0 0.5rem;
+}
+
+/* Date micro-label — monospace uppercase pill */
+.cpanel-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-secondary-color, #64748b);
+    background: rgba(128, 128, 128, 0.07);
+    padding: 0.22rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid var(--cg-glass-border, rgba(15, 23, 42, 0.08));
+}
+
+.cpanel-date i,
+.cpanel-date svg {
+    width: 0.85em;
+    height: 0.85em;
+    fill: currentColor;
+}
+
+.cpanel-icon-lg {
+    font-size: 1.9rem;
+    margin-bottom: 0.5rem;
+    /* JS sets an inline category color on this element */
+    filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.18));
+}
+
+.cpanel-icon-lg i,
+.cpanel-icon-lg svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.cpanel-custom-icon {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+}
+
+/* Badge gets a solid inline category color from JS */
+.cpanel-badge {
+    display: inline-block;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    padding: 0.18rem 0.62rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ---- Content ---- */
+.cpanel-content {
+    margin-bottom: 1.25rem;
+}
+
+.cpanel-content p {
+    font-size: 0.88rem;
+    color: var(--text-muted, #475569);
+    line-height: 1.7;
+    margin: 0;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+.dark .cpanel-content p {
+    color: rgba(230, 233, 242, 0.82);
+}
+
+/* ---- Sections ---- */
+.cpanel-section {
+    margin-bottom: 1.25rem;
+}
+
+.cpanel-section h3 {
+    font-family: 'Courier New', 'JetBrains Mono', monospace;
+    font-size: 0.66rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    color: var(--text-secondary-color, #64748b) !important;
+    margin: 0 0 0.6rem !important;
+}
+
+/* ---- Project list ---- */
+.cpanel-project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cpanel-project-list li {
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(100, 116, 139, 0.14);
+}
+
+.dark .cpanel-project-list li {
+    border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+.cpanel-project-list li:last-child {
+    border-bottom: none;
+}
+
+.cpanel-project-list a {
+    color: var(--text-color, var(--cg-glass-text, #0f172a));
+    text-decoration: none;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.25rem 0.45rem;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cpanel-project-list a:hover {
+    background: rgba(99, 102, 241, 0.09);
+    color: var(--cg-me, #6366f1);
+}
+
+.cpanel-project-list a:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 2px;
+}
+
+.cpanel-project-list a i,
+.cpanel-project-list a svg {
+    font-size: 0.78rem;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    color: var(--text-secondary-color, #94a3b8);
+    flex: 0 0 auto;
+}
+
+.cpanel-item-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cpanel-item-sub {
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--text-secondary-color, #94a3b8);
+}
+
+.cpanel-item-go {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cpanel-project-list a:hover .cpanel-item-go {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--cg-me, #6366f1);
+}
+
+.cpanel-project-list a:focus-visible .cpanel-item-go {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--cg-me, #6366f1);
+}
+
+/* ---- Clickable tag (navigates the panel to that node).
+      JS sets border-color inline per category. ---- */
+.cpanel-tag--btn {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    line-height: 1.5;
+    transition: background-color 0.2s ease, color 0.2s ease,
+                transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.cpanel-tag--btn:hover {
+    background: color-mix(in srgb, currentColor 10%, transparent);
+    box-shadow: 0 0 12px -2px currentColor;
+    transform: translateY(-1px);
+    color: inherit;
+}
+
+.cpanel-tag--btn:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 3px;
+}
+
+.dark .cpanel-tag--btn:hover {
+    background: color-mix(in srgb, currentColor 16%, transparent);
+    color: inherit;
+}
+
+/* ---- Tags (category-tinted pills; JS colors the borders) ---- */
+.cpanel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.cpanel-tag {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-color, var(--cg-glass-text, #0f172a));
+    background: rgba(128, 128, 128, 0.07);
+    border: 1px solid rgba(100, 116, 139, 0.35);
+    border-radius: 999px;
+    padding: 0.18rem 0.6rem;
+}
+
+.dark .cpanel-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ---- Links ---- */
+.cpanel-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.cpanel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color, var(--cg-glass-text, #0f172a));
+    text-decoration: none;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid var(--cg-glass-border, rgba(15, 23, 42, 0.08));
+    border-radius: 999px;
+    background: rgba(128, 128, 128, 0.06);
+    transition: border-color 0.2s ease, background 0.2s ease,
+                transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cpanel-link:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 3px;
+}
+
+.cpanel-link i,
+.cpanel-link svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.cpanel-link:hover {
+    border-color: var(--cg-me, #6366f1);
+    background: rgba(99, 102, 241, 0.10);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.20);
+}
+
+.cpanel-link--primary {
+    background: linear-gradient(135deg, var(--cg-development, #3b82f6) 0%, var(--cg-experience, #8b5cf6) 100%);
+    color: #fff;
+    border-color: transparent;
+    min-height: 44px;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.32);
+}
+
+.cpanel-link--primary:hover {
+    background: linear-gradient(135deg, var(--cg-development, #3b82f6) 0%, var(--cg-experience, #8b5cf6) 100%);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(99, 102, 241, 0.45);
+}
+
+/* ---- Mobile bottom sheet ---- */
+@media (max-width: 767px) {
+    .cpanel {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 70vh;
+        max-height: 70vh;
+        border-left: none;
+        border-top: 1px solid var(--cg-glass-border, rgba(15, 23, 42, 0.08));
+        border-radius: 1.25rem 1.25rem 0 0;
+        transform: translateY(100%);
+        box-shadow: 0 -12px 44px rgba(15, 23, 42, 0.20);
+    }
+
+    .dark .cpanel {
+        border-top-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 -12px 44px rgba(0, 0, 0, 0.55);
+    }
+
+    .cpanel--open {
+        transform: translateY(0);
+    }
+
+    .cpanel-body {
+        padding: 1rem 1.25rem 2rem;
+    }
+
+    .cpanel-project-img {
+        height: 120px;
+    }
+}

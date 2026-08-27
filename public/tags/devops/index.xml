@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DevOps on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/tags/devops/</link><description>Recent content in DevOps on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 10 Dec 2024 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Home Lab Monitoring Stack with Prometheus and Grafana</title><link>https://mahmoudouf.com/blogs/monitoring-stack-prometheus-grafana-docker/</link><pubDate>Tue, 10 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/monitoring-stack-prometheus-grafana-docker/</guid><description>&lt;p&gt;Every system administrator needs visibility into their infrastructure. In this guide, we&amp;rsquo;ll build a complete monitoring stack using Prometheus for metrics collection, Grafana for visualization, and Alertmanager for notifications—all containerized with Docker Compose.&lt;/p&gt;
+&lt;h2 id="architecture-overview"&gt;Architecture Overview&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;┌─────────────────────────────────────────────────────────┐
+│ Monitoring Stack │
+├─────────────────────────────────────────────────────────┤
+│ ┌─────────────┐ ┌─────────────┐ ┌─────────────────┐ │
+│ │ Grafana │──│ Prometheus │──│ Alertmanager │ │
+│ │ :3000 │ │ :9090 │ │ :9093 │ │
+│ └─────────────┘ └──────┬──────┘ └─────────────────┘ │
+│ │ │
+│ ┌───────────────────────┼───────────────────────────┐ │
+│ │ Exporters │ │
+│ ├─────────────┬─────────────┬─────────────┬─────────┤ │
+│ │ Node │ cAdvisor │ Blackbox │ Custom │ │
+│ │ Exporter │ (Docker) │ Exporter │ Apps │ │
+│ │ :9100 │ :8080 │ :9115 │ │ │
+│ └─────────────┴─────────────┴─────────────┴─────────┘ │
+└─────────────────────────────────────────────────────────┘&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="project-structure"&gt;Project Structure&lt;/h2&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;monitoring/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── docker-compose.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── prometheus/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ ├── prometheus.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── alerts/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── rules.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── alertmanager/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── alertmanager.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;├── grafana/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── provisioning/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ ├── dashboards/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ │ ├── dashboard.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ │ └── node-exporter.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── datasources/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;│ └── prometheus.yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;└── .env&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="docker-compose-configuration"&gt;Docker Compose Configuration&lt;/h2&gt;
+&lt;p&gt;Create &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;</description></item></channel></rss>

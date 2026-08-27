@@ -1,19 +1,52 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Penetration Testing on Mahmoud - Penetration Tester</title>
-    <link>http://localhost:1313/tags/penetration-testing/</link>
-    <description>Recent content in Penetration Testing on Mahmoud - Penetration Tester</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jan 2024 10:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/penetration-testing/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Computer Security &amp; Binary Hacking Concepts and Basics</title>
-      <link>http://localhost:1313/blogs/computer-security-binary-hacking-concepts-and-basics/</link>
-      <pubDate>Mon, 15 Jan 2024 10:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/computer-security-binary-hacking-concepts-and-basics/</guid>
-      <description>Hey! I am an Egyptian computer security researcher and I wanted to share knowledge about binary hacking for you all.&#xA;Facebook: https://www.facebook.com/mahmoudadel0x&#xA;Let&amp;rsquo;s start. I will talk about three topics for now, and in the next session I will continue:&#xA;Computer memory and virtual addressing OS functionality and control overview Buffer overflows Computer Memory and Virtual Addressing Every program gets executed by an already running program and it inherits environment variables from it.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Penetration Testing on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/tags/penetration-testing/</link><description>Recent content in Penetration Testing on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Dec 2024 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/tags/penetration-testing/index.xml" rel="self" type="application/rss+xml"/><item><title>Modern AV Evasion Techniques: Understanding Detection and Bypass Methods</title><link>https://mahmoudouf.com/blogs/modern-av-evasion-techniques/</link><pubDate>Wed, 18 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/modern-av-evasion-techniques/</guid><description>&lt;p&gt;Understanding how antivirus evasion works is essential for both offensive and defensive security professionals. This knowledge helps red teamers simulate advanced threats and helps blue teamers understand what they&amp;rsquo;re defending against.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Disclaimer&lt;/strong&gt;: This content is for educational purposes and authorized security testing only. Always obtain proper authorization before testing these techniques.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="how-modern-av-detection-works"&gt;How Modern AV Detection Works&lt;/h2&gt;
+&lt;p&gt;Before evading AV, you need to understand how it detects threats:&lt;/p&gt;
+&lt;h3 id="1-signature-based-detection"&gt;1. Signature-Based Detection&lt;/h3&gt;
+&lt;p&gt;The oldest and most common method. AV maintains a database of known malware signatures (hashes, byte patterns, strings).&lt;/p&gt;</description></item><item><title>Active Directory Attack Paths: A Red Team Perspective</title><link>https://mahmoudouf.com/blogs/active-directory-attack-paths-red-team/</link><pubDate>Thu, 12 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/active-directory-attack-paths-red-team/</guid><description>&lt;p&gt;Active Directory (AD) is the backbone of enterprise Windows environments—and a prime target for attackers. Understanding common attack paths is essential for both offensive and defensive security teams.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Disclaimer&lt;/strong&gt;: This content is for authorized security testing and educational purposes only. Always obtain proper written authorization.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="the-kill-chain-initial-access-to-domain-admin"&gt;The Kill Chain: Initial Access to Domain Admin&lt;/h2&gt;
+&lt;p&gt;A typical AD attack follows this progression:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Initial Access → Enumeration → Privilege Escalation → Lateral Movement → Domain Dominance&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Let&amp;rsquo;s explore each phase.&lt;/p&gt;</description></item><item><title>API Security Testing: Finding Vulnerabilities in Modern Web APIs</title><link>https://mahmoudouf.com/blogs/api-security-testing-vulnerabilities/</link><pubDate>Thu, 05 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/api-security-testing-vulnerabilities/</guid><description>&lt;p&gt;APIs are the backbone of modern applications—and a favorite target for attackers. Unlike traditional web apps, APIs often expose more functionality and data, making them high-value targets.&lt;/p&gt;
+&lt;p&gt;This guide covers practical techniques for testing API security, based on the OWASP API Security Top 10.&lt;/p&gt;
+&lt;h2 id="setting-up-your-testing-environment"&gt;Setting Up Your Testing Environment&lt;/h2&gt;
+&lt;h3 id="essential-tools"&gt;Essential Tools&lt;/h3&gt;
+&lt;div class="term-block" data-lang="bash"&gt;
+ &lt;div class="term-bar"&gt;
+ &lt;span class="term-dot term-dot--red" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--amber" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-dot term-dot--green" aria-hidden="true"&gt;&lt;/span&gt;
+ &lt;span class="term-title"&gt;bash — mahmoud@portfolio&lt;/span&gt;
+ &lt;button type="button" class="term-copy" aria-label="Copy code to clipboard"&gt;Copy&lt;/button&gt;
+ &lt;/div&gt;
+ &lt;div class="term-body"&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Burp Suite - HTTP interception proxy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Postman - API client for manual testing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# ffuf - Fast web fuzzer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Install httpx for quick probing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Install nuclei for automated scanning&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="term-console"&gt;
+ &lt;div class="term-output" aria-live="polite"&gt;&lt;/div&gt;
+ &lt;div class="term-input-line"&gt;
+ &lt;span class="term-prompt"&gt;mahmoud@portfolio ~ $&lt;/span&gt;
+ &lt;input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" /&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;&lt;h3 id="intercepting-api-traffic"&gt;Intercepting API Traffic&lt;/h3&gt;
+&lt;p&gt;Configure Burp to intercept mobile app or SPA traffic:&lt;/p&gt;</description></item><item><title>Computer Security &amp; Binary Hacking Concepts and Basics</title><link>https://mahmoudouf.com/blogs/computer-security-binary-hacking-concepts-and-basics/</link><pubDate>Mon, 15 Jan 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/computer-security-binary-hacking-concepts-and-basics/</guid><description>&lt;p&gt;Hey! I am an Egyptian computer security researcher and I wanted to share knowledge about binary hacking for you all.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Facebook&lt;/strong&gt;: &lt;a href="https://www.facebook.com/mahmoudadel0x"&gt;https://www.facebook.com/mahmoudadel0x&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s start. I will talk about three topics for now, and in the next session I will continue:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Computer memory and virtual addressing&lt;/li&gt;
+&lt;li&gt;OS functionality and control overview&lt;/li&gt;
+&lt;li&gt;Buffer overflows&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="computer-memory-and-virtual-addressing"&gt;Computer Memory and Virtual Addressing&lt;/h2&gt;
+&lt;p&gt;Every program gets executed by an already running program and it inherits environment variables from it. This is how the algorithms work. The already running program is the interface for you—it may be the GUI or TTY login shell, etc.&lt;/p&gt;</description></item></channel></rss>

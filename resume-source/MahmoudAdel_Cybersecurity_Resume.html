@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mahmoud Adel — Cybersecurity Resume</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; }
+    body {
+      color: #182333;
+      font-family: "Liberation Sans", Arial, sans-serif;
+      font-size: 8.1pt;
+      line-height: 1.32;
+    }
+    .page { width: 210mm; min-height: 297mm; background: #ffffff; }
+    .header {
+      padding: 10.5mm 13mm 8.5mm;
+      color: #f7fbff;
+      background: #101b2d;
+      border-bottom: 3px solid #35c9b3;
+    }
+    .header-table, .body-table { width: 100%; border-collapse: collapse; }
+    .photo-cell { width: 31mm; vertical-align: middle; }
+    .portrait {
+      width: 27mm;
+      height: 27mm;
+      display: block;
+      border: 2px solid #55ddc6;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .identity-cell { padding-left: 2mm; vertical-align: middle; }
+    .name {
+      margin: 0;
+      color: #ffffff;
+      font-family: "Liberation Sans", Arial, sans-serif;
+      font-size: 25pt;
+      font-weight: 700;
+      letter-spacing: -0.8pt;
+      line-height: 1;
+    }
+    .role {
+      margin: 2.2mm 0 0;
+      color: #8ce9d9;
+      font-size: 10.5pt;
+      font-weight: 700;
+      letter-spacing: 0.3pt;
+    }
+    .positioning {
+      margin: 1.2mm 0 0;
+      color: #c5d2e4;
+      font-size: 8.2pt;
+    }
+    .contact-cell {
+      width: 64mm;
+      padding-left: 5mm;
+      vertical-align: middle;
+      text-align: right;
+      color: #c5d2e4;
+      font-size: 7.25pt;
+      line-height: 1.65;
+    }
+    .contact-cell a { color: #eafcf8; text-decoration: none; }
+    .contact-label { color: #83dcca; font-weight: 700; }
+    .body { padding: 7.5mm 13mm 0; }
+    .main-cell { width: 65%; padding-right: 7mm; vertical-align: top; }
+    .side-cell {
+      width: 35%;
+      padding-left: 5.5mm;
+      vertical-align: top;
+      border-left: 1px solid #d8e0e9;
+    }
+    .section { margin: 0 0 5.3mm; }
+    .section-title {
+      margin: 0 0 2.2mm;
+      padding-bottom: 1.2mm;
+      color: #167d79;
+      border-bottom: 1.2px solid #35c9b3;
+      font-size: 7.1pt;
+      font-weight: 700;
+      letter-spacing: 1.25pt;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .summary {
+      margin: 0;
+      color: #334155;
+      font-size: 8.8pt;
+      line-height: 1.48;
+    }
+    .entry { margin: 0 0 4.2mm; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-head { width: 100%; border-collapse: collapse; }
+    .entry-title {
+      margin: 0;
+      color: #12253c;
+      font-size: 9.5pt;
+      font-weight: 700;
+      line-height: 1.22;
+    }
+    .entry-org {
+      margin: 0.8mm 0 0;
+      color: #197f78;
+      font-size: 8.1pt;
+      font-weight: 700;
+    }
+    .entry-date {
+      width: 31mm;
+      padding-left: 2mm;
+      color: #66758a;
+      font-family: "Liberation Mono", monospace;
+      font-size: 7.1pt;
+      text-align: right;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+    ul { margin: 1.4mm 0 0; padding: 0 0 0 3.5mm; }
+    li { margin: 0 0 1.05mm; padding-left: 0.5mm; color: #34455a; }
+    li::marker { color: #20a493; }
+    .evidence-list { list-style: none; padding: 0; margin: 0; }
+    .evidence-list li {
+      margin: 0 0 1.5mm;
+      padding: 1.4mm 1.8mm;
+      color: #334155;
+      border-left: 2px solid #35c9b3;
+      background: #f1f8f7;
+    }
+    .evidence-list strong { color: #152b42; }
+    .side-section { margin-bottom: 3mm; }
+    .skill-group { margin: 0 0 2.5mm; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-label {
+      margin: 0 0 0.8mm;
+      color: #1e3a56;
+      font-size: 7.7pt;
+      font-weight: 700;
+    }
+    .skill-text { margin: 0; color: #4b5d72; font-size: 7.5pt; line-height: 1.43; }
+    .side-list { margin: 0; padding: 0; list-style: none; }
+    .side-list li { margin: 0 0 1.6mm; padding: 0; color: #415268; font-size: 7.55pt; }
+    .side-list strong { color: #1c3047; }
+    .link { color: #167d79; text-decoration: none; }
+    .footer-note {
+      margin-top: 1mm;
+      padding-top: 3mm;
+      color: #77869a;
+      border-top: 1px solid #d8e0e9;
+      font-size: 7pt;
+      line-height: 1.4;
+    }
+    .muted { color: #66758a; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <table class="header-table">
+        <tr>
+          <td class="photo-cell">
+            <img class="portrait" src="../static/images/me-avatar.png" alt="Portrait of Mahmoud Adel">
+          </td>
+          <td class="identity-cell">
+            <h1 class="name">Mahmoud Adel</h1>
+            <p class="role">Junior Penetration Tester</p>
+            <p class="positioning">Blue-team, infrastructure &amp; software-engineering foundations</p>
+          </td>
+          <td class="contact-cell">
+            <div><span class="contact-label">Location</span> &nbsp;Alexandria, Egypt</div>
+            <div><span class="contact-label">Email</span> &nbsp;<a href="mailto:contact@mahmoudouf.com">contact@mahmoudouf.com</a></div>
+            <div><span class="contact-label">LinkedIn</span> &nbsp;<a href="https://www.linkedin.com/in/mahmoudadelOx01/">mahmoudadelOx01</a></div>
+            <div><span class="contact-label">GitHub</span> &nbsp;<a href="https://github.com/mahmoud0x01">github.com/mahmoud0x01</a></div>
+          </td>
+        </tr>
+      </table>
+    </header>
+
+    <div class="body">
+      <table class="body-table">
+        <tr>
+          <td class="main-cell">
+            <section class="section">
+              <h2 class="section-title">Profile</h2>
+              <p class="summary">Junior penetration tester with authorized web/API and network assessment experience, backed by Linux, Windows, Active Directory, blue-team, and software-engineering foundations. Recognized through four bug-bounty Hall of Fame programs and ranked Top 5 of 100 in Bastion's internal CTF. I turn technical findings into clear reports, reproducible evidence, and practical remediation conversations.</p>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Experience</h2>
+              <article class="entry">
+                <table class="entry-head">
+                  <tr>
+                    <td>
+                      <h3 class="entry-title">Penetration Tester Intern</h3>
+                      <p class="entry-org">Bastion Cybersec Solutions</p>
+                    </td>
+                    <td class="entry-date">May–Sep 2024</td>
+                  </tr>
+                </table>
+                <ul>
+                  <li>Conducted authorized assessments of web applications and network systems, identifying authentication-bypass, injection, and privilege-escalation findings.</li>
+                  <li>Performed root-level validation on Linux and Windows in lab and authorized environments.</li>
+                  <li>Produced technical reports and delivered presentations on vulnerabilities and exploitation methods.</li>
+                  <li>Ranked <strong>Top 5 of 100</strong> in internal penetration-testing and privilege-escalation challenges.</li>
+                </ul>
+              </article>
+              <article class="entry">
+                <table class="entry-head">
+                  <tr>
+                    <td>
+                      <h3 class="entry-title">Software Engineer Intern</h3>
+                      <p class="entry-org">National Research Tomsk State University</p>
+                    </td>
+                    <td class="entry-date">Feb 2025</td>
+                  </tr>
+                </table>
+                <ul>
+                  <li>Designed and developed software solutions within university research projects.</li>
+                  <li>Created academic-standard technical documentation and UML, component, and activity diagrams across the software lifecycle.</li>
+                </ul>
+              </article>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Security evidence</h2>
+              <ul class="evidence-list">
+                <li><strong>Bug-bounty Hall of Fame:</strong> DigitalOcean, Pinterest, Verisign, and Dell through responsible disclosure.</li>
+                <li><strong>Competitive testing:</strong> Top 5 of 100 at Bastion's internal CTF.</li>
+                <li><strong>Security writing:</strong> API security, Active Directory attack paths, Linux hardening, malware analysis, and AppArmor defense validation.</li>
+              </ul>
+            </section>
+          </td>
+
+          <td class="side-cell">
+            <section class="side-section">
+              <h2 class="section-title">Core skills</h2>
+              <div class="skill-group">
+                <p class="skill-label">Offensive security</p>
+                <p class="skill-text">Web/API security, vulnerability assessment, OWASP, privilege escalation, red team, exploit development, Burp Suite, Metasploit, Nmap, SQLMap, Nuclei, ffuf</p>
+              </div>
+              <div class="skill-group">
+                <p class="skill-label">Systems &amp; defense</p>
+                <p class="skill-text">Linux, Windows, Active Directory, TCP/IP, network security, Kerberos, firewall, Wireshark, BloodHound, Impacket, AppArmor, MITRE ATT&amp;CK, malware analysis, threat intelligence</p>
+              </div>
+              <div class="skill-group">
+                <p class="skill-label">Engineering &amp; tooling</p>
+                <p class="skill-text">Python, Bash, JavaScript, C/C++, Assembly, SQL, Docker, Git, Ghidra, Cobalt Strike, Sliver</p>
+              </div>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Education</h2>
+              <ul class="side-list">
+                <li><strong>Bachelor of Software Engineering</strong><br>Tomsk State University<br><span class="muted">Sep 2022 – Jul 2026</span></li>
+              </ul>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Credentials &amp; training</h2>
+              <ul class="side-list">
+                <li><strong>Junior Penetration Tester</strong><br>TryHackMe · 2024</li>
+                <li><strong>Blue Team Junior Analyst</strong><br>SecurityBlue · 2023</li>
+                <li><strong>Cyber Threat Intelligence</strong><br>IBM · 2023</li>
+                <li>CompTIA Pentest+ · CompTIA Linux+ · CCNA</li>
+                <li>IBM PenTest, Incident Response &amp; Forensics · ISC2 Candidate</li>
+              </ul>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Selected writing</h2>
+              <ul class="side-list">
+                <li><a class="link" href="https://mahmoudouf.com/blogs/api-security-testing-vulnerabilities/">API Security Testing</a></li>
+                <li><a class="link" href="https://mahmoudouf.com/blogs/active-directory-attack-paths-red-team/">Active Directory Attack Paths</a></li>
+                <li><a class="link" href="https://mahmoudouf.com/blogs/apparmor-rce-mitigation/">AppArmor RCE Mitigation</a></li>
+              </ul>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Languages</h2>
+              <ul class="side-list">
+                <li><strong>Arabic</strong> · Native</li>
+                <li><strong>English</strong> · C2 Proficient</li>
+                <li><strong>Russian</strong> · C1 Advanced</li>
+              </ul>
+            </section>
+          </td>
+        </tr>
+      </table>
+      <p class="footer-note">Portfolio: <a class="link" href="https://mahmoudouf.com/">mahmoudouf.com</a> · All security testing described above was performed in authorized, lab, or responsible-disclosure contexts.</p>
+    </div>
+  </div>
+</body>
+</html>

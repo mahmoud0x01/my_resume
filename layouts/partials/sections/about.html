@@ -1,0 +1,113 @@
+{{ if .Site.Params.about.enable | default false }}
+{{ $aboutImage := .Site.Params.about.image | default "/images/me-avatar.png" }}
+{{ $aboutContent := .Site.Params.about.content | replaceRE "🛡️" "" | replaceRE "🤝" "" | replaceRE "🔹" "" }}
+<section id="about" class="recruiter-section recruiter-about" aria-labelledby="about-title">
+    <div class="recruiter-container">
+        <div class="recruiter-section-heading">
+            <p class="section-kicker">Context</p>
+            <h2 id="about-title">{{ .Site.Params.about.title | default "About Mahmoud" }}</h2>
+            <p class="section-dek">A practical security perspective shaped by both testing and operating real systems.</p>
+        </div>
+
+        <div class="about-layout">
+            <figure class="about-portrait-card image">
+                <img src="{{ $aboutImage }}" alt="Mahmoud Adel working across cybersecurity and systems engineering" loading="lazy">
+                <figcaption>Security engineering with an operator's mindset.</figcaption>
+            </figure>
+
+            <div class="about-copy content">
+                <div class="about-content">
+                    {{ $aboutContent | markdownify }}
+                </div>
+
+                <div class="about-proof-grid" aria-label="Career proof points">
+                    {{ with .Site.Params.about.proofPoints }}
+                    {{ range . }}
+                    {{ $value := .value | default .number | default "" }}
+                    {{ $label := .label | default .title | default .name | default "Proof point" }}
+                    {{ $detail := .detail | default .description | default .text | default "" }}
+                    <article class="about-proof-card">
+                        {{ with $value }}<strong>{{ . }}</strong>{{ end }}
+                        <span>{{ $label }}</span>
+                        {{ with $detail }}<small>{{ . }}</small>{{ end }}
+                    </article>
+                    {{ end }}
+                    {{ else }}
+                    <article class="about-proof-card">
+                        <strong>4</strong>
+                        <span>Hall of Fame recognitions</span>
+                        <small>Responsible disclosure across leading programs.</small>
+                    </article>
+                    <article class="about-proof-card">
+                        <strong>Top 5/100</strong>
+                        <span>CTF placement</span>
+                        <small>Penetration testing and privilege escalation challenges.</small>
+                    </article>
+                    <article class="about-proof-card">
+                        <strong>Red + blue</strong>
+                        <span>Security perspective</span>
+                        <small>Offensive testing grounded in operational defense.</small>
+                    </article>
+                    {{ end }}
+                </div>
+
+                {{ with .Site.Params.about.focusAreas }}
+                <div class="about-focus-area">
+                    <div class="subsection-heading">
+                        <p class="section-kicker">Focus areas</p>
+                        <h3>Where I contribute</h3>
+                    </div>
+                    <div class="focus-area-grid">
+                        {{ range . }}
+                        {{ $focusTitle := .title | default .name | default "Security focus" }}
+                        {{ $focusDescription := .description | default .content | default .text | default "" }}
+                        <article class="focus-area-card">
+                            {{ with .icon }}<i class="{{ . }}" aria-hidden="true"></i>{{ end }}
+                            <h4>{{ $focusTitle }}</h4>
+                            {{ with $focusDescription }}<p>{{ . | markdownify }}</p>{{ end }}
+                            {{ with .items }}
+                            <ul class="focus-area-items">
+                                {{ range . }}<li>{{ . }}</li>{{ end }}
+                            </ul>
+                            {{ end }}
+                        </article>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+
+                {{ if .Site.Params.about.languages.enable }}
+                <div class="about-languages">
+                    <div class="subsection-heading">
+                        <p class="section-kicker">Communication</p>
+                        <h3>{{ .Site.Params.about.languages.title | default "Languages" }}</h3>
+                    </div>
+                    <dl class="language-list">
+                        {{ range .Site.Params.about.languages.items }}
+                        <div>
+                            <dt class="fw-bold">{{ .language }}</dt>
+                            <dd class="text-secondary">{{ .level }}</dd>
+                        </div>
+                        {{ end }}
+                    </dl>
+                </div>
+                {{ end }}
+
+                {{ if .Site.Params.about.skills.enable }}
+                <div class="about-skills">
+                    <div class="subsection-heading">
+                        <p class="section-kicker">Toolkit</p>
+                        <h3>{{ .Site.Params.about.skills.title | default "Technologies & Skills" }}</h3>
+                    </div>
+                    <ul class="skills-list" aria-label="Technologies and skills">
+                        {{ range .Site.Params.about.skills.items }}
+                        <li class="badge skill-item"><span class="skill-marker" aria-hidden="true"></span>{{ . | plainify }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

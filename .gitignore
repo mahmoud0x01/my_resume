@@ -20,3 +20,7 @@ Thumbs.db
 # Personal files in root (but keep them in static/)
 MahmoudAdelResume*.pdf
 
+.vercel
+.env*.local
+.vps-recovery/
+.opencode/

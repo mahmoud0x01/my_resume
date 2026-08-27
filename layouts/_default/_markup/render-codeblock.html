@@ -1,0 +1,52 @@
+{{- $lang := lower (.Type | default "") -}}
+{{- $code := trim .Inner "\n\r" -}}
+
+{{- /* Languages that should be presented as a terminal session */ -}}
+{{- $shells := slice "bash" "sh" "shell" "zsh" "fish" "console" "terminal" "shell-session" "shellsession" "session" "powershell" "pwsh" "ps1" "bat" "batch" "cmd" "gdb" -}}
+{{- $isShell := in $shells $lang -}}
+
+{{- /* Chroma has no lexer for these, but they are still shell-adjacent config */ -}}
+{{- $known := slice "apparmor" "nftables" "iptables" -}}
+{{- $hlLang := $lang -}}
+{{- if in $known $lang -}}{{- $hlLang = "text" -}}{{- end -}}
+
+{{- $rendered := "" -}}
+{{- if $hlLang -}}
+  {{- $rendered = highlight $code $hlLang (.Options | default dict) -}}
+{{- else -}}
+  {{- $rendered = printf "<pre><code>%s</code></pre>" (htmlEscape $code) | safeHTML -}}
+{{- end -}}
+
+{{- if $isShell -}}
+{{- $shell := $lang -}}
+{{- if in (slice "pwsh" "ps1") $lang -}}{{- $shell = "powershell" -}}
+{{- else if in (slice "bat" "batch") $lang -}}{{- $shell = "cmd" -}}
+{{- else if in (slice "console" "terminal" "session" "shell-session" "shellsession" "shell") $lang -}}{{- $shell = "sh" -}}
+{{- end -}}
+{{- $title := printf "%s — mahmoud@portfolio" $shell -}}
+{{- if eq $shell "gdb" -}}{{- $title = "gdb — debug session" -}}{{- end -}}
+{{- $interactive := ne $shell "gdb" -}}
+{{- $promptSym := "$" -}}{{- if eq $shell "zsh" -}}{{- $promptSym = "%" -}}{{- end -}}
+{{- $promptStr := printf "mahmoud@portfolio ~ %s" $promptSym -}}
+<div class="term-block" data-lang="{{ $lang }}">
+  <div class="term-bar">
+    <span class="term-dot term-dot--red" aria-hidden="true"></span>
+    <span class="term-dot term-dot--amber" aria-hidden="true"></span>
+    <span class="term-dot term-dot--green" aria-hidden="true"></span>
+    <span class="term-title">{{ $title }}</span>
+    <button type="button" class="term-copy" aria-label="Copy code to clipboard">Copy</button>
+  </div>
+  <div class="term-body">{{ $rendered }}</div>
+{{- if $interactive }}
+  <div class="term-console">
+    <div class="term-output" aria-live="polite"></div>
+    <div class="term-input-line">
+      <span class="term-prompt">{{ $promptStr }}</span>
+      <input type="text" class="term-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type something…" aria-label="Type something into the terminal" />
+    </div>
+  </div>
+{{- end }}
+</div>
+{{- else -}}
+{{ $rendered }}
+{{- end -}}

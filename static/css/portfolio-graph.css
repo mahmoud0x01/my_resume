@@ -1,0 +1,1574 @@
+/* ============================================================
+   PORTFOLIO CONSTELLATION — Graph, Nodes, Edges
+   "Gravity Atlas" glass skin for the DOM/SVG engine.
+   Palette / glass tokens follow the canvas-engine sibling
+   project; the DOM/SVG layout, distribution and features are
+   unchanged. Custom properties use the --cg- prefix.
+   ============================================================ */
+
+/* ---- Design tokens ---- */
+:root {
+    --cg-font: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    --cg-mono: 'Courier New', 'JetBrains Mono', monospace;
+
+    /* palette — light mode */
+    --cg-me: #6366f1;
+    --cg-security: #10b981;
+    --cg-intel: #14b8a6;
+    --cg-development: #3b82f6;
+    --cg-infrastructure: #6b7280;
+    --cg-networking: #64748b;
+    --cg-experience: #8b5cf6;
+    --cg-education: #db2777;
+    --cg-recognition: #f59e0b;
+    --cg-blogs: #0ea5e9;
+
+    /* glass surfaces */
+    --cg-glass-fill: rgba(255, 255, 255, 0.72);
+    --cg-chip-fill: rgba(255, 255, 255, 0.66);
+    --cg-hub-veil: rgba(15, 23, 42, 0.08);
+    --cg-glass-border: rgba(15, 23, 42, 0.08);
+    --cg-glass-text: #0f172a;
+    --cg-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 58%);
+    --cg-shadow-card: 0 12px 32px rgba(15, 23, 42, 0.14);
+    --cg-edge-base: 0.26;
+
+    /* legend dot tokens (theme-aware aliases of the palette above) */
+    --lg-pentesting: var(--cg-security);
+    --lg-networking: var(--cg-networking);
+    --lg-sysadmin: var(--cg-infrastructure);
+    --lg-tools: var(--cg-intel);
+    --lg-scripting: var(--cg-development);
+    --lg-concepts: #059669;
+    --lg-awards: var(--cg-recognition);
+    --lg-experience: var(--cg-experience);
+    --lg-education: var(--cg-education);
+    --lg-courses: var(--cg-recognition);
+    --lg-certificates: var(--cg-recognition);
+    --lg-blogs: var(--cg-blogs);
+}
+
+.dark {
+    /* palette — dark mode */
+    --cg-me: #818cf8;
+    --cg-security: #34d399;
+    --cg-intel: #2dd4bf;
+    --cg-development: #60a5fa;
+    --cg-infrastructure: #9ca3af;
+    --cg-networking: #94a3b8;
+    --cg-experience: #a78bfa;
+    --cg-education: #f472b6;
+    --cg-recognition: #fbbf24;
+    --cg-blogs: #38bdf8;
+
+    --cg-glass-fill: rgba(15, 18, 28, 0.55);
+    --cg-chip-fill: rgba(15, 18, 28, 0.62);
+    --cg-hub-veil: rgba(2, 4, 12, 0.38);
+    --cg-glass-border: rgba(255, 255, 255, 0.10);
+    --cg-glass-text: #e6e9f2;
+    --cg-sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0) 58%);
+    --cg-shadow-card: 0 12px 40px rgba(0, 0, 0, 0.45);
+    --cg-edge-base: 0.16;
+
+    --lg-concepts: #10b981;
+}
+
+/* ---- Container ---- */
+.constellation-wrap {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 2rem 1rem 4rem;
+    background: transparent;
+    isolation: isolate;
+}
+
+/* Background atmosphere canvas (inserted by JS as first child).
+   Must sit BELOW the svg edge layer and the node layer. */
+.constellation-wrap > #graph-bg-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#portfolio-constellation {
+    position: relative;
+    width: 100%;
+    max-width: 2600px;
+    aspect-ratio: 2600 / 1400;
+    margin: 0 auto;
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+#portfolio-constellation.constellation--panel-open {
+    transform: translateX(-120px);
+}
+
+/* ============================================================
+   EDGES — category-tinted, faint at rest, glowing in the spotlight
+   ============================================================ */
+.constellation-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.constellation-edge {
+    fill: none; /* quadratic paths must never render their interior */
+    stroke: var(--edge-color, rgba(148, 163, 184, 0.7));
+    stroke-width: 1.05;
+    opacity: var(--cg-edge-base, 0.2);
+    transition: opacity 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, filter 0.25s ease;
+}
+
+.constellation-edge--me-cat {
+    stroke-width: 1.5;
+}
+
+.constellation-edge--cat-sub {
+    stroke-width: 1.2;
+}
+
+.constellation-edge--sub-leaf {
+    stroke-width: 0.9;
+}
+
+/* Relationship edges: faintest, dashed, shine only in the spotlight */
+.constellation-edge--rel {
+    stroke-width: 0.8;
+    opacity: calc(var(--cg-edge-base, 0.2) * 0.45);
+    stroke-dasharray: 2 4;
+}
+
+/* Lit edges (legacy class + contract class) */
+.constellation-edge--active,
+.constellation-edge.is-lit {
+    stroke: var(--edge-color, currentColor);
+    stroke-width: 2.4;
+    opacity: 1;
+    filter: drop-shadow(0 0 4px var(--edge-color, rgba(99, 102, 241, 0.6)));
+}
+
+.constellation-edge--me-cat.constellation-edge--active,
+.constellation-edge--me-cat.is-lit {
+    stroke-width: 2.8;
+}
+
+.constellation-edge--dimmed {
+    opacity: 0.05 !important;
+    filter: none;
+}
+
+/* Flow particles riding lit edges (JS-appended SVG circles).
+   Cheap glow only — these reposition every frame. */
+.constellation-flow-dot {
+    filter: drop-shadow(0 0 4px var(--edge-color));
+}
+
+/* ============================================================
+   NODES — shared base
+   ============================================================ */
+.constellation-nodes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.cnode {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    pointer-events: auto;
+    cursor: pointer;
+    font-family: var(--cg-font);
+    transition: opacity 0.25s ease, filter 0.25s ease,
+                box-shadow 0.25s ease, border-color 0.25s ease,
+                background-color 0.25s ease;
+    z-index: 5;
+    will-change: transform;
+}
+
+.cnode:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 5px;
+}
+
+/* Font Awesome runs as SVG-injection: <i> is replaced by inline <svg>.
+   Size and color every icon descendant so glyphs stay crisp per node size. */
+.cnode i,
+.cnode svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+}
+
+/* Icon disc — translucent category tint + colored glyph (reference chip) */
+.cnode-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.14);
+    background-color: color-mix(in srgb, var(--node-color, #888) 16%, transparent);
+    color: var(--node-color, currentColor);
+    font-size: 1rem; /* icon prominence ~16px */
+    flex-shrink: 0;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cnode-icon i,
+.cnode-icon svg {
+    font-size: 1em;
+}
+
+.cnode-custom-icon {
+    font-size: 0.52rem;
+    font-weight: 800;
+    font-family: var(--cg-mono);
+    line-height: 1;
+    color: var(--node-color, currentColor);
+}
+
+/* Micro label chip — glass pill in the theme surface color */
+.cnode-label {
+    font-family: var(--cg-font);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--cg-glass-text);
+    white-space: nowrap;
+    background: var(--cg-chip-fill);
+    border: 1px solid var(--cg-glass-border);
+    padding: 3px 9px;
+    border-radius: 999px;
+}
+
+/* ============================================================
+   ME NODE — avatar disc, breathing ring, rotating dashed ring
+   ============================================================ */
+.cnode--me {
+    flex-direction: column;
+    gap: 0.4rem;
+    z-index: 10;
+}
+
+/* Soft-focus veil so edges read quieter behind the hub.
+   Plain radial fill (NOT backdrop-filter) — a live blur under the
+   repositioning hub costs a per-frame composite on the hottest
+   region of the graph. The bg canvas owns the indigo center glow. */
+.cnode--me::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 460px;
+    height: 460px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--cg-hub-veil) 35%, transparent 72%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.cnode-photo {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(99, 102, 241, 0.45);
+    border-color: color-mix(in srgb, var(--cg-me) 50%, transparent);
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.35),
+                0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cnode--me:hover .cnode-photo,
+.cnode--me:focus-within .cnode-photo {
+    transform: scale(1.06);
+    box-shadow: 0 12px 44px rgba(99, 102, 241, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.16) inset;
+}
+
+/* Ring 1 — solid, breathing, indigo glow (JS-created .cnode-ring) */
+.cnode-ring {
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid var(--cg-me);
+    box-shadow: 0 0 22px rgba(99, 102, 241, 0.45),
+                0 0 64px rgba(99, 102, 241, 0.18);
+    opacity: 0.55;
+    animation: cgRingBreath 4s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes cgRingBreath {
+    from { transform: translateX(-50%) scale(1); opacity: 0.45; }
+    to   { transform: translateX(-50%) scale(1.08); opacity: 0.9; }
+}
+
+/* Ring 2 — dashed, slow counterpoint rotation */
+.cnode--me::after {
+    content: '';
+    position: absolute;
+    top: -23px;
+    left: 50%;
+    width: 178px;
+    height: 178px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(99, 102, 241, 0.5);
+    border-color: color-mix(in srgb, var(--cg-me) 55%, transparent);
+    transform: translateX(-50%);
+    animation: cgRingSpin 30s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes cgRingSpin {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+.cnode-me-name {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--cg-font);
+    letter-spacing: -0.5px;
+    color: var(--text-color, var(--cg-glass-text));
+    text-align: center;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+    /* keeps the name legible over graph edges */
+    text-shadow: 0 0 12px var(--bg, transparent), 0 0 4px var(--bg, transparent);
+}
+
+/* Mini console frame styling lives in terminal.css; layout only here */
+.cnode-me-subtitle {
+    position: relative;
+    z-index: 3;
+    margin-top: 0.2rem;
+}
+
+/* Role separators in the whoami output ("·"). Scoped to the node and
+   given higher specificity than terminal.css's generic
+   `.cterm-out .cterm-sep` (which also reaches this element with a
+   tighter 0.1em padding); its muted !important color token
+   (--term-dim) is kept as-is since it is already theme-aware. */
+.cnode--me .cterm-out .cterm-sep {
+    opacity: 0.55;
+    padding-inline: 0.35em;
+}
+
+/* ---- Centered CTA beneath the profile ---- */
+.cnode--me .cnode-cta {
+    margin-top: 1.1rem;
+    background: linear-gradient(135deg, var(--cg-development) 0%, var(--cg-experience) 100%);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    padding: 11px 24px;
+    font-family: var(--cg-font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 18px rgba(99, 102, 241, 0.35);
+    cursor: pointer;
+    min-height: 44px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.cnode--me .cnode-cta:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 4px;
+}
+
+.cnode--me .cnode-cta:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.55);
+    filter: saturate(115%);
+}
+
+/* ============================================================
+   TIER-1 CATEGORY NODES — glass disc badge, tinted ring
+   ============================================================ */
+.cnode--category {
+    background-color: rgba(128, 128, 128, 0.10);
+    background-color: color-mix(in srgb, var(--node-color, #888) 12%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid rgba(128, 128, 128, 0.35);
+    border-color: color-mix(in srgb, var(--node-color, #888) 50%, transparent);
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem 0.5rem 0.6rem;
+    gap: 0.5rem;
+    box-shadow: var(--cg-shadow-card);
+}
+
+.cnode--category .cnode-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+    background-color: color-mix(in srgb, var(--node-color, #888) 20%, transparent);
+}
+
+.cnode--category .cnode-label {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--cg-glass-text);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+/* ============================================================
+   TIER-2 SUBGROUP NODES — lighter glass chip
+   ============================================================ */
+.cnode--subgroup {
+    background-color: rgba(128, 128, 128, 0.07);
+    background-color: color-mix(in srgb, var(--node-color, #888) 8%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid rgba(128, 128, 128, 0.28);
+    border-color: color-mix(in srgb, var(--node-color, #888) 38%, transparent);
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    gap: 0.3rem;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.10);
+}
+
+.dark .cnode--subgroup {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.cnode--subgroup .cnode-label--sub {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--node-color, var(--cg-glass-text));
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+/* Subgroup icon disc — slightly smaller than the base chip,
+   glyph inherits the category tint via --node-color */
+.cnode-icon--subgroup {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem; /* ~0.85em of the base chip */
+    opacity: 0.9;
+    background-color: rgba(128, 128, 128, 0.12);
+    background-color: color-mix(in srgb, var(--node-color, #888) 14%, transparent);
+}
+
+/* FA runs as SVG-injection; keep the glyph filling the smaller
+   disc exactly like the shared .cnode i/svg contract */
+.cnode-icon--subgroup i,
+.cnode-icon--subgroup svg {
+    width: 1em;
+    height: 1em;
+    font-size: 1em;
+    line-height: 1;
+}
+
+/* ============================================================
+   SKILL NODES — glass chip, prominent icon, hover glow
+   ============================================================ */
+.cnode--skill {
+    background-color: rgba(128, 128, 128, 0.09);
+    background-color: color-mix(in srgb, var(--node-color, #888) 10%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid rgba(128, 128, 128, 0.30);
+    border-color: color-mix(in srgb, var(--node-color, #888) 40%, transparent);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem 0.4rem 0.5rem;
+    gap: 0.4rem;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.10);
+    font-size: 0.92rem;
+}
+
+.cnode--skill .cnode-icon {
+    background-color: color-mix(in srgb, var(--node-color, #888) 18%, transparent);
+}
+
+/* ============================================================
+   AWARD NODES — amber glass pill, hexagonal icon facet
+   (keeps the always-visible award name; only the icon disc
+   becomes a hexagon, matching the recognition language)
+   ============================================================ */
+.cnode--award {
+    background-color: rgba(245, 158, 11, 0.10);
+    background-color: color-mix(in srgb, var(--node-color, #f59e0b) 12%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-color: color-mix(in srgb, var(--node-color, #f59e0b) 45%, transparent);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem 0.45rem 0.55rem;
+    gap: 0.45rem;
+    box-shadow: 0 3px 14px rgba(245, 158, 11, 0.14);
+    font-size: 0.95rem;
+}
+
+.cnode-icon--award {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+    border-radius: 0;
+    clip-path: polygon(25% 5%, 75% 5%, 98% 50%, 75% 95%, 25% 95%, 2% 50%);
+    background-color: color-mix(in srgb, var(--node-color, #f59e0b) 22%, transparent);
+}
+
+/* ============================================================
+   BLOG NODES — flagship glass pill cards (sky tint)
+   ============================================================ */
+.cnode--blog {
+    background-color: rgba(14, 165, 233, 0.10);
+    background-color: color-mix(in srgb, var(--node-color, #0ea5e9) 12%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid rgba(14, 165, 233, 0.35);
+    border-color: color-mix(in srgb, var(--node-color, #0ea5e9) 45%, transparent);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem 0.4rem 0.5rem;
+    gap: 0.4rem;
+    box-shadow: 0 3px 14px rgba(14, 165, 233, 0.14);
+    font-size: 0.88rem;
+}
+
+.cnode-icon--blog {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    background-color: color-mix(in srgb, var(--node-color, #0ea5e9) 20%, transparent);
+}
+
+.cnode--blog .cnode-label {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+/* ---- BLOG-MORE overflow badge ---- */
+.cnode--blog-more {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.cnode-blog-more-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background-color: rgba(14, 165, 233, 0.16);
+    background-color: color-mix(in srgb, var(--node-color, #0ea5e9) 18%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid color-mix(in srgb, var(--node-color, #0ea5e9) 50%, transparent);
+    color: var(--cg-glass-text);
+    font-family: var(--cg-mono);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    box-shadow: 0 3px 14px rgba(14, 165, 233, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cnode--blog-more:hover .cnode-blog-more-badge,
+.cnode--blog-more:focus-within .cnode-blog-more-badge {
+    transform: scale(1.1);
+    box-shadow: 0 5px 22px rgba(14, 165, 233, 0.4);
+}
+
+/* ============================================================
+   EXPERIENCE / EDUCATION — compact rounded badges
+   ============================================================ */
+.cnode--experience,
+.cnode--education {
+    background-color: rgba(139, 92, 246, 0.08);
+    background-color: color-mix(in srgb, var(--node-color, #8b5cf6) 10%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid rgba(139, 92, 246, 0.30);
+    border-color: color-mix(in srgb, var(--node-color, #8b5cf6) 40%, transparent);
+    border-radius: 14px;
+    padding: 0.45rem 0.85rem 0.45rem 0.5rem;
+    gap: 0.4rem;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.10);
+    font-size: 0.92rem;
+}
+
+/* ============================================================
+   COURSE / CERTIFICATE — glass HEXAGONS (clip-path), icon inside
+   ============================================================ */
+.cnode--course,
+.cnode--certificate {
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.cnode-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 0;
+    clip-path: polygon(25% 5%, 75% 5%, 98% 50%, 75% 95%, 25% 95%, 2% 50%);
+    background-color: rgba(128, 128, 128, 0.16);
+    background-color: color-mix(in srgb, var(--node-color, #f59e0b) 18%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--node-color, currentColor);
+    font-size: 0.85rem;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+/* clip-path removes the silhouette from box-shadow — glow the parent */
+.cnode--course:hover,
+.cnode--course:focus-within,
+.cnode--certificate:hover,
+.cnode--certificate:focus-within {
+    filter: drop-shadow(0 0 9px color-mix(in srgb, var(--node-color, #f59e0b) 55%, transparent));
+}
+
+.cnode--course:hover .cnode-dot,
+.cnode--course:focus-within .cnode-dot,
+.cnode--certificate:hover .cnode-dot,
+.cnode--certificate:focus-within .cnode-dot {
+    transform: scale(1.14);
+}
+
+/* Micro hover label — monospace uppercase letterspaced */
+.cnode-hover-label {
+    font-family: var(--cg-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--cg-glass-text);
+    white-space: nowrap;
+    background: var(--cg-chip-fill);
+    border: 1px solid var(--cg-glass-border);
+    padding: 3px 8px;
+    border-radius: 999px;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.cnode--course:hover .cnode-hover-label,
+.cnode--certificate:hover .cnode-hover-label,
+.cnode--blog-more:hover .cnode-hover-label,
+.cnode:focus-within .cnode-hover-label,
+.cnode--active .cnode-hover-label,
+.cnode--connected .cnode-hover-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Legacy project-type hook kept so old class names never break */
+.cnode--project {
+    background-color: color-mix(in srgb, var(--node-color, #888) 10%, transparent);
+    background-image: var(--cg-sheen);
+    border: 1px solid color-mix(in srgb, var(--node-color, #888) 40%, transparent);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem 0.45rem 0.55rem;
+    gap: 0.45rem;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.10);
+    font-size: 0.95rem;
+}
+
+/* ============================================================
+   SPOTLIGHT HOVER SYSTEM
+   Contract classes: .is-hover / .is-dim on nodes, .is-lit on edges.
+   Legacy classes .cnode--active / .cnode--dimmed stay styled too.
+   NOTE: the transform keeps the base translate(-50%, -50%) anchor
+   and uses !important because GSAP leaves an inline transform after
+   the entrance tween.
+   ============================================================ */
+.cnode.is-hover,
+.cnode:focus-within {
+    transform: translate(-50%, -50%) translateY(-3px) scale(1.06) !important;
+    transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease,
+                border-color 0.25s ease, filter 0.25s ease;
+    z-index: 30;
+    border-color: var(--node-color, var(--cg-me)) !important;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--node-color, #888) 65%, transparent),
+                0 10px 30px color-mix(in srgb, var(--node-color, #888) 40%, transparent),
+                0 0 26px color-mix(in srgb, var(--node-color, #888) 30%, transparent) !important;
+}
+
+/* Lit path nodes (legacy): emphasized without moving, so long ancestor
+   chains don't jump around */
+.cnode--active {
+    z-index: 20 !important;
+}
+
+.cnode--active.cnode--skill,
+.cnode--active.cnode--project,
+.cnode--active.cnode--experience,
+.cnode--active.cnode--education,
+.cnode--active.cnode--category,
+.cnode--active.cnode--subgroup,
+.cnode--active.cnode--blog,
+.cnode--active.cnode--award {
+    border-color: var(--node-color, var(--cg-me)) !important;
+    box-shadow: 0 4px 22px color-mix(in srgb, var(--node-color, #888) 35%, transparent) !important;
+}
+
+.cnode--connected {
+    z-index: 6 !important;
+}
+
+/* Dimmed (non-neighbor) nodes */
+.cnode.is-dim,
+.cnode--dimmed {
+    opacity: 0.35 !important;
+}
+
+/* ============================================================
+   FLOAT HOVER CARD — glass info card (JS-created .graph-float-card)
+   ============================================================ */
+.graph-float-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    max-width: 78vw;
+    padding: 0.95rem 1rem 0.8rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14),
+                0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    color: var(--cg-glass-text);
+    font-family: var(--cg-font);
+    pointer-events: none;
+    opacity: 0;
+    transform-origin: top left;
+    transition: opacity 0.22s ease;
+    z-index: 40;
+    will-change: transform, opacity;
+}
+
+.dark .graph-float-card {
+    background: rgba(15, 18, 28, 0.55);
+    border-color: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 12px 40px rgba(0, 0, 45, 0.45),
+                0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+
+.graph-float-card--open {
+    opacity: 1;
+}
+
+.gfc-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 0.15rem;
+    /* JS may set color inline; fall back to the theme text */
+    color: inherit;
+}
+
+.gfc-sub {
+    font-size: 0.74rem;
+    font-weight: 500;
+    opacity: 0.75;
+    margin-bottom: 0.4rem;
+}
+
+.gfc-desc {
+    font-size: 0.76rem;
+    font-weight: 300;
+    line-height: 1.45;
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
+}
+
+.gfc-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.45rem;
+}
+
+.gfc-badge {
+    font-family: var(--cg-font);
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 0.16rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    color: inherit;
+}
+
+.dark .gfc-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.gfc-date {
+    font-family: var(--cg-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.45rem;
+}
+
+.gfc-links {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.1rem;
+}
+
+.gfc-link {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.25rem 0.6rem;
+    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    pointer-events: auto;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.dark .gfc-link {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.gfc-link:hover {
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   SCROLL HINT — soft glass pill
+   ============================================================ */
+.constellation-scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--cg-glass-text);
+    opacity: 0.65;
+    font-family: var(--cg-font);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.4rem 0.95rem;
+    background: rgba(255, 255, 255, 0.5);
+    background: color-mix(in srgb, var(--cg-chip-fill) 60%, transparent);
+    border: 1px solid var(--cg-glass-border);
+    border-radius: 999px;
+    animation: scrollHintBounce 2.4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.constellation-scroll-hint i,
+.constellation-scroll-hint svg {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+@keyframes scrollHintBounce {
+    0%, 100% { transform: translateX(-50%) translateX(0); }
+    50% { transform: translateX(-50%) translateX(6px); }
+}
+
+/* ---- Visitor Node (decorative vertical badge) ---- */
+.constellation-visitor-node {
+    position: absolute;
+    left: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    animation: visitorFloat 4s ease-in-out infinite;
+}
+
+@keyframes visitorFloat {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(calc(-50% - 6px)) translateX(3px); }
+}
+
+.vertical-badge {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--cg-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--cg-glass-text);
+    opacity: 0.55;
+    white-space: nowrap;
+    text-transform: uppercase;
+    padding: 0.8rem 0.35rem;
+    background: rgba(128, 128, 128, 0.06);
+    border: 1px solid var(--cg-glass-border);
+    border-radius: 999px;
+}
+
+/* ============================================================
+   LEGEND — glass capsule bar, glowing square dots
+   Colors are driven by --lg-* tokens (theme aware) referenced
+   from the hero partial via inline `--dot` custom properties.
+   ============================================================ */
+.constellation-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.55rem 1.15rem;
+    padding: 0.55rem 1.2rem;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    background: rgba(255, 255, 255, 0.5);
+    background: color-mix(in srgb, var(--cg-chip-fill) 55%, transparent);
+    border: 1px solid var(--cg-glass-border);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: calc(100% - 2rem);
+}
+
+.constellation-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--cg-font);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--cg-glass-text);
+    white-space: nowrap;
+}
+
+.constellation-legend-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: var(--dot, var(--cg-security));
+    color: var(--dot, var(--cg-security));
+    box-shadow: 0 0 8px currentColor;
+}
+
+/* ============================================================
+   HIRE-ME GLASS MENU (inside the me node)
+   ============================================================ */
+.hire-me-popup {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.14);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    overflow: hidden;
+    min-width: 160px;
+    z-index: 50;
+    margin-top: 0.3rem;
+}
+
+.dark .hire-me-popup {
+    background: rgba(15, 18, 28, 0.62);
+    border-color: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hire-me-popup--open {
+    display: flex;
+}
+
+.hire-me-popup a {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.9rem;
+    font-family: var(--cg-font);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--cg-glass-text);
+    text-decoration: none;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+}
+
+.hire-me-popup a:hover {
+    background: rgba(99, 102, 241, 0.12);
+}
+
+.hire-me-popup a i,
+.hire-me-popup a svg {
+    font-size: 1rem;
+    width: 1.2rem;
+    text-align: center;
+}
+
+.hire-me-popup a .fa-telegram { color: #0088cc; }
+.hire-me-popup a .fa-envelope { color: #ef4444; }
+.hire-me-popup a .fa-facebook-f { color: #1877f2; }
+.hire-me-popup a .fa-instagram { color: #e4405f; }
+.hire-me-popup a .fa-x-twitter { color: var(--cg-glass-text); }
+
+/* ============================================================
+   LIST VIEW (Escape Hatch) — glass card list
+   ============================================================ */
+#portfolio-list-view {
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+}
+
+.plv-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body.portfolio-list-mode .constellation-wrap {
+    display: none;
+}
+
+body.portfolio-list-mode #portfolio-list-view {
+    display: block;
+}
+
+.plv-block {
+    margin-bottom: 2.5rem;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--group-color, var(--cg-security));
+}
+
+.plv-title {
+    font-family: var(--cg-font);
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--group-color, var(--cg-security));
+    margin-bottom: 1rem;
+}
+
+.plv-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.plv-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    background: var(--cg-chip-fill);
+    border: 1px solid var(--cg-glass-border);
+    border-left: 3px solid var(--group-color, var(--cg-security));
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: var(--cg-font);
+    color: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plv-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.14);
+}
+
+.plv-item:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 3px;
+}
+
+.plv-name {
+    font-family: var(--cg-font);
+    font-weight: 600;
+    color: var(--cg-glass-text);
+    white-space: nowrap;
+}
+
+.plv-sub {
+    font-family: var(--cg-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--text-secondary-color, rgba(148, 163, 184, 0.9));
+    white-space: nowrap;
+}
+
+/* ---- Graph/list toggle ---- */
+#graph-list-toggle {
+    font-family: var(--cg-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--cg-glass-text);
+    background: rgba(128, 128, 128, 0.08);
+    background: color-mix(in srgb, var(--cg-chip-fill) 55%, transparent);
+    border: 1px solid var(--cg-glass-border);
+    border-radius: 999px;
+    padding: 0.32rem 0.9rem;
+    min-width: 44px;
+    min-height: 44px;
+    cursor: pointer;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#graph-list-toggle:hover {
+    color: var(--cg-me);
+    border-color: var(--cg-me);
+    box-shadow: 0 0 14px rgba(99, 102, 241, 0.25);
+}
+
+#graph-list-toggle:focus-visible {
+    outline: 3px solid var(--cg-me, #6366f1);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    .cnode-ring,
+    .cnode--me::after,
+    .constellation-scroll-hint,
+    .constellation-visitor-node {
+        animation: none !important;
+    }
+
+    .cnode,
+    .constellation-edge {
+        transition: none !important;
+    }
+
+    .cnode.is-hover,
+    .cnode:focus-within {
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1200px) {
+    #portfolio-constellation.constellation--panel-open {
+        transform: translateX(-80px);
+    }
+}
+
+@media (max-width: 991px) {
+    .constellation-wrap {
+        min-height: auto;
+        padding: 2rem 0 1.5rem;
+        overflow: visible;
+    }
+
+    #portfolio-constellation {
+        aspect-ratio: auto;
+        height: 650px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #portfolio-constellation.constellation--panel-open {
+        transform: none;
+    }
+
+    .constellation-nodes {
+        min-width: 1200px;
+        min-height: 650px;
+    }
+    .constellation-svg {
+        min-width: 1200px;
+        min-height: 650px;
+    }
+
+    .constellation-legend {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        padding: 0.5rem 1rem;
+        gap: 0.45rem 1rem;
+    }
+    .constellation-legend-item {
+        font-size: 0.7rem;
+    }
+    .constellation-legend-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .constellation-scroll-hint {
+        display: block;
+    }
+
+    .constellation-visitor-node {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        animation: none;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .vertical-badge {
+        writing-mode: horizontal-tb;
+        transform: none;
+        padding: 0.3rem 0.7rem;
+    }
+    .hire-me-btn {
+        font-size: 0.6rem;
+        padding: 0.28rem 0.7rem;
+    }
+    .hire-me-popup {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 0.4rem;
+    }
+}
+
+/* ---- Phone: vertical portrait graph ---- */
+@media (max-width: 767px) {
+    :root {
+        --cg-edge-base: 0.4;
+    }
+    .dark {
+        --cg-edge-base: 0.3;
+    }
+
+    .constellation-wrap {
+        padding: 0.5rem 0 0.5rem;
+    }
+
+    #portfolio-constellation {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 700 / 1400;
+        overflow: visible;
+    }
+
+    .constellation-nodes {
+        min-width: 0;
+        min-height: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .constellation-svg {
+        min-width: 0;
+        min-height: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Thicker, more visible edges */
+    .constellation-edge { stroke-width: 1.7; }
+    .constellation-edge--me-cat { stroke-width: 2.2; }
+    .constellation-edge--cat-sub { stroke-width: 1.8; }
+    .constellation-edge--sub-leaf { stroke-width: 1.4; }
+    .constellation-edge--rel { stroke-width: 1.1; }
+    .constellation-edge--active,
+    .constellation-edge.is-lit { stroke-width: 3 !important; }
+
+    /* ---- ME node — big and prominent ---- */
+    .cnode-photo {
+        width: 88px;
+        height: 88px;
+        border-width: 3px;
+        box-shadow: 0 6px 24px rgba(99, 102, 241, 0.35);
+    }
+    .cnode-ring {
+        width: 100px;
+        height: 100px;
+        top: -7px;
+    }
+    .cnode--me::after {
+        width: 118px;
+        height: 118px;
+        top: -15px;
+    }
+    .cnode-me-name {
+        font-size: 0.9rem;
+    }
+    /* mini console shrinks with the node (canvas scrolls, so use px not vw) */
+    .cnode--me .cterm {
+        width: 330px;
+    }
+    .cnode--me .cterm-bar { padding: 0.35rem 0.5rem; gap: 0.3rem; }
+    .cnode--me .cterm-dot { width: 8px; height: 8px; }
+    .cnode--me .cterm-title { font-size: 0.55rem; }
+    .cnode--me .cterm-body { padding: 0.5rem 0.6rem 0.55rem; }
+    .cnode--me .cterm-line { font-size: 0.62rem; }
+    .cnode--me .cterm-out { font-size: 0.58rem; }
+    .cnode--me .cterm-input-line { font-size: 0.62rem; margin-top: 0.2rem; }
+    .cnode--me .cterm-echo { font-size: 0.58rem; }
+    .cnode--me .cterm-response { font-size: 0.56rem; }
+
+    /* ---- SKILL nodes ---- */
+    .cnode--skill {
+        font-size: 0.78rem;
+        padding: 0.3rem 0.6rem 0.3rem 0.35rem;
+        gap: 0.35rem;
+    }
+    .cnode-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 0.72rem;
+    }
+    .cnode-icon i,
+    .cnode-icon svg {
+        font-size: 1em;
+    }
+    .cnode-custom-icon { font-size: 0.42rem; }
+
+    /* ---- CATEGORY / SUBGROUP ---- */
+    .cnode--category {
+        padding: 0.4rem 0.85rem 0.4rem 0.5rem;
+        gap: 0.4rem;
+    }
+    .cnode--category .cnode-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+    .cnode--category .cnode-label { font-size: 0.82rem; }
+    .cnode--subgroup { padding: 0.3rem 0.75rem; }
+    .cnode--subgroup .cnode-label--sub { font-size: 0.74rem; }
+
+    /* ---- AWARD nodes ---- */
+    .cnode--award {
+        font-size: 0.78rem;
+        padding: 0.32rem 0.65rem 0.32rem 0.4rem;
+        gap: 0.38rem;
+    }
+    .cnode-icon--award {
+        width: 27px;
+        height: 27px;
+        font-size: 0.72rem;
+    }
+
+    /* ---- EXPERIENCE / EDUCATION ---- */
+    .cnode--experience,
+    .cnode--education {
+        font-size: 0.76rem;
+        padding: 0.28rem 0.6rem 0.28rem 0.35rem;
+        gap: 0.35rem;
+    }
+
+    /* ---- BLOG nodes ---- */
+    .cnode--blog {
+        font-size: 0.74rem;
+        padding: 0.28rem 0.6rem 0.28rem 0.35rem;
+        gap: 0.35rem;
+    }
+    .cnode-icon--blog {
+        width: 24px;
+        height: 24px;
+        font-size: 0.68rem;
+    }
+    .cnode--blog .cnode-label {
+        max-width: 170px;
+    }
+    .cnode-blog-more-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.66rem;
+    }
+
+    /* ---- COURSE / CERTIFICATE hexagons ---- */
+    .cnode-dot {
+        width: 27px;
+        height: 27px;
+        font-size: 0.62rem;
+    }
+    .cnode-hover-label {
+        font-size: 0.62rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    /* ---- Legend ---- */
+    .constellation-legend {
+        gap: 0.4rem 0.85rem;
+        padding: 0.45rem 0.8rem;
+    }
+    .constellation-legend-item {
+        font-size: 0.66rem;
+    }
+    .constellation-legend-dot {
+        width: 9px;
+        height: 9px;
+    }
+
+    .constellation-scroll-hint {
+        display: none;
+    }
+
+    .constellation-visitor-node {
+        gap: 0.4rem;
+        margin-bottom: 0.3rem;
+    }
+    .hire-me-btn {
+        font-size: 0.55rem;
+        padding: 0.24rem 0.6rem;
+    }
+    .hire-me-popup a {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cnode-photo {
+        width: 74px;
+        height: 74px;
+    }
+    .cnode-ring {
+        width: 84px;
+        height: 84px;
+    }
+    .cnode--me::after {
+        width: 98px;
+        height: 98px;
+        top: -12px;
+    }
+    .cnode-me-name { font-size: 0.82rem; }
+    .cnode--me .cterm { width: 290px; }
+    .cnode--me .cterm-line { font-size: 0.56rem; }
+    .cnode--me .cterm-out { font-size: 0.52rem; }
+
+    .cnode--skill {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.52rem 0.25rem 0.3rem;
+    }
+    .cnode-icon {
+        width: 22px;
+        height: 22px;
+        font-size: 0.62rem;
+    }
+
+    .cnode--award {
+        font-size: 0.7rem;
+        padding: 0.26rem 0.55rem 0.26rem 0.34rem;
+    }
+    .cnode-icon--award {
+        width: 23px;
+        height: 23px;
+        font-size: 0.6rem;
+    }
+
+    .cnode--blog {
+        font-size: 0.66rem;
+        padding: 0.22rem 0.48rem 0.22rem 0.28rem;
+    }
+    .cnode-icon--blog {
+        width: 21px;
+        height: 21px;
+        font-size: 0.58rem;
+    }
+    .cnode-blog-more-badge {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.56rem;
+    }
+
+    .cnode--experience,
+    .cnode--education {
+        font-size: 0.68rem;
+        padding: 0.24rem 0.5rem 0.24rem 0.3rem;
+    }
+
+    .cnode-dot {
+        width: 23px;
+        height: 23px;
+        font-size: 0.52rem;
+    }
+    .cnode-hover-label {
+        font-size: 0.56rem;
+    }
+
+    .constellation-legend {
+        gap: 0.35rem 0.7rem;
+        padding: 0.4rem 0.6rem;
+    }
+    .constellation-legend-item {
+        font-size: 0.6rem;
+    }
+    .constellation-legend-dot {
+        width: 8px;
+        height: 8px;
+    }
+}

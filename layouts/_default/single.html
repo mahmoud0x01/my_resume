@@ -1,0 +1,222 @@
+{{ define "head" }}
+{{ $description := .Description | plainify }}
+{{ if not $description }}{{ $description = .Summary | plainify }}{{ end }}
+<meta name="description" content="{{ $description }}">
+{{ $staticPath := .Site.Params.staticPath | default "" }}
+<link rel="stylesheet" href="{{ $staticPath }}/css/single.css?v={{ now.Unix }}">
+<link rel="stylesheet" href="{{ $staticPath }}/css/design.css?v={{ now.Unix }}" media="all">
+<link rel="stylesheet" href="{{ $staticPath }}/css/recruiter.css?v={{ now.Unix }}" media="all">
+<link rel="stylesheet" href="{{ $staticPath }}/css/terminal.css?v={{ now.Unix }}" media="all">
+<link rel="stylesheet" href="{{ $staticPath }}/css/code.css?v={{ now.Unix }}" media="all">
+<link rel="stylesheet" href="{{ $staticPath }}/css/blog.css?v={{ now.Unix }}" media="all">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- fontawesome -->
+<script defer src="{{ $staticPath }}/fontawesome-6/all-6.4.2.js"></script>
+{{ end }}
+
+{{ define "title" }}
+{{.Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ $staticPath := .Site.Params.staticPath | default "" }}
+{{ $shareText := .Description | plainify }}
+{{ if not $shareText }}{{ $shareText = .Title }}{{ end }}
+{{ $shareURL := .Permalink | absURL }}
+{{ $tocEnabled := true }}
+{{ if isset .Params "toc" }}{{ $tocEnabled = .Params.toc }}{{ end }}
+{{ $socialShareEnabled := true }}
+{{ with .Site.Params.singlePages }}
+  {{ if isset . "socialshare" }}{{ $socialShareEnabled = .socialShare }}{{ end }}
+{{ end }}
+{{ if isset .Params "socialshare" }}{{ $socialShareEnabled = .Params.socialShare }}{{ end }}
+{{ $readTimeEnabled := true }}
+{{ with .Site.Params.singlePages }}
+  {{ with .readTime }}
+    {{ if isset . "enable" }}{{ $readTimeEnabled = .enable }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if isset .Params "enablereadingtime" }}{{ $readTimeEnabled = .Params.enableReadingTime }}{{ end }}
+{{ $scrollProgressEnabled := true }}
+{{ with .Site.Params.singlePages }}
+  {{ with .scrollprogress }}
+    {{ if isset . "enable" }}{{ $scrollProgressEnabled = .enable }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if isset .Params "enablescrollprogress" }}{{ $scrollProgressEnabled = .Params.enableScrollProgress }}{{ end }}
+{{ $tagsOpenInNewTab := true }}
+{{ with .Site.Params.singlePages }}
+  {{ with .tags }}
+    {{ if isset . "openinnewtab" }}{{ $tagsOpenInNewTab = .openInNewTab }}{{ end }}
+  {{ end }}
+{{ end }}
+<section id="single" class="blog-page blog-article" aria-labelledby="article-title">
+  <div class="blog-shell">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a class="blog-back-link" href="{{ "blogs/" | relURL }}">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        <span>Back to writing</span>
+      </a>
+      <span class="blog-breadcrumb-separator" aria-hidden="true">/</span>
+      <span class="blog-breadcrumb-current" aria-current="page">{{ .Title }}</span>
+    </nav>
+
+    <div class="blog-layout">
+      <div class="blog-main-column">
+        <header class="blog-article-header title">
+          <p class="blog-eyebrow"><span class="blog-eyebrow-mark" aria-hidden="true"></span> Field note</p>
+          <h1 id="article-title">{{ .Title }}</h1>
+          <div class="blog-meta text-center">
+            {{ if .Params.author }}
+            <span class="blog-meta-item"><span class="blog-sr-only">Author: </span>{{ .Params.author }}</span>
+            <span class="blog-meta-separator" aria-hidden="true">·</span>
+            {{ end }}
+            <time class="blog-meta-item" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (.Site.Params.datesFormat.article | default "Jan 2, 2006") }}</time>
+            {{ if $readTimeEnabled }}
+            <span class="blog-meta-separator" aria-hidden="true">·</span>
+            <span id="readingTime" class="blog-meta-item">{{ .Site.Params.singlePages.readTime.content | default "min read" }}</span>
+            {{ end }}
+          </div>
+          {{ with .Params.tags }}
+          <ul class="blog-tags blog-article-tags" aria-label="Topics">
+            {{ range . }}
+            <li><a class="blog-tag" href="{{ `tags` | absURL }}/{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+          </ul>
+          {{ end }}
+        </header>
+
+        {{ if .Params.image }}
+        <figure class="featured-image blog-featured-image">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="eager" decoding="async">
+        </figure>
+        {{ end }}
+
+        <article class="page-content blog-prose" aria-label="Article content">
+          {{ .Content | emojify }}
+        </article>
+      </div>
+
+      <div class="blog-sidebar" aria-label="Article tools">
+        <div id="stickySideBar" class="sticky-sidebar">
+          {{ if $tocEnabled }}
+          <aside class="toc blog-sidebar-card">
+            <details class="blog-disclosure" open>
+              <summary>
+                <span class="blog-sidebar-heading">{{ .Site.Params.terms.toc | default "Table Of Contents" }}</span>
+                <span class="blog-disclosure-icon" aria-hidden="true">⌄</span>
+              </summary>
+              <div class="toc-content">
+                {{ .TableOfContents }}
+              </div>
+            </details>
+          </aside>
+          {{ end }}
+
+          {{ if .Params.tags }}
+          <aside class="tags blog-sidebar-card">
+            <h2 class="blog-sidebar-heading">{{ .Site.Params.terms.tags | default "Tags" }}</h2>
+            <ul class="tags-ul list-unstyled list-inline">
+              {{ range .Params.tags }}
+              <li class="list-inline-item"><a class="blog-tag" href="{{ `tags` | absURL }}/{{ . | urlize }}" {{ if $tagsOpenInNewTab }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ . }}</a></li>
+              {{ end }}
+            </ul>
+          </aside>
+          {{ end }}
+
+          {{ if $socialShareEnabled }}
+          <aside class="social blog-sidebar-card">
+            <h2 class="blog-sidebar-heading">{{ .Site.Params.terms.social | default "Share" }}</h2>
+            <div class="social-content">
+              <ul class="list-inline blog-share-list">
+                <li class="list-inline-item">
+                  <a class="blog-share-link" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"
+                    href="https://www.linkedin.com/feed/?shareActive=true&amp;text={{ $shareText | urlquery }}&amp;url={{ $shareURL | urlquery }}">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i><span class="blog-share-name">LinkedIn</span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="blog-share-link" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"
+                    href="https://twitter.com/share?text={{ .Title | urlquery }}&amp;url={{ $shareURL | urlquery }}{{ if .Params.tags }}&amp;hashtags={{ delimit .Params.tags "," | urlquery }}{{ end }}">
+                    <i class="fab fa-twitter" aria-hidden="true"></i><span class="blog-share-name">Twitter</span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="blog-share-link" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp"
+                    href="https://api.whatsapp.com/send?text={{ printf "%s: %s" .Title $shareURL | urlquery }}">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i><span class="blog-share-name">WhatsApp</span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="blog-share-link" aria-label="Share by email"
+                    href="mailto:?subject={{ .Title | urlquery }}&amp;body={{ printf "%s %s" ($.Site.Params.terms.emailText | default "Check out this site") $shareURL | urlquery }}">
+                    <i class="fa fa-envelope" aria-hidden="true"></i><span class="blog-share-name">Email</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-comments">
+      {{ template "_internal/disqus.html" . }}
+    </div>
+  </div>
+
+  <button class="blog-top-scroll p-2 px-3" type="button" onclick="topFunction()" id="topScroll" aria-label="Back to top" title="Back to top">
+    <i class="fas fa-angle-up" aria-hidden="true"></i>
+  </button>
+</section>
+
+{{ if $scrollProgressEnabled }}
+<div class="progress blog-progress" aria-label="Reading progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+    aria-valuemax="100"></div>
+</div>
+<script src="{{ $staticPath }}/js/scrollProgressBar.js"></script>
+{{ end }}
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (!topScroll) return;
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "inline-flex";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  }
+
+  // To set height of sticky sidebar dynamically
+  let stickySideBarElem = document.getElementById("stickySideBar");
+  let stickyNavBar = {{ if .Site.Params.navbar.stickyNavBar.enable }}true{{ else }}false{{ end }};
+  if (stickySideBarElem) {
+    if (stickyNavBar) {
+      let headerElem = document.getElementById("profileHeader");
+      let headerHeight = headerElem ? headerElem.offsetHeight + 15 : 80;
+      stickySideBarElem.style.top = headerHeight + "px";
+    } else {
+      stickySideBarElem.style.top = "50px";
+    }
+  }
+</script>
+
+{{ if $readTimeEnabled }}
+<script src="{{ $staticPath }}/js/readingTime.js"></script>
+{{ end }}
+
+{{ end }}

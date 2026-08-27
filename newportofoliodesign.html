@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud Adel - Cybersecurity Engineer & Bug Hunter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0b0d;
+            --text-main: #e4e6eb;
+            --text-muted: #8b949e;
+            --accent-sec: #ff4655; /* Security - Red */
+            --accent-dev: #58a6ff; /* Development - Blue */
+            --accent-infra: #3fb950; /* Infrastructure - Green */
+            --accent-exp: #d29922; /* Experience - Yellow */
+            --accent-rec: #bc8cff; /* Recognition - Purple */
+            --bg-card: rgba(22, 27, 34, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow: hidden; /* Prevent scroll for graph view */
+            height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 11, 13, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .view-toggle {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .view-toggle:hover {
+            border-color: var(--accent-dev);
+            color: var(--accent-dev);
+        }
+
+        /* Graph Container */
+        .graph-stage {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        svg.graph-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .line {
+            stroke: var(--text-muted);
+            stroke-width: 1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease, stroke 0.3s ease;
+        }
+
+        /* Dimming effect when hovering a node */
+        .graph-container.hovered .node:not(:hover),
+        .graph-container.hovered .line:not(.active) {
+            opacity: 0.15;
+        }
+        .graph-container.hovered .line.active {
+            opacity: 1;
+            stroke-width: 2;
+        }
+        .graph-container.hovered .node:not(:hover) .node-label {
+            color: var(--text-muted);
+        }
+
+        /* Center Profile */
+        .hero-center {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(10,11,13,0.95) 30%, transparent 70%);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: url('https://z-cdn-media.chatglm.cn/files/7c31ffbe-a5b8-4168-84e3-0feb3f9375e8.png') center/cover; /* Using your provided image as placeholder */
+            border: 2px solid var(--text-muted);
+            margin-bottom: 24px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            color: var(--accent-sec);
+            font-size: 16px;
+            margin-bottom: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cta-btn {
+            background-color: transparent;
+            border: 1px solid var(--accent-sec);
+            color: var(--accent-sec);
+            padding: 12px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-sec);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(255, 70, 85, 0.3);
+        }
+
+        /* Nodes */
+        .nodes-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 5;
+        }
+
+        .node {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .node-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--text-muted);
+            margin-bottom: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .node:hover .node-dot {
+            transform: scale(1.5);
+        }
+
+        .node-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-main);
+            background: rgba(0,0,0,0.7);
+            padding: 2px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        /* Specific Node Colors */
+        .node[data-cat="sec"] .node-dot { background-color: var(--accent-sec); }
+        .node[data-cat="sec"]:hover .node-dot { box-shadow: 0 0 10px var(--accent-sec); }
+        
+        .node[data-cat="dev"] .node-dot { background-color: var(--accent-dev); }
+        .node[data-cat="dev"]:hover .node-dot { box-shadow: 0 0 10px var(--accent-dev); }
+
+        .node[data-cat="infra"] .node-dot { background-color: var(--accent-infra); }
+        .node[data-cat="infra"]:hover .node-dot { box-shadow: 0 0 10px var(--accent-infra); }
+
+        .node[data-cat="exp"] .node-dot { background-color: var(--accent-exp); }
+        .node[data-cat="exp"]:hover .node-dot { box-shadow: 0 0 10px var(--accent-exp); }
+
+        .node[data-cat="rec"] .node-dot { background-color: var(--accent-rec); }
+        .node[data-cat="rec"]:hover .node-dot { box-shadow: 0 0 10px var(--accent-rec); }
+
+        /* List View (Escape Hatch) */
+        .list-view {
+            display: none;
+            padding: 100px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        body.list-mode .graph-stage { display: none; }
+        body.list-mode .list-view { display: block; overflow-y: auto; height: 100vh; }
+        body.list-mode { overflow-y: auto; }
+
+        .category-block {
+            margin-bottom: 40px;
+            border-left: 3px solid;
+            padding-left: 20px;
+        }
+        .cat-title { font-family: 'JetBrains Mono'; margin-bottom: 15px; text-transform: uppercase; }
+        .cat-items { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cat-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 6px; font-size: 14px; }
+
+        /* Graph Instructions */
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono';
+            font-size: 12px;
+            color: var(--text-muted);
+            z-index: 50;
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">M.ADEL_SEC</div>
+        <div class="nav-links">
+            <a href="#">About Me</a>
+            <a href="#">Experience</a>
+            <a href="#">Recognition</a>
+            <button class="view-toggle" onclick="toggleView()">Switch to List View</button>
+        </div>
+    </nav>
+
+    <!-- GRAPH VIEW -->
+    <div class="graph-stage graph-container" id="graphContainer">
+        
+        <!-- SVG Lines -->
+        <svg class="graph-lines">
+            <line class="line" data-target="node-owasp" x1="50%" y1="50%" x2="20%" y2="30%"></line>
+            <line class="line" data-target="node-pentest" x1="50%" y1="50%" x2="15%" y2="60%"></line>
+            <line class="line" data-target="node-docker" x1="50%" y1="50%" x2="35%" y2="15%"></line>
+            <line class="line" data-target="node-python" x1="50%" y1="50%" x2="65%" y2="15%"></line>
+            <line class="line" data-target="node-cloud" x1="50%" y1="50%" x2="80%" y2="30%"></line>
+            <line class="line" data-target="node-hardening" x1="50%" y1="50%" x2="85%" y2="60%"></line>
+            <line class="line" data-target="node-bsc" x1="50%" y1="50%" x2="75%" y2="85%"></line>
+            <line class="line" data-target="node-hof" x1="50%" y1="50%" x2="50%" y2="90%"></line>
+            <line class="line" data-target="node-blog" x1="50%" y1="50%" x2="25%" y2="85%"></line>
+        </svg>
+
+        <!-- Center Profile -->
+        <div class="hero-center">
+            <div class="profile-img"></div>
+            <h1 class="hero-title">Mahmoud Adel</h1>
+            <p class="hero-subtitle">Cybersecurity Engineer | Penetration Tester</p>
+            <a href="#" class="cta-btn">Available for Security Audits</a>
+        </div>
+
+        <!-- Nodes -->
+        <div class="nodes-container">
+            <!-- Security -->
+            <div class="node" data-cat="sec" style="top: 30%; left: 20%;" onmouseenter="highlightLine('node-owasp', '#ff4655')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">OWASP Top 10</span>
+            </div>
+            <div class="node" data-cat="sec" style="top: 60%; left: 15%;" onmouseenter="highlightLine('node-pentest', '#ff4655')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">Web App Pentesting</span>
+            </div>
+
+            <!-- Development -->
+            <div class="node" data-cat="dev" style="top: 15%; left: 35%;" onmouseenter="highlightLine('node-docker', '#58a6ff')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">Docker</span>
+            </div>
+            <div class="node" data-cat="dev" style="top: 15%; left: 65%;" onmouseenter="highlightLine('node-python', '#58a6ff')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">Python Automation</span>
+            </div>
+
+            <!-- Infrastructure -->
+            <div class="node" data-cat="infra" style="top: 30%; left: 80%;" onmouseenter="highlightLine('node-cloud', '#3fb950')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">Cloud Infrastructure</span>
+            </div>
+            <div class="node" data-cat="infra" style="top: 60%; left: 85%;" onmouseenter="highlightLine('node-hardening', '#3fb950')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">Linux Hardening</span>
+            </div>
+
+            <!-- Experience -->
+            <div class="node" data-cat="exp" style="top: 85%; left: 75%;" onmouseenter="highlightLine('node-bsc', '#d29922')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">B.Sc Software Engineering</span>
+            </div>
+
+            <!-- Recognition -->
+            <div class="node" data-cat="rec" style="top: 90%; left: 50%;" onmouseenter="highlightLine('node-hof', '#bc8cff')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">Bug Bounty Hall of Fame</span>
+            </div>
+
+            <!-- Personal -->
+            <div class="node" data-cat="per" style="top: 85%; left: 25%;" onmouseenter="highlightLine('node-blog', '#8b949e')" onmouseleave="resetLines()">
+                <div class="node-dot"></div>
+                <span class="node-label">Security Blog</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="instructions">Drag to pan • Scroll to zoom • Hover to explore</div>
+
+    <!-- LIST VIEW (Escape Hatch) -->
+    <div class="list-view">
+        <div class="category-block" style="border-color: var(--accent-sec);">
+            <h2 class="cat-title" style="color: var(--accent-sec);">Security</h2>
+            <div class="cat-items">
+                <div class="cat-item">OWASP Top 10</div>
+                <div class="cat-item">Web App Pentesting</div>
+                <div class="cat-item">Network Auditing</div>
+            </div>
+        </div>
+        <div class="category-block" style="border-color: var(--accent-dev);">
+            <h2 class="cat-title" style="color: var(--accent-dev);">Development</h2>
+            <div class="cat-items">
+                <div class="cat-item">Docker</div>
+                <div class="cat-item">Python Automation</div>
+                <div class="cat-item">React / Frontend</div>
+            </div>
+        </div>
+        <div class="category-block" style="border-color: var(--accent-infra);">
+            <h2 class="cat-title" style="color: var(--accent-infra);">Infrastructure</h2>
+            <div class="cat-items">
+                <div class="cat-item">Cloud (AWS/GCP)</div>
+                <div class="cat-item">Linux Server Hardening</div>
+            </div>
+        </div>
+        <div class="category-block" style="border-color: var(--accent-rec);">
+            <h2 class="cat-title" style="color: var(--accent-rec);">Recognition</h2>
+            <div class="cat-items">
+                <div class="cat-item">Bug Bounty Hall of Fame</div>
+                <div class="cat-item">HackerOne / Bugcrowd</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Graph/List View
+        function toggleView() {
+            document.body.classList.toggle('list-mode');
+            const btn = document.querySelector('.view-toggle');
+            if(document.body.classList.contains('list-mode')) {
+                btn.innerText = "Switch to Graph View";
+            } else {
+                btn.innerText = "Switch to List View";
+            }
+        }
+
+        // Graph Hover Logic
+        const graphContainer = document.getElementById('graphContainer');
+        const lines = document.querySelectorAll('.line');
+
+        // Add hover listener to the whole container to trigger dimming
+        graphContainer.addEventListener('mouseover', (e) => {
+            if(e.target.closest('.node')) {
+                graphContainer.classList.add('hovered');
+            }
+        });
+        graphContainer.addEventListener('mouseout', (e) => {
+            if(e.target.closest('.node')) {
+                graphContainer.classList.remove('hovered');
+            }
+        });
+
+        // Highlight specific line
+        function highlightLine(targetId, color) {
+            lines.forEach(line => {
+                if(line.getAttribute('data-target') === targetId) {
+                    line.classList.add('active');
+                    line.style.stroke = color; // Match line color to node color
+                }
+            });
+        }
+
+        function resetLines() {
+            lines.forEach(line => {
+                line.classList.remove('active');
+                line.style.stroke = ''; // Revert to CSS default
+            });
+        }
+    </script>
+</body>
+</html>

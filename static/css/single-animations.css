@@ -1,0 +1,109 @@
+/* ============================================================
+   SINGLE PAGE ANIMATIONS — Project/blog detail pages
+   ============================================================ */
+
+/* ---- No cursor glow on project/single pages ---- */
+#cursor-glow {
+    display: none !important;
+}
+
+/* ---- Animated gradient header bar ---- */
+#single .title {
+    position: relative;
+    overflow: hidden;
+}
+
+#single .title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg,
+        rgba(232, 168, 124, 0.8),
+        rgba(149, 184, 209, 0.8),
+        rgba(184, 181, 224, 0.8));
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ---- Featured image entrance ---- */
+.featured-image {
+    overflow: hidden;
+    border-radius: var(--radius, 1rem);
+}
+
+.featured-image img {
+    transition: transform 0.6s ease;
+}
+
+/* ---- Article content enhancements ---- */
+.page-content h2,
+.page-content h3,
+.page-content h4 {
+    position: relative;
+}
+
+.page-content h2::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 0.2em;
+    width: 3px;
+    height: 1em;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    border-radius: 2px;
+    opacity: 0.5;
+}
+
+/* ---- Code blocks subtle glow ---- */
+.page-content pre {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 0.5rem);
+    transition: box-shadow 0.3s ease;
+}
+.page-content pre:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.dark .page-content pre:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- TOC sidebar subtle animation ---- */
+.toc {
+    transition: opacity 0.4s ease;
+}
+
+/* ---- Tags hover effect ---- */
+.tags-ul .list-inline-item a {
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+}
+.tags-ul .list-inline-item a:hover {
+    transform: translateY(-1px);
+}
+
+/* ---- Back to top button enhancement ---- */
+#topScroll {
+    transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+#topScroll:hover {
+    transform: translateY(-2px);
+}
+
+/* ---- Reading progress bar smooth ---- */
+.progress {
+    transition: opacity 0.3s ease;
+}
+#scroll-progress-bar {
+    transition: width 0.1s linear;
+    background: linear-gradient(90deg, var(--text-muted), var(--text));
+}

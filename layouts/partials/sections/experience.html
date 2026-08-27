@@ -1,0 +1,38 @@
+{{ if .Site.Params.experience.enable | default false }}
+<section id="experience" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ .Site.Params.experience.title | default "Experience" }}</h3>
+        <div class="experience-timeline">
+            {{ range $index, $element := .Site.Params.experience.items }}
+            {{ range $jobIdx, $job := .jobs }}
+            <div class="timeline-item {{ if eq $index 0 }}timeline-item--first{{ end }}">
+                <!-- Left: date + company -->
+                <div class="timeline-left">
+                    <span class="timeline-date">{{ $job.date }}</span>
+                    {{ if $element.companyUrl }}
+                     <a href="{{ $element.companyUrl }}" target="_blank" rel="noopener noreferrer" class="timeline-company">{{ $element.company }}</a>
+                    {{ else }}
+                    <span class="timeline-company">{{ $element.company }}</span>
+                    {{ end }}
+                </div>
+                <!-- Center: dot + line -->
+                <div class="timeline-center">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                </div>
+                <!-- Right: content card -->
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <h4 class="timeline-role">{{ $job.name }}</h4>
+                        <div class="timeline-body">
+                            {{ $job.content | markdownify }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

@@ -1,0 +1,35 @@
+{{ if .Site.Params.awards.enable | default false }}
+<section id="awards" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ .Site.Params.awards.title | default "Awards" }}</h3>
+        <div class="experience-timeline pt-4">
+            {{ range $index, $item := .Site.Params.awards.items }}
+            <div class="timeline-item {{ if eq $index 0 }}timeline-item--first{{ end }}">
+                <!-- Left: date + company badge -->
+                <div class="timeline-left">
+                    <span class="timeline-date">{{ $item.date }}</span>
+                    <span class="award-badge">
+                        {{ if $item.icon }}<i class="{{ $item.icon }}"></i>{{ end }}
+                        {{ $item.company }}
+                    </span>
+                </div>
+                <!-- Center: dot + line -->
+                <div class="timeline-center">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                </div>
+                <!-- Right: content card -->
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <h4 class="timeline-role">{{ $item.title }}</h4>
+                        <div class="timeline-body">
+                            {{ $item.content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

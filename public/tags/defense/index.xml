@@ -1,19 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Defense on Mahmoud - Penetration Tester</title>
-    <link>http://localhost:1313/tags/defense/</link>
-    <description>Recent content in Defense on Mahmoud - Penetration Tester</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jan 2024 10:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/defense/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Evade Network Scanners with Firewall</title>
-      <link>http://localhost:1313/blogs/evade-network-scanners-with-firewall/</link>
-      <pubDate>Sat, 20 Jan 2024 10:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blogs/evade-network-scanners-with-firewall/</guid>
-      <description>We all know the most common network scanner NMAP. The mechanism that all network scanners work with is testing kernel network transport layer protocol response [ICMP / TCP / UDP / SCTP] across the whole 65,000 ports.&#xA;Now, how do scanners know if a port is open / closed / filtered? If you don&amp;rsquo;t know, I will explain in the TCP layer. For example, if there is a socket listening in the kernel on machine 192.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Defense on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/tags/defense/</link><description>Recent content in Defense on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 10 Feb 2025 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/tags/defense/index.xml" rel="self" type="application/rss+xml"/><item><title>AppArmor as an RCE Killswitch: A Blue-Team Defense Validation</title><link>https://mahmoudouf.com/blogs/apparmor-rce-mitigation/</link><pubDate>Mon, 10 Feb 2025 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/apparmor-rce-mitigation/</guid><description>&lt;p&gt;This is an &lt;strong&gt;authorized&lt;/strong&gt; blue-team defense-validation exercise: prove a known
+PHP remote-code-execution (RCE) is exploitable, contain it at runtime with
+&lt;strong&gt;AppArmor&lt;/strong&gt;, re-test to confirm the exploit is neutralized, and finally fix the
+root cause in source code. Everything below uses documentation ranges
+(&lt;code&gt;10.0.0.0/8&lt;/code&gt;, &lt;code&gt;example.com&lt;/code&gt;) — sample artifacts only.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Technical note:&lt;/strong&gt; AppArmor is a &lt;em&gt;path- and capability-based&lt;/em&gt; LSM. It
+confines a process by denying &lt;strong&gt;execution of specific binaries&lt;/strong&gt;, file writes,
+and network access — it is &lt;strong&gt;not&lt;/strong&gt; a syscall filter (that is &lt;strong&gt;seccomp&lt;/strong&gt;&amp;rsquo;s
+job). What it &lt;em&gt;does&lt;/em&gt; is stop the web process from ever &lt;code&gt;execve()&lt;/code&gt;-ing
+&lt;code&gt;/bin/sh&lt;/code&gt;, which is exactly what an RCE payload needs. The result is the same
+from the attacker&amp;rsquo;s perspective: the RCE is dead.&lt;/p&gt;</description></item><item><title>Evade Network Scanners with Firewall</title><link>https://mahmoudouf.com/blogs/evade-network-scanners-with-firewall/</link><pubDate>Sat, 20 Jan 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/blogs/evade-network-scanners-with-firewall/</guid><description>&lt;p&gt;We all know the most common network scanner NMAP. The mechanism that all network scanners work with is testing kernel network transport layer protocol response [ICMP / TCP / UDP / SCTP] across the whole 65,000 ports.&lt;/p&gt;
+&lt;p&gt;Now, how do scanners know if a port is open / closed / filtered? If you don&amp;rsquo;t know, I will explain in the TCP layer. For example, if there is a socket listening in the kernel on machine 192.168.1.15, if 192.168.1.10 sends a SYN packet, the kernel will respond with ACK, and now NMAP knows the port is open. Detecting common application layers is easy—if SSH responds, it will be an SSH handshake, and if HTTP, for example, you will see a response with HTTP headers. You can see this yourself with Wireshark.&lt;/p&gt;</description></item></channel></rss>

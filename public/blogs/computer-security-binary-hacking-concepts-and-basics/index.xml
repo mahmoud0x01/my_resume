@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Computer Security &amp; Binary Hacking Concepts and Basics on Mahmoud - Penetration Tester</title>
-    <link>http://localhost:1313/blogs/computer-security-binary-hacking-concepts-and-basics/</link>
-    <description>Recent content in Computer Security &amp; Binary Hacking Concepts and Basics on Mahmoud - Penetration Tester</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/blogs/computer-security-binary-hacking-concepts-and-basics/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Computer Security &amp; Binary Hacking Concepts and Basics on Mahmoud Adel - Junior Penetration Tester | Security Analyst</title><link>https://mahmoudouf.com/blogs/computer-security-binary-hacking-concepts-and-basics/</link><description>Recent content in Computer Security &amp; Binary Hacking Concepts and Basics on Mahmoud Adel - Junior Penetration Tester | Security Analyst</description><generator>Hugo</generator><language>en-us</language><lastBuildDate/><atom:link href="https://mahmoudouf.com/blogs/computer-security-binary-hacking-concepts-and-basics/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
