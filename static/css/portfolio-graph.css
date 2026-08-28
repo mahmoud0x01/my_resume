@@ -508,13 +508,16 @@
     border: 1px solid rgba(128, 128, 128, 0.30);
     border-color: color-mix(in srgb, var(--node-color, #888) 40%, transparent);
     border-radius: 999px;
-    padding: 0.4rem 0.85rem 0.4rem 0.5rem;
+    padding: 0.45rem 0.95rem 0.45rem 0.55rem;
     gap: 0.4rem;
     box-shadow: 0 2px 12px rgba(15, 23, 42, 0.10);
-    font-size: 0.92rem;
+    font-size: 1.05rem;
 }
 
 .cnode--skill .cnode-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1.05rem;
     background-color: color-mix(in srgb, var(--node-color, #888) 18%, transparent);
 }
 
@@ -1382,9 +1385,14 @@ body.portfolio-list-mode #portfolio-list-view {
 
     /* ---- SKILL nodes ---- */
     .cnode--skill {
-        font-size: 0.78rem;
-        padding: 0.3rem 0.6rem 0.3rem 0.35rem;
-        gap: 0.35rem;
+        font-size: 0.88rem;
+        padding: 0.32rem 0.68rem;
+        gap: 0.4rem;
+    }
+    .cnode--skill .cnode-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
     }
     .cnode-icon {
         width: 26px;
@@ -1512,8 +1520,14 @@ body.portfolio-list-mode #portfolio-list-view {
     .cnode--me .cterm-out { font-size: 0.52rem; }
 
     .cnode--skill {
-        font-size: 0.7rem;
-        padding: 0.25rem 0.52rem 0.25rem 0.3rem;
+        font-size: 0.80rem;
+        padding: 0.28rem 0.58rem;
+        gap: 0.4rem;
+    }
+    .cnode--skill .cnode-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 0.72rem;
     }
     .cnode-icon {
         width: 22px;
