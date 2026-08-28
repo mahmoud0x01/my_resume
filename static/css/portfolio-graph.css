@@ -83,8 +83,8 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 2rem 1rem 1.5rem;
-    gap: 1.2rem;
+    padding: 2rem 1rem 2.5rem;
+    gap: 2.2rem;
     background: transparent;
     isolation: isolate;
 }
@@ -107,6 +107,7 @@
     max-width: 2600px;
     aspect-ratio: 2600 / 1400;
     margin: 0 auto;
+    margin-bottom: 0.8rem;
     z-index: 1;
     transition: transform 0.4s ease;
 }
@@ -975,7 +976,7 @@
     bottom: auto;
     left: auto;
     transform: none;
-    margin: 1.5rem auto 0;
+    margin: 2rem auto 0;
     z-index: 6;
     background: rgba(255, 255, 255, 0.5);
     background: color-mix(in srgb, var(--cg-chip-fill) 55%, transparent);
@@ -1235,7 +1236,8 @@ body.portfolio-list-mode #portfolio-list-view {
 @media (max-width: 991px) {
     .constellation-wrap {
         min-height: auto;
-        padding: 2rem 0 1.5rem;
+        padding: 2rem 0 2.5rem;
+        gap: 2.2rem;
         overflow: visible;
     }
 
@@ -1315,7 +1317,8 @@ body.portfolio-list-mode #portfolio-list-view {
     }
 
     .constellation-wrap {
-        padding: 0.5rem 0 0.5rem;
+        padding: 0.5rem 0 1.5rem;
+        gap: 1.5rem;
     }
 
     #portfolio-constellation {
