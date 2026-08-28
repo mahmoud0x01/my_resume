@@ -1588,27 +1588,20 @@ body.portfolio-list-mode #portfolio-list-view {
 }
 
 /* ---- Portfolio recruiter mode (spec) ---- */
-.portfolio-recruiter-summary { width:min(1180px, calc(100% - 2rem)); margin:1.2rem auto 1.5rem; padding:1.2rem; border:1px solid var(--cg-glass-border, var(--recruiter-border)); border-radius:1rem; background:color-mix(in srgb, var(--cg-glass-fill, #fff) 78%, transparent); box-shadow:var(--recruiter-shadow); }
-.portfolio-recruiter-summary[hidden] { display:none !important; }
+.portfolio-recruiter-summary { width:min(1180px, calc(100% - 2rem)); margin:1.2rem auto 1.5rem; padding:1.2rem; border:1px solid var(--cg-glass-border, var(--recruiter-border)); border-radius:1rem; background:color-mix(in srgb, var(--cg-glass-fill, #fff) 78%, transparent); box-shadow:var(--recruiter-shadow); display:block; }
 .recruiter-summary-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.2rem; }
 .recruiter-summary-block h3 { margin:0 0 0.4rem; color:var(--recruiter-muted); font-family:var(--cg-mono, monospace); font-size:0.66rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; }
 .recruiter-summary-block p, .recruiter-summary-block li { color:var(--recruiter-ink); font-size:0.84rem; line-height:1.55; }
 .recruiter-summary-block ul { margin:0; padding:0; list-style:none; display:grid; gap:0.25rem; }
 .recruiter-summary-links a { color:var(--recruiter-ink) !important; font-weight:600; text-decoration:none; }
 .recruiter-summary-links a:hover { color:var(--recruiter-accent) !important; }
-.graph-recruiter-controls { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:0.5rem; margin:0 auto 0.9rem; max-width:min(100% - 1.5rem, 620px); box-sizing:border-box; width:fit-content; }
-.graph-mode-btn { min-height:44px; padding:0.4rem 1rem; border:1px solid var(--cg-glass-border); border-radius:999px; background:transparent; color:var(--cg-glass-text); font-family:var(--cg-mono, monospace); font-size:0.7rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; cursor:pointer; transition:background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
-.graph-mode-btn:hover { border-color:var(--cg-me); color:var(--cg-me); }
-.graph-mode-btn:focus-visible { outline:3px solid var(--cg-me); outline-offset:3px; }
-.graph-mode-btn.is-active { background:var(--cg-me); color:#fff; border-color:var(--cg-me); }
-.recruiter-mode-active .constellation-wrap, .recruiter-mode-active #portfolio-list-view { display:none !important; }
 @media (max-width:991px){ .recruiter-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.9rem;}}
 @media (max-width:767px){
     .recruiter-summary-grid{grid-template-columns:1fr; gap:0.8rem; width:100%;}
     .portfolio-recruiter-summary{width:min(100% - 1.5rem, 620px); max-width:100%; box-sizing:border-box; margin-inline:auto;}
-    .graph-recruiter-controls, .graph-view-controls{flex-wrap:wrap; gap:0.5rem; width:min(100% - 1.5rem, 620px); max-width:100%; margin-inline:auto; box-sizing:border-box; justify-content:center;}
+    .graph-view-controls{flex-wrap:wrap; gap:0.5rem; width:min(100% - 1.5rem, 620px); max-width:100%; margin-inline:auto; box-sizing:border-box; justify-content:center;}
 }
 @media (max-width:480px){
     .portfolio-recruiter-summary{width:min(100% - 1.25rem, 620px);}
-    .graph-recruiter-controls, .graph-view-controls{width:min(100% - 1.25rem, 620px);}
+    .graph-view-controls{width:min(100% - 1.25rem, 620px);}
 }

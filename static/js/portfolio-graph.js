@@ -253,22 +253,6 @@
 
         function applyMode(listMode) {
             document.body.classList.toggle('portfolio-list-mode', listMode);
-            // Mutual exclusivity: entering list mode clears recruiter mode (also sync recruiter UI)
-            if (listMode) {
-                document.body.classList.remove('recruiter-mode-active');
-                var exploreBtnSync = document.getElementById('graph-mode-explore');
-                var recruiterBtnSync = document.getElementById('graph-mode-recruiter');
-                var summarySync = document.getElementById('portfolio-recruiter-summary');
-                if (exploreBtnSync) {
-                    exploreBtnSync.classList.add('is-active');
-                    exploreBtnSync.setAttribute('aria-pressed', 'true');
-                }
-                if (recruiterBtnSync) {
-                    recruiterBtnSync.classList.remove('is-active');
-                    recruiterBtnSync.setAttribute('aria-pressed', 'false');
-                }
-                if (summarySync) summarySync.hidden = true;
-            }
             toggleBtn.textContent = listMode ? 'Switch to Graph View' : 'Switch to List View';
             toggleBtn.setAttribute('aria-pressed', String(!!listMode));
             toggleBtn.setAttribute('aria-label', listMode ? 'Switch to graph view' : 'Switch to list view');
@@ -288,60 +272,6 @@
                 applyMode(true);
             }
         });
-    })();
-
-    // ---- Recruiter / Explore mode toggle (mutually exclusive with list view) ----
-    // No animation needed; respects prefers-reduced-motion by not animating.
-    (function recruiterMode() {
-        var exploreBtn = document.getElementById('graph-mode-explore');
-        var recruiterBtn = document.getElementById('graph-mode-recruiter');
-        var summary = document.getElementById('portfolio-recruiter-summary');
-        if (!exploreBtn || !recruiterBtn || !summary) return;
-        function applyRecruiter(activeRecruiter) {
-            document.body.classList.toggle('recruiter-mode-active', activeRecruiter);
-            exploreBtn.classList.toggle('is-active', !activeRecruiter);
-            recruiterBtn.classList.toggle('is-active', activeRecruiter);
-            exploreBtn.setAttribute('aria-pressed', String(!activeRecruiter));
-            recruiterBtn.setAttribute('aria-pressed', String(activeRecruiter));
-            exploreBtn.setAttribute('aria-controls','portfolio-constellation');
-            recruiterBtn.setAttribute('aria-controls','portfolio-recruiter-summary');
-            if (activeRecruiter) {
-                summary.hidden = false;
-                summary.removeAttribute('hidden');
-                // also ensure list mode is off when recruiter on (mutual excl)
-                document.body.classList.remove('portfolio-list-mode');
-                var listToggleBtn = document.getElementById('graph-list-toggle');
-                if (listToggleBtn) { listToggleBtn.setAttribute('aria-pressed','false'); listToggleBtn.textContent='Switch to List View'; listToggleBtn.setAttribute('aria-label','Switch to list view'); var listStatus=document.getElementById('portfolio-list-status'); if(listStatus) listStatus.textContent=''; }
-            } else {
-                summary.hidden = true;
-            }
-            // a11y: move focus to summary when entering recruiter
-            if (activeRecruiter && summary) {
-                summary.setAttribute('tabindex','-1');
-                // do not auto-focus disruptively, just make focusable
-            }
-        }
-        exploreBtn.addEventListener('click', function(){ applyRecruiter(false); });
-        recruiterBtn.addEventListener('click', function(){ applyRecruiter(true); });
-        // keyboard: allow Esc to return to explore
-        document.addEventListener('keydown', function(e){
-            if (e.key === 'Escape' && document.body.classList.contains('recruiter-mode-active')) {
-                applyRecruiter(false);
-                exploreBtn.focus();
-            }
-        });
-        // Ensure list toggle also clears recruiter mode
-        var listToggleBtn = document.getElementById('graph-list-toggle');
-        if (listToggleBtn) {
-            listToggleBtn.addEventListener('click', function(){
-                if (document.body.classList.contains('portfolio-list-mode')) {
-                    // entering list mode should clear recruiter
-                    if (document.body.classList.contains('recruiter-mode-active')) applyRecruiter(false);
-                }
-            });
-        }
-        // init: explore active
-        applyRecruiter(false);
     })();
 
     var container = document.getElementById('portfolio-constellation');

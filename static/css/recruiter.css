@@ -956,8 +956,7 @@ button:focus-visible {
     }.contact-links {
         justify-content: flex-start;
         width: 100%;
-    }.graph-view-controls,
-    .graph-recruiter-controls {
+    }.graph-view-controls {
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.6rem;
@@ -1059,8 +1058,7 @@ button:focus-visible {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-    }.graph-view-controls,
-    .graph-recruiter-controls {
+    }.graph-view-controls {
         flex-wrap: wrap;
         gap: 0.5rem;
         justify-content: center;

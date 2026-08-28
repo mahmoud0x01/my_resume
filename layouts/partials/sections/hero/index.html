@@ -90,12 +90,30 @@
         <span class="graph-view-controls-label">View</span>
         <button id="graph-list-toggle" class="graph-view-btn" type="button" aria-controls="portfolio-constellation portfolio-list-view" aria-pressed="false" aria-label="Toggle capability map view">Switch to List View</button>
     </div>
-    <div class="graph-recruiter-controls" role="group" aria-label="Recruiter mode">
-        <span class="graph-view-controls-label">Mode</span>
-        <button id="graph-mode-explore" class="graph-mode-btn is-active" type="button" aria-pressed="true" aria-controls="portfolio-constellation">Explore</button>
-        <button id="graph-mode-recruiter" class="graph-mode-btn" type="button" aria-pressed="false" aria-controls="portfolio-recruiter-summary">Recruiter</button>
+
+    <div class="constellation-wrap" role="region" aria-labelledby="capability-map-title" aria-describedby="capability-map-description">
+        <div id="portfolio-constellation"></div>
+        <!-- Legend dot colors are theme-aware --lg-* tokens defined in portfolio-graph.css -->
+        <div class="constellation-legend" role="list" aria-label="Capability map legend">
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-pentesting)" aria-hidden="true"></span> Pentesting</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-networking)" aria-hidden="true"></span> Networking</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-sysadmin)" aria-hidden="true"></span> Sysadmin</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-tools)" aria-hidden="true"></span> Tools</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-scripting)" aria-hidden="true"></span> Scripting</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-concepts)" aria-hidden="true"></span> Concepts</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-awards)" aria-hidden="true"></span> Awards</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-experience)" aria-hidden="true"></span> Experience</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-education)" aria-hidden="true"></span> Education</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-courses)" aria-hidden="true"></span> Courses</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-certificates)" aria-hidden="true"></span> Certificates</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-blogs)" aria-hidden="true"></span> Blogs</span>
+        </div>
     </div>
-    <div id="portfolio-recruiter-summary" class="portfolio-recruiter-summary" hidden aria-label="Recruiter summary">
+
+    <!-- LIST VIEW (Escape Hatch) — grouped, recruiter-friendly layout -->
+    <div id="portfolio-list-view" class="portfolio-list-view" aria-label="Capability map list view"></div>
+
+    <div id="portfolio-recruiter-summary" class="portfolio-recruiter-summary" aria-label="Recruiter summary">
         <div class="recruiter-summary-grid">
             <section class="recruiter-summary-block">
                 <h3>Role</h3>
@@ -126,28 +144,6 @@
             </section>
         </div>
     </div>
-
-    <div class="constellation-wrap" role="region" aria-labelledby="capability-map-title" aria-describedby="capability-map-description">
-        <div id="portfolio-constellation"></div>
-        <!-- Legend dot colors are theme-aware --lg-* tokens defined in portfolio-graph.css -->
-        <div class="constellation-legend" role="list" aria-label="Capability map legend">
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-pentesting)" aria-hidden="true"></span> Pentesting</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-networking)" aria-hidden="true"></span> Networking</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-sysadmin)" aria-hidden="true"></span> Sysadmin</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-tools)" aria-hidden="true"></span> Tools</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-scripting)" aria-hidden="true"></span> Scripting</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-concepts)" aria-hidden="true"></span> Concepts</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-awards)" aria-hidden="true"></span> Awards</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-experience)" aria-hidden="true"></span> Experience</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-education)" aria-hidden="true"></span> Education</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-courses)" aria-hidden="true"></span> Courses</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-certificates)" aria-hidden="true"></span> Certificates</span>
-            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-blogs)" aria-hidden="true"></span> Blogs</span>
-        </div>
-    </div>
-
-    <!-- LIST VIEW (Escape Hatch) — grouped, recruiter-friendly layout -->
-    <div id="portfolio-list-view" class="portfolio-list-view" aria-label="Capability map list view"></div>
 
     <noscript>
         <div class="hero-noscript">
