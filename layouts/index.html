@@ -1,5 +1,9 @@
 {{ define "head" }}
 <meta name="description" content="{{ .Site.Params.description }}">
+<meta property="og:image" content="{{ ( .Site.Params.hero.image | default "/images/me-avatar.png") | absURL }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ ( .Site.Params.hero.image | default "/images/me-avatar.png") | absURL }}">
+<link rel="canonical" href="{{ .Permalink | default .Site.BaseURL }}">
 {{ $staticPath := .Site.Params.staticPath | default "" }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,9 +35,13 @@
 
 {{ define "main" }}
 {{- partial "sections/hero/index.html" . -}}
-{{- partial "sections/about.html" . -}}
+{{- partial "sections/track-record.html" . -}}
+{{- partial "sections/disclosure.html" . -}}
 {{- partial "sections/experience.html" . -}}
+{{- partial "sections/bbo.html" . -}}
+{{- partial "sections/security-proof.html" . -}}
 {{- partial "sections/writing.html" . -}}
+{{- partial "sections/about.html" . -}}
 {{- partial "sections/education.html" . -}}
 {{- partial "sections/courses.html" . -}}
 {{- partial "sections/achievements.html" . -}}

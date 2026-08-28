@@ -3,15 +3,32 @@
 <section id="writing" class="recruiter-section recruiter-writing" aria-labelledby="writing-title">
     <div class="recruiter-container">
         <div class="recruiter-section-heading">
-            <p class="section-kicker">Notes & research</p>
-            <h2 id="writing-title">Selected writing</h2>
+            <p class="section-kicker">Research & notes</p>
+            <h2 id="writing-title">RESEARCH & NOTES</h2>
             <p class="section-dek">Short, practical write-ups on offensive security, defense, and infrastructure.</p>
         </div>
 {{ if gt (len $writingPages) 0 }}
 {{ $writingPages = $writingPages.ByDate.Reverse }}
 {{ $dateFormat := .Site.Params.datesFormat.articleList | default "Jan 2, 2006" }}
+{{ $featured := .Site.GetPage "/blogs/apparmor-rce-mitigation" }}
+{{ with $featured }}
+        <article class="writing-card writing-card--featured">
+            <span class="writing-featured-badge">Featured · Blue-team defense</span>
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p>{{ .Description }}</p>
+            <div class="writing-sequence" aria-label="Attack defense sequence">
+                <span>RCE PATH</span><span aria-hidden="true">↓</span><span>RUNTIME CONTAINMENT</span><span aria-hidden="true">↓</span><span>APPARMOR</span><span aria-hidden="true">↓</span><span>ROOT-CAUSE REMEDIATION</span>
+            </div>
+            <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
+        </article>
+{{ end }}
         <div class="writing-grid">
-            {{ range first 3 $writingPages }}
+            {{ $filteredPages := $writingPages }}
+            {{ if $featured }}
+                {{ $filteredPages = where $writingPages "RelPermalink" "!=" $featured.RelPermalink }}
+            {{ end }}
+            {{ range first 3 $filteredPages }}
             {{ $description := .Description | plainify }}
             {{ if not $description }}{{ $description = .Summary | plainify | truncate 160 }}{{ end }}
             <article class="writing-card">
@@ -35,7 +52,7 @@
         </div>
 {{ end }}
         <p class="writing-archive-link">
-            <a class="writing-read-link" href="{{ $writingArchiveURL }}">Browse all writing <span aria-hidden="true">→</span></a>
+            <a class="writing-read-link" href="{{ $writingArchiveURL }}">Browse all writing — {{ len $writingPages }} notes in archive <span>→</span></a>
         </p>
     </div>
 </section>

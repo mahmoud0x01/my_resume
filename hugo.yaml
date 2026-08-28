@@ -1,6 +1,6 @@
 baseURL: "https://mahmoudouf.com/"
 languageCode: "en-us"
-title: "Mahmoud Adel - Junior Penetration Tester | Security Analyst"
+title: "Mahmoud Adel — Junior Penetration Tester | Security Research & Engineering"
 theme: hugo-profile
 
 outputs:
@@ -61,8 +61,8 @@ Menus:
     #   weight: 2
 
 params:
-  title: "Mahmoud Adel - Junior Penetration Tester | Security Analyst"
-  description: Junior Penetration Tester and Security Analyst with hands-on web/API, network, Linux, Windows, and Active Directory assessment work, backed by a blue-team and infrastructure background. Evidence includes responsible disclosure recognition at DigitalOcean, Pinterest, Verisign, and Dell, a Top 5 / 100 ranking in Bastion's internal CTF, and a Software Engineering degree.
+  title: "Mahmoud Adel — Junior Penetration Tester | Security Research & Engineering"
+  description: "Junior Penetration Tester with authorized web/API, network, Linux, Windows and Active Directory assessment experience. 20+ Hall of Fame recognitions, Top 5 / 100 Bastion CTF, software engineering background and security research. Authorized security testing and responsible disclosure."
   location: "Alexandria, Egypt"
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"
@@ -139,7 +139,7 @@ params:
     intro: "OPEN TO WORK · JUNIOR SECURITY"
     title: "Mahmoud Adel"
     subtitle: "Junior Penetration Tester | Blue-Team Foundations"
-    content: "Junior penetration tester combining authorized web/API and network assessment with blue-team, infrastructure, and software-engineering foundations. I pair practical testing with clear technical reporting and disciplined automation."
+    content: "Authorized security testing backed by software-engineering experience, blue-team foundations, and clear technical reporting."
     image: "/images/me-avatar.png"
     bottomImage:
       enable: true
@@ -169,21 +169,23 @@ params:
     title: "About Me"
     image: "/images/me-avatar.png"
     content: |-
-      I am a junior penetration tester building toward security analyst and infrastructure-security roles. My hands-on assessment work covers authorized web/API and network testing; labs and coursework extend that foundation into Linux, Windows, Active Directory, and defensive validation.
+      I work across offensive testing and systems engineering. I assess how applications, networks, and operating systems behave — then validate what I find against how they are built and operated.
 
-      I test only within authorized scope and use responsible disclosure for security research. 20+ bug-bounty Hall of Fame recognitions—including DigitalOcean, Pinterest, Verisign, and Dell, plus many programs through Bugcrowd—a Top 5 / 100 result in Bastion's internal CTF, and two technical internships—including one in penetration testing—support this foundation.
+      Proof includes 20+ bug-bounty Hall of Fame recognitions — including DigitalOcean, Pinterest, Verisign, and Dell through Bugcrowd — a Top 5 / 100 result in Bastion's internal penetration-testing and privilege-escalation CTF, two technical internships including one in penetration testing, and published security research.
 
-      My Software Engineering degree adds structured development, documentation, and automation skills. I publish security notes and build tools and applications that make security findings easier to reproduce and explain.
+      My Software Engineering degree at Tomsk State University strengthens system reasoning, architecture, documentation, and automation — from UML and component diagrams to full development lifecycles and tooling that makes findings reproducible.
+
+      I test only within authorized scope and practice responsible disclosure.
     proofPoints:
       - value: "+20"
-        label: "Bug-bounty Hall of Fame recognitions"
+        label: "Hall of Fame recognitions"
+        detail: "Responsible disclosure"
       - value: "Top 5 / 100"
         label: "Bastion internal CTF"
+        detail: "Penetration testing challenges"
       - value: "2"
         label: "Technical internships"
-        detail: "Including one in penetration testing"
-      - value: "7+"
-        label: "Published security notes"
+        detail: "1× penetration testing"
     focusAreas:
       - title: "Offensive security"
         icon: "fa-solid fa-crosshairs"
@@ -264,6 +266,19 @@ params:
         - "Git"
         - "Presentation Skills"
         - "Problem Solving"
+    toolkitTiers:
+      - tier: "CORE"
+        description: "Central to current role"
+        items: ["Web/API Security","Vulnerability Assessment","OWASP","Privilege Escalation","Linux","Windows","Burp Suite","Nmap"]
+      - tier: "APPLIED"
+        description: "Applied in internships and labs"
+        items: ["Network Security","Active Directory","Kerberos","System Administration","Wireshark","BloodHound","Impacket","TCP/IP"]
+      - tier: "FAMILIAR"
+        description: "Exposure, not primary strength"
+        items: ["Metasploit","Cobalt Strike","Sliver","Ghidra","Nuclei","ffuf","SQLMap","MITRE ATT&CK"]
+      - tier: "ENGINEERING"
+        description: "Programming, systems, infrastructure"
+        items: ["Python","Bash","JavaScript","C/C++","SQL","Docker","Git","Assembly"]
     languages:
       enable: true
       title: "Language Proficiency:"
@@ -299,17 +314,36 @@ params:
               - Created detailed architectural diagrams to visualize system structure and component interactions
               - Prepared academic documentation meeting publication standards
 
+              *Engineering experience that strengthens system reasoning, documentation, and security tooling.*
+
       - company: "Bastion Cybersec Solutions"
         jobs:
           - name: "Penetration Tester, Intern"
             date: "May 2024 - Sep 2024"
             content: |
-              Conducted authorized assessments of web applications and network systems, identifying authentication bypass, injection, and privilege-escalation findings.
+              Conducted authorized assessments of web applications and network systems.
 
-              - Performed root-level validation on Linux and Windows in lab and authorized environments.
-              - Produced technical reports and delivered presentations on vulnerabilities and exploitation methods.
-              - Ranked Top 5 among 100 participants in Bastion's internal CTF, including penetration-testing and privilege-escalation challenges.
-              - Completed the penetration testing internship program with certification.
+              **ASSESSMENT**
+              - Web application
+              - Network
+
+              **FINDINGS**
+              - Authentication bypass
+              - Injection
+              - Privilege escalation
+
+              **VALIDATION**
+              - Linux
+              - Windows
+              - Root-level validation
+
+              **REPORTING**
+              - Technical findings
+              - Exploitation paths
+              - Technical presentations
+
+              **RECOGNITION**
+              - Top 5 / 100 — Bastion internal CTF (penetration-testing and privilege-escalation challenges)
 
   # Education
   education:
@@ -514,9 +548,9 @@ params:
   #Contact
   contact:
     enable: true
-    title: "Let's talk security"
-    content: I am open to junior penetration testing and security analyst opportunities. Email me if you are hiring for hands-on assessment, blue-team, or infrastructure security work.
-    btnName: "Email me"
+    title: "OPEN TO SECURITY ROLES"
+    content: "Open to junior penetration testing, security analyst, blue-team, and infrastructure-security roles."
+    btnName: "EMAIL ME"
     btnLink: mailto:contact@mahmoudouf.com
     # formspree:
     #   enable: true # `contact.email` value will be ignored
@@ -568,7 +602,7 @@ params:
     <script src="/js/portfolio-graph-data.js?v=7"></script>
     <script src="/js/graph-background.js?v=1"></script>
     <script src="/js/portfolio-panel.js?v=4"></script>
-    <script src="/js/portfolio-graph.js?v=9"></script>
+    <script src="/js/portfolio-graph.js?v=10"></script>
     <script src="/js/terminal.js?v=1"></script>
     <script src="/js/scroll-animations.js?v=1"></script>
     <script src="/js/single-animations.js?v=1"></script>

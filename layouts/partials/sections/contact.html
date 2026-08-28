@@ -1,6 +1,12 @@
 {{ $email := .Site.Params.contact.email | default "contact@mahmoudouf.com" }}
 {{ $githubURL := .Site.Params.footer.socialNetworks.github | default "https://github.com/mahmoud0x01" }}
 {{ $linkedinURL := .Site.Params.footer.socialNetworks.linkedin | default "https://www.linkedin.com/in/mahmoudadelOx01/" }}
+{{ $telegramURL := "https://t.me/rdmsr" }}
+{{ with .Site.Params.hero.socialLinks }}
+{{ range .fontAwesomeIcons }}
+{{ if eq .icon "fab fa-telegram" }}{{ $telegramURL = .url }}{{ end }}
+{{ end }}
+{{ end }}
 <section id="contact" class="recruiter-section recruiter-contact" aria-labelledby="contact-title">
     <div class="recruiter-container">
         <div class="contact-card">
@@ -23,6 +29,8 @@
                 <a class="contact-link" href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github" aria-hidden="true"></i> GitHub
                 </a>
+                <a class="contact-link" href="{{ $telegramURL }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
+                <a class="contact-link" href="/MahmoudAdel_Cybersecurity_Resume.pdf" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Résumé</a>
             </div>
         </div>
     </div>

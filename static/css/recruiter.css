@@ -983,3 +983,145 @@ html {
 #profileHeader .nav-resume-link:focus-visible {
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--recruiter-accent) 40%, transparent);
 }
+/* ===== Track Record / Disclosure / BBO / Proof — homepage additions ===== */
+.disclosure-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.2rem 0 0.75rem;
+}
+.disclosure-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid var(--recruiter-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--recruiter-surface) 72%, transparent);
+    color: var(--recruiter-muted) !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.disclosure-chip i,
+.disclosure-chip svg {
+    color: var(--recruiter-accent);
+    font-size: 0.92rem;
+}
+.disclosure-disclaimer {
+    margin: 0.75rem 0 0;
+    color: var(--recruiter-muted) !important;
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+.disclosure-verify-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.9rem;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid var(--recruiter-border);
+    color: var(--recruiter-ink) !important;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-decoration: none !important;
+}
+.disclosure-verify-link:hover {
+    color: var(--recruiter-accent) !important;
+    border-color: var(--recruiter-accent);
+}
+.disclosure-list {
+    margin: 1.25rem 0 0;
+    padding-left: 1.15rem;
+    color: var(--recruiter-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+.disclosure-list li { margin-bottom: 0.4rem; }
+.disclosure-list strong { color: var(--recruiter-ink); font-weight: 600; }
+
+.track-record-note {
+    margin-top: 1.6rem;
+    color: var(--recruiter-muted);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    text-align: center;
+    opacity: 0.9;
+}
+.timeline-link {
+    color: var(--recruiter-accent) !important;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+.timeline-link:hover { text-decoration: underline !important; }
+.recruiter-track-record .experience-timeline { margin-top: 0.5rem; }
+
+/* ---- Track-record timeline link (scoped) ---- */
+.recruiter-track-record .timeline-body a.timeline-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--recruiter-accent) !important;
+    text-decoration: none !important;
+}
+.recruiter-track-record .timeline-body a.timeline-link:hover {
+    text-decoration: underline !important;
+}
+.recruiter-track-record .experience-timeline {
+    margin-top: 0.5rem;
+}
+
+/* ---- Break-Build-Operate (spec) ---- */
+#break-build-operate.recruiter-bbo { background: var(--recruiter-surface) !important; }
+.bbo-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.bbo-card { min-width:0; padding:1.25rem; border:1px solid var(--recruiter-border); border-radius:var(--recruiter-radius); background:color-mix(in srgb, var(--recruiter-bg) 72%, transparent); box-shadow:0 6px 20px rgba(15,23,42,0.045); }
+.bbo-card h3 { margin:0.7rem 0 0.6rem; font-size:1.1rem; font-weight:700; color:var(--recruiter-ink) !important; letter-spacing:-0.02em; }
+.bbo-card > i, .bbo-card > svg { color:var(--recruiter-accent); font-size:1.1rem; }
+.bbo-card ul { margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:0.4rem; }
+.bbo-card li { padding:0.25rem 0.5rem; border:1px solid var(--recruiter-border); border-radius:0.4rem; color:var(--recruiter-muted); font-size:0.76rem; }
+
+/* ---- Selected Security Proof (spec) ---- */
+#security-proof.recruiter-proof { background: var(--recruiter-bg) !important; }
+.proof-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.proof-card { min-width:0; display:flex; flex-direction:column; padding:1.25rem; border:1px solid var(--recruiter-border); border-radius:var(--recruiter-radius); background:color-mix(in srgb, var(--recruiter-surface) 72%, transparent); box-shadow:0 6px 20px rgba(15,23,42,0.045); transition:border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+.proof-card:hover { border-color:color-mix(in srgb, var(--recruiter-accent) 42%, var(--recruiter-border)); box-shadow:var(--recruiter-shadow); transform:translateY(-2px); }
+.proof-kicker { margin:0 0 0.6rem; color:var(--recruiter-muted); font-family:var(--cg-mono, monospace); font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+.proof-card h3 { margin:0; font-size:1.15rem; font-weight:700; color:var(--recruiter-ink) !important; letter-spacing:-0.03em; }
+.proof-card p, .proof-card > p { margin:0.7rem 0 0; color:var(--recruiter-muted) !important; font-size:0.88rem; line-height:1.6; }
+.proof-card a { margin-top:1rem; display:inline-flex; gap:0.35rem; color:var(--recruiter-ink) !important; font-size:0.8rem; font-weight:700; text-decoration:none !important; }
+.proof-card a:hover { color:var(--recruiter-accent) !important; }
+
+/* ---- Writing featured + sequence ---- */
+.writing-card--featured { grid-column:1 / -1; border-color:color-mix(in srgb, var(--recruiter-positive) 28%, var(--recruiter-border)); background:color-mix(in srgb, var(--recruiter-positive) 6%, var(--recruiter-surface)); }
+.writing-featured-badge { display:inline-flex; margin-bottom:0.8rem; padding:0.25rem 0.6rem; border-radius:999px; background:color-mix(in srgb, var(--recruiter-positive) 14%, transparent); border:1px solid color-mix(in srgb, var(--recruiter-positive) 28%, var(--recruiter-border)); color:var(--recruiter-ink); font-family:var(--cg-mono, monospace); font-size:0.66rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+.writing-sequence { display:flex; flex-wrap:wrap; align-items:center; gap:0.45rem; margin:1rem 0 0; }
+.writing-sequence span { padding:0.28rem 0.55rem; border:1px solid var(--recruiter-border); border-radius:0.4rem; background:var(--recruiter-bg); color:var(--recruiter-muted); font-family:var(--cg-mono, monospace); font-size:0.68rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+.writing-sequence span[aria-hidden] { border:none; background:transparent; padding:0; font-size:0.9rem; }
+.writing-count-note, .writing-archive-link { margin:1.2rem 0 0; color:var(--recruiter-muted); font-size:0.82rem; }
+.writing-count-note a, .writing-archive-link a { color:var(--recruiter-ink) !important; font-weight:700; text-decoration:none !important; }
+.writing-count-note a:hover, .writing-archive-link a:hover { color:var(--recruiter-accent) !important; }
+
+/* ---- Toolkit tiers ---- */
+.about-toolkit { margin:1.5rem 0 1.2rem; }
+.toolkit-legend { margin:0.35rem 0 1rem; color:var(--recruiter-muted); font-size:0.78rem; }
+.toolkit-tier { margin-bottom:1.2rem; padding:1rem; border:1px solid var(--recruiter-border); border-radius:0.85rem; background:color-mix(in srgb, var(--recruiter-surface) 72%, transparent); }
+.toolkit-tier h4 { margin:0; color:var(--recruiter-ink) !important; font-size:0.86rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+.toolkit-tier-desc { margin:0.25rem 0 0.7rem; color:var(--recruiter-muted); font-size:0.76rem; }
+.toolkit-tier-list { display:flex; flex-wrap:wrap; gap:0.4rem; margin:0; padding:0; list-style:none; min-width:0; max-width:100%; }
+.toolkit-tier-list li { padding:0.32rem 0.6rem; border:1px solid var(--recruiter-border); border-radius:0.5rem; color:var(--recruiter-muted); font-size:0.78rem; font-weight:600; }
+.toolkit-tier:nth-child(2) { border-left:3px solid var(--recruiter-ink); }
+.toolkit-tier:nth-child(3) { border-left:3px solid var(--recruiter-accent); }
+.toolkit-tier:nth-child(4) { border-left:3px solid var(--recruiter-positive); }
+.toolkit-tier:nth-child(5) { border-left:3px solid var(--recruiter-blue); }
+.skills-list--legacy { opacity:0.72; }
+
+/* ---- Responsive (991 / 767) — no horizontal scroll ---- */
+.bbo-grid, .proof-grid { min-width:0; max-width:100%; box-sizing:border-box; }
+@media (max-width: 991px) {
+    .bbo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .proof-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 767px) {
+    .bbo-grid, .proof-grid { grid-template-columns:1fr; }
+}
+

@@ -24,25 +24,26 @@
 
             <div class="hero-proof-grid" aria-label="Selected proof points">
                 <article class="hero-proof-card">
-                    <strong>+20 HoF recognitions</strong>
-                    <span>Responsible disclosure</span>
+                    <strong>+20</strong>
+                    <span>Hall of Fame recognitions</span>
+                    <small>Responsible disclosure</small>
                 </article>
                 <article class="hero-proof-card">
-                    <strong>Top 5/100 CTF</strong>
-                    <span>Penetration testing challenges</span>
+                    <strong>Top 5/100</strong>
+                    <span>Bastion internal CTF</span>
+                    <small>Penetration testing challenges</small>
                 </article>
                 <article class="hero-proof-card">
-                    <strong>Red + blue perspective</strong>
-                    <span>Offense informed by operations</span>
+                    <strong>2</strong>
+                    <span>Technical internships</span>
+                    <small>1× penetration testing</small>
                 </article>
             </div>
 
             <div class="hero-actions">
-                <a class="hero-action hero-action-primary" href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>
-                    <i class="fas fa-file-arrow-down" aria-hidden="true"></i>
-                    Download résumé
-                </a>
-                <a class="hero-action hero-action-secondary" href="#experience">View experience</a>
+                <a class="hero-action hero-action-primary" href="#security-proof">View security work</a>
+                <a class="hero-action hero-action-secondary" href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>Download résumé</a>
+                <a class="hero-action hero-action-secondary" href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a class="hero-action hero-action-text" href="mailto:contact@mahmoudouf.com">Email me</a>
             </div>
 
@@ -78,8 +79,9 @@
 
     <div class="hero-graph-intro" aria-labelledby="capability-map-title">
         <div>
-            <p class="hero-section-kicker">Proof layer</p>
-            <h2 id="capability-map-title">Interactive capability map</h2>
+            <p class="hero-section-kicker">The path</p>
+            <h2 id="capability-map-title">THE PATH</h2>
+            <p class="hero-graph-subtitle">“From independent research to hands-on security testing.”</p>
         </div>
         <p id="capability-map-description">Click a node for evidence · switch to list view for a recruiter scan</p>
     </div>
@@ -87,6 +89,42 @@
     <div class="graph-view-controls" role="group" aria-label="Capability map view mode">
         <span class="graph-view-controls-label">View</span>
         <button id="graph-list-toggle" class="graph-view-btn" type="button" aria-controls="portfolio-constellation portfolio-list-view" aria-pressed="false" aria-label="Toggle capability map view">Switch to List View</button>
+    </div>
+    <div class="graph-recruiter-controls" role="group" aria-label="Recruiter mode">
+        <span class="graph-view-controls-label">Mode</span>
+        <button id="graph-mode-explore" class="graph-mode-btn is-active" type="button" aria-pressed="true" aria-controls="portfolio-constellation">Explore</button>
+        <button id="graph-mode-recruiter" class="graph-mode-btn" type="button" aria-pressed="false" aria-controls="portfolio-recruiter-summary">Recruiter</button>
+    </div>
+    <div id="portfolio-recruiter-summary" class="portfolio-recruiter-summary" hidden aria-label="Recruiter summary">
+        <div class="recruiter-summary-grid">
+            <section class="recruiter-summary-block">
+                <h3>Role</h3>
+                <p>Junior Penetration Tester</p>
+            </section>
+            <section class="recruiter-summary-block">
+                <h3>Proof</h3>
+                <ul>
+                    <li>20+ HoF — responsible disclosure</li>
+                    <li>Top 5 / 100 — Bastion CTF</li>
+                    <li>Penetration-testing internship — authorized assessments</li>
+                    <li>Security writing — 10 notes</li>
+                    <li>Software Engineering degree</li>
+                </ul>
+            </section>
+            <section class="recruiter-summary-block">
+                <h3>Core areas</h3>
+                <p>Web · Network · Linux · Windows · Python · Security reporting</p>
+            </section>
+            <section class="recruiter-summary-block">
+                <h3>Links</h3>
+                <ul class="recruiter-summary-links">
+                    <li><a href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>Résumé</a></li>
+                    <li><a href="https://github.com/mahmoud0x01" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="#security-proof">Security work</a></li>
+                    <li><a href="mailto:contact@mahmoudouf.com">Contact</a></li>
+                </ul>
+            </section>
+        </div>
     </div>
 
     <div class="constellation-wrap" role="region" aria-labelledby="capability-map-title" aria-describedby="capability-map-description">
@@ -117,7 +155,7 @@
             <span>{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester | Blue-Team Foundations" }}</span>
             <div class="hero-noscript-links">
                 <a href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>Download résumé</a>
-                <a href="#experience">View experience</a>
+                <a href="#security-proof">View security work</a>
                 <a href="mailto:contact@mahmoudouf.com">Email me</a>
                 <a href="{{ $linkedinURL }}" rel="noopener noreferrer">LinkedIn</a>
                 <a href="{{ $githubURL }}" rel="noopener noreferrer">GitHub</a>
