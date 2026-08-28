@@ -1,6 +1,6 @@
 ---
 title: "Linux Trial Reset via /etc/machine-id — unshare & mount --bind (Lab Research)"
-date: 2026-08-29T10:00:00+00:00
+date: 2026-08-28T10:00:00+00:00
 draft: false
 author: "Mahmoud Adel"
 tags: ["Linux","Trial Bypass","machine-id","unshare","mount","Namespaces","Reverse Engineering","Responsible Disclosure"]
