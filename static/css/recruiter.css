@@ -541,7 +541,7 @@ button:focus-visible {
 }#about .skills-list {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.55rem;
+    gap: 0.70rem;
     margin: 0;
     padding: 0 !important;
     list-style: none !important;
@@ -549,16 +549,16 @@ button:focus-visible {
 #about .skills-list .badge {
     display: flex !important;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.55rem;
     min-width: 0;
     margin: 0 !important;
-    padding: 0.5rem 0.65rem !important;
+    padding: 0.62rem 0.95rem !important;
     border: 1px solid var(--recruiter-border) !important;
-    border-radius: 0.62rem !important;
+    border-radius: 0.75rem !important;
     background: transparent !important;
     color: var(--recruiter-muted) !important;
-    font-size: 0.82rem !important;
-    font-weight: 500 !important;
+    font-size: 1.02rem !important;
+    font-weight: 600 !important;
     line-height: 1.3 !important;
     text-align: left;
     transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
@@ -568,9 +568,9 @@ button:focus-visible {
     color: var(--recruiter-ink) !important;
 }#about .skills-list .skill-item.badge.badge-secondary,
 #about .skills-list .skill-item.badge {
-    padding: 0.5rem 0.65rem !important;
+    padding: 0.62rem 0.95rem !important;
     border: 1px solid var(--recruiter-border) !important;
-    border-radius: 0.62rem !important;
+    border-radius: 0.75rem !important;
     background: transparent !important;
     background-color: transparent !important;
     color: var(--recruiter-muted) !important;
@@ -581,8 +581,8 @@ button:focus-visible {
     background-color: color-mix(in srgb, var(--recruiter-accent) 6%, transparent) !important;
     color: var(--recruiter-ink) !important;
 }.skill-marker {
-    width: 0.38rem;
-    height: 0.38rem;
+    width: 0.46rem;
+    height: 0.46rem;
     flex: 0 0 auto;
     border-radius: 50%;
     background: var(--recruiter-positive);
