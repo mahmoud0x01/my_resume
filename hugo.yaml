@@ -623,7 +623,7 @@ params:
     <script src="/js/portfolio-graph-data.js?v=7"></script>
     <script src="/js/graph-background.js?v=1"></script>
     <script src="/js/portfolio-panel.js?v=4"></script>
-    <script src="/js/portfolio-graph.js?v=10"></script>
+    <script src="/js/portfolio-graph.js?v=11"></script>
     <script src="/js/terminal.js?v=1"></script>
     <script src="/js/scroll-animations.js?v=1"></script>
     <script src="/js/single-animations.js?v=1"></script>

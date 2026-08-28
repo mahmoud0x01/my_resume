@@ -73,30 +73,61 @@ body.dark {
 }
 
 /* ----- NAVBAR ----- */
-#profileHeader {
-    position: relative;
-    z-index: 100;
-    background-color: var(--bg) !important;
+/* ----- PWA APP BAR — 56px sticky with safe-area, symmetrical grid ----- */
+#profileHeader{
+  position:sticky; top:0; z-index:1000;
+  height:56px; min-height:56px;
+  padding-top:env(safe-area-inset-top); padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);
+  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent);
+  backdrop-filter:blur(14px) saturate(120%); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border, var(--recruiter-border));
+  isolation:isolate;
 }
-
-#profileHeader.showHeaderOnTop {
-    position: sticky;
-    top: 0;
-    background-color: rgba(245, 244, 240, 0.92) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: none;
+#profileHeader.showHeaderOnTop{
+  position:sticky; top:0;
+  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent);
+  backdrop-filter:blur(14px) saturate(120%); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border, var(--recruiter-border));
+  box-shadow:none;
 }
-
-.dark #profileHeader.showHeaderOnTop {
-    background-color: rgba(17, 17, 17, 0.92) !important;
-    border-bottom: 1px solid var(--border);
+.dark #profileHeader,
+.dark #profileHeader.showHeaderOnTop{
+  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent);
+  border-bottom:1px solid var(--border, var(--recruiter-border));
 }
-
-#profileHeader nav.navbar {
-    padding: 1rem 0;
-    background-color: transparent !important;
+#profileHeader nav.navbar{ height:56px; min-height:56px; padding:0 !important; display:flex; align-items:center; background:transparent !important; }
+#profileHeader .container-fluid{
+  height:56px; width:min(1180px, calc(100% - 2rem)); margin-inline:auto;
+  display:grid; grid-template-columns:44px 1fr auto; gap:0.75rem; align-items:center; justify-items:stretch; max-width:100%; padding-left:0 !important; padding-right:0 !important;
+}
+@media(max-width:991px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px) } }
+@media(max-width:480px){ #profileHeader .container-fluid{ width:min(100% - 1.25rem, 620px) } }
+#profileHeader .navbar-toggler{ width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--border, var(--recruiter-border)); border-radius:10px; background:color-mix(in srgb, var(--card-bg, var(--recruiter-surface)) 72%, transparent); }
+#profileHeader .navbar-toggler:focus-visible{ outline:3px solid var(--recruiter-accent); outline-offset:3px; }
+.nav-center-links{ gap:0.25rem } .nav-social-links{ gap:0.15rem; flex-wrap:nowrap }
+.nav-social-icon, .nav-theme-btn, #theme-toggle{ width:44px; height:44px; display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px }
+#profileHeader .nav-resume-link{ min-height:36px; padding:0.35rem 0.85rem; font-size:0.78rem; display:inline-flex; align-items:center; }
+/* Mobile <992: hamburger expanded shows centered vertical list, symmetrical padding */
+@media(max-width:991px){
+  #profileHeader .navbar-collapse{
+    position:absolute; top:100%; left:0; right:0;
+    background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 98%, transparent);
+    backdrop-filter:blur(14px) saturate(120%); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border, var(--recruiter-border));
+    padding:0.9rem 1rem 1rem;
+    z-index:999;
+  }
+  #profileHeader .navbar-collapse .nav-center-links{
+    flex-direction:column; align-items:stretch; gap:0.35rem; width:100%; text-align:center;
+  }
+  #profileHeader .navbar-collapse .nav-center-links .nav-item{ width:100%; }
+  #profileHeader .navbar-collapse .nav-center-links .nav-page-link{
+    justify-content:center; width:100%; text-align:center; padding:0.55rem 0.75rem !important;
+  }
+}
+@media(min-width:992px){
+  #profileHeader .navbar-toggler{ display:none !important; }
+  #profileHeader .container-fluid{ grid-template-columns:1fr auto; }
 }
 
 /* Brand [maf] */
@@ -1053,16 +1084,17 @@ footer .footer-copyright { background-color: transparent !important; }
 #courses .card { box-shadow: var(--card-shadow) !important; }
 #achievements .card { box-shadow: var(--card-shadow) !important; }
 
-/* ----- Navbar: light mode bg fix on scroll ----- */
-.showHeaderOnTop {
-    background-color: rgba(245, 244, 240, 0.94) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    border-bottom: 1px solid var(--border) !important;
-    box-shadow: none !important;
+/* ----- Navbar: light mode bg fix on scroll — PWA bar keeps sticky, just ensure blur/border on showHeaderOnTop (no jump) ----- */
+#profileHeader.showHeaderOnTop,
+.showHeaderOnTop{
+    background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
+    backdrop-filter:blur(14px) saturate(120%) !important; -webkit-backdrop-filter:blur(14px) !important;
+    border-bottom:1px solid var(--border, var(--recruiter-border)) !important;
+    box-shadow:none !important;
 }
-.dark .showHeaderOnTop {
-    background-color: rgba(17, 17, 17, 0.94) !important;
+.dark #profileHeader.showHeaderOnTop,
+.dark .showHeaderOnTop{
+    background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
 }
 
 /* ============================================================

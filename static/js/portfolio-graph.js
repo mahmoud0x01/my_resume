@@ -246,32 +246,58 @@
         });
     })();
 
-    // ---- View toggle + mobile default ----
+    // ---- View toggle + mobile default (767 + coarse pointer, persisted) ----
     (function listToggle() {
         var toggleBtn = document.getElementById('graph-list-toggle');
         if (!toggleBtn) return;
 
-        function applyMode(listMode) {
+        var coarseMatcher = window.matchMedia ? window.matchMedia('(pointer: coarse)') : { matches: false, addEventListener: function(){}, addListener: function(){} };
+        var storedView = null;
+        try { storedView = sessionStorage.getItem('portfolioView'); } catch (e) {}
+        function shouldDefaultList() {
+            return window.innerWidth <= 767 || (coarseMatcher && coarseMatcher.matches);
+        }
+        function applyMode(listMode, save) {
             document.body.classList.toggle('portfolio-list-mode', listMode);
+            document.body.classList.toggle('graph-force-mobile', !listMode && shouldDefaultList());
             toggleBtn.textContent = listMode ? 'Switch to Graph View' : 'Switch to List View';
             toggleBtn.setAttribute('aria-pressed', String(!!listMode));
             toggleBtn.setAttribute('aria-label', listMode ? 'Switch to graph view' : 'Switch to list view');
             toggleBtn.setAttribute('aria-controls', 'portfolio-constellation portfolio-list-view');
             var listStatus = document.getElementById('portfolio-list-status');
             if (listStatus) listStatus.textContent = listMode ? 'List view active.' : '';
+            if (save) {
+                try { sessionStorage.setItem('portfolioView', listMode ? 'list' : 'graph'); storedView = listMode ? 'list' : 'graph'; } catch (e) {}
+            }
         }
 
         toggleBtn.addEventListener('click', function () {
-            applyMode(!document.body.classList.contains('portfolio-list-mode'));
+            var next = !document.body.classList.contains('portfolio-list-mode');
+            applyMode(next, true);
         });
 
-        // Mobile (<768px) defaults to list view (graphs are unusable on touch)
-        applyMode(window.innerWidth < 992 || document.body.classList.contains('portfolio-list-mode'));
+        var initialList = storedView === 'list' ? true : storedView === 'graph' ? false : shouldDefaultList();
+        applyMode(initialList, false);
+
         window.addEventListener('resize', function () {
-            if (window.innerWidth < 992 && !document.body.classList.contains('portfolio-list-mode')) {
-                applyMode(true);
+            if (shouldDefaultList() && !document.body.classList.contains('portfolio-list-mode') && storedView !== 'graph') {
+                applyMode(true, false);
             }
         });
+
+        if (coarseMatcher && typeof coarseMatcher.addEventListener === 'function') {
+            coarseMatcher.addEventListener('change', function (e) {
+                if (e.matches && !document.body.classList.contains('portfolio-list-mode') && storedView !== 'graph') {
+                    applyMode(true, false);
+                }
+            });
+        } else if (coarseMatcher && typeof coarseMatcher.addListener === 'function') {
+            coarseMatcher.addListener(function (e) {
+                if (e.matches && !document.body.classList.contains('portfolio-list-mode') && storedView !== 'graph') {
+                    applyMode(true, false);
+                }
+            });
+        }
     })();
 
     var container = document.getElementById('portfolio-constellation');

@@ -1606,3 +1606,10 @@ body.portfolio-list-mode #portfolio-list-view {
     .portfolio-recruiter-summary{width:min(100% - 1.25rem, 620px);}
     .graph-view-controls{width:min(100% - 1.25rem, 620px);}
 }
+
+/* ---- Conditional mobile hide: phones (coarse pointer + narrow) default to list; fine-pointer tablets keep graph (JS controls via body.portfolio-list-mode, this is noscript/failsafe) ---- */
+@media (pointer: coarse) and (max-width: 767px) {
+    body:not(.graph-force-mobile) .constellation-wrap { display: none !important; }
+    body:not(.graph-force-mobile) #portfolio-list-view { display: block !important; }
+    body:not(.graph-force-mobile) .graph-view-controls { display: none !important; }
+}
