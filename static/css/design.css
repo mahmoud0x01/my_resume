@@ -410,45 +410,8 @@ section h3 {
     font-weight: 400;
 }
 
-#about .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 0.75rem;
-}
-
-#about .skills-list .badge,
-#about .skills-list .badge.badge-secondary {
-    display: inline-flex !important;
-    align-items: center !important;
-    padding: 0.55rem 1.15rem !important;
-    font-size: 1.0rem !important;
-    font-weight: 600 !important;
-    font-family: var(--font) !important;
-    border-radius: 100px !important;
-    background-color: var(--border-light) !important;
-    color: var(--text) !important;
-    border: 1.5px solid var(--border) !important;
-    box-shadow: none !important;
-    transition: background var(--transition), border-color var(--transition), transform var(--transition) !important;
-}
-#about .skills-list .badge:hover {
-    background-color: var(--text) !important;
-    color: var(--bg) !important;
-    border-color: var(--text) !important;
-    transform: translateY(-1px) !important;
-}
-
-.dark #about .skills-list .badge,
-.dark #about .skills-list .badge.badge-secondary {
-    background-color: rgba(255,255,255,0.07) !important;
-    color: var(--text) !important;
-    border-color: rgba(255,255,255,0.15) !important;
-}
-.dark #about .skills-list .badge:hover {
-    background-color: rgba(255,255,255,0.15) !important;
-    border-color: rgba(255,255,255,0.3) !important;
-}
+/* #about .skills-list — removed: recruiter.css is single source of truth
+   (previous flex + 1.0rem badge rules conflicted with recruiter grid 1.02rem). */
 
 #about .language-list .fw-bold {
     font-size: 0.95rem;
