@@ -1259,6 +1259,15 @@ html {
 .proof-card p, .proof-card > p { margin:0.7rem 0 0; color:var(--recruiter-muted) !important; font-size:0.88rem; line-height:1.6; }
 .proof-card a { margin-top:1rem; display:inline-flex; gap:0.35rem; color:var(--recruiter-ink) !important; font-size:0.8rem; font-weight:700; text-decoration:none !important; }
 .proof-card a:hover { color:var(--recruiter-accent) !important; }
+/* 5-card symmetry: orphan last card centered at half-width on 2-col desktop; mobile 1col stays full-width */
+@media (min-width: 768px) {
+    .proof-grid .proof-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 0.5rem);
+        margin-inline: auto;
+        width: 100%;
+    }
+}
 
 /* ---- Writing featured + sequence ---- */
 .writing-card--featured { grid-column:1 / -1; border-color:color-mix(in srgb, var(--recruiter-positive) 28%, var(--recruiter-border)); background:color-mix(in srgb, var(--recruiter-positive) 6%, var(--recruiter-surface)); }

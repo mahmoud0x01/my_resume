@@ -82,7 +82,8 @@ Menus:
 
 params:
   title: "Mahmoud Adel — Junior Penetration Tester | Security Research & Engineering"
-  description: "Junior Penetration Tester with authorized web/API, network, Linux, Windows and Active Directory assessment experience. 20+ Hall of Fame recognitions, Top 5 / 100 Bastion CTF, software engineering background and security research. Authorized security testing and responsible disclosure."
+  description: "Junior Penetration Tester — authorized security testing, penetration testing, bug bounty, software engineering, security research, responsible disclosure, OAuth/CSRF"
+  keywords: "junior penetration tester, authorized security testing, responsible disclosure, security research, penetration testing, bug bounty, Hall of Fame, Bastion CTF, software engineering, AppArmor RCE, CSRF OAuth account takeover, Verisign, captcha bypass IDOR, blue-team, infrastructure, Linux Windows AD"
   location: "Alexandria, Egypt"
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"

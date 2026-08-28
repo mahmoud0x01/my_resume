@@ -4,6 +4,20 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{{ ( .Site.Params.hero.image | default "/images/me-avatar.png") | absURL }}">
 <link rel="canonical" href="{{ .Permalink | default .Site.BaseURL }}">
+<meta name="keywords" content="{{ .Site.Params.keywords | default "junior penetration tester, authorized security testing, responsible disclosure, security research, penetration testing, bug bounty" }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mahmoud Adel",
+  "jobTitle": "Junior Penetration Tester",
+  "url": "https://mahmoudouf.com/",
+  "image": "https://mahmoudouf.com/images/me-avatar.png",
+  "description": "{{ .Site.Params.description | plainify }}",
+  "knowsAbout": ["Penetration Testing","Web Security","Network Security","OAuth","CSRF","Account Takeover","Linux","Windows","Active Directory","Bug Bounty","Responsible Disclosure"],
+  "sameAs": ["https://github.com/mahmoud0x01","https://www.linkedin.com/in/mahmoudadelOx01/","https://bugcrowd.com/h/mahmoud_adel"]
+}
+</script>
 {{ $staticPath := .Site.Params.staticPath | default "" }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -2,6 +2,24 @@
 {{ $description := .Description | plainify }}
 {{ if not $description }}{{ $description = .Summary | plainify }}{{ end }}
 <meta name="description" content="{{ $description }}">
+{{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}"><meta name="twitter:image" content="{{ . | absURL }}">{{ end }}
+{{ with .Params.images }}{{ range first 1 . }}<meta property="og:image" content="{{ . | absURL }}"><meta name="twitter:image" content="{{ . | absURL }}">{{ end }}{{ end }}
+{{ if eq .Section "blogs" }}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BlogPosting",
+  "headline": "{{ .Title | plainify }}",
+  "description": "{{ .Description | default .Summary | plainify | truncate 160 }}",
+  "author": {"@type":"Person","name":"{{ .Params.author | default "Mahmoud Adel" }}"},
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "image": "{{ with .Params.image }}{{ . | absURL }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"{{ .Permalink }}"}
+}
+</script>
+{{ end }}
 {{ $staticPath := .Site.Params.staticPath | default "" }}
 <link rel="stylesheet" href="{{ $staticPath }}/css/single.css?v={{ now.Unix }}">
 <link rel="stylesheet" href="{{ $staticPath }}/css/design.css?v={{ now.Unix }}" media="all">
