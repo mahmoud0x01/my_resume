@@ -61,79 +61,14 @@
                 </svg>
             </button>
 
-            <!-- Center page links (collapsible on mobile) -->
+            <!-- Center page links (collapsible on mobile) — evidence-first IA (5 items, lean recruiter scan) -->
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mx-auto text-center nav-center-links">
-                    {{ if and (.Site.Params.about.enable | default false) (not (.Site.Params.navbar.menus.disableAbout | default false)) }}
-                    <li class="nav-item">
-                        <a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#about">
-                            {{ .Site.Params.about.title | default "About" }}
-                        </a>
-                    </li>
-                    {{ end }}
-
-                    {{ if and (.Site.Params.experience.enable | default false) (not (.Site.Params.navbar.menus.disableExperience | default false)) }}
-                    <li class="nav-item">
-                        <a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#experience">
-                            {{ .Site.Params.experience.title | default "Experience" }}
-                        </a>
-                    </li>
-                    {{ end }}
-
-                    {{ if and (.Site.Params.education.enable | default false) (not (.Site.Params.navbar.menus.disableEducation | default false)) }}
-                    <li class="nav-item">
-                        <a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#education">
-                            {{ .Site.Params.education.title | default "Education" }}
-                        </a>
-                    </li>
-                    {{ end }}
-
-                    {{ if and (.Site.Params.projects.enable | default false) (not (.Site.Params.navbar.menus.disableProjects | default false)) }}
-                    <li class="nav-item">
-                        <a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#projects">
-                            {{ .Site.Params.projects.title | default "Projects" }}
-                        </a>
-                    </li>
-                    {{ end }}
-
-                    {{ if .Site.Params.awards.enable | default false }}
-                    <li class="nav-item">
-                        <a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#awards">
-                            {{ .Site.Params.awards.title | default "Awards" }}
-                        </a>
-                    </li>
-                    {{ end }}
-
-                    {{ if and (.Site.Params.contact.enable | default false) (not (.Site.Params.navbar.menus.disableContact | default false)) }}
-                    <li class="nav-item">
-                        <a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#contact">
-                            {{ .Site.Params.contact.title | default "Contact" }}
-                        </a>
-                    </li>
-                    {{ end }}
-
-                    {{ $homeURL := .Site.Home.RelPermalink }}
-                    {{ range .Site.Menus.main }}
-                    {{ $menuURL := .URL }}
-                    {{ if eq .Identifier "blog" }}{{ $menuURL = printf "%s#writing" $homeURL }}{{ end }}
-                    {{ if .HasChildren }}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-page-link dropdown-toggle" href="{{ $menuURL }}" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ .Name }}
-                        </a>
-                        <div class="dropdown-menu shadow-lg rounded" aria-labelledby="navbarDropdown">
-                            {{ range .Children }}
-                            <a class="dropdown-item text-center nav-link" href="{{ .URL }}">{{ .Name }}</a>
-                            {{ end }}
-                        </div>
-                    </li>
-                    {{else}}
-                    <li class="nav-item">
-                        <a class="nav-link nav-page-link" href="{{ $menuURL }}">{{ .Pre }}{{ .Name }}</a>
-                    </li>
-                    {{end}}
-                    {{end}}
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#security-proof">Security Work</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#track-record">Track Record</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#writing">Research</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#contact">Contact</a></li>
                 </ul>
             </div>
 

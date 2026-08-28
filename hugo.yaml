@@ -37,11 +37,31 @@ markup:
 
 Menus:
   main:
-    - identifier: blog
-      name: Blog
-      title: Blog posts
-      url: "#writing"
+    - identifier: security-proof
+      name: Security Work
+      title: Selected security proof
+      url: "#security-proof"
       weight: 1
+    - identifier: track-record
+      name: Track Record
+      title: Security track record
+      url: "#track-record"
+      weight: 2
+    - identifier: research
+      name: Research
+      title: Research and notes
+      url: "#writing"
+      weight: 3
+    - identifier: about
+      name: About
+      title: About
+      url: "#about"
+      weight: 4
+    - identifier: contact
+      name: Contact
+      title: Contact
+      url: "#contact"
+      weight: 5
     #Dropdown menu
     # - identifier: dropdown
     #   title: Example dropdown menu
