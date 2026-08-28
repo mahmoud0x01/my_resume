@@ -80,7 +80,7 @@ All testing was performed using only accounts owned and controlled for the purpo
 
 1. While the victim is authenticated to DomainScope (active session via `JSESSIONID` / session cookies), have the victim visit the PoC URL. In real attack scenarios this is via phishing link or embedded resource.
 2. The victim's browser sends the authenticated request to `/connect/google` with the attacker's code. DomainScope links the attacker's Google identity to the victim's profile.
-3. Attacker then visits DomainScope and selects **Sign in with Google**, authenticating with the attacker-controlled Google account. The attacker is now authenticated as the victim — full account takeover with no password required.
+3. Attacker then visits DomainScope and selects **Sign in with Google**, authenticating with the attacker-controlled Google account. The attacker is now authenticated as the victim — full account takeover with no password required. From there, the attacker can set a new password via **My Profile** without needing the current password (business logic for LinkedIn-first accounts), achieving persistent takeover.
 
 The vulnerability was validated using two accounts owned by the researcher. No other accounts were tested or accessed.
 
@@ -122,6 +122,8 @@ Validated impact was full account takeover at the application layer:
 - **Scope:** Any DomainScope account with an active session that visited the crafted link could be linked to the attacker's Google identity. The linking action is state-changing and was not protected by a CSRF token.
 - **Persistence:** Once linked, the attacker retains access via Google sign-in until the link is manually removed by the victim or by support. The victim may not notice the additional linked identity in profile settings.
 
+> **Why password change was not required — business logic:** DomainScope's primary login at the time was LinkedIn OAuth. After linking, the account's password-change function in **My Profile** did not require the current password — a deliberate business logic decision for OAuth-first accounts that had no password set. Once an attacker was authenticated via the hijacked Google link (as the victim), they could go to **My Profile → Change Password**, set a new password without supplying the current one, and thereafter retain access via both Google OAuth *and* the newly set password — even if the victim later unlinked the Google account.
+
 The finding was reported as a validated CSRF-to-account-takeover in the OAuth account linking flow. No critical or zero-day terminology was used in the original report; the issue was triaged as a rewarded vulnerability.
 
 ## Reward & Timeline — $1,000 via Bugcrowd, Hall of Fame April 2018
@@ -133,9 +135,10 @@ The finding was reported as a validated CSRF-to-account-takeover in the OAuth ac
 - **Recognition:** Acknowledged in Verisign Hall of Fame, April 2018.
 - **Profile:** Reported findings and recognitions are listed on the Bugcrowd researcher profile: [https://bugcrowd.com/h/mahmoud_adel](https://bugcrowd.com/h/mahmoud_adel).
 
-![Bugcrowd reward and triage — Verisign CSRF $1,000](/images/verisign-csrf-reward.png)
-
-*Bugcrowd triage and reward confirmation for the Verisign DomainScope CSRF-to-account-takeover ($1,000). Screenshot stored at `/images/verisign-csrf-reward.png`.*
+<figure class="verisign-reward-figure" style="margin:1.5rem 0;">
+  <img src="/images/verisign-csrf-reward.png" alt="Bugcrowd reward and triage — Verisign CSRF $1,000 — DomainScope" loading="lazy" decoding="async" style="width:100%; max-width:100%; border:1px solid var(--recruiter-border, #e5e7eb); border-radius:0.85rem; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
+  <figcaption style="margin-top:0.6rem; color:var(--recruiter-muted); font-size:0.78rem; text-align:center;">Bugcrowd triage and reward confirmation — Verisign DomainScope CSRF → account takeover ($1,000) — HoF April 2018</figcaption>
+</figure>
 
 No fix date is asserted here beyond what was publicly acknowledged. The report was triaged and rewarded; patch verification, if any, would have been handled through the program.
 

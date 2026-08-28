@@ -884,6 +884,33 @@
     overflow-x: auto;
 }
 
+/* Verisign reward figure — full-width glass card inside 72ch prose */
+#single.blog-page .blog-prose .verisign-reward-figure {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0 !important;
+    box-sizing: border-box;
+}
+#single.blog-page .blog-prose .verisign-reward-figure img {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    margin: 0 !important;
+    border: 1px solid var(--blog-border) !important;
+    border-radius: 0.85rem !important;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    background: var(--blog-surface-strong);
+}
+#single.blog-page .blog-prose .verisign-reward-figure figcaption {
+    margin-top: 0.6rem;
+    color: var(--blog-muted) !important;
+    font-family: var(--blog-font) !important;
+    font-size: 0.78rem !important;
+    line-height: 1.5;
+    text-align: center;
+}
 
 /* Neutralize legacy themes/hugo-profile single.css #single .page-content pre {margin:5px} gutter */
 #single.blog-page .page-content pre {
