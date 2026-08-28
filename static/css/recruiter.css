@@ -820,59 +820,174 @@ button:focus-visible {
         min-height: auto !important;
     }.about-layout {
         gap: 2rem;
+    }.writing-grid,
+    .credentials-grid,
+    .projects-grid,
+    .focus-area-grid,
+    .about-proof-grid {
+        gap: 0.9rem;
+        align-items: stretch;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }#about .skills-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.9rem !important;
+    }.language-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem;
+    }.recruiter-container,
+    .hero-recruiter-shell,
+    .portfolio-recruiter-summary {
+        box-sizing: border-box;
+        min-width: 0;
+        max-width: 100%;
     }}
 @media (max-width: 767px) {
 .hero-recruiter-shell {
         grid-template-columns: 1fr;
         width: min(100% - 1.5rem, 620px);
+        margin-inline: auto;
         padding: 3.5rem 0 3rem;
+        justify-items: center;
+    }.hero-recruiter-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }#hero .hero-recruiter-content h1 {
         font-size: clamp(3rem, 15vw, 5rem) !important;
     }.hero-proof-grid {
-        gap: 0.55rem;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }.hero-proof-card {
-        padding: 0.75rem;
+        padding: 0.85rem 0.9rem;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
     }.hero-proof-card strong {
-        font-size: 0.82rem !important;
+        font-size: 0.88rem !important;
     }.hero-proof-card span {
-        font-size: 0.7rem !important;
+        font-size: 0.74rem !important;
     }.hero-identity-card {
         width: min(100%, 370px);
-        justify-self: start;
+        max-width: 100%;
+        margin-inline: auto;
+        justify-self: center;
+        box-sizing: border-box;
     }.hero-graph-intro {
-        align-items: start;
+        align-items: center;
         flex-direction: column;
         gap: 0.65rem;
         width: min(100% - 1.5rem, 620px);
-    }.hero-graph-intro > p {
+        margin-inline: auto;
+        text-align: center;
+    }.hero-graph-intro > div,
+    .hero-graph-intro > p {
         max-width: none;
-        text-align: left;
+        width: 100%;
+        text-align: center;
     }#hero .constellation-wrap {
         padding-top: 0.5rem !important;
     }.recruiter-section {
-        padding: 3.75rem 0 !important;
+        padding: 3rem 0 !important;
+    }.recruiter-section-heading {
+        text-align: center;
+        margin-inline: auto;
+        max-width: 620px;
+        width: 100%;
+        box-sizing: border-box;
+    }.recruiter-section-heading .section-dek {
+        margin-inline: auto;
+        text-align: center;
     }.recruiter-container {
         width: min(100% - 1.5rem, 620px);
+        box-sizing: border-box;
     }.about-layout {
         grid-template-columns: 1fr;
+        justify-items: center;
     }.about-portrait-card {
         position: static;
         width: min(100%, 300px);
+        max-width: 100%;
+        margin-inline: auto;
+        box-sizing: border-box;
+    }.about-copy {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }.about-proof-grid,
     .focus-area-grid,
     .projects-grid,
     .writing-grid,
-    .credentials-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .credentials-grid,
+    .bbo-grid,
+    .proof-grid,
+    .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        align-items: stretch;
     }.language-list {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }#about .skills-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }.contact-card {
         grid-template-columns: 1fr;
         align-items: start;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }.contact-links {
         justify-content: flex-start;
+        width: 100%;
+    }.graph-view-controls,
+    .graph-recruiter-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.6rem;
+        width: min(100% - 1.5rem, 620px);
+        max-width: 100%;
+        margin-inline: auto;
+        box-sizing: border-box;
+    }.portfolio-recruiter-summary {
+        width: min(100% - 1.5rem, 620px);
+        max-width: 100%;
+        margin-inline: auto;
+        box-sizing: border-box;
+    }.experience-timeline,
+    #track-record .experience-timeline,
+    #experience .experience-timeline {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }.timeline-item {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }.timeline-card,
+    .timeline-right {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: anywhere;
     }}
 @media (max-width: 480px) {
 .hero-recruiter-shell {
@@ -889,18 +1004,48 @@ button:focus-visible {
     .projects-grid,
     .writing-grid,
     .credentials-grid,
+    .bbo-grid,
+    .proof-grid,
+    .awards-grid,
     .language-list,
     #about .skills-list {
         grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }.hero-recruiter-shell,
+    .hero-graph-intro,
+    .recruiter-container,
+    .portfolio-recruiter-summary {
+        width: min(100% - 1.25rem, 620px) !important;
+        box-sizing: border-box;
+    }.hero-identity-card {
+        width: min(100%, 370px) !important;
+        margin-inline: auto !important;
+        justify-self: center !important;
+        max-width: 100%;
+        box-sizing: border-box;
     }.hero-actions {
         align-items: stretch;
         flex-direction: column;
+        width: 100%;
     }.hero-action {
         width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }.hero-micro-links {
         gap: 0.6rem 0.85rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }.identity-card-meta {
         flex-wrap: wrap;
+    }.recruiter-section {
+        padding: 2.5rem 0 !important;
+    }.recruiter-section-heading,
+    .recruiter-section-heading .section-dek {
+        text-align: center !important;
+        margin-inline: auto !important;
     }.recruiter-section-heading h2,
     .contact-card h2 {
         font-size: 2rem !important;
@@ -909,8 +1054,31 @@ button:focus-visible {
     }.contact-links {
         align-items: stretch;
         flex-direction: column;
+        width: 100%;
     }.contact-link {
         width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }.graph-view-controls,
+    .graph-recruiter-controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        width: min(100% - 1.25rem, 620px);
+        box-sizing: border-box;
+    }.toolkit-tier,
+    .award-card,
+    .bbo-card,
+    .proof-card,
+    .writing-card,
+    .credential-card,
+    .focus-area-card,
+    .about-proof-card,
+    .hero-proof-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
     }}
 @media (prefers-reduced-motion: reduce) {
 html {
@@ -940,9 +1108,12 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 0.6rem;
     margin: 0.25rem auto 1.1rem;
     width: fit-content;
+    max-width: min(100% - 1.5rem, 620px);
+    box-sizing: border-box;
 }.graph-view-controls-label {
     font-family: var(--cg-mono, 'Courier New', monospace) !important;
     font-size: 0.7rem;
@@ -1115,13 +1286,49 @@ html {
 .toolkit-tier:nth-child(5) { border-left:3px solid var(--recruiter-blue); }
 .skills-list--legacy { opacity:0.72; }
 
-/* ---- Responsive (991 / 767) — no horizontal scroll ---- */
-.bbo-grid, .proof-grid { min-width:0; max-width:100%; box-sizing:border-box; }
+/* ---- Awards compact wall (deduped from track-record timeline) ---- */
+.recruiter-awards { background: var(--recruiter-surface) !important; }
+.awards-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.award-card { min-width:0; padding:1.15rem; border:1px solid var(--recruiter-border); border-radius:var(--recruiter-radius); background:color-mix(in srgb, var(--recruiter-bg) 72%, transparent); box-shadow:0 6px 20px rgba(15,23,42,0.045); transition:border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+.award-card:hover { border-color:color-mix(in srgb, var(--recruiter-accent) 28%, var(--recruiter-border)); box-shadow:var(--recruiter-shadow); transform:translateY(-1px); }
+.award-card--featured { border-color:color-mix(in srgb, var(--recruiter-accent) 42%, var(--recruiter-border)); box-shadow:var(--recruiter-shadow); transform:translateY(-1px); }
+.award-card-badge { display:inline-flex; align-items:center; gap:0.4rem; padding:0.25rem 0.6rem; border:1px solid var(--recruiter-border); border-radius:999px; font-size:0.72rem; font-weight:700; color:var(--recruiter-muted); background:transparent; }
+.award-card-date { display:block; margin:0.6rem 0 0.4rem; color:var(--recruiter-muted); font-family:var(--cg-mono, 'Courier New', monospace); font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+.award-card h3 { margin:0; font-size:1rem; font-weight:700; color:var(--recruiter-ink) !important; letter-spacing:-0.02em; line-height:1.3; }
+.award-card p { margin:0.5rem 0 0; color:var(--recruiter-muted) !important; font-size:0.84rem; line-height:1.6; }
+.awards-note { margin:1.2rem 0 0; text-align:center; color:var(--recruiter-muted); font-size:0.78rem; }
+.awards-note a { color:var(--recruiter-accent) !important; font-weight:600; text-decoration:none; }
+.awards-note a:hover { text-decoration:underline !important; }
+
+/* ---- Responsive (991 / 767) — PWA symmetry: no horizontal scroll, equal heights ---- */
+.bbo-grid, .proof-grid, .awards-grid,
+.writing-grid, .credentials-grid, .projects-grid,
+.focus-area-grid, .about-proof-grid, .hero-proof-grid,
+.language-list {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-items: stretch;
+}
+.bbo-card, .proof-card, .award-card,
+.writing-card, .credential-card, .focus-area-card,
+.about-proof-card, .hero-proof-card, .toolkit-tier {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
 @media (max-width: 991px) {
-    .bbo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .proof-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .bbo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .awards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 767px) {
-    .bbo-grid, .proof-grid { grid-template-columns:1fr; }
+    .bbo-grid, .proof-grid, .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        width: 100%;
+        align-items: stretch;
+    }
 }
 

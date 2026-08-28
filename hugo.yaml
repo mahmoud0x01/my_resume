@@ -269,16 +269,16 @@ params:
     toolkitTiers:
       - tier: "CORE"
         description: "Central to current role"
-        items: ["Web/API Security","Vulnerability Assessment","OWASP","Privilege Escalation","Linux","Windows","Burp Suite","Nmap"]
+        items: ["Web/API Security","Vulnerability Assessment","OWASP","Privilege Escalation","Linux","Windows","Burp Suite","Nmap","Exploit Development","Red Team"]
       - tier: "APPLIED"
         description: "Applied in internships and labs"
-        items: ["Network Security","Active Directory","Kerberos","System Administration","Wireshark","BloodHound","Impacket","TCP/IP"]
+        items: ["Network Security","Active Directory","Kerberos","System Administration","Wireshark","BloodHound","Impacket","TCP/IP","Firewall"]
       - tier: "FAMILIAR"
         description: "Exposure, not primary strength"
-        items: ["Metasploit","Cobalt Strike","Sliver","Ghidra","Nuclei","ffuf","SQLMap","MITRE ATT&CK"]
+        items: ["Metasploit","Cobalt Strike","Sliver","Ghidra","Nuclei","ffuf","SQLMap","MITRE ATT&CK","Malware Analysis","Threat Intelligence"]
       - tier: "ENGINEERING"
-        description: "Programming, systems, infrastructure"
-        items: ["Python","Bash","JavaScript","C/C++","SQL","Docker","Git","Assembly"]
+        description: "Programming, systems, infrastructure and professional effectiveness"
+        items: ["Python","Bash","JavaScript","C/C++","SQL","Docker","Git","Assembly","Presentation Skills","Problem Solving"]
     languages:
       enable: true
       title: "Language Proficiency:"

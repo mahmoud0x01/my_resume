@@ -113,22 +113,8 @@
                 </div>
                 {{ end }}
 
-                {{ if .Site.Params.about.skills.enable }}
-                <div class="about-skills">
-                    <div class="subsection-heading">
-                        <p class="section-kicker">Toolkit</p>
-                        <h3>{{ .Site.Params.about.skills.title | default "Technologies & Skills" }}</h3>
-                        {{ if .Site.Params.about.toolkitTiers }}<p class="skills-legacy-note">Flat skill wall (fallback) — tiers above are primary.</p>{{ end }}
-                    </div>
-                    <ul class="skills-list{{ if .Site.Params.about.toolkitTiers }} skills-list--legacy{{ end }}" aria-label="Technologies and skills">
-                        {{ range .Site.Params.about.skills.items }}
-                        <li class="badge skill-item"><span class="skill-marker" aria-hidden="true"></span>{{ . | plainify }}</li>
-                        {{ end }}
-                    </ul>
-                    {{ $writingPages := where .Site.RegularPages "Section" "blogs" }}
-                    <p class="writing-count-note">{{ len $writingPages }} notes in archive — <a href="/blogs/">Browse all →</a></p>
-                </div>
-                {{ end }}
+                {{ $writingPages := where .Site.RegularPages "Section" "blogs" }}
+                <p class="writing-count-note">{{ len $writingPages }} notes in archive — <a href="/blogs/">Browse all →</a></p>
             </div>
         </div>
     </div>

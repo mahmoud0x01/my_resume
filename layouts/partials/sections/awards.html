@@ -1,35 +1,22 @@
 {{ if .Site.Params.awards.enable | default false }}
-<section id="awards" class="py-5">
-    <div class="container">
-        <h3 class="text-center">{{ .Site.Params.awards.title | default "Awards" }}</h3>
-        <div class="experience-timeline pt-4">
-            {{ range $index, $item := .Site.Params.awards.items }}
-            <div class="timeline-item {{ if eq $index 0 }}timeline-item--first{{ end }}">
-                <!-- Left: date + company badge -->
-                <div class="timeline-left">
-                    <span class="timeline-date">{{ $item.date }}</span>
-                    <span class="award-badge">
-                        {{ if $item.icon }}<i class="{{ $item.icon }}"></i>{{ end }}
-                        {{ $item.company }}
-                    </span>
-                </div>
-                <!-- Center: dot + line -->
-                <div class="timeline-center">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-line"></div>
-                </div>
-                <!-- Right: content card -->
-                <div class="timeline-right">
-                    <div class="timeline-card">
-                        <h4 class="timeline-role">{{ $item.title }}</h4>
-                        <div class="timeline-body">
-                            {{ $item.content }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{ end }}
-        </div>
+<section id="awards" class="recruiter-section recruiter-awards" aria-labelledby="awards-title">
+  <div class="recruiter-container">
+    <div class="recruiter-section-heading">
+      <p class="section-kicker">Hall of Fame</p>
+      <h2 id="awards-title">{{ .Site.Params.awards.title | default "Security Recognition" }}</h2>
+      <p class="section-dek">Hall of Fame mentions and CTF distinction — the same findings shown chronologically in Security Track Record, gathered here as a compact wall.</p>
     </div>
+    <div class="awards-grid">
+      {{ range $index, $item := .Site.Params.awards.items }}
+      <article class="award-card {{ if eq $item.company "Bastion" }}award-card--featured{{ end }}">
+        <span class="award-card-badge">{{ if $item.icon }}<i class="{{ $item.icon }}" aria-hidden="true"></i>{{ end }} {{ $item.company }}</span>
+        <span class="award-card-date">{{ $item.date }}</span>
+        <h3>{{ $item.title }}</h3>
+        <p>{{ $item.content }}</p>
+      </article>
+      {{ end }}
+    </div>
+    <p class="awards-note"><a href="#track-record">View chronological track record ↑</a> · <a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">Bugcrowd profile ↗</a></p>
+  </div>
 </section>
 {{ end }}
