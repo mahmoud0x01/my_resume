@@ -105,14 +105,25 @@ body.dark {
 }
 #profileHeader .navbar-toggler{ width:44px; height:44px; min-width:44px; min-height:44px; display:grid; place-items:center; border:1px solid var(--border, var(--recruiter-border)); border-radius:10px; background:color-mix(in srgb, var(--card-bg, var(--recruiter-surface)) 72%, transparent); }
 #profileHeader .navbar-toggler:focus-visible{ outline:3px solid var(--recruiter-accent); outline-offset:3px; }
-.nav-center-links{ gap:0.25rem } .nav-social-links{ display:flex; align-items:center; gap:0.15rem; flex-wrap:nowrap; overflow:hidden; max-width:100%; }
+.nav-center-links{ gap:0.25rem }
+#profileHeader .nav-social-links{
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  justify-content:flex-end !important;
+  align-items:center !important;
+  gap:0.15rem !important;
+  overflow:hidden;
+  max-width:100%;
+  grid-column:3;
+  justify-self:end;
+}
+#profileHeader .nav-social-links .nav-item{width:auto !important; flex:0 0 auto;}
 .nav-social-icon, .nav-theme-btn, #theme-toggle{ width:44px; height:44px; display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px }
 #profileHeader .nav-resume-link{ min-height:36px; padding:0.35rem 0.85rem; font-size:0.78rem; display:inline-flex; align-items:center; white-space:nowrap; }
-/* PWA grid symmetry — keep 44px hamburger + center 1fr (empty) + right auto; absolute collapse must not shift right cluster */
-#profileHeader .nav-social-links{ grid-column:3; justify-self:end; }
-@media(max-width:991px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px); grid-template-columns:44px 1fr auto; } }
-@media(max-width:767px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px); grid-template-columns:44px 1fr auto; gap:0.5rem; } }
-@media(max-width:480px){ #profileHeader .container-fluid{ width:min(100% - 1.25rem, 620px); gap:0.35rem; } }
+@media(max-width:991px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px); grid-template-columns:44px 1fr auto; } #profileHeader .nav-social-links{ flex-direction:row !important; flex-wrap:nowrap !important; } }
+@media(max-width:767px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px); grid-template-columns:44px 1fr auto; gap:0.5rem; } #profileHeader .nav-social-links{ flex-direction:row !important; flex-wrap:nowrap !important; } }
+@media(max-width:480px){ #profileHeader .container-fluid{ width:min(100% - 1.25rem, 620px); gap:0.35rem; } #profileHeader .nav-social-links{ flex-direction:row !important; flex-wrap:nowrap !important; } }
 @media(max-width:360px){
   #profileHeader .nav-social-links{ gap:0.05rem; }
   #profileHeader .nav-social-links .nav-item:nth-child(4){ display:none; } /* hide instagram on 320 to fit 346px cluster */

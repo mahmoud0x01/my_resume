@@ -1358,4 +1358,9 @@ html {
         align-items: stretch;
     }
 }
+/* --- PWA header social-icons: force horizontal row (Bootstrap navbar-nav column override, survives design.css cascade) --- */
+#profileHeader .nav-social-links{ display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important; justify-content:flex-end !important; align-items:center !important; gap:0.15rem !important; overflow:hidden; max-width:100%; grid-column:3; justify-self:end; }
+#profileHeader .nav-social-links .nav-item{ width:auto !important; flex:0 0 auto; }
+@media(max-width:991px){ #profileHeader .nav-social-links{ flex-direction:row !important; flex-wrap:nowrap !important; } }
+@media(max-width:480px){ #profileHeader .nav-social-links{ flex-direction:row !important; flex-wrap:nowrap !important; } }
 
