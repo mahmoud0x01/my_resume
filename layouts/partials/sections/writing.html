@@ -10,23 +10,43 @@
 {{ if gt (len $writingPages) 0 }}
 {{ $writingPages = $writingPages.ByDate.Reverse }}
 {{ $dateFormat := .Site.Params.datesFormat.articleList | default "Jan 2, 2006" }}
-{{ $featured := .Site.GetPage "/blogs/apparmor-rce-mitigation" }}
-{{ with $featured }}
-        <article class="writing-card writing-card--featured">
-            <span class="writing-featured-badge">Featured · Blue-team defense</span>
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
-            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            <p>{{ .Description }}</p>
-            <div class="writing-sequence" aria-label="Attack defense sequence">
-                <span>RCE PATH</span><span aria-hidden="true">↓</span><span>RUNTIME CONTAINMENT</span><span aria-hidden="true">↓</span><span>APPARMOR</span><span aria-hidden="true">↓</span><span>ROOT-CAUSE REMEDIATION</span>
-            </div>
-            <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
-        </article>
+{{ $featured1 := .Site.GetPage "/blogs/apparmor-rce-mitigation" }}
+{{ $featured2 := .Site.GetPage "/blogs/linux-trial-licensing-bypass-machine-id-unshare-mount-bind" }}
+{{ if or $featured1 $featured2 }}
+        <div class="writing-featured-grid">
+            {{ with $featured1 }}
+            <article class="writing-card writing-card--featured">
+                <span class="writing-featured-badge">Featured · Blue-team defense</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <p>{{ .Description }}</p>
+                <div class="writing-sequence" aria-label="Attack defense sequence">
+                    <span>RCE PATH</span><span aria-hidden="true">↓</span><span>RUNTIME CONTAINMENT</span><span aria-hidden="true">↓</span><span>APPARMOR</span><span aria-hidden="true">↓</span><span>ROOT-CAUSE REMEDIATION</span>
+                </div>
+                <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
+            </article>
+            {{ end }}
+            {{ with $featured2 }}
+            <article class="writing-card writing-card--featured">
+                <span class="writing-featured-badge">Featured · Reverse Engineering</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <p>{{ .Description }}</p>
+                <div class="writing-sequence" aria-label="Trial bypass sequence">
+                    <span>strings</span><span aria-hidden="true">→</span><span>strace</span><span aria-hidden="true">→</span><span>unshare</span><span aria-hidden="true">→</span><span>Trial Active</span>
+                </div>
+                <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
+            </article>
+            {{ end }}
+        </div>
 {{ end }}
         <div class="writing-grid">
             {{ $filteredPages := $writingPages }}
-            {{ if $featured }}
-                {{ $filteredPages = where $writingPages "RelPermalink" "!=" $featured.RelPermalink }}
+            {{ if $featured1 }}
+                {{ $filteredPages = where $filteredPages "RelPermalink" "!=" $featured1.RelPermalink }}
+            {{ end }}
+            {{ if $featured2 }}
+                {{ $filteredPages = where $filteredPages "RelPermalink" "!=" $featured2.RelPermalink }}
             {{ end }}
             {{ range first 3 $filteredPages }}
             {{ $description := .Description | plainify }}

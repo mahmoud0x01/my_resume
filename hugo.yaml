@@ -202,8 +202,8 @@ params:
         label: "Hall of Fame recognitions"
         detail: "Responsible disclosure"
       - value: "Top 5 / 100"
-        label: "Bastion internal CTF"
-        detail: "Penetration testing challenges"
+        label: "Bastion (Moscow) internal CTF"
+        detail: "Russian cybersecurity leader · Pen testing challenges"
       - value: "2"
         label: "Technical internships"
         detail: "1× penetration testing"
@@ -337,7 +337,7 @@ params:
 
               *Engineering experience that strengthens system reasoning, documentation, and security tooling.*
 
-      - company: "Bastion Cybersec Solutions"
+      - company: "Bastion Cybersec Solutions — Russian Cybersecurity Leader, Moscow"
         jobs:
           - name: "Penetration Tester, Intern"
             date: "May 2024 - Sep 2024"
@@ -451,10 +451,10 @@ params:
         date: "2018"
         content: "Recognized across tens of companies through Bugcrowd's bug bounty platform."
       - title: "Top 5 / 100 — Bastion Internal CTF"
-        company: "Bastion"
+        company: "Bastion (Moscow)"
         icon: "fa-solid fa-shield-halved"
         date: "August 2024"
-        content: "Ranked Top 5 among 100 participants in penetration-testing and privilege-escalation challenges."
+        content: "Ranked Top 5 among 100 participants in penetration-testing and privilege-escalation challenges at Bastion — Russian cybersecurity leader, Moscow."
       - title: "Bug Bounty Hall of Fame — DigitalOcean"
         company: "DigitalOcean"
         icon: "fa-brands fa-digital-ocean"

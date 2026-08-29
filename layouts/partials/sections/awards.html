@@ -8,7 +8,7 @@
     </div>
     <div class="awards-grid">
       {{ range $index, $item := .Site.Params.awards.items }}
-      <article class="award-card {{ if eq $item.company "Bastion" }}award-card--featured{{ end }}">
+      <article class="award-card {{ if in $item.company "Bastion" }}award-card--featured{{ end }}">
         <span class="award-card-badge">{{ if $item.icon }}<i class="{{ $item.icon }}" aria-hidden="true"></i>{{ end }} {{ $item.company }}</span>
         <span class="award-card-date">{{ $item.date }}</span>
         <h3>{{ $item.title }}</h3>
