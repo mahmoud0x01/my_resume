@@ -323,6 +323,18 @@ button:focus-visible {
     font-size: 0.88rem !important;
     line-height: 1.55 !important;
     text-align: right;
+}.hero-graph-subtitle {
+    margin: 0.35rem 0 0;
+    color: var(--recruiter-muted) !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    font-style: italic;
+}.hero-graph-hint {
+    margin: 0.45rem 0 0;
+    color: var(--recruiter-muted) !important;
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+    opacity: 0.95 !important;
 }#hero .constellation-wrap {
     min-height: clamp(480px, 52vw, 700px) !important;
     padding: 1rem 0 3.5rem !important;
