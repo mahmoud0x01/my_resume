@@ -23,6 +23,12 @@
 {{ $dateFormat := .Site.Params.datesFormat.articleList | default "January 2, 2006" }}
 <section id="list-page" class="blog-page blog-archive" aria-labelledby="blog-archive-title">
     <div class="blog-shell">
+        <nav class="blogs-back-nav" aria-label="Back to portfolio">
+            <a href="{{ "/" | relURL }}" class="blogs-back-to-portfolio blog-back-link" aria-label="Back to portfolio homepage">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                <span>Back to Portfolio</span>
+            </a>
+        </nav>
         <header class="blog-archive-header">
             <p class="blog-eyebrow"><span class="blog-eyebrow-mark" aria-hidden="true"></span> Field notes / archive</p>
             <h1 id="blog-archive-title">Selected writing</h1>

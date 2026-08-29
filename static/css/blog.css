@@ -540,6 +540,17 @@
 .blog-back-link:hover {
     color: var(--blog-link) !important;
 }
+.blogs-back-nav{display:flex;margin-bottom:1.25rem}
+.blogs-back-to-portfolio{
+  padding:.55rem .9rem;
+  border:1px solid var(--blog-border);
+  border-radius:999px;
+  background:var(--blog-surface);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:var(--blog-shadow);
+  text-decoration:none!important;
+}
+@media(max-width:767px){.blogs-back-nav{justify-content:center}}
 
 .blog-breadcrumb-separator {
     color: var(--blog-subtle) !important;

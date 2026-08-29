@@ -900,7 +900,7 @@ body.light > #search-content { background-color: var(--bg) !important; }
 }
 
 /* ----- ABOUT CONTENT ul list style override ----- */
-#about ul {
+#about .about-content ul {
     grid-template-columns: repeat(2, minmax(120px, 200px));
 }
 #about ul li::before {

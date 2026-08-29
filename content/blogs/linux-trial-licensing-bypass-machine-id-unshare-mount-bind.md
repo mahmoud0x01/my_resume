@@ -1,5 +1,5 @@
 ---
-title: "Linux Trial Reset via /etc/machine-id — unshare & mount --bind (Lab Research)"
+title: "Linux Third-Party Desktop Software Trial Bypass Vulnerability"
 date: 2026-08-28T10:00:00+00:00
 draft: false
 author: "Mahmoud Adel"
@@ -7,12 +7,14 @@ tags: ["Linux","Trial Bypass","machine-id","unshare","mount","Namespaces","Rever
 categories: ["Security Research"]
 image: /images/linux-machine-id-trial-bypass.png
 images: [/images/linux-machine-id-trial-bypass.png]
-description: "Lab research: how Linux trial licensing checks /etc/machine-id and how mount namespaces isolate it — strings, strace openat/read, and unshare -m mount --bind fake id without touching host. Includes mitigations."
+description: "Controlled lab simulation of real-world Linux desktop trial checks that trust /etc/machine-id — isolated bypass via unshare & mount --bind, detection with strings/strace, and server-side hardening."
 toc: true
 ---
 
 > **Research Only:** Tested in isolated VM on lab-owned trial binary (anonymized `licensed_app_linux`); no production bypass, no redistribution. For *defensive* learning — how not to bind licensing to `/etc/machine-id`.
 > ⚠️ Authorized security testing & educational purposes only — reverse engineering research.
+
+> **Scope — Controlled Simulation of a Real-World Pattern:** This research was conducted as a **controlled simulation** of a vulnerability pattern observed across multiple legitimate Linux desktop applications. The common implementation is minimal: on first run, persist a hash of `/etc/machine-id` with an expiry timestamp; on subsequent launches, `openat("/etc/machine-id")` → compare → “Trial expired” if matched. The defensive question this lab answers is: if trial state is bound solely to a world-readable filesystem path, what prevents a per-process view from restoring a trial without modifying the host? All reproduction here uses the anonymized lab binary `licensed_app_linux` in an isolated VM, with fake identifiers redacted to `[REDACTED_FAKE_ID]`.
 
 ## Summary
 
@@ -166,6 +168,17 @@ Validated mitigations that would have prevented this trial reset:
 4. **Secure time & anti-tamper.** Use server time, not local clock; sign timestamp. Assessed client-only expiry as weak.
 5. **Detect trivial virtualization.** If feasible, warn when `/etc/machine-id` differs across quick namespace probes or when mountinfo shows bind overlay — heuristic, not sole control.
 6. **Defense in depth.** TPM, online activation, rate-limited trial reset, and no plaintext `machine-id` comparison.
+
+### Business Logic & Filesystem Trust — Why File and IP Checks Fail
+
+Validated as systemic, not vendor-specific:
+
+* **Filesystem trust is insufficient on Linux.** `/etc/machine-id` and any adjacent derivative is world-readable and per-process virtualizable via `unshare -r -m` `mount --bind` without host modification (see `## Why It Works`). Unlike a TPM-sealed or hardware-rooted secret, a file path can be overlaid per-namespace. Treat `machine-id` as telemetry hint, never as trial root-of-trust.
+* **Blocking or fingerprinting WAN IP is a business-logic error.** NAT, university/corporate egress, public Wi-Fi, and commercial VPNs multiplex hundreds of distinct users behind a single IP. IP-based trial throttling causes false positives and is trivially bypassed with IP rotation. Do not use IP as trial identity or rate-limit key.
+* **Without server-side account validation, client trials remain bypassable.** Any check verified only against a local file, registry value, or clock will be re-resolved in lab with a new view. Robust design binds trial state to an **online account + server-signed license** with `machine-id`/`HWID` as claims inside the signed blob, not as the verifier.
+* **Windows registry is not equivalent.** On Windows, equivalent trials often anchor in `HKLM/HKCU` with ACLs, `REG_BINARY` blobs tied to `MachineGuid`/`HWID`, or DPAPI — requiring registry virtualization or token manipulation. On Linux, the equivalent collapses to a single regular file that is validly bind-mounted per-namespace with no impersonation, making the fake-path primitive significantly simpler.
+
+> For vendors: if offline trials are required, issue a short-lived, server-signed JWT binding `account_id + machine-id + HWID + expiry` and enforce signature + expiry locally; reconcile on next online sync. For defenders: `strings | grep -i machine-id` + `strace -e openat,read` remains the fastest first-pass detector.
 
 For defenders testing similar Linux trial licensing: run `strings | grep machine-id` and `strace -e openat,read` as first-pass detection.
 
