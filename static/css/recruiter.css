@@ -65,6 +65,7 @@ button:focus-visible {
     min-height: auto !important;
     padding: 0 0 1rem !important;
     overflow: visible !important;
+    scroll-margin-top: calc(56px + env(safe-area-inset-top, 0px));
     background:
         radial-gradient(circle at 16% 8%, rgba(16, 185, 129, 0.08), transparent 32rem),
         radial-gradient(circle at 86% 16%, rgba(99, 102, 241, 0.08), transparent 30rem),
@@ -76,9 +77,10 @@ button:focus-visible {
     gap: clamp(2rem, 6vw, 6rem);
     align-items: center;
     width: min(1180px, calc(100% - 2rem));
-    min-height: min(680px, calc(100vh - 72px));
+    min-height: min(680px, calc(100vh - 56px));
     margin: 0 auto;
     padding: clamp(4.5rem, 9vw, 7.5rem) 0 clamp(3.5rem, 7vw, 6rem);
+    scroll-margin-top: calc(56px + env(safe-area-inset-top, 0px));
 }.hero-recruiter-content {
     min-width: 0;
     max-width: 760px;
@@ -1155,6 +1157,7 @@ html {
     color: var(--recruiter-accent);
     background: transparent;
     text-decoration: none !important;
+    white-space: nowrap;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 

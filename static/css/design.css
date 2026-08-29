@@ -78,35 +78,47 @@ body.dark {
   position:sticky; top:0; z-index:1000;
   height:56px; min-height:56px;
   padding-top:env(safe-area-inset-top); padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);
-  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent);
-  backdrop-filter:blur(14px) saturate(120%); -webkit-backdrop-filter:blur(14px);
+  background-color:var(--bg) !important;
+  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
+  backdrop-filter:blur(14px) saturate(120%); -webkit-backdrop-filter:blur(14px) saturate(120%);
   border-bottom:1px solid var(--border, var(--recruiter-border));
   isolation:isolate;
 }
 #profileHeader.showHeaderOnTop{
   position:sticky; top:0;
-  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent);
-  backdrop-filter:blur(14px) saturate(120%); -webkit-backdrop-filter:blur(14px);
+  background-color:var(--bg) !important;
+  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
+  backdrop-filter:blur(14px) saturate(120%); -webkit-backdrop-filter:blur(14px) saturate(120%);
   border-bottom:1px solid var(--border, var(--recruiter-border));
   box-shadow:none;
 }
 .dark #profileHeader,
 .dark #profileHeader.showHeaderOnTop{
-  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent);
+  background-color:var(--bg) !important;
+  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
   border-bottom:1px solid var(--border, var(--recruiter-border));
 }
 #profileHeader nav.navbar{ height:56px; min-height:56px; padding:0 !important; display:flex; align-items:center; background:transparent !important; }
 #profileHeader .container-fluid{
-  height:56px; width:min(1180px, calc(100% - 2rem)); margin-inline:auto;
+  height:56px; width:min(1180px, calc(100% - 2rem)); margin-inline:auto !important; margin-left:auto !important; margin-right:auto !important;
   display:grid; grid-template-columns:44px 1fr auto; gap:0.75rem; align-items:center; justify-items:stretch; max-width:100%; padding-left:0 !important; padding-right:0 !important;
 }
-@media(max-width:991px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px) } }
-@media(max-width:480px){ #profileHeader .container-fluid{ width:min(100% - 1.25rem, 620px) } }
-#profileHeader .navbar-toggler{ width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--border, var(--recruiter-border)); border-radius:10px; background:color-mix(in srgb, var(--card-bg, var(--recruiter-surface)) 72%, transparent); }
+#profileHeader .navbar-toggler{ width:44px; height:44px; min-width:44px; min-height:44px; display:grid; place-items:center; border:1px solid var(--border, var(--recruiter-border)); border-radius:10px; background:color-mix(in srgb, var(--card-bg, var(--recruiter-surface)) 72%, transparent); }
 #profileHeader .navbar-toggler:focus-visible{ outline:3px solid var(--recruiter-accent); outline-offset:3px; }
-.nav-center-links{ gap:0.25rem } .nav-social-links{ gap:0.15rem; flex-wrap:nowrap }
+.nav-center-links{ gap:0.25rem } .nav-social-links{ display:flex; align-items:center; gap:0.15rem; flex-wrap:nowrap; overflow:hidden; max-width:100%; }
 .nav-social-icon, .nav-theme-btn, #theme-toggle{ width:44px; height:44px; display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px }
-#profileHeader .nav-resume-link{ min-height:36px; padding:0.35rem 0.85rem; font-size:0.78rem; display:inline-flex; align-items:center; }
+#profileHeader .nav-resume-link{ min-height:36px; padding:0.35rem 0.85rem; font-size:0.78rem; display:inline-flex; align-items:center; white-space:nowrap; }
+/* PWA grid symmetry — keep 44px hamburger + center 1fr (empty) + right auto; absolute collapse must not shift right cluster */
+#profileHeader .nav-social-links{ grid-column:3; justify-self:end; }
+@media(max-width:991px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px); grid-template-columns:44px 1fr auto; } }
+@media(max-width:767px){ #profileHeader .container-fluid{ width:min(100% - 1.5rem,620px); grid-template-columns:44px 1fr auto; gap:0.5rem; } }
+@media(max-width:480px){ #profileHeader .container-fluid{ width:min(100% - 1.25rem, 620px); gap:0.35rem; } }
+@media(max-width:360px){
+  #profileHeader .nav-social-links{ gap:0.05rem; }
+  #profileHeader .nav-social-links .nav-item:nth-child(4){ display:none; } /* hide instagram on 320 to fit 346px cluster */
+  .nav-social-icon, .nav-theme-btn, #theme-toggle{ width:36px; height:36px; min-width:36px; min-height:36px; }
+  #profileHeader .nav-resume-link{ padding:0.3rem 0.6rem; font-size:0.72rem; }
+}
 /* Mobile <992: hamburger expanded shows centered vertical list, symmetrical padding */
 @media(max-width:991px){
   #profileHeader .navbar-collapse{
@@ -128,6 +140,7 @@ body.dark {
 @media(min-width:992px){
   #profileHeader .navbar-toggler{ display:none !important; }
   #profileHeader .container-fluid{ grid-template-columns:1fr auto; }
+  #profileHeader .nav-social-links{ grid-column:2; justify-self:end; }
 }
 
 /* Brand [maf] */
@@ -195,14 +208,14 @@ body.dark {
 
 /* ----- HERO SECTION ----- */
 #hero {
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 56px);
     background: var(--hero-gradient), var(--bg);
     position: relative;
     overflow: hidden;
 }
 
 .hero-inner {
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 56px);
     display: flex;
     align-items: center;
     padding: 4rem 0 2rem;
@@ -882,10 +895,18 @@ html, body {
 }
 
 /* The theme wraps everything in body.light > * { background-color } — override that */
-body.light > #profileHeader { background-color: var(--bg) !important; }
+body.light > #profileHeader { background-color: var(--bg) !important; background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important; }
 body.light > #content { background-color: transparent !important; }
 body.light > footer { background-color: var(--bg) !important; }
 body.light > #search-content { background-color: var(--bg) !important; }
+/* PWA specificity hardening: ensure glass survives body.light > #profileHeader */
+html body #profileHeader,
+html body.light > #profileHeader,
+body #profileHeader.showHeaderOnTop{
+  background-color:var(--bg) !important;
+  background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
+}
+
 
 /* ----- BORDER-BOTTOM DIVIDER ON SECTIONS ----- */
 #about, #experience, #education, #courses, #achievements, #projects, #contact {
@@ -1037,7 +1058,7 @@ body.light > #search-content { background-color: var(--bg) !important; }
 
 /* ----- Smooth scrolling offset for sticky nav ----- */
 section[id] {
-    scroll-margin-top: 72px;
+    scroll-margin-top: calc(56px + env(safe-area-inset-top, 0px));
 }
 
 /* ----- Hero section heading text shadow (light) ----- */
@@ -1087,13 +1108,15 @@ footer .footer-copyright { background-color: transparent !important; }
 /* ----- Navbar: light mode bg fix on scroll — PWA bar keeps sticky, just ensure blur/border on showHeaderOnTop (no jump) ----- */
 #profileHeader.showHeaderOnTop,
 .showHeaderOnTop{
+    background-color:var(--bg) !important;
     background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
-    backdrop-filter:blur(14px) saturate(120%) !important; -webkit-backdrop-filter:blur(14px) !important;
+    backdrop-filter:blur(14px) saturate(120%) !important; -webkit-backdrop-filter:blur(14px) saturate(120%) !important;
     border-bottom:1px solid var(--border, var(--recruiter-border)) !important;
     box-shadow:none !important;
 }
 .dark #profileHeader.showHeaderOnTop,
 .dark .showHeaderOnTop{
+    background-color:var(--bg) !important;
     background:color-mix(in srgb, var(--bg, var(--recruiter-bg)) 92%, transparent) !important;
 }
 
