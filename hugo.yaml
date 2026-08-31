@@ -452,6 +452,24 @@ params:
           - icon: fab fa-github
             url: https://github.com/mahmoud0x01/Ticket_Support_full_stack
 
+      - title: CollabEditor — Real-Time Collaborative Document Editor (Thesis)
+        content: "Graduation thesis (Sep 2025 – Jan 2026) — Google Docs–grade platform turning “send me the file” into “join the document.” Builds live document management and teamwork (Classes/Posts/Comments, dashboard, share-links) on Django 5.2 + Channels/Redis/PostgreSQL + React/Quill. Core challenge: conflict-free sync via Decimal-ordered CRDT sequence + Lamport clock (`DOC_STATES`, `prec=28`) with in-document scoped permissions (`edit_ranges` line-col anchors, server-side redaction █)."
+        securityAngle: "In-document scoped ACL (owner / full / partial / viewer) with line-col anchored edit_ranges, instant redaction █ and dual read/write enforcement; JWT for REST and ?token= WebSocket handshake, revocable Document/Class share-links."
+        image: /images/projects/profile.png
+        featured: true
+        badges:
+          - "Django"
+          - "Django Channels"
+          - "WebSockets"
+          - "PostgreSQL"
+          - "Redis"
+          - "React"
+          - "Quill 2.0"
+          - "CRDT"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01/collabeditor
+
       - title: Full Stack Restaurant Delivery Web Application
         content: Developed a full-stack API project for an online restaurant delivery service with complete authentication system, dish management, shopping cart, and ratings. Features include user authentication, dish management, shopping cart functionality, order processing, rating system, security features, and settings configuration. Full API endpoints documentation available via OpenAPI/Swagger.
         securityAngle: "Authentication, API endpoints, and OpenAPI documentation support API validation."
@@ -471,6 +489,7 @@ params:
         content: Developed a Django web application for managing cash flow records with support for statuses, types, categories, and subcategories. Features include adding and editing income and expense records, assigning statuses (e.g., "pending", "completed"), classifying records by type (income/expense), managing categories and subcategories for organizing records, viewing overall cash flow statistics, filtering and searching by various parameters, admin interface for data management, and superuser creation capability.
         securityAngle: "Django admin and superuser workflows provide authorization test cases."
         image: /images/projects/profile2.jpg
+        featured: false
         badges:
           - "Python"
           - "Django"
@@ -499,7 +518,7 @@ params:
         content: Developed a RESTful API for a social network website using Python with FastAPI and SQLAlchemy. Features include user creation and login, posting and editing posts, adding and removing comments, authorization checks for protected actions, secure password storage, and business-logic safeguards such as preventing duplicate likes.
         securityAngle: "Authentication, authorization, password storage, and API error handling are explicit implementation concerns."
         image: /images/projects/converter.jpg
-        featured: true
+        featured: false
         badges:
           - "Python"
           - "FastAPI"
@@ -512,6 +531,7 @@ params:
         content: Developed a cryptocurrency trading bot supporting automatic and manual trading of multiple assets via Telegram commands. Features include receiving trading signals from TradingView via Mailgun, automatic order execution through Bybit API, stop-loss and take-profit support, bot management through Telegram (start, pause, stop), trading statistics tracking (realized/unrealized profit, fees), ability to run multiple bot instances for different trading pairs, simulation mode for testing strategies without risk, and secure access by chat ID with ability to add new authorized users.
         securityAngle: "Chat-ID authorization and external API integrations provide access-control validation points."
         image: /images/projects/profile2.jpg
+        featured: false
         badges:
           - "Python"
           - "Bybit API"
