@@ -7,40 +7,32 @@
         </div>
         <div class="proof-grid">
             <article class="proof-card">
-                <p class="proof-kicker">Research · Blue-team</p>
-                <h3>AppArmor RCE Killswitch</h3>
-                <p>Demonstrated runtime containment of a PHP RCE path with AppArmor while addressing the application-level root cause.</p>
-                <a href="/blogs/apparmor-rce-mitigation/" rel="noopener">READ RESEARCH ↗</a>
-            </article>
-            <article class="proof-card">
                 <p class="proof-kicker">Research · Bug Bounty · Assessment · $1,000</p>
-                <h3>$1K CSRF to Account Takeover — Verisign DomainScope</h3>
-                <p>Missing OAuth state verification in Google account linking allowed full account takeover via CSRF — reported via Bugcrowd, rewarded $1,000, HoF April 2018.</p>
+                <h3>Verisign — OAuth CSRF to Account Takeover · $1,000</h3>
+                <p>Assessed Verisign DomainScope’s Google account-linking flow at <code>GET /connect/google</code> and documented missing <code>state</code> verification. A CSRF payload links the attacker’s Google identity to the victim’s authenticated DomainScope session; the attacker then uses <em>Sign in with Google</em> for full takeover and can set a persistent password via <em>My Profile</em> without the current password due to LinkedIn-first account logic.</p>
+                <p><strong>Why it mattered:</strong> Validated account-linking CSRF in a live Bugcrowd program with redacted code/state and session artifacts, rewarded $1,000 and acknowledged in Verisign Hall of Fame Apr&nbsp;2018 without touching host data.</p>
                 <a href="/blogs/verisign-csrf-account-takeover-domainscope/" rel="noopener">READ RESEARCH ↗</a>
             </article>
             <article class="proof-card">
-                <p class="proof-kicker">Research · Web Security</p>
-                <h3>Two Captcha Bypasses — IDOR and Token Reuse</h3>
-                <p>Documented captcha bypasses via IDOR parameter manipulation (fail/captcha) and authentication token reuse, with proof-of-concept and triage outcome.</p>
-                <a href="/blogs/two-captcha-bypasses-idor-and-token-reuse/" rel="noopener">READ RESEARCH ↗</a>
+                <p class="proof-kicker">Assessment · Authorized Testing · Moscow</p>
+                <h3>Bastion — Authorized Penetration Testing</h3>
+                <p>Bastion Cybersec Solutions — Russian cybersecurity leader, Moscow — authorized web and network assessments covering authentication bypass, injection, and privilege escalation, validated on Linux and Windows to root. Documented findings, exploitation paths, and technical presentations under team review.</p>
+                <p><strong>Why it mattered:</strong> Shows scoped testing, hands-on validation, and reporting discipline in an intern capacity, anchored by Top&nbsp;5&nbsp;/&nbsp;100 in Bastion’s internal CTF (pen-testing and privesc) as an external measure of assessment skill.</p>
+                <a href="#experience" rel="noopener">VIEW EXPERIENCE →</a>
             </article>
             <article class="proof-card">
-                <p class="proof-kicker">Assessment · Validation · Moscow</p>
-                <h3>Bastion CTF + Internship</h3>
-                <p>Bastion — Russian cybersecurity leader, Moscow — Top 5 of 100 in internal penetration-testing and privilege-escalation CTF, followed by hands-on authorized assessment work and technical reporting.</p>
-                <a href="#experience">VIEW EXPERIENCE →</a>
+                <p class="proof-kicker">Research · Blue-team · Hardening</p>
+                <h3>AppArmor — RCE Containment / Hardening</h3>
+                <p>Reproduced a trivial PHP RCE (<code>system($_GET['cmd'])</code> as <code>www-data</code>) and confined the Apache process with AppArmor: <code>deny /bin/** x</code>, <code>deny /usr/bin/** x</code>, <code>deny network inet/inet6</code>. Re-test returned <em>Unable to execute command: Permission denied</em> with <code>audit DENIED exec /bin/sh</code>; remediated root cause with an allowlist and <code>php.ini disable_functions</code>.</p>
+                <p><strong>Why it mattered:</strong> Demonstrates compensating control vs. root-cause fix — runtime containment at the LSM boundary buys time while source hardening (allowlist + disabled primitives) closes the path.</p>
+                <a href="/blogs/apparmor-rce-mitigation/" rel="noopener">READ RESEARCH ↗</a>
             </article>
             <article class="proof-card">
-                <p class="proof-kicker">Disclosure · 20+ HoF</p>
-                <h3>Responsible Disclosure</h3>
-                <p>20+ Hall of Fame recognitions through responsible disclosure programs, including DigitalOcean, Pinterest, Verisign, and Dell.</p>
-                <a href="#disclosure">VIEW RECOGNITION →</a>
-            </article>
-            <article class="proof-card">
-                <p class="proof-kicker">Research · Linux · Licensing</p>
-                <h3>Trial Licensing Bypass — /etc/machine-id & Mount Namespaces</h3>
-                <p>Debugged trial check via strings & strace, isolated /etc/machine-id with unshare mount --bind without touching host — Trial Active.</p>
-                <a href="/blogs/linux-trial-licensing-bypass-machine-id-unshare-mount-bind/">READ RESEARCH ↗</a>
+                <p class="proof-kicker">Research · Reverse Engineering · Namespaces</p>
+                <h3>Linux — /etc/machine-id Trial &amp; Mount-Namespace Investigation</h3>
+                <p>Reverse-engineered a Linux trial binary (<code>licensed_app_linux</code>, isolated VM) that bound trial state to <code>/etc/machine-id</code>: <code>strings</code> revealed the path, <code>strace -e openat,read</code> showed <code>openat(AT_FDCWD, "/etc/machine-id")</code> and <code>read 33</code> at startup. Isolated bypass with <code>unshare -r -m</code> + <code>mount --bind /tmp/fake-machine-id /etc/machine-id</code> restored <em>Trial Active</em> without touching the host.</p>
+                <p><strong>Why it mattered:</strong> Proves filesystem trust as insufficient on Linux and maps the per-process virtualization primitive end-to-end, with server-signed HWID-bound licensing mitigations and detection via <code>strings | strace</code>.</p>
+                <a href="/blogs/linux-trial-licensing-bypass-machine-id-unshare-mount-bind/" rel="noopener">READ RESEARCH ↗</a>
             </article>
         </div>
     </div>

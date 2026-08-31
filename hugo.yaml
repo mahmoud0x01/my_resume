@@ -159,8 +159,9 @@ params:
     enable: true
     intro: "OPEN TO WORK · JUNIOR SECURITY"
     title: "Mahmoud Adel"
-    subtitle: "Junior Penetration Tester | Blue-Team Foundations"
-    content: "Authorized security testing backed by software-engineering experience, blue-team foundations, and clear technical reporting."
+    subtitle: "Junior Penetration Tester"
+    supportingAreas: "Web/API Security · Network Assessment · Linux & Systems"
+    content: "Junior penetration tester with a software engineering and Linux systems background, focused on web/API security, network assessment, vulnerability research, and understanding how real systems break."
     image: "/images/me-avatar.png"
     bottomImage:
       enable: true
@@ -207,43 +208,6 @@ params:
       - value: "2"
         label: "Technical internships"
         detail: "1× penetration testing"
-    focusAreas:
-      - title: "Offensive security"
-        icon: "fa-solid fa-crosshairs"
-        items:
-          - "Web/API Security"
-          - "Vulnerability Assessment"
-          - "Privilege Escalation"
-          - "Exploit Development"
-          - "OWASP"
-          - "Red Team"
-          - "Burp Suite"
-          - "Nmap"
-      - title: "Defensive & infrastructure"
-        icon: "fa-solid fa-server"
-        items:
-          - "Linux"
-          - "Windows"
-          - "Active Directory"
-          - "System Administration"
-          - "TCP/IP"
-          - "Network Security"
-          - "Kerberos"
-          - "Firewall"
-          - "MITRE ATT&CK"
-          - "Malware Analysis"
-          - "Threat Intelligence"
-      - title: "Engineering & automation"
-        icon: "fa-solid fa-code"
-        items:
-          - "Python"
-          - "Bash"
-          - "JavaScript"
-          - "C/C++"
-          - "Assembly"
-          - "SQL"
-          - "Docker"
-          - "Git"
     skills:
       enable: true
       title: "Security & Engineering Skills"
@@ -289,17 +253,17 @@ params:
         - "Problem Solving"
     toolkitTiers:
       - tier: "CORE"
-        description: "Central to current role"
-        items: ["Web/API Security","Vulnerability Assessment","OWASP","Privilege Escalation","Linux","Windows","Burp Suite","Nmap","Exploit Development","Red Team"]
+        description: "Hands-on in labs and authorized assessments — regularly practiced, including reporting"
+        items: ["Web/API Security","Vulnerability Assessment","Linux","Windows","TCP/IP","Privilege Escalation (lab)","Burp Suite","Nmap","Python","Bash"]
       - tier: "APPLIED"
-        description: "Applied in internships and labs"
-        items: ["Network Security","Active Directory","Kerberos","System Administration","Wireshark","BloodHound","Impacket","TCP/IP","Firewall"]
+        description: "Applied in internships and labs — developing depth"
+        items: ["OWASP","Network Security","Active Directory","Kerberos","Wireshark","BloodHound","Impacket","Docker","System Administration","Firewall"]
       - tier: "FAMILIAR"
-        description: "Exposure, not primary strength"
-        items: ["Metasploit","Cobalt Strike","Sliver","Ghidra","Nuclei","ffuf","SQLMap","MITRE ATT&CK","Malware Analysis","Threat Intelligence"]
+        description: "Exposure / lab — currently developing, not a primary strength"
+        items: ["Ghidra (lab)","Metasploit (lab)","Cobalt Strike (exposure)","Sliver (lab)","Nuclei (lab)","SQLMap (lab)","ffuf (lab)","MITRE ATT&CK (familiar)","Malware Analysis (lab)","Threat Intelligence (exposure)","Exploit Development (lab)","Red Team (lab)"]
       - tier: "ENGINEERING"
-        description: "Programming, systems, infrastructure and professional effectiveness"
-        items: ["Python","Bash","JavaScript","C/C++","SQL","Docker","Git","Assembly","Presentation Skills","Problem Solving"]
+        description: "Programming, systems and professional effectiveness — supports testing and tooling"
+        items: ["JavaScript","C/C++","Assembly","SQL","Git","Presentation Skills","Problem Solving"]
     languages:
       enable: true
       title: "Language Proficiency:"
@@ -322,49 +286,40 @@ params:
           - name: "Software Engineer, Intern"
             date: "Feb 2025"
             content: |
-              Software engineering work on university research projects spanning implementation, architecture, documentation, and the full software development lifecycle.
+              **Context:** University research projects requiring software implementation and academic-grade documentation.
 
-              **Work included:**
-              - Designed and developed software solutions within university research projects
-              - Created technical documentation aligned with academic standards
-              - Developed architectural diagrams and visualized software system structures using UML, component diagrams, and activity diagrams
-              - Participated in the full software development lifecycle
+              **Responsibilities:**
+              - Designed and developed software solutions within defined research scope
+              - Created UML, component and activity diagrams to visualize system structure and interactions
+              - Produced technical documentation aligned with academic standards
+              - Participated in the full software development lifecycle — requirements, design, implementation, documentation
 
-              **Deliverables:**
-              - Independently implemented software projects with complete technical documentation packages
-              - Created detailed architectural diagrams to visualize system structure and component interactions
-              - Prepared academic documentation meeting publication standards
+              **Outcomes:**
+              - Delivered independently implemented projects with complete documentation packages
+              - Provided architectural diagrams supporting review and handover
+              - Met publication-ready documentation standards
 
-              *Engineering experience that strengthens system reasoning, documentation, and security tooling.*
+              *Engineering work that strengthens system reasoning and tooling — not presented as security assessment.*
 
       - company: "Bastion Cybersec Solutions — Russian Cybersecurity Leader, Moscow"
         jobs:
           - name: "Penetration Tester, Intern"
             date: "May 2024 - Sep 2024"
             content: |
-              Conducted authorized assessments of web applications and network systems.
+              **Role & Scope:** Intern — authorized assessments only, team-reviewed. No independent client engagements.
 
-              **ASSESSMENT**
-              - Web application
-              - Network
+              **Context:** Authorized web and network assessments in controlled and client-authorized environments as part of Bastion's internship program (Moscow).
 
-              **FINDINGS**
-              - Authentication bypass
-              - Injection
-              - Privilege escalation
+              **Responsibilities:**
+              - Manually assessed web and network attack surface — authentication, input handling and privilege boundaries
+              - Tested for authentication bypass, injection and privilege-escalation paths
+              - Validated findings to root level on Linux and Windows in lab/authorized targets
+              - Documented findings, exploitation paths and remediation notes; presented results for internal review
 
-              **VALIDATION**
-              - Linux
-              - Windows
-              - Root-level validation
-
-              **REPORTING**
-              - Technical findings
-              - Exploitation paths
-              - Technical presentations
-
-              **RECOGNITION**
-              - Top 5 / 100 — Bastion internal CTF (penetration-testing and privilege-escalation challenges)
+              **Outcomes:**
+              - Produced technical reports reviewed by senior team
+              - Demonstrated hands-on validation and reporting discipline in an intern capacity
+              - External measure: Top 5 / 100 in Bastion internal CTF (penetration-testing and privilege-escalation challenges)
 
   # Education
   education:
@@ -478,7 +433,7 @@ params:
 
   # projects
   projects:
-    enable: false
+    enable: true
     title: "Engineering & Security Projects"
     items:
       - title: TicketPro - Full Stack Support Ticket Management System
@@ -501,7 +456,7 @@ params:
         content: Developed a full-stack API project for an online restaurant delivery service with complete authentication system, dish management, shopping cart, and ratings. Features include user authentication, dish management, shopping cart functionality, order processing, rating system, security features, and settings configuration. Full API endpoints documentation available via OpenAPI/Swagger.
         securityAngle: "Authentication, API endpoints, and OpenAPI documentation support API validation."
         image: /images/projects/converter.jpg
-        featured: true
+        featured: false
         badges:
           - "C#"
           - ".NET"
@@ -529,7 +484,7 @@ params:
         content: Developed a Telegram bot that aggregates news from various sources and provides users with the ability to receive updates via subscription with flexible interval settings. Features include fetching news by command `/news <source>`, setting default source for quick access, subscribing to automatic news distribution with interval, managing subscriptions (unsubscribe, viewing active subscriptions), viewing available sources via `/listsources` command, storing user data and subscriptions in PostgreSQL database, and Docker Compose deployment.
         securityAngle: "Subscription access, PostgreSQL persistence, and Docker Compose deployment expose configuration concerns."
         image: /images/projects/profile.png
-        featured: true
+        featured: false
         badges:
           - "Python"
           - "aiogram"
@@ -620,10 +575,10 @@ params:
     articleRecent: "Jan 2, 2006"
 
   customScripts: |
-    <script src="/js/portfolio-graph-data.js?v=7"></script>
+    <script src="/js/portfolio-graph-data.js?v=8"></script>
     <script src="/js/graph-background.js?v=1"></script>
-    <script src="/js/portfolio-panel.js?v=4"></script>
-    <script src="/js/portfolio-graph.js?v=11"></script>
+    <script src="/js/portfolio-panel.js?v=5"></script>
+    <script src="/js/portfolio-graph.js?v=12"></script>
     <script src="/js/terminal.js?v=1"></script>
     <script src="/js/scroll-animations.js?v=1"></script>
     <script src="/js/single-animations.js?v=1"></script>

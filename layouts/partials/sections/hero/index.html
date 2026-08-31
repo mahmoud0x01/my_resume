@@ -17,7 +17,8 @@
                 Open to junior security opportunities
             </p>
             <h1 id="hero-title">{{ .Site.Params.hero.title | default "Mahmoud Adel" }}</h1>
-            <p class="hero-role-line">{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester | Blue-Team Foundations" }}</p>
+            <p class="hero-role-line" aria-label="Role">{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester" }}</p>
+            <p class="hero-supporting-areas">{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</p>
             <p class="hero-value-proposition">
                 {{ .Site.Params.hero.content | plainify | truncate 280 }}
             </p>
@@ -26,17 +27,17 @@
                 <article class="hero-proof-card">
                     <strong>+20</strong>
                     <span>Hall of Fame recognitions</span>
-                    <small>Responsible disclosure</small>
+                    <small>Responsible disclosure · Bugcrowd</small>
+                </article>
+                <article class="hero-proof-card">
+                    <strong>$1,000</strong>
+                    <span>Verisign — CSRF → Account Takeover</span>
+                    <small>OAuth state · DomainScope · Reward</small>
                 </article>
                 <article class="hero-proof-card">
                     <strong>Top 5/100</strong>
                     <span>Bastion (Moscow) internal CTF</span>
-                    <small>Russian cybersecurity leader · Pen testing challenges</small>
-                </article>
-                <article class="hero-proof-card">
-                    <strong>2</strong>
-                    <span>Technical internships</span>
-                    <small>1× penetration testing</small>
+                    <small>Russian cybersecurity leader · Pen testing</small>
                 </article>
             </div>
 
@@ -62,7 +63,8 @@
             <img class="hero-portrait" src="{{ .Site.Params.hero.image | default "/images/me-avatar.png" }}" alt="Portrait of Mahmoud Adel, cybersecurity professional" width="320" height="320">
             <div class="identity-card-info">
                 <p class="identity-card-name">Mahmoud Adel</p>
-                <p class="identity-card-role">{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester | Blue-Team Foundations" }}</p>
+                <p class="identity-card-role">{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester" }}</p>
+                <p class="identity-card-supporting">{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</p>
                 <dl>
                     <div>
                         <dt>Based in</dt>
@@ -83,6 +85,7 @@
             <h2 id="capability-map-title">THE PATH</h2>
             <p class="hero-graph-subtitle">“From independent research to hands-on security testing.”</p>
             <p class="hero-graph-hint">Select any item to see where it’s used — related skills, projects, and proof.</p>
+            <p class="hero-graph-example" aria-label="Example evidence chains">Try: <em>Web Security → OWASP → Verisign CSRF → Disclosure → $1,000</em> &nbsp;or&nbsp; <em>Python → TicketPro → RBAC</em> &nbsp;or&nbsp; <em>Linux → AppArmor → RCE killswitch</em> — hover to follow the chain.</p>
         </div>
     </div>
 
@@ -100,6 +103,7 @@
             <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-sysadmin)" aria-hidden="true"></span> Sysadmin</span>
             <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-tools)" aria-hidden="true"></span> Tools</span>
             <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-scripting)" aria-hidden="true"></span> Scripting</span>
+            <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-projects)" aria-hidden="true"></span> Projects</span>
             <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-concepts)" aria-hidden="true"></span> Concepts</span>
             <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-awards)" aria-hidden="true"></span> Awards</span>
             <span class="constellation-legend-item" role="listitem"><span class="constellation-legend-dot" style="--dot:var(--lg-experience)" aria-hidden="true"></span> Experience</span>
@@ -148,7 +152,8 @@
     <noscript>
         <div class="hero-noscript">
             <strong>Mahmoud Adel</strong>
-            <span>{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester | Blue-Team Foundations" }}</span>
+            <span>{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester" }}</span>
+            <small>{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</small>
             <div class="hero-noscript-links">
                 <a href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>Download résumé</a>
                 <a href="#security-proof">View security work</a>

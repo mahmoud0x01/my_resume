@@ -1,10 +1,10 @@
 {{ if .Site.Params.awards.enable | default false }}
 <section id="awards" class="recruiter-section recruiter-awards" aria-labelledby="awards-title">
   <div class="recruiter-container">
-    <div class="recruiter-section-heading">
+     <div class="recruiter-section-heading">
       <p class="section-kicker">Hall of Fame</p>
       <h2 id="awards-title">{{ .Site.Params.awards.title | default "Security Recognition" }}</h2>
-      <p class="section-dek">Hall of Fame mentions and CTF distinction — the same findings shown chronologically in Security Track Record, gathered here as a compact wall.</p>
+      <p class="section-dek">Secondary collection — the same disclosures shown chronologically in Security Track Record and summarized in Responsible Disclosure, gathered as a compact wall for quick scan. Primary external evidence: <a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">Bugcrowd profile</a> and Verisign research write-up.</p>
     </div>
     <div class="awards-grid">
       {{ range $index, $item := .Site.Params.awards.items }}

@@ -1,3 +1,4 @@
+{{ if .Site.Params.projects.enable }}
 {{ $featuredProjects := slice }}
 {{ range .Site.Params.projects.items }}
 {{ if .featured }}{{ $featuredProjects = $featuredProjects | append . }}{{ end }}
@@ -62,4 +63,5 @@
         </a>
     </div>
 </section>
+{{ end }}
 {{ end }}

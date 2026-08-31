@@ -2,23 +2,32 @@
     <div class="recruiter-container">
         <div class="recruiter-section-heading">
             <p class="section-kicker">Responsible disclosure</p>
-            <h2 id="disclosure-title">20+ Hall of Fame recognitions</h2>
-            <p class="section-dek">Security findings responsibly disclosed through official programs.</p>
+            <h2 id="disclosure-title">Responsible disclosure</h2>
+            <p class="section-dek">Findings reported through official programs and triaged via Bugcrowd. Work was authorized and manually validated; external acknowledgment linked where available. <em>20+ Hall of Fame recognitions is a secondary total across programs, not a primary claim.</em></p>
         </div>
-        <div class="disclosure-chips" aria-label="Organizations with Hall of Fame recognitions">
-            <span class="disclosure-chip"><i class="fa-brands fa-digital-ocean" aria-hidden="true"></i> DigitalOcean</span>
-            <span class="disclosure-chip"><i class="fa-brands fa-pinterest" aria-hidden="true"></i> Pinterest</span>
-            <span class="disclosure-chip"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verisign</span>
-            <span class="disclosure-chip"><i class="fa-brands fa-dell" aria-hidden="true"></i> Dell</span>
-            <span class="disclosure-chip"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Bugcrowd</span>
+        <div class="disclosure-grid" aria-label="Selected disclosures with external evidence">
+            <article class="disclosure-card disclosure-card--featured">
+                <p class="disclosure-card-kicker">Verisign · CSRF (OAuth state) · $1,000 · Apr 2018</p>
+                <h3>DomainScope — OAuth CSRF to Account Takeover</h3>
+                <p>Missing <code>state</code> on <code>GET /connect/google</code> allowed linking an attacker Google identity to the victim’s DomainScope session → full ATO. Persistent takeover via <em>My Profile</em> password set without current password (LinkedIn-first logic). Manually validated via proxy replay; no host data touched.</p>
+                <p class="disclosure-card-meta">Reward $1,000 · Hall of Fame Apr 2018 · Bugcrowd triaged</p>
+                <p><a href="/blogs/verisign-csrf-account-takeover-domainscope/" class="disclosure-card-link">Read research ↗</a> <span aria-hidden="true">·</span> <a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer" class="disclosure-card-link">Bugcrowd profile ↗</a></p>
+            </article>
+            <article class="disclosure-card">
+                <p class="disclosure-card-kicker">Bugcrowd · Aggregate · 2018–2019</p>
+                <h3>20+ Hall of Fame recognitions — aggregate</h3>
+                <p>Responsible disclosures across tens of companies via Bugcrowd, including DigitalOcean (critical, Apr 2019), Pinterest (validated, Jun 2018), Dell (validated, Apr 2018) and additional programs not individually listed.</p>
+                <p class="disclosure-card-meta">Secondary stat · includes additional programs beyond those named</p>
+                <p><a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer" class="disclosure-card-link">View Bugcrowd profile — mahmoud_adel ↗</a></p>
+            </article>
+            <article class="disclosure-card">
+                <p class="disclosure-card-kicker">DigitalOcean · Critical · Apr 2019</p>
+                <h3>DigitalOcean — Critical vulnerability</h3>
+                <p>Responsible disclosure via official bug bounty program; acknowledged in Hall of Fame. Manually validated and reported with reproduction and impact notes.</p>
+                <p class="disclosure-card-meta">Critical · Hall of Fame · Bugcrowd</p>
+                <p><a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer" class="disclosure-card-link">View Bugcrowd profile ↗</a></p>
+            </article>
         </div>
-        <p class="disclosure-disclaimer"><small>Not all 20+ recognitions are from named organizations above; count includes additional programs.</small></p>
-        <p><a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer" class="disclosure-verify-link">View Bugcrowd profile — mahmoud_adel ↗</a></p>
-        <ul class="disclosure-list">
-            <li><strong>DigitalOcean — April 2019:</strong> Responsible disclosure of a critical vulnerability via DigitalOcean's bug bounty program.</li>
-            <li><strong>Pinterest — June 2018:</strong> Responsible disclosure of a validated security vulnerability.</li>
-            <li><strong>Verisign — April 2018:</strong> Responsible disclosure of a validated security vulnerability.</li>
-            <li><strong>Dell — April 2018:</strong> Validated security finding submitted through Dell's official bug bounty program.</li>
-        </ul>
+        <p class="disclosure-disclaimer"><small>All testing within authorized scope; findings disclosed responsibly and linked to external acknowledgment where available.</small></p>
     </div>
 </section>
