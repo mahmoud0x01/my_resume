@@ -434,7 +434,7 @@ params:
   # projects
   projects:
     enable: true
-    title: "Engineering & Security Projects"
+    title: "Selected Projects"
     items:
       - title: TicketPro - Full Stack Support Ticket Management System
         content: Developed a full-stack support ticket management system with real-time features, ticket tracking, and role-based access control. Features include user authentication with different roles, complete ticket lifecycle management (Open/In Progress/Resolved/Closed), real-time chat between users and support staff, ticket prioritization (Low, Medium, High, Urgent), notification system for ticket status updates, analytics dashboard with performance metrics, SLA compliance monitoring and automatic escalation.
