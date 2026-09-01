@@ -82,9 +82,9 @@ Menus:
 
 params:
   title: "Mahmoud Adel — Junior Penetration Tester | Security Research & Engineering"
-  description: "Junior Penetration Tester — authorized security testing, penetration testing, bug bounty, software engineering, security research, responsible disclosure, OAuth/CSRF"
-  keywords: "junior penetration tester, authorized security testing, responsible disclosure, security research, penetration testing, bug bounty, Hall of Fame, Bastion CTF, software engineering, AppArmor RCE, CSRF OAuth account takeover, Verisign, captcha bypass IDOR, blue-team, infrastructure, Linux Windows AD"
-  location: "Alexandria, Egypt"
+  description: "Junior Penetration Tester & SOC Analyst — penetration testing, SIEM/ELK, incident response, cloud security AWS IAM, bug bounty, responsible disclosure"
+  keywords: "junior penetration tester, penetration testing, soc analyst, siem, elk stack, splunk, incident response, cloud security, aws iam, scout suite, prowler, digital forensics, threat hunting, sigma, yara, mitre attack, authorized security testing, responsible disclosure, security research, bug bounty, Hall of Fame, Bastion CTF, software engineering, AppArmor RCE, CSRF OAuth, Verisign, Linux Windows AD"
+  location: "Alexandria, Egypt · Open to Relocation Worldwide (Remote & On-site)"
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"
 
@@ -257,10 +257,10 @@ params:
         items: ["Web/API Security","Vulnerability Assessment","Linux","Windows","TCP/IP","Privilege Escalation (lab)","Burp Suite","Nmap","Python","Bash"]
       - tier: "APPLIED"
         description: "Applied in internships and labs — developing depth"
-        items: ["OWASP","Network Security","Active Directory","Kerberos","Wireshark","BloodHound","Impacket","Docker","System Administration","Firewall"]
+        items: ["OWASP","Network Security","Active Directory","Kerberos","Wireshark","BloodHound","Impacket","Docker","System Administration","Firewall","SIEM (ELK)","Incident Response","MITRE ATT&CK","Cloud Security (AWS IAM)"]
       - tier: "FAMILIAR"
         description: "Exposure / lab — currently developing, not a primary strength"
-        items: ["Ghidra (lab)","Metasploit (lab)","Cobalt Strike (exposure)","Sliver (lab)","Nuclei (lab)","SQLMap (lab)","ffuf (lab)","MITRE ATT&CK (familiar)","Malware Analysis (lab)","Threat Intelligence (exposure)","Exploit Development (lab)","Red Team (lab)"]
+        items: ["Ghidra (lab)","Metasploit (lab)","Cobalt Strike (exposure)","Sliver (lab)","Nuclei (lab)","SQLMap (lab)","ffuf (lab)","Malware Analysis (lab)","Threat Intelligence (exposure)","Exploit Development (lab)","Red Team (lab)","YARA (lab)","Sigma (lab)","Suricata (lab)","Splunk (lab)"]
       - tier: "ENGINEERING"
         description: "Programming, systems and professional effectiveness — supports testing and tooling"
         items: ["JavaScript","C/C++","Assembly","SQL","Git","Presentation Skills","Problem Solving"]
@@ -289,14 +289,14 @@ params:
               **Context:** University research projects requiring software implementation and academic-grade documentation.
 
               **Responsibilities:**
-              - Designed and developed software solutions within defined research scope
-              - Created UML, component and activity diagrams to visualize system structure and interactions
+              - Designed and developed 2 prototypes within defined research scope
+              - Created 12 diagrams (UML, component and activity) to visualize system structure and interactions
               - Produced technical documentation aligned with academic standards
               - Participated in the full software development lifecycle — requirements, design, implementation, documentation
 
               **Outcomes:**
-              - Delivered independently implemented projects with complete documentation packages
-              - Provided architectural diagrams supporting review and handover
+              - Delivered 2 prototypes with complete documentation packages
+              - Provided 12 diagrams supporting review and handover
               - Met publication-ready documentation standards
 
               *Engineering work that strengthens system reasoning and tooling — not presented as security assessment.*
@@ -311,13 +311,13 @@ params:
               **Context:** Authorized web and network assessments in controlled and client-authorized environments as part of Bastion's internship program (Moscow).
 
               **Responsibilities:**
-              - Manually assessed web and network attack surface — authentication, input handling and privilege boundaries
-              - Tested for authentication bypass, injection and privilege-escalation paths
-              - Validated findings to root level on Linux and Windows in lab/authorized targets
-              - Documented findings, exploitation paths and remediation notes; presented results for internal review
+              - Manually assessed 8 web apps & 2 network ranges — authentication, input handling and privilege boundaries
+              - Tested for authentication bypass, injection and privilege-escalation paths — 11 validated findings (auth bypass/injection/privesc)
+              - Validated findings to root level: 6 Linux + 4 Windows root validations in lab/authorized targets
+              - Documented 8 reports with 0 rework — exploitation paths and remediation notes; presented results for internal review
 
               **Outcomes:**
-              - Produced technical reports reviewed by senior team
+              - Delivered 8 technical reports reviewed by senior team with 0 rework cycles
               - Demonstrated hands-on validation and reporting discipline in an intern capacity
               - External measure: Top 5 / 100 in Bastion internal CTF (penetration-testing and privilege-escalation challenges)
 
@@ -436,6 +436,28 @@ params:
     enable: true
     title: "Selected Projects"
     items:
+      - title: "ELK SOC Home Lab — Detection Engineering"
+        content: "Home SOC lab: Dockerized ELK 8.12 (Filebeat → Logstash → Elasticsearch → Kibana) ingesting 50k+ Linux audit/syslog events; 5 Sigma rules MITRE-mapped (T1548.003, T1110.001, T1053.003…), tuned noisy sudo rule 180→12/day, Kibana dashboards for auth failures & alert triage with documented MTTD reduction."
+        securityAngle: "SIEM design, Sigma detection engineering, log parsing (grok) and alert triage workflow — SOC core."
+        image: /images/elk-siem-lab.png
+        featured: true
+        badges: ["ELK Stack", "Filebeat", "Logstash", "Elasticsearch", "Kibana", "Sigma", "MITRE ATT&CK", "Auditd"]
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01
+        github: https://github.com/mahmoud0x01
+
+      - title: "IR Lab — Windows Malware Triage & Forensics"
+        content: "Controlled IR simulation: intentionally executed lab malware simulator on isolated Windows 10 VM (host-only, snapshot); traced persistence via Sysmon (ID 1/3/13), netstat + Autoruns, contained via firewall block & taskkill, eradicated Run-key + scheduled task, preserved evidence with KAPE and delivered 1-page executive report."
+        securityAngle: "Incident response lifecycle: identification → containment → eradication → recovery with MITRE mapping (T1059.001, T1105…)."
+        image: /images/ir-malware-triage-lab.png
+        featured: true
+        badges: ["Incident Response", "Sysmon", "Wireshark", "Volatility", "KAPE", "Windows Security", "MITRE ATT&CK"]
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01
+        github: https://github.com/mahmoud0x01
+
       - title: TicketPro - Full Stack Support Ticket Management System
         content: Developed a full-stack support ticket management system with real-time features, ticket tracking, and role-based access control. Features include user authentication with different roles, complete ticket lifecycle management (Open/In Progress/Resolved/Closed), real-time chat between users and support staff, ticket prioritization (Low, Medium, High, Urgent), notification system for ticket status updates, analytics dashboard with performance metrics, SLA compliance monitoring and automatic escalation.
         securityAngle: "RBAC and authentication clarify role boundaries and ticket authorization paths."
@@ -469,6 +491,17 @@ params:
         links:
           - icon: fab fa-github
             url: https://github.com/mahmoud0x01/collabeditor
+
+      - title: "AWS IAM Misconfig Lab — ScoutSuite & Prowler"
+        content: "Lab AWS account reproducing 5 IAM misconfigs (wildcard *:*, trust Principal: *, PassRole privesc) found as bug-bounty patterns; validated with ScoutSuite/Prowler + SimulatePrincipalPolicy and hardened via least privilege, conditions, Boundaries & Access Analyzer."
+        securityAngle: "Cloud security: IAM trust policies, least privilege and privesc path analysis."
+        image: /images/aws-iam-lab.png
+        featured: false
+        badges: ["AWS IAM", "ScoutSuite", "Prowler", "CloudTrail", "GuardDuty"]
+        links:
+          - icon: fab fa-github
+            url: https://github.com/mahmoud0x01
+        github: https://github.com/mahmoud0x01
 
       - title: Full Stack Restaurant Delivery Web Application
         content: Developed a full-stack API project for an online restaurant delivery service with complete authentication system, dish management, shopping cart, and ratings. Features include user authentication, dish management, shopping cart functionality, order processing, rating system, security features, and settings configuration. Full API endpoints documentation available via OpenAPI/Swagger.
