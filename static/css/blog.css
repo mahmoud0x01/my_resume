@@ -1135,6 +1135,26 @@
     transform: translateY(-2px);
 }
 
+/* ---- View counter (per-post) — hidden until API succeeds, no default number ---- */
+.blog-view-counter {
+    display: none;
+    align-items: center;
+    gap: 0.32rem;
+    color: var(--blog-subtle) !important;
+}
+.blog-view-counter.is-visible {
+    display: inline-flex !important;
+}
+.blog-view-counter i,
+.blog-view-counter svg {
+    font-size: 0.82rem;
+    opacity: 0.9;
+}
+#blog-view-count {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+}
+
 #single.blog-page + .blog-progress,
 .blog-progress {
     position: fixed;

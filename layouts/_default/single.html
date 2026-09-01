@@ -98,6 +98,14 @@
             <span class="blog-meta-separator" aria-hidden="true">·</span>
             <span id="readingTime" class="blog-meta-item">{{ .Site.Params.singlePages.readTime.content | default "min read" }}</span>
             {{ end }}
+            {{ if eq .Section "blogs" }}
+            <span class="blog-meta-separator" aria-hidden="true">·</span>
+            <span id="blog-view-counter" class="blog-meta-item blog-view-counter" aria-label="Views" style="display:none;">
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="blog-view-count"></span>
+              <span class="blog-sr-only"> views</span>
+            </span>
+            {{ end }}
           </div>
           {{ with .Params.tags }}
           <ul class="blog-tags blog-article-tags" aria-label="Topics">
@@ -235,6 +243,39 @@
 
 {{ if $readTimeEnabled }}
 <script src="{{ $staticPath }}/js/readingTime.js"></script>
+{{ end }}
+
+{{ if eq .Section "blogs" }}
+<script>
+(function() {
+  var el = document.getElementById('blog-view-counter');
+  var countEl = document.getElementById('blog-view-count');
+  if (!el || !countEl) return;
+  var key = 'mahmoudouf_blog_{{ .File.BaseFileName | urlize }}';
+  var url = 'https://countapi.mileshilliard.com/api/v1/hit/' + encodeURIComponent(key);
+  var controller = new AbortController();
+  var timeoutId = setTimeout(function() { controller.abort(); }, 1200);
+  fetch(url, { signal: controller.signal, cache: 'no-store', mode: 'cors' })
+    .then(function(r) {
+      clearTimeout(timeoutId);
+      if (!r.ok) throw new Error('bad status ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      if (data && typeof data.value !== 'undefined') {
+        var n = Number(data.value);
+        countEl.textContent = isFinite(n) ? new Intl.NumberFormat().format(n) : data.value;
+        el.style.display = 'inline-flex';
+        el.classList.add('is-visible');
+      }
+    })
+    .catch(function() {
+      clearTimeout(timeoutId);
+      // keep hidden — no default number on API failure/timeout
+    });
+})();
+</script>
+<noscript><img src="https://countapi.mileshilliard.com/api/v1/hit/mahmoudouf_blog_{{ .File.BaseFileName | urlize }}" style="display:none;" alt="" /></noscript>
 {{ end }}
 
 {{ end }}
