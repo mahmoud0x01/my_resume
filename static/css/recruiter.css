@@ -357,34 +357,48 @@ button:focus-visible {
     font-size: 0.82rem !important;
     line-height: 1.5 !important;
     opacity: 0.95 !important;
-}#hero .constellation-wrap {
+}#hero .constellation-wrap,
+#path .constellation-wrap {
     min-height: clamp(480px, 52vw, 700px) !important;
     padding: 1rem 0 3.5rem !important;
     border-bottom: 1px solid var(--recruiter-border);
     background: transparent !important;
     overflow: hidden;
-}#hero .constellation-wrap > #graph-bg-canvas {
+}#hero .constellation-wrap > #graph-bg-canvas,
+#path .constellation-wrap > #graph-bg-canvas {
     opacity: 0.82;
 }#hero .cnode,
+#path .cnode,
 #hero .cnode .cnode-label,
+#path .cnode .cnode-label,
 #hero .cnode .cnode-me-name,
+#path .cnode .cnode-me-name,
 #hero .cnode .cnode-cta,
+#path .cnode .cnode-cta,
 #hero .cnode .cnode-hover-label,
-#hero .cnode .cnode-blog-more-badge {
+#path .cnode .cnode-hover-label,
+#hero .cnode .cnode-blog-more-badge,
+#path .cnode .cnode-blog-more-badge {
     font-family: var(--cg-font, var(--font, Inter, sans-serif)) !important;
 }#hero .cnode .cterm,
-#hero .cnode .cterm * {
+#path .cnode .cterm,
+#hero .cnode .cterm *,
+#path .cnode .cterm * {
     font-family: var(--term-font, 'JetBrains Mono', monospace) !important;
-}#hero .constellation-legend {
+}#hero .constellation-legend,
+#path .constellation-legend {
     border-color: var(--recruiter-border);
     background: color-mix(in srgb, var(--recruiter-surface) 72%, transparent);
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-}#hero .constellation-legend-item {
+}#hero .constellation-legend-item,
+#path .constellation-legend-item {
     color: var(--recruiter-muted);
-}#hero #portfolio-list-view {
+}#hero #portfolio-list-view,
+#path #portfolio-list-view {
     width: min(100%, 1000px);
     color: var(--recruiter-ink);
-}#hero .plv-item {
+}#hero .plv-item,
+#path .plv-item {
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
 }.hero-noscript {
     width: min(1180px, calc(100% - 2rem));
@@ -872,7 +886,8 @@ button:focus-visible {
 .hero-recruiter-shell {
         gap: 2rem;
         min-height: auto;
-    }#hero .constellation-wrap {
+    }#hero .constellation-wrap,
+#path .constellation-wrap {
         min-height: auto !important;
     }.about-layout {
         gap: 2rem;
@@ -947,7 +962,8 @@ button:focus-visible {
         max-width: none;
         width: 100%;
         text-align: center;
-    }#hero .constellation-wrap {
+    }#hero .constellation-wrap,
+#path .constellation-wrap {
         padding-top: 0.5rem !important;
     }.recruiter-section {
         padding: 3rem 0 !important;
