@@ -1399,6 +1399,7 @@ html {
 .writing-featured-grid .writing-card--featured { grid-column:auto; }
 .writing-featured-grid .writing-card--featured:only-child { grid-column:1 / -1; }
 .writing-featured-badge { display:inline-flex; margin-bottom:0.8rem; padding:0.25rem 0.6rem; border-radius:999px; background:color-mix(in srgb, var(--recruiter-positive) 14%, transparent); border:1px solid color-mix(in srgb, var(--recruiter-positive) 28%, var(--recruiter-border)); color:var(--recruiter-ink); font-family:var(--cg-mono, monospace); font-size:0.66rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+.writing-badge--unfeatured { background: color-mix(in srgb, var(--recruiter-surface) 85%, transparent); border-color: var(--recruiter-border); color: var(--recruiter-muted); font-size: 0.62rem; }
 .writing-sequence { display:flex; flex-wrap:wrap; align-items:center; gap:0.45rem; margin:1rem 0 0; }
 .writing-sequence span { padding:0.28rem 0.55rem; border:1px solid var(--recruiter-border); border-radius:0.4rem; background:var(--recruiter-bg); color:var(--recruiter-muted); font-family:var(--cg-mono, monospace); font-size:0.68rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
 .writing-sequence span[aria-hidden] { border:none; background:transparent; padding:0; font-size:0.9rem; }
