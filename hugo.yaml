@@ -177,7 +177,7 @@ params:
         - icon: fab fa-github
           url: https://github.com/mahmoud0x01
         - icon: fab fa-linkedin
-          url: https://www.linkedin.com/in/mahmoudadelOx01/
+          url: https://www.linkedin.com/in/mahmoudadel0x01/
         - icon: fab fa-instagram
           url: https://instagram.com/0xkernel
         - icon: fab fa-telegram
@@ -597,7 +597,7 @@ params:
       disableFeaturedImage: false
     socialNetworks:
       github: https://github.com/mahmoud0x01
-      linkedin: https://www.linkedin.com/in/mahmoudadelOx01/
+      linkedin: https://www.linkedin.com/in/mahmoudadel0x01/
 
   # List pages like blogs and posts
   listPages:

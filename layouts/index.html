@@ -15,7 +15,7 @@
   "image": "https://mahmoudouf.com/images/me-avatar.png",
   "description": "{{ .Site.Params.description | plainify }}",
   "knowsAbout": ["Penetration Testing","Web Security","Network Security","OAuth","CSRF","Account Takeover","Linux","Windows","Active Directory","Bug Bounty","Responsible Disclosure"],
-  "sameAs": ["https://github.com/mahmoud0x01","https://www.linkedin.com/in/mahmoudadelOx01/","https://bugcrowd.com/h/mahmoud_adel"]
+  "sameAs": ["https://github.com/mahmoud0x01","https://www.linkedin.com/in/mahmoudadel0x01/","https://bugcrowd.com/h/mahmoud_adel"]
 }
 </script>
 {{ $staticPath := .Site.Params.staticPath | default "" }}
@@ -50,16 +50,17 @@
 {{ define "main" }}
 {{- partial "sections/hero/index.html" . -}}
 {{- partial "sections/security-proof.html" . -}}
+{{- partial "sections/path.html" . -}}
+{{- partial "sections/experience.html" . -}}
 {{- partial "sections/direction.html" . -}}
 {{- partial "sections/writing.html" . -}}
 {{- partial "sections/projects.html" . -}}
-{{- partial "sections/experience.html" . -}}
-{{- partial "sections/disclosure.html" . -}}
-{{- partial "sections/about.html" . -}}
 {{- partial "sections/track-record.html" . -}}
+{{- partial "sections/disclosure.html" . -}}
+{{- partial "sections/awards.html" . -}}
+{{- partial "sections/about.html" . -}}
 {{- partial "sections/education.html" . -}}
 {{- partial "sections/courses.html" . -}}
 {{- partial "sections/achievements.html" . -}}
-{{- partial "sections/awards.html" . -}}
 {{- partial "sections/contact.html" . -}}
 {{ end }}

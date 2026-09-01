@@ -116,7 +116,7 @@ var PORTFOLIO_DATA = (function () {
         content: "Junior penetration tester building toward security analyst and infrastructure-security roles, with authorized web/API and network assessment experience plus Linux, Windows, Active Directory, and blue-team foundations from labs and coursework. Recognized through Hall of Fame programs at DigitalOcean, Pinterest, Verisign, and Dell; ranked Top 5 / 100 in Bastion's internal CTF; and pursuing a Software Engineering degree.",
         links: {
             github: 'https://github.com/mahmoud0x01',
-            linkedin: 'https://www.linkedin.com/in/mahmoudadelOx01/',
+            linkedin: 'https://www.linkedin.com/in/mahmoudadel0x01/',
             email: 'mailto:contact@mahmoudouf.com',
         },
     };
