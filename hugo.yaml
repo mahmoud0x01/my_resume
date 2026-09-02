@@ -1,6 +1,6 @@
 baseURL: "https://mahmoudouf.com/"
 languageCode: "en-us"
-title: "Mahmoud Adel — Junior Penetration Tester | Security Research & Engineering"
+title: "Mahmoud Adel — Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
 theme: hugo-profile
 
 outputs:
@@ -81,10 +81,10 @@ Menus:
     #   weight: 2
 
 params:
-  title: "Mahmoud Adel — Junior Penetration Tester | Security Research & Engineering"
+  title: "Mahmoud Adel — Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
   description: "Junior Penetration Tester & SOC Analyst — penetration testing, SIEM/ELK, incident response, cloud security AWS IAM, bug bounty, responsible disclosure"
   keywords: "junior penetration tester, penetration testing, soc analyst, siem, elk stack, splunk, incident response, cloud security, aws iam, scout suite, prowler, digital forensics, threat hunting, sigma, yara, mitre attack, authorized security testing, responsible disclosure, security research, bug bounty, Hall of Fame, Bastion CTF, software engineering, AppArmor RCE, CSRF OAuth, Verisign, Linux Windows AD"
-  location: "Alexandria, Egypt · Open to Relocation Worldwide (Remote & On-site)"
+  location: "Based in Egypt (UTC+2) · Open to Remote & Global Relocation · Visa Sponsorship / B2B Contract"
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"
 
@@ -159,7 +159,7 @@ params:
     enable: true
     intro: "OPEN TO WORK · JUNIOR SECURITY"
     title: "Mahmoud Adel"
-    subtitle: "Junior Penetration Tester"
+    subtitle: "Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
     supportingAreas: "Web/API Security · Network Assessment · Linux & Systems"
     content: "Junior penetration tester with a software engineering and Linux systems background, focused on web/API security, network assessment, vulnerability research, and understanding how real systems break."
     image: "/images/me-avatar.png"
@@ -178,12 +178,14 @@ params:
           url: https://github.com/mahmoud0x01
         - icon: fab fa-linkedin
           url: https://www.linkedin.com/in/mahmoudadel0x01/
-        - icon: fab fa-instagram
-          url: https://instagram.com/0xkernel
         - icon: fab fa-telegram
           url: https://t.me/rdmsr
         - icon: fa fa-envelope
           url: mailto:contact@mahmoudouf.com
+        - icon: fas fa-cube
+          url: https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges
+        - icon: fas fa-flask
+          url: https://tryhackme.com/p/iamkernel
 
   # About
   about:
@@ -191,20 +193,20 @@ params:
     title: "About Me"
     image: "/images/me-avatar.png"
     content: |-
-      I work across offensive testing and systems engineering. I assess how applications, networks, and operating systems behave — then validate what I find against how they are built and operated.
+      Software Engineer by degree, Offensive Security researcher by practice. I specialize in bridging application code quality with web/API penetration testing, threat modeling, and secure architecture. Experienced in identifying business-critical vulnerabilities (such as OAuth CSRF-to-ATO) and conducting authorized security assessments.
 
-      Proof includes 20+ bug-bounty Hall of Fame recognitions — including DigitalOcean, Pinterest, Verisign, and Dell through Bugcrowd — a Top 5 / 100 result in Bastion's internal penetration-testing and privilege-escalation CTF, two technical internships including one in penetration testing, and published security research.
+      Proof includes 20+ HoF Acknowledgments — including DigitalOcean, Pinterest, Verisign, and Dell through Bugcrowd — a Top 5 / 100 result in Bastion's internal penetration-testing and privilege-escalation CTF, two technical internships including one in penetration testing, and published security research.
 
       My Software Engineering degree at Tomsk State University strengthens system reasoning, architecture, documentation, and automation — from UML and component diagrams to full development lifecycles and tooling that makes findings reproducible.
 
-      I test only within authorized scope and practice responsible disclosure.
+      I test only within authorized scope and practice responsible disclosure. Familiar with OWASP ASVS, NIST CSF, ISO 27001, SANS Top 25, and GDPR-compliant security testing.
     proofPoints:
-      - value: "+20"
-        label: "Hall of Fame recognitions"
+      - value: "20+"
+        label: "HoF Acknowledgments"
         detail: "Responsible disclosure"
       - value: "Top 5 / 100"
-        label: "Bastion (Moscow) internal CTF"
-        detail: "Russian cybersecurity leader · Pen testing challenges"
+        label: "Bastion Security · Internal CTF"
+        detail: "Pen testing challenges"
       - value: "2"
         label: "Technical internships"
         detail: "1× penetration testing"
@@ -301,9 +303,9 @@ params:
 
               *Engineering work that strengthens system reasoning and tooling — not presented as security assessment.*
 
-      - company: "Bastion Cybersec Solutions — Russian Cybersecurity Leader, Moscow"
+      - company: "Bastion Security — Security Engineering Internship (Moscow)"
         jobs:
-          - name: "Penetration Tester, Intern"
+          - name: "Security Engineering Intern (Authorized Scope: Web/API & Network Assessment)"
             date: "May 2024 - Sep 2024"
             content: |
               **Role & Scope:** Intern — authorized assessments only, team-reviewed. No independent client engagements.
@@ -327,7 +329,7 @@ params:
     # title: "Custom Name"
     index: false
     items:
-      - title: "Bachelor of Software Engineering"
+      - title: "B.Sc. Software Engineering — Conferred Jul 2026"
         school:
           name: "Tomsk State University"
           url: "https://www.tsu.ru"
@@ -339,11 +341,6 @@ params:
     title: "Training & Learning"
     index: false
     items:
-      - title: "ISC2 Candidate"
-        school:
-          name: "ISC2"
-          url: "https://www.isc2.org"
-        date: "2024"
       - title: "Jr Penetration Tester"
         school:
           name: "TryHackMe"
@@ -374,11 +371,16 @@ params:
           name: "Cisco"
           url: "https://www.cisco.com"
         date: "2023"
-      - title: "CompTIA Pentest+"
+      - title: "OSCP (In Progress)"
         school:
-          name: "CompTIA"
-          url: "https://www.comptia.org"
-        date: "2023"
+          name: "OffSec"
+          url: "https://www.offsec.com/courses-and-certifications/pwk/"
+        date: "2025 — In Progress"
+      - title: "PNPT (In Progress)"
+        school:
+          name: "TCM Security"
+          url: "https://certifications.tcm-sec.com/pnpt/"
+        date: "2025 — In Progress"
 
   # Achievements (Certifications)
   achievements:
@@ -395,6 +397,10 @@ params:
       - title: "SecurityBlue Blue Team Junior Analyst"
         content: SecurityBlue Team Junior Analyst certification, demonstrating skills in blue team operations, incident response, and security monitoring.
         url: https://elearning.securityblue.team/home/certificate/762758116
+      - title: "Practical Security Labs & Platforms — HTB & TryHackMe"
+        content: "Active hands-on labs: Hack The Box (verified badges, rank progression) and TryHackMe (@iamkernel) — Web, AD, privilege escalation and defensive labs."
+        url: https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges
+        image: /images/htb-thm-labs.png
 
   awards:
     enable: true
@@ -406,10 +412,10 @@ params:
         date: "2018"
         content: "Recognized across tens of companies through Bugcrowd's bug bounty platform."
       - title: "Top 5 / 100 — Bastion Internal CTF"
-        company: "Bastion (Moscow)"
+        company: "Bastion Security"
         icon: "fa-solid fa-shield-halved"
         date: "August 2024"
-        content: "Ranked Top 5 among 100 participants in penetration-testing and privilege-escalation challenges at Bastion — Russian cybersecurity leader, Moscow."
+        content: "Ranked Top 5 among 100 participants in penetration-testing and privilege-escalation challenges at Bastion Security."
       - title: "Bug Bounty Hall of Fame — DigitalOcean"
         company: "DigitalOcean"
         icon: "fa-brands fa-digital-ocean"
@@ -598,6 +604,8 @@ params:
     socialNetworks:
       github: https://github.com/mahmoud0x01
       linkedin: https://www.linkedin.com/in/mahmoudadel0x01/
+      htb: https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges
+      tryhackme: https://tryhackme.com/p/iamkernel
 
   # List pages like blogs and posts
   listPages:

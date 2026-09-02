@@ -77,12 +77,15 @@
                  <!-- LinkedIn -->
                  {{ if .Site.Params.hero.socialLinks }}
                  {{ range .Site.Params.hero.socialLinks.fontAwesomeIcons }}
-                 {{ if or (eq .icon "fab fa-linkedin") (eq .icon "fab fa-github") (eq .icon "fab fa-telegram") (eq .icon "fab fa-instagram") }}
+                 {{ if or (eq .icon "fab fa-linkedin") (eq .icon "fab fa-github") (eq .icon "fab fa-telegram") (eq .icon "fas fa-cube") (eq .icon "fas fa-flask") (eq .icon "fa-solid fa-cube") (eq .icon "fa-solid fa-flask") }}
                  {{ $socialLabel := "Open social profile" }}
                  {{ if eq .icon "fab fa-linkedin" }}{{ $socialLabel = "Open LinkedIn profile" }}{{ end }}
                  {{ if eq .icon "fab fa-github" }}{{ $socialLabel = "Open GitHub profile" }}{{ end }}
                  {{ if eq .icon "fab fa-telegram" }}{{ $socialLabel = "Open Telegram profile" }}{{ end }}
-                 {{ if eq .icon "fab fa-instagram" }}{{ $socialLabel = "Open Instagram profile" }}{{ end }}
+                 {{ if eq .icon "fas fa-cube" }}{{ $socialLabel = "Open Hack The Box profile" }}{{ end }}
+                 {{ if eq .icon "fas fa-flask" }}{{ $socialLabel = "Open TryHackMe profile" }}{{ end }}
+                 {{ if eq .icon "fa-solid fa-cube" }}{{ $socialLabel = "Open Hack The Box profile" }}{{ end }}
+                 {{ if eq .icon "fa-solid fa-flask" }}{{ $socialLabel = "Open TryHackMe profile" }}{{ end }}
                  <li class="nav-item">
                      <a class="nav-link nav-social-icon" href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $socialLabel }}">
                          <i class="{{ .icon }}"></i>
