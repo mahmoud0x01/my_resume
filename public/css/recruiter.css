@@ -1596,15 +1596,26 @@ a.hero-proof-card:focus-visible {
 .at-a-glance-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.2rem;
-    align-items: start;
+    gap: 1rem;
+    align-items: stretch;
 }
 .at-a-glance-block {
     min-width: 0;
+    display: flex;
+    flex-direction: column;
     padding: 1.1rem;
     border: 1px solid var(--recruiter-border);
     border-radius: 0.9rem;
     background: color-mix(in srgb, var(--recruiter-surface) 72%, transparent);
+}
+@media (min-width: 768px) {
+    .at-a-glance-grid > .at-a-glance-block--education {
+        grid-column: 1 / -1;
+        max-width: 560px;
+        width: 100%;
+        margin-inline: auto;
+        justify-self: center;
+    }
 }
 .at-a-glance-block h3 {
     margin: 0 0 0.6rem;
