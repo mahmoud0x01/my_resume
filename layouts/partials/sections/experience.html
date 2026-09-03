@@ -27,6 +27,18 @@
                         <div class="timeline-body">
                             {{ $job.content | markdownify }}
                         </div>
+                        {{ if $job.credentialUrl }}
+                        <div class="timeline-credential-wrap">
+                            <a href="{{ $job.credentialUrl }}" target="_blank" rel="noopener noreferrer" class="timeline-credential-btn"><i class="fas fa-award"></i> View Credential</a>
+                        </div>
+                        {{ end }}
+                        {{ if $job.featuredLink }}
+                        {{ if $job.featuredLink.enable }}
+                        <div class="timeline-credential-wrap">
+                            <a href="{{ $job.featuredLink.url }}" target="_blank" rel="noopener noreferrer" class="timeline-credential-btn">{{ $job.featuredLink.name | default "View Credential" }}</a>
+                        </div>
+                        {{ end }}
+                        {{ end }}
                     </div>
                 </div>
             </div>
@@ -35,4 +47,37 @@
         </div>
     </div>
 </section>
+<style>
+#experience .timeline-body a[href$=".pdf"],
+#experience .timeline-card .timeline-credential-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.42rem 0.85rem;
+    margin-top: 0.7rem;
+    border: 1px solid var(--recruiter-border, #e2e8f0);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--recruiter-surface, #fff) 82%, transparent);
+    color: var(--recruiter-ink, #0f172a) !important;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none !important;
+    box-shadow: 0 2px 10px rgba(15,23,42,0.04);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+#experience .timeline-body a[href$=".pdf"]:hover,
+#experience .timeline-card .timeline-credential-btn:hover {
+    border-color: color-mix(in srgb, var(--recruiter-accent, #10b981) 32%, var(--recruiter-border, #e2e8f0));
+    box-shadow: 0 4px 16px rgba(15,23,42,0.07);
+    transform: translateY(-1px);
+    color: var(--recruiter-ink, #0f172a) !important;
+}
+#experience .timeline-body a[href$=".pdf"] strong {
+    color: inherit !important;
+}
+#experience .timeline-credential-wrap {
+    margin-top: 0.6rem;
+}
+</style>
 {{ end }}

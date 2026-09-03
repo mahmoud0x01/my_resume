@@ -309,9 +309,10 @@ params:
               *Engineering work that builds system reasoning, architecture and tooling — not security assessment.*
 
       - company: "Bastion Security"
+        companyUrl: "https://bastion-tech.ru/"
         jobs:
           - name: "Security Engineering Intern (Authorized Scope: Web/API & Network Assessment)"
-            date: "May 2024 - Sep 2024"
+            date: "July 2024 - September 2024"
             content: |
               **Role & Scope:** Intern — authorized assessments only, team-reviewed. No independent client engagements.
 
@@ -327,6 +328,8 @@ params:
               - Delivered **8** technical reports reviewed by senior team with **0 rework** cycles
               - Demonstrated hands-on validation and reporting discipline in an intern capacity
               - External measure: **Top 5 / 100** in Bastion internal CTF (penetration-testing and privilege-escalation challenges)
+
+              [**View Credential →**](/Documents/CRF_internship_company_bastion.pdf)
 
   # Education
   education:
