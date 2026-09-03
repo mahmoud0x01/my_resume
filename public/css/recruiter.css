@@ -2621,3 +2621,33 @@ a.hero-proof-card:focus-visible {
   background: transparent;
   color: var(--recruiter-ink) !important;
 }
+
+/* ==== Content edits 5-7: hero 4-col grid + REDACTED wall sizing (2026-09-04) ==== */
+.hero-proof-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.hero-proof-grid:has(> :nth-child(4)) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 991px) {
+    .hero-proof-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .hero-proof-grid:has(> :nth-child(4)) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 767px) {
+    .hero-proof-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* REDACTED is longer than 000 — keep wall readable without overflow */
+.redacted-wall {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    padding: 0 0.45rem;
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+}
