@@ -2989,7 +2989,7 @@ a.hero-proof-card:focus-visible {
       rgba(255,255,255,.95) 100%) border-box;
   box-shadow:
     0 16px 32px -12px rgba(0,0,0,.65),
-    0 0 28px -10px rgba(159,239,0,.16);
+    0 0 12px -14px rgba(159,239,0,.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -3015,13 +3015,13 @@ a.hero-proof-card:focus-visible {
 }
 #hero .card::before {
   top: -14px; left: -14px;
-  background: radial-gradient(circle, rgba(255,255,255,.55), var(--accent) 40%, transparent 72%);
-  opacity: .45;
+  background: radial-gradient(circle, rgba(255,255,255,.18), rgba(255,255,255,.06) 45%, transparent 72%);
+  opacity: .12;
 }
 #hero .card::after {
   bottom: -14px; right: -14px;
-  background: radial-gradient(circle, rgba(255,255,255,.5), var(--accent) 40%, transparent 72%);
-  opacity: .45;
+  background: radial-gradient(circle, rgba(255,255,255,.18), rgba(255,255,255,.06) 45%, transparent 72%);
+  opacity: .12;
 }
 #hero .card-inner { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; }
 #hero .hexes { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .50; }
@@ -3033,9 +3033,9 @@ a.hero-proof-card:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(159,239,0,.45);
-  background: radial-gradient(circle at 30% 25%, rgba(159,239,0,.18), rgba(159,239,0,.02) 70%);
-  box-shadow: 0 0 14px rgba(159,239,0,.28), inset 0 0 8px rgba(159,239,0,.14);
+  border: 1px solid rgba(159,239,0,.22);
+  background: radial-gradient(circle at 30% 25%, rgba(159,239,0,.08), rgba(159,239,0,.01) 70%);
+  box-shadow: 0 0 8px rgba(159,239,0,.10), inset 0 0 6px rgba(159,239,0,.06);
   margin-bottom: 10px;
   flex-shrink: 0;
 }
@@ -3113,7 +3113,7 @@ a.hero-proof-card:focus-visible {
   border-radius: 50%;
   margin-top: 5px;
   background: var(--accent);
-  box-shadow: 0 0 4px var(--accent);
+  box-shadow: 0 0 2px rgba(159,239,0,.35);
   display: block;
   flex-shrink: 0;
 }
@@ -3148,7 +3148,7 @@ a.hero-proof-card:focus-visible {
   padding: 6px 10px 6px 8px;
   border-radius: 8px;
   background: linear-gradient(135deg, #cfff5e, var(--accent) 60%, #7fc400);
-  box-shadow: 0 6px 16px -4px rgba(159,239,0,.50), inset 0 1px 0 rgba(255,255,255,.4);
+  box-shadow: 0 4px 12px -6px rgba(159,239,0,.25), inset 0 1px 0 rgba(255,255,255,.4);
   margin-bottom: 10px;
   width: fit-content;
 }
@@ -3185,7 +3185,7 @@ a.hero-proof-card:focus-visible {
   transform: translateY(-2px);
   box-shadow:
     0 16px 32px -12px rgba(0,0,0,.70),
-    0 0 32px -8px rgba(159,239,0,.28);
+    0 0 14px -10px rgba(159,239,0,.10);
 }
 #hero a.card:focus-visible {
   outline: 3px solid var(--accent) !important;
