@@ -2652,24 +2652,44 @@ a.hero-proof-card:focus-visible {
     line-height: 1.25;
 }
 
-/* ==== Pro Hacker badge — Hero HTB card (2026-09-04) — image-exact dark glass ==== */
+/* ==== Pro Hacker badge — Hero HTB card (2026-09-04) — 1:1 image-exact dark glass ==== */
 .hero-proof-card--htb {
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 1.1rem 1rem 0.95rem;
-  border: 1.5px solid #b8e62e;
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(18,30,18,0.96), rgba(8,18,12,0.98));
-  box-shadow: 0 0 0 1px rgba(182,230,46,0.15), 0 0 18px rgba(182,230,46,0.35), 0 8px 24px rgba(0,0,0,0.45);
+  min-height: 164px;
+  padding: 0.85rem 0.95rem 0.95rem;
+  border: 1px solid rgba(184,230,46,0.28);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 28%),
+    linear-gradient(180deg, #0b1410 0%, #0f1a13 100%);
+  box-shadow:
+    0 0 0 1px rgba(184,230,46,0.18),
+    0 0 28px rgba(184,230,46,0.50),
+    0 8px 24px rgba(0,0,0,0.48),
+    inset 0 1px 0 rgba(255,255,255,0.06);
   isolation: isolate;
   text-decoration: none !important;
 }
+.hero-proof-card--htb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: radial-gradient(115% 88% at 50% 108%, rgba(0,0,0,0.52) 0%, transparent 58%);
+  pointer-events: none;
+  z-index: 0;
+}
 .hero-proof-card--htb:hover {
-  border-color: #d4f248;
-  box-shadow: 0 0 0 1px rgba(182,230,46,0.2), 0 0 22px rgba(182,230,46,0.45), 0 10px 28px rgba(0,0,0,0.52);
+  border-color: rgba(184,230,46,0.42);
+  box-shadow:
+    0 0 0 1px rgba(184,230,46,0.24),
+    0 0 32px rgba(184,230,46,0.58),
+    0 10px 28px rgba(0,0,0,0.52),
+    inset 0 1px 0 rgba(255,255,255,0.08);
   transform: translateY(-1px);
 }
 .hero-proof-card--htb:focus-visible {
@@ -2678,28 +2698,36 @@ a.hero-proof-card:focus-visible {
 }
 /* Always dark — even in light mode (image shows near-black #0b1410 forced) */
 .dark .hero-proof-card--htb {
-  border-color: #b8e62e;
-  background: linear-gradient(180deg, rgba(18,30,18,0.96), rgba(8,18,12,0.98));
-  box-shadow: 0 0 0 1px rgba(182,230,46,0.15), 0 0 18px rgba(182,230,46,0.35), 0 8px 24px rgba(0,0,0,0.45);
+  border-color: rgba(184,230,46,0.28);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 28%),
+    linear-gradient(180deg, #0b1410 0%, #0f1a13 100%);
+  box-shadow:
+    0 0 0 1px rgba(184,230,46,0.18),
+    0 0 28px rgba(184,230,46,0.50),
+    0 8px 24px rgba(0,0,0,0.48),
+    inset 0 1px 0 rgba(255,255,255,0.06);
 }
 .hero-proof-card--htb > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .htb-hex-bg {
   position: absolute;
-  inset: auto -8% -12% auto;
-  width: 58%;
-  height: 68%;
+  top: 50%;
+  right: 4%;
+  width: 48%;
+  height: 58%;
+  transform: translateY(-50%);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   opacity: 1;
 }
 .htb-hex {
   position: absolute;
-  border: 1.2px solid rgba(184,230,46,0.14);
-  background: linear-gradient(180deg, rgba(184,230,46,0.06), transparent);
-  clip-path: polygon(50% 0%, 90% 22%, 90% 78%, 50% 100%, 10% 78%, 10% 22%);
+  border: 0.8px solid rgba(184,230,46,0.10);
+  background: transparent;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
   border-radius: 2px;
 }
 .htb-hex--1 {
@@ -2707,45 +2735,46 @@ a.hero-proof-card:focus-visible {
   height: 68%;
   right: 6%;
   bottom: 8%;
-  opacity: 0.42;
-  border-color: rgba(184,230,46,0.18);
+  opacity: 0.08;
+  border-color: rgba(184,230,46,0.10);
 }
 .htb-hex--2 {
   width: 48%;
   height: 46%;
   right: 18%;
   bottom: 22%;
-  opacity: 0.28;
+  opacity: 0.05;
 }
 .htb-hex--3 {
   width: 28%;
   height: 28%;
   right: 10%;
   bottom: 6%;
-  opacity: 0.18;
+  opacity: 0.03;
 }
 .htb-pro-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  width: 100%;
-  padding: 0.55rem 0.9rem;
+  gap: 0.45rem;
+  width: calc(100% - 14px);
+  margin-inline: auto;
+  padding: 0.66rem 0.9rem;
   background: linear-gradient(180deg, #e0f56a 0%, #b8e62e 55%, #9fef00 100%);
-  border: 1px solid #d4f248;
+  border: none;
   border-radius: 999px;
   color: #0a1400;
   font-family: Inter, var(--cg-font, sans-serif);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   line-height: 1;
   text-transform: uppercase;
-  box-shadow: 0 2px 12px rgba(182,230,46,0.45), inset 0 1px 0 rgba(255,255,255,0.55);
-  z-index: 1;
+  box-shadow: 0 2px 10px rgba(184,230,46,0.32), inset 0 1px 0 rgba(255,255,255,0.55);
+  z-index: 2;
 }
 .htb-pro-pill i {
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   color: #0a1400;
   line-height: 1;
   filter: drop-shadow(0 1px 0 rgba(255,255,255,0.25));
@@ -2753,46 +2782,46 @@ a.hero-proof-card:focus-visible {
 .htb-rank {
   display: flex;
   align-items: baseline;
-  gap: 0.35rem;
-  margin-top: 0.9rem;
+  gap: 0.32rem;
+  margin-top: 0.65rem;
   font-family: Inter, var(--cg-font, sans-serif);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 .htb-rank-top {
   color: #f1f5f9;
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   font-weight: 800;
 }
 .htb-rank-pct {
   color: #b8e62e;
-  font-size: 1.55rem;
+  font-size: 1.92rem;
   font-weight: 800;
-  text-shadow: 0 0 12px rgba(182,230,46,0.25);
+  text-shadow: 0 0 16px rgba(184,230,46,0.35);
 }
 .htb-subtitle {
-  margin-top: 0.35rem;
-  color: #9fb0bc;
-  font-size: 0.78rem;
-  font-weight: 500;
+  margin-top: 0.30rem;
+  color: #8a9aa8;
+  font-size: 0.71rem;
+  font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1.4;
 }
 .htb-divider {
   display: block;
   width: 42%;
-  height: 2px;
-  margin-top: 0.85rem;
-  background: linear-gradient(90deg, #b8e62e, transparent);
+  height: 1.4px;
+  margin-top: 0.80rem;
+  background: linear-gradient(90deg, rgba(184,230,46,0.78) 0%, rgba(184,230,46,0.10) 72%, transparent 100%);
   border-radius: 999px;
-  opacity: 0.9;
+  opacity: 0.62;
 }
 .htb-verified {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.85rem;
+  gap: 0.70rem;
+  margin-top: 0.80rem;
 }
 .htb-shield {
   width: 42px;
@@ -2801,20 +2830,20 @@ a.hero-proof-card:focus-visible {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, rgba(184,230,46,0.18), rgba(8,18,12,0.9));
-  border: 1.5px solid rgba(184,230,46,0.55);
-  box-shadow: 0 0 0 1px rgba(184,230,46,0.12), 0 0 14px rgba(184,230,46,0.28);
+  background: radial-gradient(circle at 50% 50%, rgba(184,230,46,0.10), rgba(8,18,12,0.92));
+  border: 1px solid rgba(184,230,46,0.32);
+  box-shadow: 0 0 0 1px rgba(184,230,46,0.08), 0 0 10px rgba(184,230,46,0.22);
   color: #b8e62e;
   font-size: 1.05rem;
   line-height: 1;
 }
 .htb-shield i {
-  filter: drop-shadow(0 0 6px rgba(184,230,46,0.5));
+  filter: drop-shadow(0 0 6px rgba(184,230,46,0.42));
 }
 .htb-verified-text {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.10rem;
   min-width: 0;
 }
 .htb-verified-text strong {
@@ -2824,8 +2853,8 @@ a.hero-proof-card:focus-visible {
   line-height: 1.2;
 }
 .htb-verified-text small {
-  color: #9fb0bc !important;
-  font-size: 0.72rem !important;
+  color: #8a9aa8 !important;
+  font-size: 0.70rem !important;
   font-weight: 500 !important;
   line-height: 1.3;
 }
@@ -2835,26 +2864,30 @@ a.hero-proof-card:focus-visible {
 }
 @media (max-width: 480px) {
   .hero-proof-card--htb {
-    padding: 0.95rem 0.85rem 0.85rem;
+    min-height: 152px;
+    padding: 0.80rem 0.85rem 0.85rem;
+    border-radius: 18px;
   }
+  .hero-proof-card--htb::before { border-radius: 18px; }
   .htb-pro-pill {
-    font-size: 0.7rem;
-    padding: 0.48rem 0.75rem;
-    gap: 0.4rem;
+    font-size: 0.68rem;
+    padding: 0.55rem 0.75rem;
+    gap: 0.38rem;
+    width: calc(100% - 12px);
+    letter-spacing: 0.10em;
   }
   .htb-pro-pill i {
-    font-size: 0.82rem;
+    font-size: 0.76rem;
   }
-  .htb-rank-top,
-  .htb-rank-pct {
-    font-size: 1.35rem;
-  }
+  .htb-rank { margin-top: 0.55rem; }
+  .htb-rank-top { font-size: 1.28rem; }
+  .htb-rank-pct { font-size: 1.68rem; }
   .htb-subtitle {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
   .htb-verified {
-    gap: 0.6rem;
-    margin-top: 0.75rem;
+    gap: 0.60rem;
+    margin-top: 0.70rem;
   }
   .htb-shield {
     width: 36px;
@@ -2866,24 +2899,23 @@ a.hero-proof-card:focus-visible {
     font-size: 0.76rem !important;
   }
   .htb-verified-text small {
-    font-size: 0.68rem !important;
+    font-size: 0.66rem !important;
   }
   .htb-divider {
     width: 38%;
-    margin-top: 0.7rem;
+    margin-top: 0.65rem;
+    height: 1.2px;
   }
   .htb-hex-bg {
-    width: 52%;
-    height: 62%;
+    width: 46%;
+    height: 54%;
   }
 }
 @media (max-width: 360px) {
   .htb-pro-pill {
-    font-size: 0.66rem;
-    padding: 0.42rem 0.65rem;
+    font-size: 0.64rem;
+    padding: 0.50rem 0.65rem;
   }
-  .htb-rank-top,
-  .htb-rank-pct {
-    font-size: 1.22rem;
-  }
+  .htb-rank-top { font-size: 1.18rem; }
+  .htb-rank-pct { font-size: 1.52rem; }
 }
