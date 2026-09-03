@@ -3,26 +3,26 @@
 <section id="writing" class="recruiter-section recruiter-writing" aria-labelledby="writing-title">
     <div class="recruiter-container">
         <div class="recruiter-section-heading">
-            <p class="section-kicker">Research & notes</p>
-            <h2 id="writing-title">RESEARCH & NOTES</h2>
-            <p class="section-dek">Short, practical write-ups on offensive security, defense, and infrastructure.</p>
+            <p class="section-kicker">Research</p>
+            <h2 id="writing-title">FEATURED RESEARCH</h2>
+            <p class="section-dek">Three hands-on investigations — each with redacted artifacts, mitigation, and verification.</p>
         </div>
 {{ if gt (len $writingPages) 0 }}
 {{ $writingPages = $writingPages.ByDate.Reverse }}
 {{ $dateFormat := .Site.Params.datesFormat.articleList | default "Jan 2, 2006" }}
-{{ $featured1 := .Site.GetPage "/blogs/elk-siem-soc-home-lab-detection-engineering" }}
+{{ $featured1 := .Site.GetPage "/blogs/verisign-csrf-account-takeover-domainscope" }}
 {{ $featured2 := .Site.GetPage "/blogs/apparmor-rce-mitigation" }}
-{{ $featured3 := .Site.GetPage "/blogs/verisign-csrf-account-takeover-domainscope" }}
+{{ $featured3 := .Site.GetPage "/blogs/elk-siem-soc-home-lab-detection-engineering" }}
 {{ if or (or $featured1 $featured2) $featured3 }}
         <div class="writing-featured-grid">
             {{ with $featured1 }}
             <article class="writing-card writing-card--featured">
-                <span class="writing-featured-badge">Featured · SOC · Detection Engineering</span>
+                <span class="writing-featured-badge">Featured · Bug Bounty · $1,000</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Description }}</p>
-                <div class="writing-sequence" aria-label="SOC pipeline sequence">
-                    <span>Auditd</span><span aria-hidden="true">→</span><span>Filebeat</span><span aria-hidden="true">→</span><span>ELK</span><span aria-hidden="true">→</span><span>Sigma</span>
+                <div class="writing-sequence" aria-label="CSRF to ATO sequence">
+                    <span>OAuth</span><span aria-hidden="true">→</span><span>CSRF</span><span aria-hidden="true">→</span><span>ATO</span><span aria-hidden="true">→</span><span>$1,000</span>
                 </div>
                 <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
             </article>
@@ -41,50 +41,18 @@
             {{ end }}
             {{ with $featured3 }}
             <article class="writing-card writing-card--featured">
-                <span class="writing-featured-badge">Featured · Bug Bounty · $1,000</span>
+                <span class="writing-featured-badge">Featured · SOC · Detection Engineering</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Description }}</p>
-                <div class="writing-sequence" aria-label="CSRF to ATO sequence">
-                    <span>OAuth</span><span aria-hidden="true">→</span><span>CSRF</span><span aria-hidden="true">→</span><span>ATO</span><span aria-hidden="true">→</span><span>$1,000</span>
+                <div class="writing-sequence" aria-label="SOC pipeline sequence">
+                    <span>Auditd</span><span aria-hidden="true">→</span><span>Filebeat</span><span aria-hidden="true">→</span><span>ELK</span><span aria-hidden="true">→</span><span>Sigma</span>
                 </div>
                 <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
             </article>
             {{ end }}
         </div>
 {{ end }}
-        <div class="writing-grid">
-            {{ $filteredPages := $writingPages }}
-            {{ if $featured1 }}
-                {{ $filteredPages = where $filteredPages "RelPermalink" "!=" $featured1.RelPermalink }}
-            {{ end }}
-            {{ if $featured2 }}
-                {{ $filteredPages = where $filteredPages "RelPermalink" "!=" $featured2.RelPermalink }}
-            {{ end }}
-            {{ if $featured3 }}
-                {{ $filteredPages = where $filteredPages "RelPermalink" "!=" $featured3.RelPermalink }}
-            {{ end }}
-            {{ range first 6 $filteredPages }}
-            {{ $description := .Description | plainify }}
-            {{ if not $description }}{{ $description = .Summary | plainify | truncate 160 }}{{ end }}
-            <article class="writing-card">
-                {{ with .Params.tags }}
-                <span class="writing-featured-badge writing-badge--unfeatured">{{ delimit (first 2 .) " · " }}</span>
-                {{ else }}{{ with .Params.categories }}<span class="writing-featured-badge writing-badge--unfeatured">{{ delimit (first 2 .) " · " }}</span>{{ else }}<span class="writing-featured-badge writing-badge--unfeatured">Research · Notes</span>{{ end }}{{ end }}
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
-                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                {{ with $description }}<p>{{ . }}</p>{{ end }}
-                {{ with .Params.tags }}
-                <ul class="writing-tags" aria-label="Topics">
-                    {{ range first 2 . }}<li>{{ . }}</li>{{ end }}
-                </ul>
-                {{ end }}
-                <a class="writing-read-link" href="{{ .RelPermalink }}" aria-label="Read {{ .Title }}">
-                    Read article <span aria-hidden="true">→</span>
-                </a>
-            </article>
-            {{ end }}
-        </div>
 {{ else }}
         <div class="writing-empty-state" role="status">
             <p>No writing published yet.</p>

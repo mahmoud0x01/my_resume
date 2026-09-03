@@ -10,7 +10,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Mahmoud Adel",
-  "jobTitle": "Junior Penetration Tester",
+  "jobTitle": "Application Security & Offensive Security Engineer",
   "url": "https://mahmoudouf.com/",
   "image": "https://mahmoudouf.com/images/me-avatar.png",
   "description": "{{ .Site.Params.description | plainify }}",
@@ -49,18 +49,14 @@
 
 {{ define "main" }}
 {{- partial "sections/hero/index.html" . -}}
-{{- partial "sections/security-proof.html" . -}}
-{{- partial "sections/path.html" . -}}
+{{- partial "sections/at-a-glance.html" . -}}
+{{- partial "sections/credentials.html" . -}}
 {{- partial "sections/experience.html" . -}}
-{{- partial "sections/direction.html" . -}}
-{{- partial "sections/writing.html" . -}}
 {{- partial "sections/projects.html" . -}}
-{{- partial "sections/track-record.html" . -}}
-{{- partial "sections/disclosure.html" . -}}
-{{- partial "sections/awards.html" . -}}
+{{- partial "sections/disclosures.html" . -}}
+{{- partial "sections/path.html" . -}}
+{{- partial "sections/writing.html" . -}}
 {{- partial "sections/about.html" . -}}
-{{- partial "sections/education.html" . -}}
-{{- partial "sections/courses.html" . -}}
-{{- partial "sections/achievements.html" . -}}
+{{- partial "sections/skills-matrix.html" . -}}
 {{- partial "sections/contact.html" . -}}
 {{ end }}

@@ -1,11 +1,19 @@
 {{ if .Site.Params.about.enable | default false }}
 {{ $aboutImage := .Site.Params.about.image | default "/images/me-avatar.png" }}
-{{ $aboutContent := .Site.Params.about.content | replaceRE "🛡️" "" | replaceRE "🤝" "" | replaceRE "🔹" "" }}
+{{ $rawAboutContent := .Site.Params.about.content | default "" }}
+{{ $aboutContent := $rawAboutContent | replaceRE "🛡️" "" | replaceRE "🤝" "" | replaceRE "🔹" "" }}
+{{/* Content Edit #1: lead with named disclosures, not aggregate — robust replace for both old and new hugo.yaml phrasings */}}
+{{ $aboutContent = replace $aboutContent "Proof includes 20+ HoF Acknowledgments — including DigitalOcean, Pinterest, Verisign, and Dell through Bugcrowd" "Named disclosures include Verisign, DigitalOcean, Pinterest, and Dell — with 20+ aggregate acknowledgments across Bugcrowd" }}
+{{ $aboutContent = replace $aboutContent "Proof includes 20+ HoF Acknowledgments — including" "Named disclosures include" }}
 <section id="about" class="recruiter-section recruiter-about" aria-labelledby="about-title">
+    <span id="direction" class="sr-anchor" aria-hidden="true"></span>
+    <span id="how-i-approach-security" class="sr-anchor" aria-hidden="true"></span>
+    <span id="build-operate-secure" class="sr-anchor" aria-hidden="true"></span>
+    <span id="break-build-operate" class="sr-anchor" aria-hidden="true"></span>
     <div class="recruiter-container">
         <div class="recruiter-section-heading">
             <p class="section-kicker">Context</p>
-            <h2 id="about-title">{{ .Site.Params.about.title | default "About Mahmoud" }}</h2>
+            <h2 id="about-title">{{ .Site.Params.about.title | default "About Me" }}</h2>
             <p class="section-dek">A practical security perspective shaped by both testing and operating real systems.</p>
         </div>
 
@@ -77,6 +85,58 @@
                 </div>
                 {{ end }}
 
+                {{/* Philosophy — How I Approach Security merged from direction.html */}}
+                <div class="about-philosophy" aria-labelledby="approach-title">
+                    <div class="subsection-heading">
+                        <p class="section-kicker">Philosophy</p>
+                        <h3 id="approach-title">How I Approach Security</h3>
+                        <p class="section-dek" style="margin-top:0.5rem;">BREAK / BUILD / OPERATE / SECURE — Find the flaw, understand why it broke, and think about how it should be fixed.</p>
+                    </div>
+                    <div class="bbo-grid bbo-grid--4">
+                        <article class="bbo-card">
+                            <i class="fa-solid fa-crosshairs" aria-hidden="true"></i>
+                            <h3>BREAK — Offensive Testing</h3>
+                            <ul>
+                                <li>Web/API</li>
+                                <li>Network</li>
+                                <li>Vulnerability Assessment</li>
+                                <li>Privilege Escalation</li>
+                                <li>Responsible Disclosure</li>
+                            </ul>
+                            <p class="bbo-card-note">Find the flaw, validate the impact, and prove it under authorized scope.</p>
+                        </article>
+                        <article class="bbo-card">
+                            <i class="fa-solid fa-code" aria-hidden="true"></i>
+                            <h3>BUILD — Software &amp; Automation</h3>
+                            <ul>
+                                <li>Python · JavaScript · C/C++ · SQL</li>
+                                <li>Git · Security Tooling · Automation</li>
+                            </ul>
+                            <p class="bbo-card-note">Understanding how software is designed makes it easier to see where its logic can fail.</p>
+                        </article>
+                        <article class="bbo-card">
+                            <i class="fa-solid fa-server" aria-hidden="true"></i>
+                            <h3>OPERATE — Infrastructure</h3>
+                            <ul>
+                                <li>Linux · Windows · Networking</li>
+                                <li>Docker · Hardening</li>
+                                <li>System Administration · AD/Kerberos</li>
+                            </ul>
+                            <p class="bbo-card-note">Understanding how systems actually run makes infrastructure weaknesses easier to recognize.</p>
+                        </article>
+                        <article class="bbo-card bbo-card--secure">
+                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                            <h3>SECURE — Root-Cause Reasoning</h3>
+                            <ul>
+                                <li>AppArmor · LSMs · Namespaces</li>
+                                <li>Filesystem Trust · Defense in Depth</li>
+                            </ul>
+                            <p class="bbo-card-note">Don't stop at 'it broke' — understand why, contain it, and fix the underlying trust boundary.</p>
+                        </article>
+                    </div>
+                    <p class="bbo-lifecycle-caption" style="margin-top:1.2rem">Security inherits every earlier decision — architecture, code, automation, and operations shape where flaws live and how they spread.</p>
+                </div>
+
                 {{ if .Site.Params.about.languages.enable }}
                 <div class="about-languages">
                     <div class="subsection-heading">
@@ -91,25 +151,6 @@
                         </div>
                         {{ end }}
                     </dl>
-                </div>
-                {{ end }}
-
-                {{ with .Site.Params.about.toolkitTiers }}
-                <div class="about-toolkit">
-                    <div class="subsection-heading">
-                        <p class="section-kicker">Evidence tiers</p>
-                        <h3>How I prioritize tools</h3>
-                        <p class="toolkit-legend">Core · Applied · Familiar · Engineering — strongest to exposure, no percentage scores.</p>
-                    </div>
-                    {{ range . }}
-                    <section class="toolkit-tier">
-                        <h4>{{ .tier }}</h4>
-                        {{ with .description }}<p class="toolkit-tier-desc">{{ . }}</p>{{ end }}
-                        <ul class="toolkit-tier-list">
-                            {{ range .items }}<li>{{ . }}</li>{{ end }}
-                        </ul>
-                    </section>
-                    {{ end }}
                 </div>
                 {{ end }}
 

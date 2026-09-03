@@ -37,30 +37,30 @@ markup:
 
 Menus:
   main:
-    - identifier: security-proof
-      name: Security Work
-      title: Selected security proof
-      url: "#security-proof"
+    - identifier: experience
+      name: Experience
+      title: Professional experience
+      url: "#experience"
       weight: 1
-    - identifier: track-record
-      name: Track Record
-      title: Security track record
-      url: "#track-record"
+    - identifier: projects
+      name: Projects
+      title: Selected projects
+      url: "#projects"
       weight: 2
+    - identifier: disclosures
+      name: Recognition
+      title: Disclosures and recognition
+      url: "#disclosures"
+      weight: 3
     - identifier: research
       name: Research
-      title: Research and notes
+      title: Featured research
       url: "#writing"
-      weight: 3
+      weight: 4
     - identifier: about
       name: About
-      title: About
+      title: About Me and Approach
       url: "#about"
-      weight: 4
-    - identifier: contact
-      name: Contact
-      title: Contact
-      url: "#contact"
       weight: 5
     #Dropdown menu
     # - identifier: dropdown
@@ -82,8 +82,8 @@ Menus:
 
 params:
   title: "Mahmoud Adel — Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
-  description: "Junior Penetration Tester & SOC Analyst — penetration testing, SIEM/ELK, incident response, cloud security AWS IAM, bug bounty, responsible disclosure"
-  keywords: "junior penetration tester, penetration testing, soc analyst, siem, elk stack, splunk, incident response, cloud security, aws iam, scout suite, prowler, digital forensics, threat hunting, sigma, yara, mitre attack, authorized security testing, responsible disclosure, security research, bug bounty, Hall of Fame, Bastion CTF, software engineering, AppArmor RCE, CSRF OAuth, Verisign, Linux Windows AD"
+  description: "Application Security & Offensive Security Engineer | B.Sc. Software Engineering — penetration testing, bug bounty, responsible disclosure, security research"
+  keywords: "application security, offensive security, security engineering, junior penetration tester, penetration testing, soc analyst, siem, elk stack, splunk, incident response, cloud security, aws iam, scout suite, prowler, digital forensics, threat hunting, sigma, yara, mitre attack, responsible disclosure, security research, bug bounty, Hall of Fame, Bastion CTF, software engineering, AppArmor RCE, CSRF OAuth, Verisign, Linux Windows AD"
   location: "Based in Egypt (UTC+2) · Open to Remote & Global Relocation · Visa Sponsorship / B2B Contract"
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"
@@ -157,11 +157,11 @@ params:
   # Hero
   hero:
     enable: true
-    intro: "OPEN TO WORK · JUNIOR SECURITY"
+    intro: "OPEN TO WORK · SECURITY ENGINEERING"
     title: "Mahmoud Adel"
     subtitle: "Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
     supportingAreas: "Web/API Security · Network Assessment · Linux & Systems"
-    content: "Junior penetration tester with a software engineering and Linux systems background, focused on web/API security, network assessment, vulnerability research, and understanding how real systems break."
+    content: "Application security engineer with a software engineering and Linux systems background, focused on web/API security, network assessment, vulnerability research, and understanding how real systems break."
     image: "/images/me-avatar.png"
     bottomImage:
       enable: true
@@ -195,7 +195,7 @@ params:
     content: |-
       Software Engineer by degree, Offensive Security researcher by practice. I specialize in bridging application code quality with web/API penetration testing, threat modeling, and secure architecture. Experienced in identifying business-critical vulnerabilities (such as OAuth CSRF-to-ATO) and conducting authorized security assessments.
 
-      Proof includes 20+ HoF Acknowledgments — including DigitalOcean, Pinterest, Verisign, and Dell through Bugcrowd — a Top 5 / 100 result in Bastion's internal penetration-testing and privilege-escalation CTF, two technical internships including one in penetration testing, and published security research.
+      Named disclosures include Verisign, DigitalOcean, Pinterest, and Dell — with 20+ aggregate acknowledgments across Bugcrowd — a Top 5 / 100 result in Bastion's internal penetration-testing and privilege-escalation CTF, two technical internships including one in penetration testing, and published security research.
 
       My Software Engineering degree at Tomsk State University strengthens system reasoning, architecture, documentation, and automation — from UML and component diagrams to full development lifecycles and tooling that makes findings reproducible.
 
@@ -301,27 +301,27 @@ params:
               - Provided 12 diagrams supporting review and handover
               - Met publication-ready documentation standards
 
-              *Engineering work that strengthens system reasoning and tooling — not presented as security assessment.*
+              *Engineering work that builds system reasoning, architecture and tooling — not security assessment.*
 
-      - company: "Bastion Security — Security Engineering Internship (Moscow)"
+      - company: "Bastion Security"
         jobs:
           - name: "Security Engineering Intern (Authorized Scope: Web/API & Network Assessment)"
             date: "May 2024 - Sep 2024"
             content: |
               **Role & Scope:** Intern — authorized assessments only, team-reviewed. No independent client engagements.
 
-              **Context:** Authorized web and network assessments in controlled and client-authorized environments as part of Bastion's internship program (Moscow).
+              **Context:** Authorized web and network assessments in controlled and client-authorized environments as part of Bastion's internship program.
 
               **Responsibilities:**
-              - Manually assessed 8 web apps & 2 network ranges — authentication, input handling and privilege boundaries
-              - Tested for authentication bypass, injection and privilege-escalation paths — 11 validated findings (auth bypass/injection/privesc)
-              - Validated findings to root level: 6 Linux + 4 Windows root validations in lab/authorized targets
-              - Documented 8 reports with 0 rework — exploitation paths and remediation notes; presented results for internal review
+              - Manually assessed **8 web apps & 2 network ranges** — authentication, input handling and privilege boundaries
+              - Tested for authentication bypass, injection and privilege-escalation paths — **11 validated findings** (auth bypass/injection/privesc)
+              - Validated findings to root level: **6 Linux + 4 Windows** root validations in lab/authorized targets
+              - Documented **8 reports with 0 rework** — exploitation paths and remediation notes; presented results for internal review
 
-              **Outcomes:**
-              - Delivered 8 technical reports reviewed by senior team with 0 rework cycles
+              **Outcomes:** **11 validated findings · 8 reports · 0 rework · Top 5 / 100 CTF**
+              - Delivered **8** technical reports reviewed by senior team with **0 rework** cycles
               - Demonstrated hands-on validation and reporting discipline in an intern capacity
-              - External measure: Top 5 / 100 in Bastion internal CTF (penetration-testing and privilege-escalation challenges)
+              - External measure: **Top 5 / 100** in Bastion internal CTF (penetration-testing and privilege-escalation challenges)
 
   # Education
   education:
@@ -335,47 +335,47 @@ params:
           url: "https://www.tsu.ru"
         date: "Sep 2022 - Jul 2026"
 
-  # Courses
+  # Courses — priority order for HR/ATS (spec: OSCP → Linux+ → SecurityBlue → IBM CTI → TryHackMe Jr → CCNA, PNPT secondary)
   courses:
     enable: true
     title: "Training & Learning"
     index: false
     items:
-      - title: "Jr Penetration Tester"
+      - title: "OSCP (In Progress)"
         school:
-          name: "TryHackMe"
-          url: "https://tryhackme.com/"
-        date: "2024"
+          name: "OffSec"
+          url: "https://www.offsec.com/courses-and-certifications/pwk/"
+        date: "2025 — In Progress"
       - title: "CompTIA Linux+"
         school:
           name: "CompTIA"
           url: "https://www.comptia.org"
         date: "2024"
+      - title: "SecurityBlue Blue Team Junior Analyst"
+        school:
+          name: "SecurityBlue"
+          url: "https://securityblue.team"
+        date: "2023"
       - title: "IBM Cyber Threat Intelligence Certification"
         school:
           name: "IBM"
           url: "https://www.ibm.com"
+        date: "2023"
+      - title: "Jr Penetration Tester"
+        school:
+          name: "TryHackMe"
+          url: "https://tryhackme.com/"
+        date: "2024"
+      - title: "CCNA"
+        school:
+          name: "Cisco"
+          url: "https://www.cisco.com"
         date: "2023"
       - title: "Penetration Testing, Incident Response and Forensics"
         school:
           name: "IBM"
           url: "https://www.ibm.com"
         date: "2023"
-      - title: "SecurityBlue Blue Team Junior Analyst"
-        school:
-          name: "SecurityBlue"
-          url: "https://securityblue.team"
-        date: "2023"
-      - title: "CCNA"
-        school:
-          name: "Cisco"
-          url: "https://www.cisco.com"
-        date: "2023"
-      - title: "OSCP (In Progress)"
-        school:
-          name: "OffSec"
-          url: "https://www.offsec.com/courses-and-certifications/pwk/"
-        date: "2025 — In Progress"
       - title: "PNPT (In Progress)"
         school:
           name: "TCM Security"
@@ -397,8 +397,8 @@ params:
       - title: "SecurityBlue Blue Team Junior Analyst"
         content: SecurityBlue Team Junior Analyst certification, demonstrating skills in blue team operations, incident response, and security monitoring.
         url: https://elearning.securityblue.team/home/certificate/762758116
-      - title: "Practical Security Labs & Platforms — HTB & TryHackMe"
-        content: "Active hands-on labs: Hack The Box (verified badges, rank progression) and TryHackMe (@iamkernel) — Web, AD, privilege escalation and defensive labs."
+      - title: "Hack The Box — Verified Skill Badges"
+        content: "Hack The Box verified skill badges — rank progression across Web, Active Directory, privilege escalation and defensive labs. Verified profile with completed machines, challenges and skill progression."
         url: https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges
         image: /images/htb-thm-labs.png
 
@@ -584,7 +584,7 @@ params:
   contact:
     enable: true
     title: "OPEN TO SECURITY ROLES"
-    content: "Open to junior penetration testing, security analyst, blue-team, and infrastructure-security roles."
+    content: "Open to application security, offensive security, security engineering, and infrastructure-security roles — worldwide (remote & on-site)."
     btnName: "EMAIL ME"
     btnLink: mailto:contact@mahmoudouf.com
     # formspree:

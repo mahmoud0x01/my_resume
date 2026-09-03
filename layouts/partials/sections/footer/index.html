@@ -29,20 +29,27 @@
             <div class="footer-col">
                 <p class="footer-col-title">networks</p>
                 {{ if .Site.Params.footer.socialNetworks.github }}
-                <a href="{{ .Site.Params.footer.socialNetworks.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="{{ .Site.Params.footer.socialNetworks.github }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
                 {{ end }}
                 {{ if .Site.Params.footer.socialNetworks.linkedin }}
-                <a href="{{ .Site.Params.footer.socialNetworks.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="{{ .Site.Params.footer.socialNetworks.linkedin }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
                 {{ end }}
                 {{ range .Site.Params.hero.socialLinks.fontAwesomeIcons }}
                 {{ if eq .icon "fab fa-telegram" }}
-                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">Telegram</a>
-                {{ end }}
-                {{ if eq .icon "fab fa-instagram" }}
-                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
                 {{ end }}
                 {{ end }}
-                <a href="mailto:contact@mahmoudouf.com">Email</a>
+                {{ if .Site.Params.footer.socialNetworks.htb }}
+                <a href="{{ .Site.Params.footer.socialNetworks.htb }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-cube" aria-hidden="true"></i> Hack The Box</a>
+                {{ else }}
+                <a href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener noreferrer"><i class="fas fa-cube" aria-hidden="true"></i> Hack The Box</a>
+                {{ end }}
+                {{ if .Site.Params.footer.socialNetworks.tryhackme }}
+                <a href="{{ .Site.Params.footer.socialNetworks.tryhackme }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-flask" aria-hidden="true"></i> TryHackMe</a>
+                {{ else }}
+                <a href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener noreferrer"><i class="fas fa-flask" aria-hidden="true"></i> TryHackMe</a>
+                {{ end }}
+                <a href="mailto:contact@mahmoudouf.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
             </div>
         </div>
 

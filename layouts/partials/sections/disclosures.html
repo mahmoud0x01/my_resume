@@ -1,0 +1,75 @@
+{{/* Section 6 — Disclosures & Recognition (unified) — merges Security Track Record (8 items) + Responsible Disclosure + Hall of Fame wall into ONE lean section. Bastion CTF/experience stays in #experience. */}}
+<section id="disclosures" class="recruiter-section recruiter-disclosures" aria-labelledby="disclosures-title">
+  {{/* legacy anchors so old #track-record / #awards / #disclosure / #security-proof links still land here */}}
+  <span id="security-proof" class="sr-anchor" aria-hidden="true"></span>
+  <span id="track-record" class="sr-anchor" aria-hidden="true"></span>
+  <span id="awards" class="sr-anchor" aria-hidden="true"></span>
+  <span id="disclosure" class="sr-anchor" aria-hidden="true"></span>
+  <div class="recruiter-container">
+    <div class="recruiter-section-heading">
+      <p class="section-kicker">Recognition</p>
+      <h2 id="disclosures-title">DISCLOSURES &amp; RECOGNITION</h2>
+      <p class="section-dek">Named disclosures include Verisign, DigitalOcean, Pinterest, and Dell — with 20+ aggregate acknowledgments across Bugcrowd.</p>
+      <p class="section-dek" style="margin-top:0.5rem; font-size:0.88rem; opacity:0.95;">All findings reported through authorized bug bounty programs and responsibly disclosed. Verisign research includes redacted artifacts and reward confirmation.</p>
+    </div>
+
+    <div class="disclosures-grid">
+      <!-- Verisign — $1,000 OAuth CSRF → ATO, April 2018 -->
+      <article class="disclosure-card disclosure-card--featured">
+        <div class="disclosure-card-topline">
+          <span class="disclosure-card-kicker"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verisign · DomainScope</span>
+          <span class="proof-severity proof-severity--critical">Critical · $1,000</span>
+        </div>
+        <h3>OAuth CSRF → Account Takeover</h3>
+        <p>Missing <code>state</code> on <code>GET /connect/google</code> allowed linking an attacker Google identity to the victim&rsquo;s authenticated DomainScope session → full ATO via <em>Sign in with Google</em> and persistent password set via <em>My Profile</em>.</p>
+        <p class="disclosure-card-meta">April 2018 · OAuth · CSRF · Account Takeover · $1,000 Reward · Hall of Fame</p>
+        <div class="disclosure-card-links">
+          <a class="disclosure-card-link" href="/blogs/verisign-csrf-account-takeover-domainscope/">Read research →</a>
+          <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">Bugcrowd profile ↗</a>
+        </div>
+      </article>
+
+      <!-- DigitalOcean — Critical, April 2019 -->
+      <article class="disclosure-card">
+        <div class="disclosure-card-topline">
+          <span class="disclosure-card-kicker"><i class="fa-brands fa-digital-ocean" aria-hidden="true"></i> DigitalOcean</span>
+          <span class="proof-severity proof-severity--critical">Critical</span>
+        </div>
+        <h3>Responsible Disclosure — Critical Vulnerability</h3>
+        <p>Validated critical vulnerability reported through DigitalOcean&rsquo;s authorized bug bounty program and acknowledged in Hall of Fame.</p>
+        <p class="disclosure-card-meta">April 2019 · Bug Bounty · Responsible Disclosure · Hall of Fame</p>
+        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+      </article>
+
+      <!-- Pinterest — June 2018 -->
+      <article class="disclosure-card">
+        <div class="disclosure-card-topline">
+          <span class="disclosure-card-kicker"><i class="fa-brands fa-pinterest" aria-hidden="true"></i> Pinterest</span>
+          <span class="proof-severity proof-severity--medium">Hall of Fame</span>
+        </div>
+        <h3>Responsible Disclosure — Security Vulnerability</h3>
+        <p>Validated security finding responsibly disclosed via Pinterest&rsquo;s bug bounty program and acknowledged in Hall of Fame.</p>
+        <p class="disclosure-card-meta">June 2018 · Bug Bounty · Responsible Disclosure · Hall of Fame</p>
+        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+      </article>
+
+      <!-- Dell — April 2018 -->
+      <article class="disclosure-card">
+        <div class="disclosure-card-topline">
+          <span class="disclosure-card-kicker"><i class="fa-brands fa-dell" aria-hidden="true"></i> Dell</span>
+          <span class="proof-severity proof-severity--medium">Hall of Fame</span>
+        </div>
+        <h3>Responsible Disclosure — Security Finding</h3>
+        <p>Validated security finding submitted through Dell&rsquo;s official bug bounty program and acknowledged in Hall of Fame.</p>
+        <p class="disclosure-card-meta">April 2018 · Bug Bounty · Responsible Disclosure · Hall of Fame</p>
+        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+      </article>
+    </div>
+
+    <p class="disclosures-aggregate">
+      20+ aggregate acknowledgments across Bugcrowd — <a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+    </p>
+    <p class="disclosures-note">Bastion Security internship and Top&nbsp;5/100 CTF remain documented under <a href="#experience">Experience</a>. Gap 2019–2024 and lab milestones are detailed in <a href="#credentials">Credentials &amp; Proficiencies</a> to avoid duplication.</p>
+    <p class="disclosures-references-note">References &amp; Verifiable Assessment Logs Available Upon Request</p>
+  </div>
+</section>

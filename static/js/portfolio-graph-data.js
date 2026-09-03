@@ -108,8 +108,8 @@ var PORTFOLIO_DATA = (function () {
     // ---- Central node ----
     var meNode = {
         id: 'me', type: 'me', name: 'Mahmoud Adel', cat: 'me',
-        roles: ['Junior Penetration Tester', 'Blue-Team Foundations', 'Software Engineering Foundations'],
-        subtitle: 'Junior Penetration Tester · Blue-Team Foundations · Software Engineering Foundations',
+        roles: ['Application Security & Offensive Security Engineer', 'B.Sc. Software Engineering'],
+        subtitle: 'Application Security & Offensive Security Engineer | B.Sc. Software Engineering',
         terminalTitle: 'zsh — mahmoud@portfolio',
         image: '/images/me-avatar.png',
         icon: '',
@@ -185,9 +185,9 @@ var PORTFOLIO_DATA = (function () {
         {
             id: 'award-ctf', type: 'award', cat: 'award',
             name: 'CTF Top 5 / 100', icon: 'fas fa-flag-checkered',
-            subtitle: 'Bastion Cybersec Solutions',
+            subtitle: 'Bastion Security',
             date: 'August 2024',
-            content: 'Ranked Top 5 among 100 participants in penetration testing and privilege escalation challenges at Bastion Inc.',
+            content: 'Ranked Top 5 among 100 participants in penetration testing and privilege escalation challenges at Bastion Security.',
             relatedSkills: ['redteam', 'privesc', 'exploitdev', 'linux'],
         },
         {
@@ -237,11 +237,11 @@ var PORTFOLIO_DATA = (function () {
         },
         {
             id: 'exp-bastion', type: 'experience', cat: 'experience',
-            name: 'Penetration Tester Intern', icon: 'fas fa-user-secret',
-            subtitle: 'Bastion Cybersec Solutions',
+            name: 'Security Engineering Intern', icon: 'fas fa-user-secret',
+            subtitle: 'Bastion Security',
             date: 'May 2024 - Sep 2024',
             companyUrl: '',
-            content: 'Conducted authorized assessments of web applications and network systems, identifying authentication bypass, injection, and privilege-escalation findings. Performed root-level validation on Linux and Windows in lab and authorized environments. Produced technical reports and delivered presentations on vulnerabilities and exploitation methods. Ranked Top 5 among 100 participants in Bastion\'s internal CTF.',
+            content: 'Authorized scope: assessed 8 web apps & 2 network ranges for auth bypass, injection and privesc — 11 validated findings (6 Linux + 4 Windows root), 8 reports 0 rework. Ranked Top 5 / 100 in Bastion internal CTF.',
             relatedSkills: ['redteam', 'privesc', 'vulnassess', 'linux', 'netsec', 'websec'],
         },
     ];
@@ -260,14 +260,14 @@ var PORTFOLIO_DATA = (function () {
 
     // ---- Courses ----
     var courses = [
-        { id: 'crs-isc2',      name: 'ISC2 Candidate',        icon: 'fas fa-id-badge',       provider: 'ISC2',         date: '2024', relatedSkills: ['netsec', 'owasp'] },
-        { id: 'crs-jrpentest',  name: 'Jr Penetration Tester', icon: 'fas fa-chalkboard-user', provider: 'TryHackMe',    date: '2024', relatedSkills: ['redteam', 'privesc', 'burpsuite'] },
+        { id: 'crs-oscp',       name: 'OSCP (In Progress)',    icon: 'fas fa-shield-halved', provider: 'OffSec',       date: '2025 — In Progress', relatedSkills: ['privesc', 'linux', 'vulnassess'] },
         { id: 'crs-linuxplus',  name: 'CompTIA Linux+',        icon: 'fab fa-centos',         provider: 'CompTIA',      date: '2024', relatedSkills: ['linux', 'sysadm', 'bash'] },
-        { id: 'crs-ibmcti',     name: 'IBM Cyber Threat Intel', icon: 'fas fa-binoculars',    provider: 'IBM',          date: '2023', relatedSkills: ['mitreattack', 'netsec', 'threatintel'] },
-        { id: 'crs-ibmir',      name: 'PenTest, IR & Forensics', icon: 'fas fa-fingerprint',  provider: 'IBM',          date: '2023', relatedSkills: ['redteam', 'vulnassess'] },
         { id: 'crs-sbtja',      name: 'Blue Team Jr Analyst',  icon: 'fas fa-headset',        provider: 'SecurityBlue', date: '2023', relatedSkills: ['netsec', 'wireshark', 'mitreattack'] },
+        { id: 'crs-ibmcti',     name: 'IBM Cyber Threat Intel', icon: 'fas fa-binoculars',    provider: 'IBM',          date: '2023', relatedSkills: ['mitreattack', 'netsec', 'threatintel'] },
+        { id: 'crs-jrpentest',  name: 'Jr Penetration Tester', icon: 'fas fa-chalkboard-user', provider: 'TryHackMe',    date: '2024', relatedSkills: ['redteam', 'privesc', 'burpsuite'] },
         { id: 'crs-ccna',       name: 'CCNA',                  icon: 'fas fa-route',          provider: 'Cisco',        date: '2023', relatedSkills: ['tcpip', 'netsec', 'firewall'] },
-        { id: 'crs-pentestplus', name: 'CompTIA Pentest+',     icon: 'fas fa-clipboard-check', provider: 'CompTIA',     date: '2023', relatedSkills: ['redteam', 'vulnassess', 'privesc'] },
+        { id: 'crs-ibmir',      name: 'PenTest, IR & Forensics', icon: 'fas fa-fingerprint',  provider: 'IBM',          date: '2023', relatedSkills: ['redteam', 'vulnassess'] },
+        { id: 'crs-pnpt',       name: 'PNPT (In Progress)',    icon: 'fas fa-flag',           provider: 'TCM Security', date: '2025 — In Progress', relatedSkills: ['netsec', 'privesc', 'activedir'] },
     ].map(function (c) { c.type = 'course'; c.cat = 'course'; return c; });
 
     // ---- Certificates ----

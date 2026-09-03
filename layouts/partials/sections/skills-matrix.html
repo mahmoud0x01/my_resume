@@ -1,0 +1,25 @@
+{{/* Section 9 — Detailed Skills Matrix (moved from About, kept as-is) */}}
+<section id="skills-matrix" class="recruiter-section recruiter-skills-matrix" aria-labelledby="skills-matrix-title">
+  <span id="skills" class="sr-anchor" aria-hidden="true"></span>
+  <div class="recruiter-container">
+    <div class="recruiter-section-heading">
+      <p class="section-kicker">Capabilities</p>
+      <h2 id="skills-matrix-title">Detailed Skills Matrix</h2>
+      <p class="section-dek">Evidence-tiered and honestly scoped — Core · Applied · Familiar · Engineering — strongest to exposure, no percentage scores.</p>
+    </div>
+    {{ with .Site.Params.about.toolkitTiers }}
+    <div class="skills-matrix-tiers">
+      {{ range . }}
+      <section class="toolkit-tier">
+        <h4>{{ .tier }}</h4>
+        {{ with .description }}<p class="toolkit-tier-desc">{{ . }}</p>{{ end }}
+        <ul class="toolkit-tier-list">
+          {{ range .items }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      </section>
+      {{ end }}
+    </div>
+    {{ end }}
+    <p class="skills-matrix-note">Tiers reflect hands-on evidence: Core = regularly practiced with reporting · Applied = internship/lab depth · Familiar = lab exposure · Engineering = systems &amp; professional effectiveness.</p>
+  </div>
+</section>
