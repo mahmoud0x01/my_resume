@@ -37,31 +37,36 @@ markup:
 
 Menus:
   main:
-    - identifier: experience
-      name: Experience
-      title: Professional experience
-      url: "#experience"
-      weight: 1
-    - identifier: projects
-      name: Projects
-      title: Selected projects
-      url: "#projects"
-      weight: 2
     - identifier: disclosures
-      name: Recognition
-      title: Disclosures and recognition
+      name: SECURITY FINDINGS
+      title: Security findings and recognition
       url: "#disclosures"
-      weight: 3
+      weight: 1
+    - identifier: credentials
+      name: Credentials
+      title: Credentials and proficiencies
+      url: "#credentials"
+      weight: 2
     - identifier: research
       name: Research
       title: Featured research
       url: "#writing"
+      weight: 3
+    - identifier: experience
+      name: Experience
+      title: Professional experience
+      url: "#experience"
       weight: 4
+    - identifier: skills
+      name: Skills
+      title: Detailed skills matrix
+      url: "#skills-matrix"
+      weight: 5
     - identifier: about
       name: About
       title: About Me and Approach
       url: "#about"
-      weight: 5
+      weight: 6
     #Dropdown menu
     # - identifier: dropdown
     #   title: Example dropdown menu
