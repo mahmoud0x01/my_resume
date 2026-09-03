@@ -2920,7 +2920,7 @@ a.hero-proof-card:focus-visible {
   .htb-rank-pct { font-size: 1.52rem; }
 }
 
-/* ==== HERO ACHIEVEMENT CARDS — exact replication of achievement-cards.html scoped to #hero (2026-09-04) ==== */
+/* ==== HERO ACHIEVEMENT CARDS — compact scaled to old hero-proof-card size (2026-09-04) ==== */
 #hero {
   --bg: #020302;
   --card-top: rgba(22,30,18,.55);
@@ -2930,7 +2930,7 @@ a.hero-proof-card:focus-visible {
   --white: #F3F6F1;
   --gray: #8C948A;
   --divider: rgba(255,255,255,.08);
-  --radius: 24px;
+  --radius: 14px;
 }
 .dark #hero {
   --bg: #020302;
@@ -2941,17 +2941,17 @@ a.hero-proof-card:focus-visible {
   --white: #F3F6F1;
   --gray: #8C948A;
   --divider: rgba(255,255,255,.08);
-  --radius: 24px;
+  --radius: 14px;
 }
-/* Stage — flex column centered, gap 40px as in file .stage but adapted to hero (margin-top 2rem, no 90px padding) */
+/* Stage — compact: gap 40→16 to match old hero-proof-grid footprint */
 #hero .hero-achievement-stage,
 #hero .hero-proof-grid.hero-achievement-stage {
   width: 100%;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 40px !important;
-  margin-top: 2rem !important;
+  gap: 16px !important;
+  margin-top: 1.4rem !important;
   padding: 0 !important;
   background: transparent !important;
   min-height: auto !important;
@@ -2959,23 +2959,23 @@ a.hero-proof-card:focus-visible {
   max-width: 100% !important;
   box-sizing: border-box;
 }
-/* Row — 3 cols exactly as file */
+/* Row — 3 cols compact: gap 28→10, max-width 1180→760 to fit old 720 strip + 40 */
 #hero .hero-achievement-stage .row,
 #hero .hero-proof-grid .row {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  gap: 28px !important;
+  gap: 10px !important;
   width: 100% !important;
-  max-width: 1180px !important;
+  max-width: 760px !important;
   box-sizing: border-box;
 }
-/* Card shell — exact file .card */
+/* Card shell — scaled ~0.42x: padding 38/34→16/14, radius 24→14, blur 18→12, shadow + glow ~0.55x */
 #hero .card {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   border-radius: var(--radius);
-  padding: 38px 34px 34px;
+  padding: 16px 14px 14px;
   border: 1px solid transparent;
   background:
     linear-gradient(160deg, var(--card-top), var(--card-bottom)) padding-box,
@@ -2988,10 +2988,10 @@ a.hero-proof-card:focus-visible {
       var(--accent) 92%,
       rgba(255,255,255,.95) 100%) border-box;
   box-shadow:
-    0 30px 70px -30px rgba(0,0,0,.7),
-    0 0 50px -18px rgba(159,239,0,.18);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+    0 16px 32px -12px rgba(0,0,0,.65),
+    0 0 28px -10px rgba(159,239,0,.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   text-decoration: none !important;
   color: var(--white);
@@ -3005,50 +3005,51 @@ a.hero-proof-card:focus-visible {
 #hero .card::after {
   content: "";
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  filter: blur(22px);
+  filter: blur(14px);
   mix-blend-mode: screen;
   pointer-events: none;
   z-index: 0;
 }
 #hero .card::before {
-  top: -24px; left: -24px;
+  top: -14px; left: -14px;
   background: radial-gradient(circle, rgba(255,255,255,.55), var(--accent) 40%, transparent 72%);
-  opacity: .55;
+  opacity: .45;
 }
 #hero .card::after {
-  bottom: -24px; right: -24px;
+  bottom: -14px; right: -14px;
   background: radial-gradient(circle, rgba(255,255,255,.5), var(--accent) 40%, transparent 72%);
-  opacity: .55;
+  opacity: .45;
 }
 #hero .card-inner { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; }
-#hero .hexes { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .7; }
+#hero .hexes { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .50; }
+#hero .hexes polygon { stroke-width: 1.5 !important; }
 #hero .icon-badge {
-  width: 60px;
-  height: 60px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(159,239,0,.45);
   background: radial-gradient(circle at 30% 25%, rgba(159,239,0,.18), rgba(159,239,0,.02) 70%);
-  box-shadow: 0 0 22px rgba(159,239,0,.28), inset 0 0 14px rgba(159,239,0,.14);
-  margin-bottom: 26px;
+  box-shadow: 0 0 14px rgba(159,239,0,.28), inset 0 0 8px rgba(159,239,0,.14);
+  margin-bottom: 10px;
   flex-shrink: 0;
 }
-#hero .icon-badge svg { width: 26px; height: 26px; color: var(--accent); }
+#hero .icon-badge svg { width: 16px; height: 16px; color: var(--accent); }
 #hero .stat {
-  font-size: 42px;
+  font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.1;
   color: var(--white);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 #hero .stat .accent { color: var(--accent); }
@@ -3058,33 +3059,33 @@ a.hero-proof-card:focus-visible {
   background: rgba(255,255,255,.09);
   border: 1px solid rgba(255,255,255,.14);
   color: #c9cdc7;
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: .05em;
-  padding: 7px 14px;
-  border-radius: 9px;
+  letter-spacing: .06em;
+  padding: 3px 7px;
+  border-radius: 6px;
   font-family: 'Inter', sans-serif;
   line-height: 1;
 }
 #hero .title-green {
-  margin-top: 14px;
+  margin-top: 7px;
   color: var(--accent);
-  font-size: 19px;
+  font-size: 12.5px;
   font-weight: 600;
   line-height: 1.35;
   font-family: 'Inter', sans-serif;
 }
 #hero .title-gray {
-  margin-top: 10px;
+  margin-top: 4px;
   color: var(--gray);
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 500;
   line-height: 1.4;
   font-family: 'Inter', sans-serif;
 }
 #hero .divider {
-  margin-top: 24px;
-  padding-top: 22px;
+  margin-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid var(--divider);
 }
 #hero .bullet-list {
@@ -3093,138 +3094,140 @@ a.hero-proof-card:focus-visible {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 6px;
 }
 #hero .bullet-list li {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  font-size: 15px;
-  line-height: 1.55;
+  gap: 7px;
+  font-size: 11px;
+  line-height: 1.45;
   color: #D2D6CE;
   font-family: 'Inter', sans-serif;
 }
 #hero .bullet-list li b { color: var(--white); font-weight: 700; }
 #hero .dot {
-  width: 6px;
-  height: 6px;
-  min-width: 6px;
+  width: 4px;
+  height: 4px;
+  min-width: 4px;
   border-radius: 50%;
-  margin-top: 8px;
+  margin-top: 5px;
   background: var(--accent);
-  box-shadow: 0 0 6px var(--accent);
+  box-shadow: 0 0 4px var(--accent);
   display: block;
   flex-shrink: 0;
 }
 #hero .check-row {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 7px;
 }
 #hero .check-icon {
-  width: 20px; height: 20px;
+  width: 14px; height: 14px;
   color: var(--accent);
   flex-shrink: 0;
   margin-top: 1px;
 }
 #hero .check-row span {
-  font-size: 15.5px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--white);
-  line-height: 1.5;
+  line-height: 1.4;
   font-family: 'Inter', sans-serif;
 }
 #hero .card--lg {
-  max-width: 440px;
+  max-width: 280px;
   width: 100%;
-  padding: 34px 38px 38px;
+  padding: 16px 14px 14px;
   align-self: center;
 }
 #hero .badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 20px 10px 16px;
-  border-radius: 12px;
+  gap: 6px;
+  padding: 6px 10px 6px 8px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #cfff5e, var(--accent) 60%, #7fc400);
-  box-shadow: 0 8px 24px -6px rgba(159,239,0,.55), inset 0 1px 0 rgba(255,255,255,.4);
-  margin-bottom: 34px;
+  box-shadow: 0 6px 16px -4px rgba(159,239,0,.50), inset 0 1px 0 rgba(255,255,255,.4);
+  margin-bottom: 10px;
   width: fit-content;
 }
-#hero .badge-pill svg { width: 18px; height: 18px; color: #0c1204; }
+#hero .badge-pill svg { width: 12px; height: 12px; color: #0c1204; }
 #hero .badge-pill span {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: .04em;
+  letter-spacing: .06em;
   color: #0c1204;
   font-family: 'Inter', sans-serif;
 }
 #hero .feature-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 #hero .feature-row .icon-badge { margin-bottom: 0; }
 #hero .feature-text b {
   display: block;
   color: var(--white);
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 700;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   font-family: 'Inter', sans-serif;
 }
 #hero .feature-text span {
   display: block;
   color: var(--gray);
-  font-size: 14.5px;
+  font-size: 10.5px;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
 }
 #hero a.card:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 30px 70px -30px rgba(0,0,0,.75),
-    0 0 56px -14px rgba(159,239,0,.32);
+    0 16px 32px -12px rgba(0,0,0,.70),
+    0 0 32px -8px rgba(159,239,0,.28);
 }
 #hero a.card:focus-visible {
   outline: 3px solid var(--accent) !important;
   outline-offset: 3px;
 }
-/* Responsive — file breakpoint 860px: row collapses to 1 col max 440, hero PWA safeguards at 767/480 */
+/* Responsive — compact: 860→1fr max 320 (was 440) */
 @media (max-width: 860px) {
   #hero .hero-achievement-stage .row,
   #hero .hero-proof-grid .row {
     grid-template-columns: 1fr !important;
-    max-width: 440px !important;
+    max-width: 320px !important;
     margin-inline: auto !important;
+    gap: 10px !important;
   }
+  #hero .card--lg { max-width: 320px !important; }
 }
 @media (max-width: 767px) {
   #hero .hero-achievement-stage,
   #hero .hero-proof-grid.hero-achievement-stage {
-    gap: 28px !important;
-    width: min(100% - 1.5rem, 440px) !important;
+    gap: 12px !important;
+    width: min(100% - 1rem, 320px) !important;
     margin-inline: auto !important;
   }
-  #hero .card { padding: 28px 24px 24px !important; border-radius: 20px !important; }
-  #hero .card--lg { padding: 28px 24px 24px !important; border-radius: 20px !important; }
-  #hero .stat { font-size: 36px !important; }
-  #hero .title-green { font-size: 17px !important; }
-  #hero .title-gray { font-size: 15px !important; }
+  #hero .card { padding: 14px 12px 12px !important; border-radius: 12px !important; }
+  #hero .card--lg { padding: 14px 12px 12px !important; border-radius: 12px !important; max-width: 320px !important; }
+  #hero .stat { font-size: 19px !important; }
+  #hero .title-green { font-size: 12px !important; }
+  #hero .title-gray { font-size: 10.5px !important; }
 }
 @media (max-width: 480px) {
   #hero .hero-achievement-stage,
   #hero .hero-proof-grid.hero-achievement-stage {
-    width: min(100% - 1.25rem, 440px) !important;
-    gap: 20px !important;
+    width: min(100% - 1rem, 320px) !important;
+    gap: 10px !important;
   }
-  #hero .card { padding: 24px 20px 20px !important; }
-  #hero .card--lg { padding: 24px 20px 20px !important; }
-  #hero .stat { font-size: 32px !important; }
-  #hero .redacted-pill { font-size: 13px !important; padding: 6px 12px !important; }
-  #hero .icon-badge { width: 54px !important; height: 54px !important; margin-bottom: 20px !important; }
-  #hero .icon-badge svg { width: 24px !important; height: 24px !important; }
-  #hero .badge-pill { padding: 9px 16px 9px 14px !important; margin-bottom: 26px !important; }
-  #hero .badge-pill svg { width: 16px !important; height: 16px !important; }
-  #hero .badge-pill span { font-size: 13px !important; }
+  #hero .card { padding: 12px 11px 11px !important; }
+  #hero .card--lg { padding: 12px 11px 11px !important; }
+  #hero .stat { font-size: 18px !important; }
+  #hero .redacted-pill { font-size: 9px !important; padding: 3px 6px !important; }
+  #hero .icon-badge { width: 32px !important; height: 32px !important; margin-bottom: 8px !important; }
+  #hero .icon-badge svg { width: 14px !important; height: 14px !important; }
+  #hero .badge-pill { padding: 5px 9px 5px 7px !important; margin-bottom: 8px !important; }
+  #hero .badge-pill svg { width: 11px !important; height: 11px !important; }
+  #hero .badge-pill span { font-size: 9.5px !important; }
 }
