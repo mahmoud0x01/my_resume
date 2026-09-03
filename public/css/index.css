@@ -86,11 +86,6 @@ header .navbar.animate {
     left: -150px;
 }
 
-#hero .hero-intro {
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
-}
-
 #hero .subtitle {
     font-size: clamp(14px,5vw,16px);
     opacity: 0.6;
@@ -134,27 +129,11 @@ header .navbar.animate {
     cursor: pointer;
 }
 
-#hero .image .mt-4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-#hero .hero-social-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
 #hero a.btn.social-icon {
     color: var(--primary-color) !important;
     line-height: 0%;
     border-radius: 50%;
-    margin-top: 0;
+    margin-top: 50px;
     padding: 0.7rem;
     border: 1px solid var(--primary-color);
     transition: none;

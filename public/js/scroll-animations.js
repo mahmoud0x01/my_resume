@@ -49,16 +49,16 @@
         });
     }
 
-    // ---- Skills badges stagger ----
+    // ---- Skills badges stagger (opacity only — scale removed to keep pill size uniform) ----
     var badges = gsap.utils.toArray('#about .skills-list .badge');
     if (badges.length) {
         gsap.from(badges, {
             scrollTrigger: { trigger: '#about .skills-list', start: 'top 85%' },
-            scale: 0.7,
             opacity: 0,
             duration: 0.4,
             stagger: 0.04,
-            ease: 'back.out(1.4)',
+            ease: 'power2.out',
+            clearProps: 'transform',
         });
     }
 

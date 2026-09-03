@@ -540,6 +540,17 @@
 .blog-back-link:hover {
     color: var(--blog-link) !important;
 }
+.blogs-back-nav{display:flex;margin-bottom:1.25rem}
+.blogs-back-to-portfolio{
+  padding:.55rem .9rem;
+  border:1px solid var(--blog-border);
+  border-radius:999px;
+  background:var(--blog-surface);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:var(--blog-shadow);
+  text-decoration:none!important;
+}
+@media(max-width:767px){.blogs-back-nav{justify-content:center}}
 
 .blog-breadcrumb-separator {
     color: var(--blog-subtle) !important;
@@ -884,6 +895,33 @@
     overflow-x: auto;
 }
 
+/* Verisign reward figure — full-width glass card inside 72ch prose */
+#single.blog-page .blog-prose .verisign-reward-figure {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0 !important;
+    box-sizing: border-box;
+}
+#single.blog-page .blog-prose .verisign-reward-figure img {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    margin: 0 !important;
+    border: 1px solid var(--blog-border) !important;
+    border-radius: 0.85rem !important;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    background: var(--blog-surface-strong);
+}
+#single.blog-page .blog-prose .verisign-reward-figure figcaption {
+    margin-top: 0.6rem;
+    color: var(--blog-muted) !important;
+    font-family: var(--blog-font) !important;
+    font-size: 0.78rem !important;
+    line-height: 1.5;
+    text-align: center;
+}
 
 /* Neutralize legacy themes/hugo-profile single.css #single .page-content pre {margin:5px} gutter */
 #single.blog-page .page-content pre {
@@ -1095,6 +1133,26 @@
     background: var(--blog-accent-soft) !important;
     color: var(--blog-accent) !important;
     transform: translateY(-2px);
+}
+
+/* ---- View counter (per-post) — hidden until API succeeds, no default number ---- */
+.blog-view-counter {
+    display: none;
+    align-items: center;
+    gap: 0.32rem;
+    color: var(--blog-subtle) !important;
+}
+.blog-view-counter.is-visible {
+    display: inline-flex !important;
+}
+.blog-view-counter i,
+.blog-view-counter svg {
+    font-size: 0.82rem;
+    opacity: 0.9;
+}
+#blog-view-count {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
 }
 
 #single.blog-page + .blog-progress,

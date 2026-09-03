@@ -126,6 +126,7 @@
             html += '</div>';
 
             html += blogSection(node.id, 'Related Writing');
+            html += navSection(node.id, 'project', 'Used In Projects');
             html += navSection(node.id, 'experience', 'Applied In');
             html += navSection(node.id, ['course', 'certificate'], 'Courses & Certifications');
             html += navSection(node.id, 'award', 'Related Awards');

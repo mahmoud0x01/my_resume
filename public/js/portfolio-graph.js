@@ -246,32 +246,58 @@
         });
     })();
 
-    // ---- View toggle + mobile default ----
+    // ---- View toggle + mobile default (767 + coarse pointer, persisted) ----
     (function listToggle() {
         var toggleBtn = document.getElementById('graph-list-toggle');
         if (!toggleBtn) return;
 
-        function applyMode(listMode) {
+        var coarseMatcher = window.matchMedia ? window.matchMedia('(pointer: coarse)') : { matches: false, addEventListener: function(){}, addListener: function(){} };
+        var storedView = null;
+        try { storedView = sessionStorage.getItem('portfolioView'); } catch (e) {}
+        function shouldDefaultList() {
+            return window.innerWidth <= 767 || (coarseMatcher && coarseMatcher.matches);
+        }
+        function applyMode(listMode, save) {
             document.body.classList.toggle('portfolio-list-mode', listMode);
+            document.body.classList.toggle('graph-force-mobile', !listMode && shouldDefaultList());
             toggleBtn.textContent = listMode ? 'Switch to Graph View' : 'Switch to List View';
             toggleBtn.setAttribute('aria-pressed', String(!!listMode));
             toggleBtn.setAttribute('aria-label', listMode ? 'Switch to graph view' : 'Switch to list view');
             toggleBtn.setAttribute('aria-controls', 'portfolio-constellation portfolio-list-view');
             var listStatus = document.getElementById('portfolio-list-status');
             if (listStatus) listStatus.textContent = listMode ? 'List view active.' : '';
+            if (save) {
+                try { sessionStorage.setItem('portfolioView', listMode ? 'list' : 'graph'); storedView = listMode ? 'list' : 'graph'; } catch (e) {}
+            }
         }
 
         toggleBtn.addEventListener('click', function () {
-            applyMode(!document.body.classList.contains('portfolio-list-mode'));
+            var next = !document.body.classList.contains('portfolio-list-mode');
+            applyMode(next, true);
         });
 
-        // Mobile (<768px) defaults to list view (graphs are unusable on touch)
-        applyMode(window.innerWidth < 992 || document.body.classList.contains('portfolio-list-mode'));
+        var initialList = storedView === 'list' ? true : storedView === 'graph' ? false : shouldDefaultList();
+        applyMode(initialList, false);
+
         window.addEventListener('resize', function () {
-            if (window.innerWidth < 992 && !document.body.classList.contains('portfolio-list-mode')) {
-                applyMode(true);
+            if (shouldDefaultList() && !document.body.classList.contains('portfolio-list-mode') && storedView !== 'graph') {
+                applyMode(true, false);
             }
         });
+
+        if (coarseMatcher && typeof coarseMatcher.addEventListener === 'function') {
+            coarseMatcher.addEventListener('change', function (e) {
+                if (e.matches && !document.body.classList.contains('portfolio-list-mode') && storedView !== 'graph') {
+                    applyMode(true, false);
+                }
+            });
+        } else if (coarseMatcher && typeof coarseMatcher.addListener === 'function') {
+            coarseMatcher.addListener(function (e) {
+                if (e.matches && !document.body.classList.contains('portfolio-list-mode') && storedView !== 'graph') {
+                    applyMode(true, false);
+                }
+            });
+        }
     })();
 
     var container = document.getElementById('portfolio-constellation');
@@ -345,7 +371,7 @@
         } else {
             // Spread each node around its cluster center; categories sit on the
             // center, subgroups a little out, leaves fan around their subgroup.
-            var spread = n.type === 'category' ? 0 : (n.type === 'subgroup' ? 70 : 120);
+            var spread = n.type === 'category' ? 0 : (n.type === 'subgroup' ? 70 : 135);
             var ang = srand() * Math.PI * 2;
             var rad = srand() * spread;
             n.x = cl.x * LW + Math.cos(ang) * rad;
@@ -358,8 +384,8 @@
 
     // ---- Force relaxation ----
     var minDists = isMobile
-        ? { me: 160, category: 120, subgroup: 80, skill: 90, award: 100, experience: 100, education: 100, course: 60, certificate: 60, blog: 70, 'blog-more': 90 }
-        : { me: 320, category: 240, subgroup: 150, skill: 150, award: 200, experience: 180, education: 180, course: 110, certificate: 110, blog: 120, 'blog-more': 150 };
+        ? { me: 160, category: 120, subgroup: 80, skill: 105, project: 95, award: 100, experience: 100, education: 100, course: 60, certificate: 60, blog: 70, 'blog-more': 90 }
+        : { me: 320, category: 240, subgroup: 150, skill: 175, project: 135, award: 200, experience: 180, education: 180, course: 110, certificate: 110, blog: 120, 'blog-more': 150 };
 
     // The central node is a tall column (photo + name + console + CTA), so a
     // circular exclusion leaves its corners — where the CTA sits — exposed.
@@ -634,7 +660,9 @@
             sgName.textContent = n.name;
             el.appendChild(sgName);
         } else if (n.type === 'skill') {
-            // Icon + label pill
+            // Icon + label pill — CORE skills keep 34px prominence, others slightly muted to let projects/writing breathe
+            if (n.isCore) el.classList.add('cnode--core');
+            else el.classList.add('cnode--familiar');
             var iconWrap = document.createElement('span');
             iconWrap.className = 'cnode-icon';
             if (n.icon === 'custom-cc') {
@@ -675,6 +703,16 @@
             edName.className = 'cnode-label';
             edName.textContent = n.name;
             el.appendChild(edName);
+        } else if (n.type === 'project') {
+            // Project pill — development tint, diagram icon; panel shows badges + security angle
+            var pIcon = document.createElement('span');
+            pIcon.className = 'cnode-icon cnode-icon--project';
+            pIcon.innerHTML = '<i class="' + n.icon + '"></i>';
+            el.appendChild(pIcon);
+            var pName = document.createElement('span');
+            pName.className = 'cnode-label';
+            pName.textContent = n.name;
+            el.appendChild(pName);
         } else if (n.type === 'blog') {
             // Teal pill linking to the blog post
             var bIcon = document.createElement('span');
@@ -1189,6 +1227,11 @@
         var smallEls = nodes.filter(function (n) { return n.type === 'course' || n.type === 'certificate'; }).map(function (n) { return nodeEls[n.id]; });
         gsap.set(smallEls, { opacity: 0, scale: 0 });
         gsap.to(smallEls, { opacity: 1, scale: 1, duration: 0.4, delay: 1.3, stagger: 0.03, ease: 'power2.out' });
+
+        // Projects (evidence-bound engineering work)
+        var projectEls = nodes.filter(function (n) { return n.type === 'project'; }).map(function (n) { return nodeEls[n.id]; });
+        gsap.set(projectEls, { opacity: 0, scale: 0.3 });
+        gsap.to(projectEls, { opacity: 1, scale: 1, duration: 0.5, delay: 1.2, stagger: 0.04, ease: 'back.out(1.2)' });
 
         // Blog nodes
         var blogEls = nodes.filter(function (n) { return n.type === 'blog' || n.type === 'blog-more'; }).map(function (n) { return nodeEls[n.id]; });
