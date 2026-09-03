@@ -2742,12 +2742,15 @@ a.hero-proof-card:focus-visible {
 #hero .inner {
   position:relative;
   z-index:10;
-  height:100%;
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 #hero .glow {
   position:absolute;
-  width:80px;
-  height:80px;
+  width:90px;
+  height:90px;
   border-radius:50%;
   background:rgba(165,255,0,.07);
   filter:blur(32px);
@@ -2755,8 +2758,8 @@ a.hero-proof-card:focus-visible {
 }
 #hero .hex {
   position:absolute;
-  width:80px;
-  height:92px;
+  width:90px;
+  height:104px;
   right:-16px;
   top:10px;
   opacity:.10;
@@ -2764,8 +2767,8 @@ a.hero-proof-card:focus-visible {
 }
 #hero .hex svg { width:100%; height:100%; }
 #hero .hex.small {
-  width:80px;
-  height:92px;
+  width:90px;
+  height:104px;
   right:-14px;
   top:10px;
   opacity:.08;
@@ -2773,33 +2776,40 @@ a.hero-proof-card:focus-visible {
 /* First three cards grid — embedded: fit hero content, not 1656px image */
 #hero .hero-cards-page {
   width:100%;
-  max-width:560px;
+  max-width:620px;
   margin:1.2rem 0 0;
 }
 #hero .top-grid {
   display:grid;
   grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:8px;
+  gap:10px;
   width:100%;
-  max-width:560px;
+  max-width:620px;
   margin-inline:0;
 }
 #hero .top-card,
 #hero .pro-card {
   height:auto;
-  min-height:190px;
+  min-height:260px;
   min-width:0;
   width:100%;
   max-width:100%;
-  border-radius:10px;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
 }
 #hero .top-card .inner,
 #hero .pro-card .inner {
-  padding:10px 10px 8px;
+  padding:16px 14px 14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  flex:1 1 auto;
+  gap:2px;
 }
 #hero .icon-circle {
-  width:26px;
-  height:26px;
+  width:38px;
+  height:38px;
   border-radius:50%;
   border:1px solid rgba(166,255,0,.24);
   background:radial-gradient(circle,rgba(140,220,0,.06),rgba(0,0,0,.04) 67%,transparent 68%);
@@ -2810,8 +2820,8 @@ a.hero-proof-card:focus-visible {
   z-index:12;
 }
 #hero .icon-circle svg {
-  width:14px;
-  height:14px;
+  width:19px;
+  height:19px;
   fill:none;
   stroke:var(--lime);
   stroke-width:2.4;
@@ -2820,8 +2830,8 @@ a.hero-proof-card:focus-visible {
   filter:drop-shadow(0 0 4px rgba(184,255,0,.42));
 }
 #hero .number {
-  margin-top:8px;
-  font-size:18px;
+  margin-top:10px;
+  font-size:24px;
   line-height:.95;
   font-weight:400;
   letter-spacing:-1px;
@@ -2829,48 +2839,48 @@ a.hero-proof-card:focus-visible {
 }
 #hero .number .accent { color:var(--lime); }
 #hero .headline {
-  margin-top:6px;
-  font-size:10px;
+  margin-top:7px;
+  font-size:12.5px;
   line-height:1.25;
-  font-weight:500;
+  font-weight:600;
   color:var(--lime);
-  letter-spacing:.1px;
+  letter-spacing:.12px;
 }
 #hero .subheadline {
-  margin-top:3px;
+  margin-top:4px;
   color:#c5cbca;
-  font-size:9px;
+  font-size:10px;
   line-height:1.45;
   font-weight:400;
 }
 #hero .rule {
   height:1px;
   width:100%;
-  margin-top:8px;
+  margin-top:10px;
   background:rgba(184,255,0,.22);
 }
 #hero .bullets {
-  margin-top:8px;
+  margin-top:10px;
   display:flex;
   flex-direction:column;
-  gap:5px;
-  font-size:9.5px;
-  line-height:1.38;
+  gap:6px;
+  font-size:10.5px;
+  line-height:1.42;
   color:#f0f3f1;
 }
 #hero .bullet {
   display:grid;
-  grid-template-columns:10px 1fr;
+  grid-template-columns:11px 1fr;
   column-gap:6px;
   align-items:start;
 }
 #hero .dot {
-  width:4px;
-  height:4px;
+  width:5px;
+  height:5px;
   border-radius:50%;
   background:var(--lime);
-  box-shadow:0 0 3px rgba(184,255,0,.35);
-  margin-top:4px;
+  box-shadow:0 0 3px rgba(184,255,0,.30);
+  margin-top:5px;
 }
 #hero .muted { color:#bdc3c1; }
 /* Redacted chip — embedded scale */
@@ -2878,32 +2888,32 @@ a.hero-proof-card:focus-visible {
   display:inline-flex;
   align-items:center;
   vertical-align:middle;
-  height:18px;
-  padding:0 5px;
-  margin-left:4px;
+  height:20px;
+  padding:0 6px;
+  margin-left:5px;
   border-radius:4px;
   background:linear-gradient(#303535,#242929);
   border:1px solid #535b5b;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
   color:#b9bfbe;
-  font-size:9px;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.5px;
 }
 /* Checklist icon — embedded */
 #hero .check {
-  width:14px;
-  height:14px;
+  width:18px;
+  height:18px;
   border:1.5px solid var(--lime);
   border-radius:50%;
   display:grid;
   place-items:center;
   margin-top:2px;
-  box-shadow:0 0 6px rgba(184,255,0,.22);
+  box-shadow:0 0 6px rgba(184,255,0,.18);
 }
 #hero .check svg {
-  width:8px;
-  height:8px;
+  width:10px;
+  height:10px;
   fill:none;
   stroke:var(--lime);
   stroke-width:2.2;
@@ -2918,35 +2928,41 @@ a.hero-proof-card:focus-visible {
   width:100%;
   max-width:100%;
   height:auto;
-  min-height:190px;
+  min-height:260px;
   border-radius:var(--recruiter-radius);
 }
 #hero .pro-card .inner {
-  padding:10px 10px 8px;
+  padding:16px 14px 14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  flex:1 1 auto;
+  gap:2px;
 }
 #hero .pro-badge {
   width:auto;
   max-width:100%;
-  height:22px;
+  height:28px;
   border-radius:999px;
   display:inline-flex;
   align-items:center;
-  gap:5px;
-  padding:0 10px;
+  gap:6px;
+  padding:0 12px;
   color:#071007;
-  font-size:8px;
+  font-size:8.5px;
   font-weight:800;
-  letter-spacing:.6px;
-  background:linear-gradient(180deg,#caff3d 0%,#a9e70b 48%,#a2dc09 100%);
-  border:1px solid rgba(225,255,137,.28);
+  letter-spacing:.7px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.32);
+  background:linear-gradient(180deg,#c8e600 0%,#b8d000 52%,#a8c000 100%);
+  border:1px solid rgba(180,210,0,.35);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.38),
-    inset 0 -6px 14px rgba(65,92,0,.12),
-    0 0 10px rgba(184,255,0,.14);
+    inset 0 1px 0 rgba(255,255,255,.32),
+    inset 0 -5px 12px rgba(55,78,0,.10),
+    0 0 6px rgba(184,255,0,.08);
 }
 #hero .crown {
-  width:13px;
-  height:13px;
+  width:14px;
+  height:14px;
   flex:0 0 auto;
 }
 #hero .crown svg {
@@ -2958,8 +2974,8 @@ a.hero-proof-card:focus-visible {
   stroke-linejoin:round;
 }
 #hero .pro-title {
-  margin-top:8px;
-  font-size:18px;
+  margin-top:10px;
+  font-size:23px;
   line-height:.95;
   letter-spacing:-1.2px;
   font-weight:400;
@@ -2970,8 +2986,8 @@ a.hero-proof-card:focus-visible {
   font-weight:400;
 }
 #hero .pro-subtitle {
-  margin-top:3px;
-  font-size:9px;
+  margin-top:4px;
+  font-size:10.5px;
   line-height:1.45;
   color:#c5cbca;
   letter-spacing:.1px;
@@ -2980,19 +2996,19 @@ a.hero-proof-card:focus-visible {
 #hero .pro-rule {
   height:1px;
   width:100%;
-  margin-top:8px;
+  margin-top:10px;
   background:rgba(184,255,0,.22);
   border-radius:0;
 }
 #hero .pro-feature {
-  margin-top:8px;
+  margin-top:10px;
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:8px;
 }
 #hero .pro-icon {
-  width:26px;
-  height:26px;
+  width:34px;
+  height:34px;
   border-radius:50%;
   border:1px solid rgba(184,255,0,.24);
   display:grid;
@@ -3002,8 +3018,8 @@ a.hero-proof-card:focus-visible {
   flex:0 0 auto;
 }
 #hero .pro-icon svg {
-  width:13px;
-  height:13px;
+  width:17px;
+  height:17px;
   fill:none;
   stroke:var(--lime);
   stroke-width:2.4;
@@ -3012,21 +3028,21 @@ a.hero-proof-card:focus-visible {
   filter:drop-shadow(0 0 4px rgba(184,255,0,.42));
 }
 #hero .feature-title {
-  font-size:10px;
+  font-size:11.5px;
   line-height:1.38;
   font-weight:600;
   color:var(--text);
 }
 #hero .feature-sub {
   margin-top:2px;
-  font-size:9px;
+  font-size:10px;
   color:#aeb5b3;
   line-height:1.4;
 }
 #hero .pro-hexes {
   position:absolute;
-  width:80px;
-  height:92px;
+  width:90px;
+  height:104px;
   right:-16px;
   top:10px;
   opacity:.10;
@@ -3036,47 +3052,47 @@ a.hero-proof-card:focus-visible {
 #hero .pro-hexes svg { width:100%; height:100%; }
 /* Responsive — embedded scale keeps fitting hero content */
 @media (max-width:1100px) {
-  #hero .top-grid { gap:8px; }
+  #hero .top-grid { gap:10px; }
   #hero .top-card,
-  #hero .pro-card { min-height:210px; }
+  #hero .pro-card { min-height:255px; }
   #hero .top-card .inner,
-  #hero .pro-card .inner { padding:14px 12px 10px; }
-  #hero .icon-circle { width:38px; height:38px; }
-  #hero .icon-circle svg { width:20px; height:20px; }
+  #hero .pro-card .inner { padding:15px 13px 13px; }
+  #hero .icon-circle { width:36px; height:36px; }
+  #hero .icon-circle svg { width:19px; height:19px; }
   #hero .number,
-  #hero .pro-title { font-size:22px; }
+  #hero .pro-title { font-size:23px; }
   #hero .headline,
-  #hero .feature-title { font-size:11px; }
+  #hero .feature-title { font-size:12px; }
   #hero .subheadline,
   #hero .pro-subtitle,
-  #hero .feature-sub { font-size:10px; }
-  #hero .bullets { font-size:10px; }
-  #hero .redacted { height:20px; font-size:10px; padding:0 6px; }
-  #hero .pro-badge { height:24px; font-size:9px; gap:6px; padding:0 10px; }
+  #hero .feature-sub { font-size:10.5px; }
+  #hero .bullets { font-size:10.5px; }
+  #hero .redacted { height:21px; font-size:10px; padding:0 6px; }
+  #hero .pro-badge { height:27px; font-size:8.5px; gap:6px; padding:0 11px; }
   #hero .crown { width:14px; height:14px; }
-  #hero .pro-icon { width:30px; height:30px; }
-  #hero .pro-icon svg { width:15px; height:15px; }
-  #hero .pro-hexes { width:100px; height:116px; right:-14px; top:10px; }
+  #hero .pro-icon { width:32px; height:32px; }
+  #hero .pro-icon svg { width:16px; height:16px; }
+  #hero .pro-hexes { width:95px; height:110px; right:-14px; top:10px; }
 }
 @media (max-width:760px) {
   #hero .hero-cards-page { margin-top:1rem; max-width:100%; margin-inline:0; }
   #hero .top-grid { grid-template-columns:1fr; gap:10px; max-width:100%; margin-inline:0; }
   #hero .top-card,
-  #hero .pro-card { min-height:210px; }
+  #hero .pro-card { min-height:250px; }
   #hero .top-card .inner,
-  #hero .pro-card .inner { padding:14px 12px 10px; }
+  #hero .pro-card .inner { padding:15px 13px 13px; }
   #hero .pro-wrap { display:contents; margin-top:0; }
-  #hero .pro-badge { height:24px; border-radius:999px; padding:0 10px; gap:6px; font-size:9px; width:auto; }
+  #hero .pro-badge { height:27px; border-radius:999px; padding:0 11px; gap:6px; font-size:8.5px; width:auto; }
   #hero .crown { width:14px; height:14px; }
-  #hero .pro-title { margin-top:10px; font-size:20px; }
-  #hero .pro-subtitle { margin-top:4px; font-size:10px; }
+  #hero .pro-title { margin-top:10px; font-size:22px; }
+  #hero .pro-subtitle { margin-top:4px; font-size:10.5px; }
   #hero .pro-rule { margin-top:10px; width:100%; height:1px; }
   #hero .pro-feature { gap:8px; margin-top:10px; }
-  #hero .pro-icon { width:30px; height:30px; }
-  #hero .pro-icon svg { width:15px; height:15px; }
-  #hero .feature-title { font-size:11px; }
-  #hero .feature-sub { font-size:9px; }
-  #hero .pro-hexes { width:100px; height:116px; right:-14px; top:10px; }
+  #hero .pro-icon { width:32px; height:32px; }
+  #hero .pro-icon svg { width:16px; height:16px; }
+  #hero .feature-title { font-size:11.5px; }
+  #hero .feature-sub { font-size:10px; }
+  #hero .pro-hexes { width:95px; height:110px; right:-14px; top:10px; }
 }
 /* Ensure hero content layout accommodates cards without clipping */
 #hero .hero-recruiter-content { overflow:visible; }
