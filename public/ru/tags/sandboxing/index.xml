@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sandboxing on Махмуд Адель — Инженер по прикладной и наступательной безопасности | Бакалавр программной инженерии</title><link>https://mahmoudouf.com/ru/tags/sandboxing/</link><description>Recent content in Sandboxing on Махмуд Адель — Инженер по прикладной и наступательной безопасности | Бакалавр программной инженерии</description><generator>Hugo</generator><language>ru</language><lastBuildDate>Fri, 20 Dec 2024 10:00:00 +0000</lastBuildDate><atom:link href="https://mahmoudouf.com/ru/tags/sandboxing/index.xml" rel="self" type="application/rss+xml"/><item><title>Безопасный анализ малвари в Docker: руководство сисадмина</title><link>https://mahmoudouf.com/ru/blogs/secure-malware-analysis-with-docker/</link><pubDate>Fri, 20 Dec 2024 10:00:00 +0000</pubDate><guid>https://mahmoudouf.com/ru/blogs/secure-malware-analysis-with-docker/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Важно&lt;/strong&gt;: Docker — НЕ граница безопасности как VM. Для продвинутой малвари используйте нормальную VM со снапшотами. Docker подходит для первичной триажи и менее сложных образцов.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="краткое-резюме"&gt;Краткое резюме&lt;/h2&gt;
+&lt;p&gt;Docker-контейнеры для анализа малвари: изоляция (namespaces), одноразовость (&lt;code&gt;--rm&lt;/code&gt;), воспроизводимость, лимиты ресурсов, сетевая изоляция.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Лаб-сетап:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Сеть:&lt;/strong&gt; &lt;code&gt;docker network create --driver bridge --internal --subnet 172.28.0.0/16 malware-net&lt;/code&gt; (&lt;code&gt;--internal&lt;/code&gt; критичен).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Образ:&lt;/strong&gt; &lt;code&gt;FROM ubuntu:22.04&lt;/code&gt; + &lt;code&gt;strace/ltrace/gdb/radare2/file/binutils/hexedit/tcpdump/python3&lt;/code&gt; + &lt;code&gt;pip pefile yara-python capstone&lt;/code&gt; + юзер &lt;code&gt;analyst&lt;/code&gt; + &lt;code&gt;/samples /output&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Запуск с ограничениями:&lt;/strong&gt; &lt;code&gt;docker run --network malware-net --cap-drop ALL --security-opt no-new-privileges:true --security-opt seccomp=default --read-only --tmpfs /tmp:rw,noexec,nosuid,size=100m --memory 512m --cpus 1 --pids-limit 100 -v samples:/samples:ro&lt;/code&gt; и разбор флагов.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Воркфлоу:&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>
