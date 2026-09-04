@@ -1,12 +1,12 @@
 ---
-title: "$1,000 CSRF to Full Account Takeover at Verisign (DomainScope)"
+title: "$1,REDACTED CSRF to Full Account Takeover at Verisign (DomainScope)"
 date: 2018-04-15T10:00:00+00:00
 draft: false
 author: "Mahmoud Adel"
 tags: ["CSRF", "OAuth", "Account Takeover", "Bug Bounty", "Verisign", "Web Security", "Responsible Disclosure"]
 categories: ["Security Research"]
 image: /images/verisign-csrf-reward.png
-description: "Responsible disclosure of a $1,000 CSRF in Verisign DomainScope Google OAuth linking — missing state parameter allowed an attacker to link their Google account to a victim's DomainScope profile and take over the account. Includes redacted PoC and reward timeline."
+description: "Responsible disclosure of a $1,REDACTED CSRF in Verisign DomainScope Google OAuth linking — missing state parameter allowed an attacker to link their Google account to a victim's DomainScope profile and take over the account. Includes redacted PoC and reward timeline."
 toc: true
 ---
 
@@ -14,7 +14,7 @@ toc: true
 
 ## Summary
 
-Identified and validated a Cross-Site Request Forgery (CSRF) vulnerability in the Google OAuth account linking flow of Verisign DomainScope (`domainscope.com`). The OAuth callback at `/connect/google` did not validate the `state` parameter. An attacker could force a victim's authenticated session to link the attacker's Google account to the victim's DomainScope profile, then authenticate as the victim via Google OAuth. Impact was full account takeover without needing the victim's password. Reported via Bugcrowd in April 2018 within the authorized Verisign bug bounty program, triaged and rewarded **$1,000**, and acknowledged in the Verisign Hall of Fame. Found during Bugcrowd program participation as part of authorized penetration testing.
+Identified and validated a Cross-Site Request Forgery (CSRF) vulnerability in the Google OAuth account linking flow of Verisign DomainScope (`domainscope.com`). The OAuth callback at `/connect/google` did not validate the `state` parameter. An attacker could force a victim's authenticated session to link the attacker's Google account to the victim's DomainScope profile, then authenticate as the victim via Google OAuth. Impact was full account takeover without needing the victim's password. Reported via Bugcrowd in April 2018 within the authorized Verisign bug bounty program, triaged and rewarded **<span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>**, and acknowledged in the Verisign Hall of Fame. Found during Bugcrowd program participation as part of authorized penetration testing.
 
 ## Background — OAuth Linking Flow in DomainScope
 
@@ -126,18 +126,18 @@ Validated impact was full account takeover at the application layer:
 
 The finding was reported as a validated CSRF-to-account-takeover in the OAuth account linking flow. No critical or zero-day terminology was used in the original report; the issue was triaged as a rewarded vulnerability.
 
-## Reward & Timeline — $1,000 via Bugcrowd, Hall of Fame April 2018
+## Reward & Timeline — <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span> via Bugcrowd, Hall of Fame April 2018
 
 - **Program:** Verisign bug bounty via Bugcrowd (authorized testing only).
 - **Discovery approach:** Found during Bugcrowd program participation while assessing OAuth flows with manual proxy interception.
 - **Report date:** April 2018 (Hall of Fame date per awards data; matches disclosure timeline).
-- **Triaged and rewarded:** Validated, triaged, and rewarded **$1,000** through Bugcrowd.
+- **Triaged and rewarded:** Validated, triaged, and rewarded **<span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>** through Bugcrowd.
 - **Recognition:** Acknowledged in Verisign Hall of Fame, April 2018.
 - **Profile:** Reported findings and recognitions are listed on the Bugcrowd researcher profile: [https://bugcrowd.com/h/mahmoud_adel](https://bugcrowd.com/h/mahmoud_adel).
 
 <figure class="verisign-reward-figure" style="margin:1.5rem 0;">
-  <img src="/images/verisign-csrf-reward.png" alt="Bugcrowd reward and triage — Verisign CSRF $1,000 — DomainScope" loading="lazy" decoding="async" style="width:100%; max-width:100%; border:1px solid var(--recruiter-border, #e5e7eb); border-radius:0.85rem; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
-  <figcaption style="margin-top:0.6rem; color:var(--recruiter-muted); font-size:0.78rem; text-align:center;">Bugcrowd triage and reward confirmation — Verisign DomainScope CSRF → account takeover ($1,000) — HoF April 2018</figcaption>
+  <img src="/images/verisign-csrf-reward.png" alt="Bugcrowd reward and triage — Verisign CSRF $1,REDACTED — DomainScope" loading="lazy" decoding="async" style="width:100%; max-width:100%; border:1px solid var(--recruiter-border, #e5e7eb); border-radius:0.85rem; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
+  <figcaption style="margin-top:0.6rem; color:var(--recruiter-muted); font-size:0.78rem; text-align:center;">Bugcrowd triage and reward confirmation — Verisign DomainScope CSRF → account takeover (<span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>) — HoF April 2018</figcaption>
 </figure>
 
 No fix date is asserted here beyond what was publicly acknowledged. The report was triaged and rewarded; patch verification, if any, would have been handled through the program.
@@ -191,7 +191,7 @@ For penetration testing of similar flows, always test linking, unlinking, and re
 3. **The `state` parameter is a session-bound CSRF token.** Treat it as such: random, unpredictable, bound to the initiating session, verified exactly, and single-use. `SameSite` cookies help but do not replace `state` validation.
 4. **State-changing GETs amplify CSRF.** The callback used `GET`. Any GET that changes account linkage should either be POST with a CSRF token or be protected by the OAuth `state` check. Prefer POST for linking completion where possible.
 5. **Minimize SEO noise, maximize signal.** This finding used precise keywords — CSRF, OAuth, State Parameter, Google OAuth, Verisign, DomainScope, Account Takeover, Bug Bounty, Responsible Disclosure — in the report, description, and headings. Clear reproduction steps with redacted artifacts accelerate triage.
-6. **Report only what was validated.** No CVSS was assigned by the program at the time; no patch timeline is claimed beyond triage and reward. Keeping the timeline to what was documented (reported April 2018, $1,000, HoF) preserves accuracy for future review.
+6. **Report only what was validated.** No CVSS was assigned by the program at the time; no patch timeline is claimed beyond triage and reward. Keeping the timeline to what was documented (reported April 2018, <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>, HoF) preserves accuracy for future review.
 
 ## Disclaimer — Responsible Disclosure
 
