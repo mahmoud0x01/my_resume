@@ -16,14 +16,14 @@
       <article class="disclosure-card disclosure-card--featured">
         <div class="disclosure-card-topline">
           <span class="disclosure-card-kicker"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verisign · DomainScope</span>
-          <span class="proof-severity proof-severity--critical">Critical · <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span></span>
+          <span class="proof-severity proof-severity--critical">{{ i18n "disclosuresSeverityCritical" | default "Critical" }} · <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span></span>
         </div>
-        <h3>OAuth CSRF → Account Takeover</h3>
-        <p>Missing <code>state</code> on <code>GET /connect/google</code> allowed linking an attacker Google identity to the victim&rsquo;s authenticated DomainScope session → full ATO via <em>Sign in with Google</em> and persistent password set via <em>My Profile</em>.</p>
-        <p class="disclosure-card-meta">April 2018 · OAuth · CSRF · Account Takeover · <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span> Reward · Hall of Fame</p>
+        <h3>{{ i18n "disclosuresVerisignTitle" | default "OAuth CSRF → Account Takeover" }}</h3>
+        <p>{{ i18n "disclosuresVerisignDesc" | default "Missing <code>state</code> on <code>GET /connect/google</code> allowed linking an attacker Google identity to the victim’s authenticated DomainScope session → full ATO via <em>Sign in with Google</em> and persistent password set via <em>My Profile</em>." | safeHTML }}</p>
+        <p class="disclosure-card-meta">{{ i18n "disclosuresVerisignMeta" | default "April 2018 · OAuth · CSRF · Account Takeover · Hall of Fame" | safeHTML }}</p>
         <div class="disclosure-card-links">
-          <a class="disclosure-card-link" href="/blogs/verisign-csrf-account-takeover-domainscope/">Read research →</a>
-          <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">Bugcrowd profile ↗</a>
+          <a class="disclosure-card-link" href="/blogs/verisign-csrf-account-takeover-domainscope/">{{ i18n "disclosuresReadResearch" | default "Read research →" }}</a>
+          <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">{{ i18n "disclosuresViewBugcrowd" | default "View Bugcrowd profile ↗" }}</a>
         </div>
       </article>
 
@@ -31,42 +31,42 @@
       <article class="disclosure-card">
         <div class="disclosure-card-topline">
           <span class="disclosure-card-kicker"><i class="fa-brands fa-digital-ocean" aria-hidden="true"></i> DigitalOcean</span>
-          <span class="proof-severity proof-severity--critical">Critical</span>
+          <span class="proof-severity proof-severity--critical">{{ i18n "disclosuresSeverityCritical" | default "Critical" }}</span>
         </div>
-        <h3>Responsible Disclosure — Critical Vulnerability</h3>
-        <p>Validated critical vulnerability reported through DigitalOcean&rsquo;s authorized bug bounty program and acknowledged in Hall of Fame.</p>
-        <p class="disclosure-card-meta">April 2019 · Bug Bounty · Responsible Disclosure · Hall of Fame</p>
-        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+        <h3>{{ i18n "disclosuresDigitalOceanTitle" | default "Responsible Disclosure — Critical Vulnerability" }}</h3>
+        <p>{{ i18n "disclosuresDigitalOceanDesc" | default "Validated critical vulnerability reported through DigitalOcean’s authorized bug bounty program and acknowledged in Hall of Fame." | safeHTML }}</p>
+        <p class="disclosure-card-meta">{{ i18n "disclosuresDigitalOceanMeta" | default "April 2019 · Bug Bounty · Responsible Disclosure · Hall of Fame" | safeHTML }}</p>
+        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">{{ i18n "disclosuresViewBugcrowd" | default "View Bugcrowd profile ↗" }}</a>
       </article>
 
       <!-- Pinterest — June 2018 -->
       <article class="disclosure-card">
         <div class="disclosure-card-topline">
           <span class="disclosure-card-kicker"><i class="fa-brands fa-pinterest" aria-hidden="true"></i> Pinterest</span>
-          <span class="proof-severity proof-severity--medium">Hall of Fame</span>
+          <span class="proof-severity proof-severity--medium">{{ i18n "disclosuresSeverityHallOfFame" | default "Hall of Fame" }}</span>
         </div>
-        <h3>Responsible Disclosure — Security Vulnerability</h3>
-        <p>Validated security finding responsibly disclosed via Pinterest&rsquo;s bug bounty program and acknowledged in Hall of Fame.</p>
-        <p class="disclosure-card-meta">June 2018 · Bug Bounty · Responsible Disclosure · Hall of Fame</p>
-        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+        <h3>{{ i18n "disclosuresPinterestTitle" | default "Responsible Disclosure — Security Vulnerability" }}</h3>
+        <p>{{ i18n "disclosuresPinterestDesc" | default "Validated security finding responsibly disclosed via Pinterest’s bug bounty program and acknowledged in Hall of Fame." | safeHTML }}</p>
+        <p class="disclosure-card-meta">{{ i18n "disclosuresPinterestMeta" | default "June 2018 · Bug Bounty · Responsible Disclosure · Hall of Fame" | safeHTML }}</p>
+        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">{{ i18n "disclosuresViewBugcrowd" | default "View Bugcrowd profile ↗" }}</a>
       </article>
 
       <!-- Dell — April 2018 -->
       <article class="disclosure-card">
         <div class="disclosure-card-topline">
           <span class="disclosure-card-kicker"><i class="fa-brands fa-dell" aria-hidden="true"></i> Dell</span>
-          <span class="proof-severity proof-severity--medium">Hall of Fame</span>
+          <span class="proof-severity proof-severity--medium">{{ i18n "disclosuresSeverityHallOfFame" | default "Hall of Fame" }}</span>
         </div>
-        <h3>Responsible Disclosure — Security Finding</h3>
-        <p>Validated security finding submitted through Dell&rsquo;s official bug bounty program and acknowledged in Hall of Fame.</p>
-        <p class="disclosure-card-meta">April 2018 · Bug Bounty · Responsible Disclosure · Hall of Fame</p>
-        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+        <h3>{{ i18n "disclosuresDellTitle" | default "Responsible Disclosure — Security Finding" }}</h3>
+        <p>{{ i18n "disclosuresDellDesc" | default "Validated security finding submitted through Dell’s official bug bounty program and acknowledged in Hall of Fame." | safeHTML }}</p>
+        <p class="disclosure-card-meta">{{ i18n "disclosuresDellMeta" | default "April 2018 · Bug Bounty · Responsible Disclosure · Hall of Fame" | safeHTML }}</p>
+        <a class="disclosure-card-link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">{{ i18n "disclosuresViewBugcrowd" | default "View Bugcrowd profile ↗" }}</a>
       </article>
     </div>
 
     <p class="disclosures-aggregate">
-      20+ aggregate acknowledgments across Bugcrowd — <a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">View Bugcrowd profile ↗</a>
+      {{ i18n "disclosuresAggregate" | default "20+ aggregate acknowledgments across Bugcrowd —" }} <a href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener noreferrer">{{ i18n "disclosuresAggregateLink" | default "View Bugcrowd profile ↗" }}</a>
     </p>
-    <p class="disclosures-references-note">References &amp; Verifiable Assessment Logs Available Upon Request</p>
+    <p class="disclosures-references-note">{{ i18n "disclosuresReferencesNote" | default "References & Verifiable Assessment Logs Available Upon Request" }}</p>
   </div>
 </section>

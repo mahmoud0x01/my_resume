@@ -27,7 +27,7 @@
             </div>
             <div class="contact-links" aria-label="Contact links">
                 <a class="contact-link contact-link-primary" href="mailto:{{ $email }}">
-                    <i class="fas fa-envelope" aria-hidden="true"></i> Email Mahmoud
+                    <i class="fas fa-envelope" aria-hidden="true"></i> {{ i18n "contactEmailMahmoud" | default "Email Mahmoud" }}
                 </a>
                 <a class="contact-link" href="{{ $linkedinURL }}" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
@@ -35,7 +35,7 @@
                 <a class="contact-link" href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-github" aria-hidden="true"></i> GitHub
                 </a>
-                <a class="contact-link" href="{{ $telegramURL }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram" aria-hidden="true"></i> Telegram</a>
+                <a class="contact-link" href="{{ $telegramURL }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram" aria-hidden="true"></i> {{ i18n "contactTelegram" | default "Telegram" }}</a>
                 <a class="contact-link" href="{{ $resumeURL }}" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> {{ i18n "heroDownloadCV" | default "Résumé" }}</a>
             </div>
         </div>

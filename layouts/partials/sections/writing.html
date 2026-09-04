@@ -17,49 +17,49 @@
         <div class="writing-featured-grid">
             {{ with $featured1 }}
             <article class="writing-card writing-card--featured">
-                <span class="writing-featured-badge">Featured · Bug Bounty · <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span></span>
+                <span class="writing-featured-badge">{{ i18n "writingFeaturedBadge1" | default "Featured · Bug Bounty · $1,REDACTED" | safeHTML }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Description }}</p>
                 <div class="writing-sequence" aria-label="CSRF to ATO sequence">
                     <span>OAuth</span><span aria-hidden="true">→</span><span>CSRF</span><span aria-hidden="true">→</span><span>ATO</span><span aria-hidden="true">→</span><span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>
                 </div>
-                <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
+                <a class="writing-read-link" href="{{ .RelPermalink }}">{{ i18n "writingReadResearch" | default "Read research" }} <span aria-hidden="true">↗</span></a>
             </article>
             {{ end }}
             {{ with $featured2 }}
             <article class="writing-card writing-card--featured">
-                <span class="writing-featured-badge">Featured · Blue-team defense</span>
+                <span class="writing-featured-badge">{{ i18n "writingFeaturedBadge2" | default "Featured · Blue-team defense" }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Description }}</p>
                 <div class="writing-sequence" aria-label="Attack defense sequence">
                     <span>RCE PATH</span><span aria-hidden="true">↓</span><span>RUNTIME CONTAINMENT</span><span aria-hidden="true">↓</span><span>APPARMOR</span><span aria-hidden="true">↓</span><span>ROOT-CAUSE REMEDIATION</span>
                 </div>
-                <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
+                <a class="writing-read-link" href="{{ .RelPermalink }}">{{ i18n "writingReadResearch" | default "Read research" }} <span aria-hidden="true">↗</span></a>
             </article>
             {{ end }}
             {{ with $featured3 }}
             <article class="writing-card writing-card--featured">
-                <span class="writing-featured-badge">Featured · SOC · Detection Engineering</span>
+                <span class="writing-featured-badge">{{ i18n "writingFeaturedBadge3" | default "Featured · SOC · Detection Engineering" }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Description }}</p>
                 <div class="writing-sequence" aria-label="SOC pipeline sequence">
                     <span>Auditd</span><span aria-hidden="true">→</span><span>Filebeat</span><span aria-hidden="true">→</span><span>ELK</span><span aria-hidden="true">→</span><span>Sigma</span>
                 </div>
-                <a class="writing-read-link" href="{{ .RelPermalink }}">Read research <span aria-hidden="true">↗</span></a>
+                <a class="writing-read-link" href="{{ .RelPermalink }}">{{ i18n "writingReadResearch" | default "Read research" }} <span aria-hidden="true">↗</span></a>
             </article>
             {{ end }}
         </div>
 {{ end }}
 {{ else }}
         <div class="writing-empty-state" role="status">
-            <p>No writing published yet.</p>
+            <p>{{ i18n "writingEmpty" | default "No writing published yet." }}</p>
         </div>
 {{ end }}
         <p class="writing-archive-link">
-            <a class="writing-read-link" href="{{ $writingArchiveURL }}">Browse all writing — {{ len $writingPages }} notes in archive <span>→</span></a>
+            <a class="writing-read-link" href="{{ $writingArchiveURL }}">{{ i18n "writingArchivePrefix" | default "Browse all writing —" }} {{ len $writingPages }} {{ i18n "writingArchiveSuffix" | default "notes in archive" }} <span>→</span></a>
         </p>
     </div>
 </section>

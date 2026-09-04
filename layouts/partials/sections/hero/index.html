@@ -51,13 +51,13 @@
                                 </svg>
                             </div>
                             <div class="number">20<span class="accent">+</span></div>
-                            <div class="headline">Hall of Fame</div>
-                            <div class="subheadline">Acknowledgments</div>
+                            <div class="headline">{{ i18n "heroCard1Headline" | default "Hall of Fame" }}</div>
+                            <div class="subheadline">{{ i18n "heroCard1Subheadline" | default "Acknowledgments" }}</div>
                             <div class="rule"></div>
                             <div class="bullets">
                                 <div class="bullet">
                                     <span class="dot"></span>
-                                    <div>Named:<br><span class="muted">Verisign, DigitalOcean,<br>Pinterest, Dell •<br>Bugcrowd</span></div>
+                                    <div>{{ i18n "heroCard1NamedLabel" | default "Named:" }}<br><span class="muted">{{ i18n "heroCard1Muted" | default "Verisign, DigitalOcean,<br>Pinterest, Dell •<br>Bugcrowd" | safeHTML }}</span></div>
                                 </div>
                             </div>
                         </div>
@@ -81,13 +81,13 @@
                                 </svg>
                             </div>
                             <div class="number">$1,<span class="redacted">REDACTED</span></div>
-                            <div class="headline">Verisign — CSRF →</div>
-                            <div class="subheadline">Account Takeover</div>
+                            <div class="headline">{{ i18n "heroCard2Headline" | default "Verisign — CSRF →" }}</div>
+                            <div class="subheadline">{{ i18n "heroCard2Subheadline" | default "Account Takeover" }}</div>
                             <div class="rule"></div>
                             <div class="bullets">
-                                <div class="bullet"><span class="dot"></span><div>OAuth state</div></div>
-                                <div class="bullet"><span class="dot"></span><div>DomainScope</div></div>
-                                <div class="bullet"><span class="dot"></span><div>Reward</div></div>
+                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard2Bullet1" | default "OAuth state" }}</div></div>
+                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard2Bullet2" | default "DomainScope" }}</div></div>
+                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard2Bullet3" | default "Reward" }}</div></div>
                             </div>
                         </div>
                     </a>
@@ -110,11 +110,11 @@
                                 </svg>
                             </div>
                             <div class="number">Top <span class="accent">5</span>/100</div>
-                            <div class="headline">Bastion Security</div>
-                            <div class="subheadline">Internal CTF</div>
+                            <div class="headline">{{ i18n "heroCard3Headline" | default "Bastion Security" }}</div>
+                            <div class="subheadline">{{ i18n "heroCard3Subheadline" | default "Internal CTF" }}</div>
                             <div class="rule"></div>
                             <div class="bullets">
-                                <div class="bullet"><span class="dot"></span><div>Pen testing &amp; privilege escalation</div></div>
+                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard3Bullet" | default "Pen testing & privilege escalation" }}</div></div>
                             </div>
                         </div>
                     </a>
@@ -136,15 +136,15 @@
                                         <path d="M24 42l6 4 2-4 2 4 6-4"></path>
                                     </svg>
                                 </div>
-                                <span class="badge-label">PRO HACKER RANK</span>
+                                <span class="badge-label">{{ i18n "heroCard4Badge" | default "PRO HACKER RANK" }}</span>
                             </div>
                             <div class="number">Top <span class="accent">0.55%</span></div>
-                            <div class="headline">Hack The Box</div>
-                            <div class="subheadline">Rank progression</div>
+                            <div class="headline">{{ i18n "heroCard4Headline" | default "Hack The Box" }}</div>
+                            <div class="subheadline">{{ i18n "heroCard4Subheadline" | default "Rank progression" }}</div>
                             <div class="rule"></div>
                             <div class="bullets">
-                                <div class="bullet"><span class="dot"></span><div>Verified badges</div></div>
-                                <div class="bullet"><span class="dot"></span><div>Top 0.55% rank</div></div>
+                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard4Bullet1" | default "Verified badges" }}</div></div>
+                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard4Bullet2" | default "Top 0.55% rank" }}</div></div>
                             </div>
                         </div>
                     </a>
@@ -157,7 +157,7 @@
             </div>
 
             <nav class="hero-micro-links" aria-label="Mahmoud Adel profile links">
-                <span class="hero-location" aria-hidden="true"><i class="fas fa-location-dot" aria-hidden="true"></i>Based in Egypt (UTC+2)</span>
+                <span class="hero-location" aria-hidden="true"><i class="fas fa-location-dot" aria-hidden="true"></i>{{ i18n "heroLocationShort" | default "Based in Egypt (UTC+2)" }}</span>
                 <a href="{{ $linkedinURL }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener noreferrer">HTB</a>
@@ -176,12 +176,12 @@
                 <p class="identity-card-supporting">{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</p>
                 <dl>
                     <div>
-                        <dt>Availability</dt>
-                        <dd>Remote & Global Relocation · Visa / B2B Contract</dd>
+                        <dt>{{ i18n "heroAvailabilityTitle" | default "Availability" }}</dt>
+                        <dd>{{ i18n "heroAvailability" | default "Remote & Global Relocation · Visa / B2B Contract" }}</dd>
                     </div>
                     <div>
-                        <dt>Languages</dt>
-                        <dd>Arabic — Native<br>English — C2 — Proficient<br>Russian — C1 — Advanced</dd>
+                        <dt>{{ i18n "heroLanguagesTitle" | default "Languages" }}</dt>
+                        <dd>{{ i18n "heroLanguagesValue" | default "Arabic — Native<br>English — C2 — Proficient<br>Russian — C1 — Advanced" | safeHTML }}</dd>
                     </div>
                 </dl>
             </div>

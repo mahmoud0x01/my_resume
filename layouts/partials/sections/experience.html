@@ -29,7 +29,7 @@
                         </div>
                         {{ if $job.credentialUrl }}
                         <div class="timeline-credential-wrap">
-                            <a href="{{ $job.credentialUrl }}" target="_blank" rel="noopener noreferrer" class="timeline-credential-btn"><i class="fas fa-award"></i> View Credential</a>
+                            <a href="{{ $job.credentialUrl }}" target="_blank" rel="noopener noreferrer" class="timeline-credential-btn"><i class="fas fa-award"></i> {{ i18n "experienceViewCredential" | default "View Credential" }}</a>
                         </div>
                         {{ end }}
                         {{ if $job.featuredLink }}
