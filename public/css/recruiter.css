@@ -3328,40 +3328,49 @@ body.light #hero .feature-sub {
   color: var(--recruiter-muted) !important;
 }
 
-/* ==== Hero intro — animated sentence (typewriter) ==== */
+/* ==== Hero intro — animated sentence (typewriter) — long story, JS-driven, well simulated ==== */
 .hero-value-proposition--typewriter {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
+  display: block;
+  max-width: 690px;
+  min-height: 1.75em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   border-right: 2px solid var(--recruiter-accent);
-  max-width: min(52ch, 100%);
-  width: 0;
-  vertical-align: bottom;
+  padding-right: 3px;
   box-sizing: border-box;
-  will-change: width;
-  animation: heroTyping 2.2s steps(44, end) 0.35s forwards, heroBlink 0.75s step-end infinite;
+  /* JS types char-by-char; CSS only provides cursor blink — no width animation */
+  animation: heroBlink 0.78s step-end infinite;
 }
-@keyframes heroTyping { from { width: 0; } to { width: 52ch; } }
+.hero-value-proposition--typewriter.typing-done {
+  border-right-color: transparent;
+  animation: none;
+  border-right-width: 0;
+  padding-right: 0;
+}
 @keyframes heroBlink { from, to { border-color: transparent; } 50% { border-color: var(--recruiter-accent); } }
 @media (prefers-reduced-motion: reduce) {
   .hero-value-proposition--typewriter {
     animation: none !important;
     border-right: none !important;
+    padding-right: 0 !important;
     white-space: normal !important;
-    width: auto !important;
     max-width: 100% !important;
-    overflow: visible !important;
   }
 }
 @media (max-width: 480px) {
+  /* keep typewriter on mobile now that JS handles wrapping — was previously disabled */
   .hero-value-proposition--typewriter {
     display: block;
-    white-space: normal;
-    overflow: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border-right: 2px solid var(--recruiter-accent);
+    animation: heroBlink 0.78s step-end infinite;
+    max-width: 100%;
+  }
+  .hero-value-proposition--typewriter.typing-done {
     border-right: none;
     animation: none;
-    width: auto;
-    max-width: 100%;
   }
 }
 
