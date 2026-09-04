@@ -25,8 +25,54 @@
             <h1 id="hero-title">{{ .Site.Params.hero.title | default "Mahmoud Adel" }}</h1>
             <p class="hero-role-line" aria-label="Role">{{ .Site.Params.hero.subtitle | default (i18n "heroSubtitle" | default "Junior Penetration Tester") }}</p>
 
-            {{ $typewriter := i18n "heroTypewriter" | default "I break things — and I build things that break them." }}
-            <p class="hero-value-proposition hero-value-proposition--typewriter" aria-label="{{ $typewriter }}">{{ $typewriter }}</p>
+            {{ $typewriter := i18n "heroTypewriter" | default "I started cybersecurity because of the series Mr. Robot back in 2016. I was a small kid and started learning more and more with ambition. My cyber friends called me kernel because I always loved the core parts of things — the elementary particle that trillions of them form into the full beautiful scene! I loved the kernel, loved cybersecurity more. Then I also got to know that the field itself — becoming a cyber threat actor or a SOC analyst defending the infra like a gatekeeper — it is a piece of art. Cybersecurity is my dream." }}
+            <p class="hero-value-proposition hero-value-proposition--typewriter" id="hero-typewriter" data-text="{{ $typewriter }}" aria-label="{{ $typewriter }}" aria-live="polite">{{ $typewriter }}</p>
+            <script>
+            (function(){
+              var el=document.getElementById('hero-typewriter');
+              if(!el) return;
+              var text=el.getAttribute('data-text')||el.textContent||'';
+              var prefersReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+              if(prefersReduced){
+                el.textContent=text;
+                el.classList.add('typing-done');
+                return;
+              }
+              // clear for typing simulation — keep aria-label for screen readers, live region announces progressively
+              el.textContent='';
+              var chars=Array.from(text);
+              var i=0;
+              var base=14; // ms per char — avg ~7.3s for 524ch + pauses => ~9.5s total, slower than previous 2.2s
+              function nextDelay(ch){
+                if(ch==='.'||ch==='!'||ch==='?') return 420;
+                if(ch==='—'||ch==='–'||ch==='—') return 280;
+                if(ch===',') return 180;
+                if(ch===';') return 160;
+                if(ch===':') return 200;
+                if(ch===' ') return 22;
+                return base;
+              }
+              function type(){
+                if(i<chars.length){
+                  el.textContent+=chars[i];
+                  var ch=chars[i];
+                  i++;
+                  var d=nextDelay(ch);
+                  // human jitter +- 35% with slight random burst on longer sentences
+                  d+= (Math.random()-0.5)* (d*0.35);
+                  if(d<10) d=10;
+                  // occasional micro-pause for realism (3% chance extra 90ms)
+                  if(Math.random()<0.03) d+=90;
+                  setTimeout(type,d);
+                } else {
+                  // keep cursor blinking briefly then gracefully remove
+                  setTimeout(function(){ el.classList.add('typing-done'); }, 2200);
+                }
+              }
+              // slight dramatic pause before typing starts (like thinking)
+              setTimeout(type, 520);
+            })();
+            </script>
 
             <div class="hero-cards-page page" aria-label="Selected proof points">
                 <section class="top-grid">
