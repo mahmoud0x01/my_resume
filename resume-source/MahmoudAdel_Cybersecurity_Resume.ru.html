@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <title>Махмуд Адель — Резюме</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
     @page { size: A4; margin: 0; }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: #ffffff; }
     body {
       color: #182333;
       font-family: "Inter", "Liberation Sans", Arial, sans-serif;
-      font-size: 8.1pt;
-      line-height: 1.32;
+      font-size: 7.9pt;
+      line-height: 1.28;
     }
     .page { width: 210mm; min-height: 297mm; background: #ffffff; }
     .header {
-      padding: 8.5mm 13mm 7mm;
+      padding: 6mm 13mm 5mm;
       color: #f7fbff;
       background: #101b2d;
       background: radial-gradient(120% 140% at 12% 20%, #162a4a 0%, #101b2d 48%, #0d1320 100%);
@@ -40,10 +40,10 @@
       pointer-events: none;
     }
     .header-table, .body-table { width: 100%; border-collapse: collapse; }
-    .photo-cell { width: 31mm; vertical-align: middle; }
+    .photo-cell { width: 28mm; vertical-align: middle; }
     .portrait {
-      width: 27mm;
-      height: 27mm;
+      width: 24mm;
+      height: 24mm;
       display: block;
       border: 2px solid #b8ff00;
       border-radius: 50%;
@@ -54,36 +54,51 @@
     .name {
       margin: 0;
       color: #ffffff;
-      font-family: "Inter", "Liberation Sans", Arial, sans-serif;
-      font-size: 25pt;
+      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
+      font-size: 23pt;
       font-weight: 700;
       letter-spacing: -0.8pt;
       line-height: 1;
     }
     .role {
-      margin: 2.2mm 0 0;
-      color: #8ce9d9;
-      font-size: 10.5pt;
+      margin: 1.8mm 0 0;
+      color: #b8ff00;
+      font-size: 9.5pt;
       font-weight: 700;
       letter-spacing: 0.3pt;
     }
     .positioning {
-      margin: 1.2mm 0 0;
+      margin: 1mm 0 0;
       color: #c5d2e4;
-      font-size: 8.2pt;
+      font-size: 7.6pt;
     }
     .contact-cell {
-      width: 64mm;
+      width: 66mm;
       padding-left: 5mm;
       vertical-align: middle;
       text-align: right;
       color: #c5d2e4;
-      font-size: 7.1pt;
-      line-height: 1.55;
+      font-size: 6.8pt;
+      line-height: 1.45;
     }
     .contact-cell a { color: #eafcf8; text-decoration: none; }
     .contact-label { color: #83dcca; font-weight: 700; }
-    .body { padding: 4.8mm 13mm 1.2mm; }
+    .contact-pills { margin: 0 0 1mm; text-align: right; }
+    .contact-pills a.pill {
+      display: inline-block;
+      margin: 0 0 0.8mm 1mm;
+      padding: 0.4mm 1.8mm;
+      color: #eafcf8;
+      background: rgba(184,255,0,0.10);
+      border: 1px solid rgba(184,255,0,0.45);
+      border-radius: 999px;
+      font-size: 6.3pt;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .location-line { color: #c5d2e4; font-size: 6.3pt; line-height: 1.4; }
+    .body { padding: 3.5mm 13mm 1mm; }
     .main-cell { width: 65%; padding-right: 7mm; vertical-align: top; }
     .side-cell {
       width: 35%;
@@ -91,13 +106,14 @@
       vertical-align: top;
       border-left: 1px solid #d8e0e9;
     }
-    .section { margin: 0 0 3.0mm; }
+    .section { margin: 0 0 2.6mm; }
     .section-title {
-      margin: 0 0 1.2mm;
-      padding-bottom: 1.0mm;
+      margin: 0 0 1mm;
+      padding-bottom: 0.8mm;
       color: #167d79;
+      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
       border-bottom: 1.2px solid #d8ecea;
-      font-size: 7.1pt;
+      font-size: 6.8pt;
       font-weight: 700;
       letter-spacing: 1.25pt;
       line-height: 1.1;
@@ -115,24 +131,38 @@
     .summary {
       margin: 0;
       color: #334155;
-      font-size: 7.75pt;
-      line-height: 1.42;
+      font-size: 7.4pt;
+      line-height: 1.36;
     }
     .summary em { color: #0f766e; font-style: normal; font-weight: 700; }
-    .entry { margin: 0 0 2.6mm; }
+    .metric-strip { margin: 1.2mm 0 0; padding: 0; }
+    .metric-pill {
+      display: inline-block;
+      margin: 0 1.2mm 1mm 0;
+      padding: 0.5mm 2mm;
+      color: #12253c;
+      background: rgba(184,255,0,0.10);
+      border: 1px solid rgba(184,255,0,0.55);
+      border-radius: 999px;
+      font-size: 6.5pt;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .metric-pill span { color: #0f766e; font-weight: 400; }
+    .entry { margin: 0 0 2mm; }
     .entry:last-child { margin-bottom: 0; }
     .entry-head { width: 100%; border-collapse: collapse; }
     .entry-title {
       margin: 0;
       color: #12253c;
-      font-size: 8.7pt;
+      font-size: 8.2pt;
       font-weight: 700;
       line-height: 1.18;
     }
     .entry-org {
-      margin: 0.8mm 0 0;
+      margin: 0.6mm 0 0;
       color: #197f78;
-      font-size: 8.1pt;
+      font-size: 7.7pt;
       font-weight: 700;
     }
     .entry-org a { color: #197f78; text-decoration: none; border-bottom: 1px solid #b6e7df; }
@@ -146,46 +176,75 @@
       vertical-align: top;
       white-space: nowrap;
     }
-    ul { margin: 0.8mm 0 0; padding: 0 0 0 3.2mm; }
-    li { margin: 0 0 0.65mm; padding-left: 0.4mm; color: #34455a; font-size: 7.6pt; }
+    ul { margin: 0.6mm 0 0; padding: 0 0 0 3.2mm; }
+    li { margin: 0 0 0.5mm; padding-left: 0.4mm; color: #34455a; font-size: 7.2pt; }
     li::marker { color: #20a493; }
-    .cred-link-line { margin: 1.2mm 0 0; font-size: 7pt; }
+    .cred-link-line { margin: 0.8mm 0 0; font-size: 6.6pt; }
     .cred-link-line a { color: #167d79; text-decoration: none; border-bottom: 1px solid #b6e7df; font-weight: 600; }
     .evidence-list { list-style: none; padding: 0; margin: 0; }
     .evidence-list li {
-      margin: 0 0 1.1mm;
-      padding: 0.9mm 1.6mm;
+      margin: 0 0 0.9mm;
+      padding: 0.7mm 1.4mm;
       color: #334155;
-      border-left: 2.4px solid #b8ff00;
-      background: #f3f8f7;
-      font-size: 7.35pt;
-      line-height: 1.34;
+      border-left: 2px solid #b8ff00;
+      background: rgba(184,255,0,0.07);
+      border-radius: 8px;
+      font-size: 7pt;
+      line-height: 1.3;
     }
     .evidence-list strong { color: #152b42; }
-    .side-section { margin-bottom: 2.0mm; }
-    .skill-group { margin: 0 0 1.4mm; }
+    .sev {
+      display: inline-block;
+      margin-left: 1.2mm;
+      padding: 0.3mm 1.8mm;
+      border-radius: 999px;
+      font-size: 6.2pt;
+      font-weight: 700;
+      letter-spacing: 0.4pt;
+      text-transform: uppercase;
+      vertical-align: 1px;
+      white-space: nowrap;
+    }
+    .sev-critical { color: #7f1d1d; background: rgba(220,38,38,0.12); border: 1px solid rgba(220,38,38,0.35); }
+    .sev-high { color: #78350f; background: rgba(245,158,11,0.14); border: 1px solid rgba(245,158,11,0.40); }
+    .sev-info { color: #0f766e; background: rgba(53,201,179,0.12); border: 1px solid rgba(53,201,179,0.40); }
+    .side-section { margin-bottom: 1.6mm; }
+    .skill-group { margin: 0 0 1.1mm; }
     .skill-group:last-child { margin-bottom: 0; }
     .skill-label {
-      margin: 0 0 0.8mm;
+      margin: 0 0 0.6mm;
       color: #10233d;
-      font-size: 7.7pt;
+      font-size: 7.3pt;
       font-weight: 700;
       border-left: 2px solid #b8ff00;
       padding-left: 5px;
       margin-left: -7px;
     }
     .skill-text { margin: 0; color: #4b5d72; font-size: 6.75pt; line-height: 1.38; }
+    .skill-pills { margin: 0; padding: 0; }
+    .skill-pills span {
+      display: inline-block;
+      margin: 0 0.8mm 0.8mm 0;
+      padding: 0.3mm 1.4mm;
+      color: #34455a;
+      background: #eef2f5;
+      border: 1px solid #d8e0e9;
+      border-radius: 999px;
+      font-size: 6pt;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
     .side-list { margin: 0; padding: 0; list-style: none; }
-    .side-list li { margin: 0 0 1.1mm; padding: 0; color: #415268; font-size: 7.15pt; line-height: 1.34; }
+    .side-list li { margin: 0 0 0.9mm; padding: 0; color: #415268; font-size: 6.85pt; line-height: 1.3; }
     .side-list strong { color: #1c3047; }
     .side-list a { color: #167d79; text-decoration: none; border-bottom: 1px solid #b6e7df; }
     .link { color: #167d79; text-decoration: none; }
     .footer-note {
-      margin-top: 0.2mm;
-      padding-top: 1.2mm;
+      margin-top: 0;
+      padding-top: 1mm;
       color: #77869a;
       border-top: 1px solid #d8e0e9;
-      font-size: 6.8pt;
+      font-size: 6.5pt;
       line-height: 1.4;
     }
     .muted { color: #66758a; }
@@ -202,14 +261,12 @@
           </td>
           <td class="identity-cell">
             <h1 class="name">Махмуд Адель</h1>
-            <p class="role">Инженер по прикладной и наступательной безопасности | Бакалавр программной инженерии</p>
+            <p class="role">Прикладная и наступательная безопасность | Бакалавр программной инженерии</p>
             <p class="positioning">Прикладная безопасность · Наступательная инженерия · Бакалавр программной инженерии</p>
           </td>
           <td class="contact-cell">
-            <div><span class="contact-label">Локация</span> &nbsp;Базируется в Египте (UTC+2) · Открыт к релокации по всему миру (удалённо и на месте) · Визовая поддержка / B2B контракт</div>
-            <div><span class="contact-label">Email</span> &nbsp;<a href="mailto:contact@mahmoudouf.com">contact@mahmoudouf.com</a></div>
-            <div><span class="contact-label">LinkedIn</span> &nbsp;<a href="https://www.linkedin.com/in/mahmoudadel0x01/">mahmoudadel0x01</a></div>
-            <div><span class="contact-label">GitHub</span> &nbsp;<a href="https://github.com/mahmoud0x01">github.com/mahmoud0x01</a></div>
+            <div class="contact-pills"><a class="pill" href="mailto:contact@mahmoudouf.com">Email</a><a class="pill" href="https://www.linkedin.com/in/mahmoudadel0x01/">LinkedIn</a><a class="pill" href="https://github.com/mahmoud0x01">GitHub</a><a class="pill" href="https://t.me/rdmsr">Telegram</a><a class="pill" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges">HTB</a><a class="pill" href="https://tryhackme.com/p/iamkernel">THM</a></div>
+            <div class="location-line">Базируется в Египте (UTC+2) · Открыт к удалённой работе и релокации по всему миру<br>Визовая поддержка / B2B контракт<br>contact@mahmoudouf.com</div>
           </td>
         </tr>
       </table>
@@ -221,7 +278,8 @@
           <td class="main-cell">
             <section class="section">
               <h2 class="section-title">Профиль</h2>
-              <p class="summary"><em>Я ломаю вещи — и создаю вещи, которые ломаются.</em> Движимый глубоким интересом к низкоуровневым механизмам, я воспринимаю кибербезопасность как ремесло — соединяя качество кода с пентестом Web/API, моделированием угроз и безопасной архитектурой. Бакалавр программной инженерии, Томский государственный университет — выпуск июль 2026. Подтверждено: <strong>20+ отметок Hall of Fame</strong> (Verisign $1,000 CSRF→захват аккаунта · DigitalOcean · Pinterest · Dell через Bugcrowd), Bastion Security <strong>11 находок / 8 отчётов / 0 доработок / Топ 5/100 CTF</strong> на 8 веб-приложениях и 2 сетевых диапазонах (6 Linux + 4 Windows privesc), и SOC detection engineering в домашней лаборатории ELK (50k+ событий, 5 правил Sigma с MITRE). Hack The Box <strong>Топ 0.55% Pro Hacker</strong> и TryHackMe Топ 1% — воспроизводимые доказательства и понятные рекомендации исключительно в рамках authorized scope.</p>
+              <p class="summary"><em>Я ломаю вещи — и создаю вещи, которые ломаются.</em> Инженер по прикладной безопасности: низкоуровневые механизмы — ремесло, пентест Web/API, моделирование угроз и безопасная архитектура. Бакалавр программной инженерии, ТГУ — выпуск июль 2026. Только authorized scope и ответственное раскрытие.</p>
+              <div class="metric-strip"><span class="metric-pill">20+ <span>HoF</span></span><span class="metric-pill">$1,000 <span>Verisign</span></span><span class="metric-pill">Топ 5/100 <span>CTF</span></span><span class="metric-pill">Топ 0.55% <span>HTB</span></span></div>
             </section>
 
             <section class="section">
@@ -230,16 +288,16 @@
                 <table class="entry-head">
                   <tr>
                     <td>
-                      <h3 class="entry-title">Стажёр по инженерной безопасности (Authorized Scope: оценка Web/API и сетей)</h3>
+                      <h3 class="entry-title">Стажёр по инженерной безопасности (Authorized Scope: Web/API и сети)</h3>
                       <p class="entry-org"><a href="https://bastion-tech.ru/" target="_blank" rel="noopener">Bastion Security</a> — стажировка по инженерной безопасности</p>
                     </td>
                     <td class="entry-date">Июль 2024 – Сентябрь 2024</td>
                   </tr>
                 </table>
                 <ul>
-                  <li>Оценил <strong>8 веб-приложений и 2 сетевых диапазона</strong> в рамках authorized scope — <strong>11 подтверждённых находок</strong> (обход аутентификации, инъекции, повышение привилегий), 6 Linux + 4 Windows с доведением до root.</li>
-                  <li>Каждую находку доводил до root где применимо; подготовил <strong>8 отчётов с 0 доработок</strong> — пути эксплуатации и рекомендации по исправлению; презентовал результаты на внутреннем ревью.</li>
-                  <li>Валидация ручным тестированием плюс проверки cloud posture (ScoutSuite / Prowler-style) в лабораторной среде.</li>
+                  <li>Оценил <strong>8 веб-приложений и 2 сетевых диапазона</strong> в рамках authorized scope — <strong>11 подтверждённых находок</strong> (обход аутентификации, инъекции, повышение привилегий), 6 Linux + 4 Windows до root.</li>
+                  <li>Доводил находки до root где применимо; подготовил <strong>8 отчётов с 0 доработок</strong> — эксплуатация и исправления; презентовал на внутреннем ревью.</li>
+                  <li>Ручное тестирование + проверки cloud posture (ScoutSuite / Prowler-style) в лабе.</li>
                   <li>Вошёл в <strong>Топ 5 из 100</strong> во внутренних соревнованиях по пентесту и повышению привилегий.</li>
                 </ul>
                 <p class="cred-link-line"><a href="/Documents/CRF_internship_company_bastion.pdf" target="_blank" rel="noopener">Смотреть подтверждение →</a> <span class="muted">· сертификат стажировки Bastion Security</span></p>
@@ -255,8 +313,7 @@
                   </tr>
                 </table>
                 <ul>
-                  <li>Спроектировал и разработал <strong>2 прототипа</strong> в рамках университетских исследований; создал <strong>12 диаграмм</strong> (UML, компонентов, активности) и техническую документацию академического уровня на всех этапах SDLC.</li>
-                  <li>Инженерная работа, формирующая системное мышление, архитектуру и инструментарий — делает находки воспроизводимыми и рекомендации точнее.</li>
+                  <li>Разработал <strong>2 прототипа + 12 диаграмм</strong> (UML) по полному SDLC — системное мышление для воспроизводимых находок.</li>
                 </ul>
               </article>
             </section>
@@ -264,9 +321,9 @@
             <section class="section">
               <h2 class="section-title">Признания и доказательства</h2>
               <ul class="evidence-list">
-                <li><strong>Hall of Fame — 20+ отметок</strong> через Bugcrowd ( <a class="link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener">bugcrowd.com/h/mahmoud_adel</a> ) — Именные: Verisign $1,000 CSRF→захват аккаунта (DomainScope OAuth state, апр 2018, Critical), DigitalOcean (Critical, апр 2019), Pinterest и Dell (Hall of Fame, 2018).</li>
-                <li><strong>Соревнования и лабы:</strong> Bastion внутренний CTF <strong>Топ 5/100</strong>; Hack The Box <strong>Топ 0.55% Pro Hacker</strong> — <a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener">verified badges</a>; TryHackMe <strong>Топ 1%</strong> — <a class="link" href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">@iamkernel</a>.</li>
-                <li><strong>Детекция и исследования:</strong> Домашняя SOC-лаборатория ELK — 50k+ событий, 5 правил Sigma с MITRE, дашборды Kibana и workflow триажа; IR-разбор малвари (изолированная Win10 VM, Sysmon/KAPE); защита AppArmor от RCE; безопасность API и пути атак AD.</li>
+                <li><strong>Hall of Fame — 20+ отметок</strong> через Bugcrowd (<a class="link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener">bugcrowd.com/h/mahmoud_adel</a>) — Именные: Verisign $1,000 CSRF→захват аккаунта (DomainScope OAuth state, апр 2018), DigitalOcean (апр 2019), Pinterest и Dell (2018). <span class="sev sev-critical">Critical</span></li>
+                <li><strong>Соревнования и лабы:</strong> Bastion внутренний CTF <strong>Топ 5/100</strong>; Hack The Box <strong>Топ 0.55% Pro Hacker</strong> — <a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener">verified badges</a>; TryHackMe <strong>Топ 1%</strong> — <a class="link" href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">@iamkernel</a>. <span class="sev sev-info">Verified</span></li>
+                <li><strong>Детекция и исследования:</strong> SOC-лаборатория ELK — 50k+ событий, 5 правил Sigma (MITRE), Kibana и триаж; IR-разбор малвари (Win10 VM, Sysmon/KAPE); AppArmor от RCE; API и пути атак AD. <span class="sev sev-high">Lab</span></li>
               </ul>
             </section>
 
@@ -274,7 +331,8 @@
               <h2 class="section-title">Избранные проекты</h2>
               <ul>
                 <li><strong>ELK SOC Home Lab</strong> — Dockerized ELK 8.12 (Filebeat → Logstash → Elasticsearch → Kibana), 50k+ событий, 5 правил Sigma, оптимизация шумного sudo 180→12/день.</li>
-                <li><strong>IR Lab — разбор малвари Windows</strong> — Контролируемый IR на изолированной Win10 VM, Sysmon / Wireshark / KAPE, локализация и отчёт на 1 страницу для руководства.</li>
+                <li><strong>IR Lab — разбор малвари Windows</strong> — IR на изолированной Win10 VM, Sysmon / Wireshark / KAPE, локализация и отчёт на 1 страницу.</li>
+                <li><strong>CollabEditor — диплом, редактор реального времени</strong> — Django Channels/Redis + React/Quill, CRDT (Decimal order + Lamport clock), ACL с line-col edit_ranges + server redaction.</li>
               </ul>
             </section>
           </td>
@@ -283,16 +341,20 @@
             <section class="side-section">
               <h2 class="section-title">Ключевые навыки</h2>
               <div class="skill-group">
-                <p class="skill-label">Наступательная безопасность</p>
-                <p class="skill-text">Web/API Security, OWASP &amp; Vulnerability Assessment, Active Directory (Kerberos / BloodHound / Impacket), Privilege Escalation (Linux/Windows lab), Burp Suite, Nmap, SQLMap, Nuclei, ffuf, Red Teaming — Adversary Simulation</p>
+                <p class="skill-label">CORE</p>
+                <p class="skill-pills"><span>Web/API Security</span><span>Vulnerability Assessment</span><span>Linux</span><span>Windows</span><span>TCP/IP</span><span>Privilege Escalation (lab)</span><span>Burp Suite</span><span>Nmap</span><span>Python</span><span>Bash</span></p>
               </div>
               <div class="skill-group">
-                <p class="skill-label">Системы и защита</p>
-                <p class="skill-text">Linux, Windows, TCP/IP, Network Security, Firewall, Wireshark, MITRE ATT&amp;CK, SIEM (ELK) — Detection Engineering (Sigma, Suricata), Cloud Security (AWS IAM, ScoutSuite, Prowler), Incident Response, Splunk (lab), YARA (lab), AppArmor</p>
+                <p class="skill-label">APPLIED</p>
+                <p class="skill-pills"><span>OWASP</span><span>Network Security</span><span>Active Directory</span><span>Kerberos</span><span>Wireshark</span><span>BloodHound</span><span>Impacket</span><span>Docker</span><span>System Administration</span><span>Firewall</span><span>SIEM (ELK)</span><span>Incident Response</span><span>MITRE ATT&amp;CK</span><span>Cloud Security (AWS IAM)</span></p>
               </div>
               <div class="skill-group">
-                <p class="skill-label">Инженерия и инструменты</p>
-                <p class="skill-text">Python, Bash, JavaScript, C/C++, Assembly, SQL, Docker, Git, Ghidra (lab), Metasploit (lab), Cobalt Strike, Sliver</p>
+                <p class="skill-label">FAMILIAR</p>
+                <p class="skill-pills"><span>Ghidra (lab)</span><span>Metasploit (lab)</span><span>Cobalt Strike (exposure)</span><span>Sliver (lab)</span><span>Nuclei (lab)</span><span>SQLMap (lab)</span><span>ffuf (lab)</span><span>Malware Analysis (lab)</span><span>Threat Intel (exposure)</span><span>Exploit Dev (lab)</span><span>Red Team (lab)</span><span>YARA (lab)</span><span>Sigma (lab)</span><span>Suricata (lab)</span><span>Splunk (lab)</span></p>
+              </div>
+              <div class="skill-group">
+                <p class="skill-label">ENGINEERING</p>
+                <p class="skill-pills"><span>JavaScript</span><span>C/C++</span><span>Assembly</span><span>SQL</span><span>Git</span><span>Presentation</span><span>Problem Solving</span></p>
               </div>
             </section>
 
@@ -309,6 +371,7 @@
                 <li><strong>Blue Team Junior Analyst</strong><br>SecurityBlue Team · 2023<br><a href="https://elearning.securityblue.team/home/certificate/762758116" target="_blank" rel="noopener">Подтвердить ↗</a></li>
                 <li><strong>Cyber Threat Intelligence</strong><br>IBM · 2023<br><a href="https://www.credly.com/badges/3f520809-a774-46de-84bb-c90cf66e30ad" target="_blank" rel="noopener">Бейдж ↗</a></li>
                 <li><strong>Jr Penetration Tester</strong><br>TryHackMe · 2024<br><a href="/Documents/CRF_Jr_Pentester_Completion.pdf" target="_blank" rel="noopener">PDF ↗</a></li>
+                <li><span class="muted">Дополнительно:</span> OSCP (в процессе, OffSec) · PNPT (в процессе, TCM 2025) · Linux+ (2024) · CCNA (2023)</li>
               </ul>
             </section>
 
