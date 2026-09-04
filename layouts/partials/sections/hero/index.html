@@ -22,16 +22,10 @@
             {{ $eyebrow = replace $eyebrow "Junior security" "Security Engineering" }}
             <p class="hero-eyebrow">{{ $eyebrow }}</p>
             <h1 id="hero-title">{{ .Site.Params.hero.title | default "Mahmoud Adel" }}</h1>
-            <p class="hero-role-line" aria-label="Role">{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester" }}</p>
-            <!-- Location + availability — worldwide, no EU framing; pulled from params.location -->
-            <p class="hero-location-line" aria-label="Location and availability">
-                <i class="fas fa-location-dot" aria-hidden="true"></i> {{ $locationFull }}
-            </p>
-            {{ with .Site.Params.hero.content }}
-            <p class="hero-value-proposition hero-value-proposition--lean">
-                {{ . | plainify | truncate 160 }}
-            </p>
-            {{ end }}
+            <p class="hero-role-line" aria-label="Role">{{ .Site.Params.hero.subtitle | default (i18n "heroSubtitle" | default "Junior Penetration Tester") }}</p>
+
+            {{ $typewriter := i18n "heroTypewriter" | default "I break things — and I build things that break them." }}
+            <p class="hero-value-proposition hero-value-proposition--typewriter" aria-label="{{ $typewriter }}">{{ $typewriter }}</p>
 
             <div class="hero-cards-page page" aria-label="Selected proof points">
                 <section class="top-grid">
@@ -173,7 +167,6 @@
         <aside class="hero-identity-card" aria-label="Mahmoud Adel identity card">
             <div class="identity-card-meta">
                 <span>Profile / 01</span>
-                <span>Security + systems</span>
             </div>
             <img class="hero-portrait" src="{{ .Site.Params.hero.image | default "/images/me-avatar.png" }}" alt="Portrait of Mahmoud Adel, cybersecurity professional" width="320" height="320">
             <div class="identity-card-info">
@@ -181,10 +174,6 @@
                 <p class="identity-card-role">{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester" }}</p>
                 <p class="identity-card-supporting">{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</p>
                 <dl>
-                    <div>
-                        <dt>Based in</dt>
-                        <dd>Based in Egypt (UTC+2)</dd>
-                    </div>
                     <div>
                         <dt>Availability</dt>
                         <dd>Remote & Global Relocation · Visa / B2B Contract</dd>

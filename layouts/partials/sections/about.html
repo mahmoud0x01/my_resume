@@ -12,9 +12,9 @@
     <span id="break-build-operate" class="sr-anchor" aria-hidden="true"></span>
     <div class="recruiter-container">
         <div class="recruiter-section-heading">
-            <p class="section-kicker">Context</p>
-            <h2 id="about-title">{{ .Site.Params.about.title | default "About Me" }}</h2>
-            <p class="section-dek">A practical security perspective shaped by both testing and operating real systems.</p>
+            <p class="section-kicker">{{ i18n "aboutKicker" | default "Context" }}</p>
+            <h2 id="about-title">{{ i18n "aboutTitle" | default (.Site.Params.about.title | default "About Me") }}</h2>
+            <p class="section-dek">{{ i18n "aboutDek" | default "A practical security perspective shaped by both testing and operating real systems." }}</p>
         </div>
 
         <div class="about-layout">
@@ -89,8 +89,8 @@
                 <div class="about-philosophy" aria-labelledby="approach-title">
                     <div class="subsection-heading">
                         <p class="section-kicker">Philosophy</p>
-                        <h3 id="approach-title">How I Approach Security</h3>
-                        <p class="section-dek" style="margin-top:0.5rem;">BREAK / BUILD / OPERATE / SECURE — Find the flaw, understand why it broke, and think about how it should be fixed.</p>
+                        <h3 id="approach-title">{{ i18n "aboutPhilosophyTitle" | default "How I Approach Security" }}</h3>
+                        <p class="section-dek" style="margin-top:0.5rem;">{{ i18n "aboutPhilosophyDek" | default "BREAK / BUILD / OPERATE / SECURE — Find the flaw, understand why it broke, and think about how it should be fixed." }}</p>
                     </div>
                     <div class="bbo-grid bbo-grid--4">
                         <article class="bbo-card">
@@ -155,6 +155,7 @@
                 {{ end }}
 
                 {{ $writingPages := where .Site.RegularPages "Section" "blogs" }}
+                {{ if eq (len $writingPages) 0 }}{{ $writingPages = where (index hugo.Sites 0).RegularPages "Section" "blogs" }}{{ end }}
                 <p class="writing-count-note">{{ len $writingPages }} notes in archive — <a href="/blogs/">Browse all →</a></p>
             </div>
         </div>

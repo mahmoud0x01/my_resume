@@ -11,12 +11,17 @@
     <div class="recruiter-container">
         <div class="contact-card">
             <div>
-                <p class="section-kicker">Next conversation</p>
-                <h2 id="contact-title">Let's talk about security.</h2>
+                <p class="section-kicker">{{ i18n "contactKicker" | default "Next conversation" }}</p>
+                <h2 id="contact-title">{{ i18n "contactTitle" | default "Let's talk about security." }}</h2>
+                {{ $contactCopy := i18n "contactContent" | default "Open to application security, offensive security, security engineering, and infrastructure-security roles — worldwide (remote & on-site)." }}
                 {{ with .Site.Params.contact.content }}
+                {{ if eq $.Site.Language.Lang "en" }}
                 <div class="contact-copy">{{ . | markdownify }}</div>
                 {{ else }}
-                <p class="contact-copy">If you are building a security team or need a careful pair of eyes on an application or environment, I would be glad to hear from you.</p>
+                <div class="contact-copy">{{ $contactCopy | markdownify }}</div>
+                {{ end }}
+                {{ else }}
+                <div class="contact-copy">{{ $contactCopy | markdownify }}</div>
                 {{ end }}
             </div>
             <div class="contact-links" aria-label="Contact links">

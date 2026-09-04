@@ -1,10 +1,11 @@
 {{ $writingPages := where .Site.RegularPages "Section" "blogs" }}
+{{ if eq (len $writingPages) 0 }}{{ $writingPages = where (index hugo.Sites 0).RegularPages "Section" "blogs" }}{{ end }}
 {{ $writingArchiveURL := "blogs/" | relURL }}
 <section id="writing" class="recruiter-section recruiter-writing" aria-labelledby="writing-title">
     <div class="recruiter-container">
         <div class="recruiter-section-heading">
-            <p class="section-kicker">Research</p>
-            <h2 id="writing-title">SECURITY RESEARCH and Writeups</h2>
+            <p class="section-kicker">{{ i18n "writingKicker" | default "Research" }}</p>
+            <h2 id="writing-title">{{ i18n "writingTitle" | default "SECURITY RESEARCH and Writeups" }}</h2>
         </div>
 {{ if gt (len $writingPages) 0 }}
 {{ $writingPages = $writingPages.ByDate.Reverse }}

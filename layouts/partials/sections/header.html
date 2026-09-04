@@ -64,12 +64,12 @@
             <!-- Center page links (collapsible on mobile) — evidence-first IA (6 items, lean recruiter scan; order matches disclosures→credentials→writing→experience→skills-matrix→about) -->
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mx-auto text-center nav-center-links">
-                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#disclosures">SECURITY FINDINGS</a></li>
-                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#credentials">Credentials</a></li>
-                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#writing">Research</a></li>
-                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#skills-matrix">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relURL }}#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relLangURL }}#disclosures">{{ i18n "navSecurityFindings" | default "SECURITY FINDINGS" }}</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relLangURL }}#credentials">{{ i18n "navCredentials" | default "Credentials" }}</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relLangURL }}#writing">{{ i18n "navResearch" | default "Research" }}</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relLangURL }}#experience">{{ i18n "navExperience" | default "Experience" }}</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relLangURL }}#skills-matrix">{{ i18n "navSkills" | default "Skills" }}</a></li>
+                    <li class="nav-item"><a class="nav-link nav-page-link" href="{{ .Site.BaseURL | relLangURL }}#about">{{ i18n "navAbout" | default "About" }}</a></li>
                 </ul>
             </div>
 
@@ -96,12 +96,7 @@
                 {{ end }}
                  {{ end }}
 
-                 <!-- Résumé -->
-                 <li class="nav-item">
-                     <a class="nav-resume-link" href="/MahmoudAdel_Cybersecurity_Resume.pdf" download aria-label="Download Mahmoud Adel's résumé">Résumé</a>
-                 </li>
-
-                 <!-- Email icon -->
+                  <!-- Email icon -->
                  <li class="nav-item">
                      <a class="nav-link nav-social-icon" href="mailto:contact@mahmoudouf.com" aria-label="Email me">
                          <i class="fa fa-envelope"></i>
@@ -130,6 +125,34 @@
                     </button>
                 </li>
                 {{ end }}
+
+                <!-- Language switch — EN | RU (near theme toggle, visible on all breakpoints) -->
+                <li class="nav-item nav-lang-switch" role="group" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }}">
+                    {{ $curLang := .Site.Language.Lang }}
+                    {{ $allTrans := .Site.Home.AllTranslations }}
+                    {{ if eq (len $allTrans) 1 }}
+                        {{/* Fallback: single translation (build before languages) — show static pair */}}
+                        {{ if eq $curLang "en" }}
+                            <span class="nav-lang-active" aria-current="true">EN</span>
+                            <span class="nav-lang-sep" aria-hidden="true">|</span>
+                            <a class="nav-lang-link" href="/ru/" lang="ru" hreflang="ru" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }} — Русский">RU</a>
+                        {{ else }}
+                            <a class="nav-lang-link" href="/" lang="en" hreflang="en" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }} — English">EN</a>
+                            <span class="nav-lang-sep" aria-hidden="true">|</span>
+                            <span class="nav-lang-active" aria-current="true">RU</span>
+                        {{ end }}
+                    {{ else }}
+                        {{ range $i, $t := $allTrans }}
+                            {{ if $i }}<span class="nav-lang-sep" aria-hidden="true">|</span>{{ end }}
+                            {{ $lang := $t.Language.Lang }}
+                            {{ if eq $lang $curLang }}
+                                <span class="nav-lang-active" aria-current="true" lang="{{ $lang }}">{{ upper $lang }}</span>
+                            {{ else }}
+                                <a class="nav-lang-link" href="{{ $t.RelPermalink }}" lang="{{ $lang }}" hreflang="{{ $lang }}" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }} — {{ $t.Language.LanguageName }}">{{ upper $lang }}</a>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                </li>
             </ul>
         </div>
     </nav>

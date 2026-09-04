@@ -3,15 +3,15 @@
     <div class="recruiter-container">
         <div class="hero-graph-intro" aria-labelledby="capability-map-title">
             <div>
-                <p class="hero-section-kicker">The path</p>
-                <h2 id="capability-map-title">EVERYTHING ABOUT ME</h2>
+                <p class="hero-section-kicker">{{ i18n "pathKicker" | default "The path" }}</p>
+                <h2 id="capability-map-title">{{ i18n "pathTitle" | default "EVERYTHING ABOUT ME" }}</h2>
             </div>
         </div>
     </div>
 
     <div class="graph-view-controls" role="group" aria-label="Capability map view mode">
-        <span class="graph-view-controls-label">View</span>
-        <button id="graph-list-toggle" class="graph-view-btn" type="button" aria-controls="portfolio-constellation portfolio-list-view" aria-pressed="false" aria-label="Toggle capability map view">Switch to List View</button>
+        <span class="graph-view-controls-label">{{ i18n "pathViewLabel" | default "View" }}</span>
+        <button id="graph-list-toggle" class="graph-view-btn" type="button" aria-controls="portfolio-constellation portfolio-list-view" aria-pressed="false" aria-label="Toggle capability map view">{{ i18n "pathSwitchToList" | default "Switch to List View" }}</button>
     </div>
 
     <div class="constellation-wrap" role="region" aria-labelledby="capability-map-title">

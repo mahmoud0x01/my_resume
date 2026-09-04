@@ -1,0 +1,67 @@
+# i18n/ru.yaml — Русские строки UI
+# Техничные названия, инструменты, URL, команды терминала и код НЕ переводятся — остаются на английском
+navSecurityFindings: "НАХОДКИ"
+navCredentials: "Сертификаты"
+navResearch: "Исследования"
+navExperience: "Опыт"
+navSkills: "Навыки"
+navAbout: "Обо мне"
+
+heroEyebrow: "ОТКРЫТ К ПРЕДЛОЖЕНИЯМ · ИНЖЕНЕРИЯ БЕЗОПАСНОСТИ"
+heroTitle: "Махмуд Адель"
+heroSubtitle: "Инженер по прикладной и наступательной безопасности | Бакалавр программной инженерии"
+heroSupportingAreas: "Web/API Security · Network Assessment · Linux & Systems"
+heroTypewriter: "Я ломаю вещи — и создаю вещи, которые ломаются."
+heroAvailability: "Удалённо и с релокацией · Виза / B2B контракт"
+heroDownloadCV: "Скачать резюме"
+heroEmailMe: "Написать"
+
+atGlanceKicker: "Кратко"
+atGlanceTitle: "Кратко"
+atGlanceDek: "Советую пролистать портфолио целиком, но на всякий случай — краткая выжимка"
+atGlanceRoleTitle: "Роль"
+atGlanceCoreSkillsTitle: "Ключевые навыки"
+atGlanceCoreSkillsNote: "Практика в лабах и авторизованных оценках — включая отчётность"
+atGlanceQuickLinksTitle: "Быстрые ссылки"
+atGlanceExperienceSnapshotTitle: "Опыт — кратко"
+atGlanceEducationTitle: "Образование"
+
+disclosuresKicker: "Признание"
+disclosuresTitle: "НАХОДКИ И ПРИЗНАНИЯ"
+disclosuresDek: "Именные раскрытия включают Verisign, DigitalOcean, Pinterest и Dell — плюс 20+ суммарных отметок на Bugcrowd."
+
+credentialsKicker: "HR и ATS · Подтверждено"
+credentialsTitle: "Сертификаты"
+credentialsDek: "Подтверждённые сертификации и компетенции"
+
+writingKicker: "Исследования"
+writingTitle: "ИССЛЕДОВАНИЯ И ЗАМЕТКИ"
+writingDek: "Избранные исследования и заметки"
+
+pathKicker: "Путь"
+pathTitle: "ВСЁ ОБО МНЕ"
+pathViewLabel: "Вид"
+pathSwitchToList: "Список"
+pathSwitchToGraph: "Граф"
+
+experienceTitle: "Опыт"
+experienceKicker: "Опыт"
+
+aboutKicker: "Контекст"
+aboutTitle: "Обо мне"
+aboutDek: "Практический взгляд на безопасность, сформированный тестированием и эксплуатацией реальных систем."
+aboutPhilosophyTitle: "Как я подхожу к безопасности"
+aboutPhilosophyDek: "BREAK / BUILD / OPERATE / SECURE — Найти изъян, понять почему сломалось и как исправить границу доверия."
+
+skillsKicker: "Компетенции"
+skillsTitle: "Матрица навыков"
+skillsDek: "Честная градация по опыту — Core · Applied · Familiar · Engineering — от сильного к знакомству, без процентов."
+skillsNote: "Уровни отражают практику: Core — регулярная практика с отчётами · Applied — стажировки/лабы · Familiar — знакомство в лабах · Engineering — системы и профэффективность."
+
+contactKicker: "Следующий разговор"
+contactTitle: "Давайте поговорим о безопасности."
+contactContent: "Открыт к ролям в прикладной безопасности, наступательной безопасности, инженерии безопасности и инфраструктурной безопасности — по всему миру (удалённо и на месте)."
+
+langSwitchLabel: "Сменить язык"
+langEN: "EN"
+langRU: "RU"

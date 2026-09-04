@@ -3,9 +3,9 @@
   <span id="skills" class="sr-anchor" aria-hidden="true"></span>
   <div class="recruiter-container">
     <div class="recruiter-section-heading">
-      <p class="section-kicker">Capabilities</p>
-      <h2 id="skills-matrix-title">Detailed Skills Matrix</h2>
-      <p class="section-dek">Evidence-tiered and honestly scoped — Core · Applied · Familiar · Engineering — strongest to exposure, no percentage scores.</p>
+      <p class="section-kicker">{{ i18n "skillsKicker" | default "Capabilities" }}</p>
+      <h2 id="skills-matrix-title">{{ i18n "skillsTitle" | default "Detailed Skills Matrix" }}</h2>
+      <p class="section-dek">{{ i18n "skillsDek" | default "Evidence-tiered and honestly scoped — Core · Applied · Familiar · Engineering — strongest to exposure, no percentage scores." }}</p>
     </div>
     {{ with .Site.Params.about.toolkitTiers }}
     <div class="skills-matrix-tiers">
@@ -20,6 +20,6 @@
       {{ end }}
     </div>
     {{ end }}
-    <p class="skills-matrix-note">Tiers reflect hands-on evidence: Core = regularly practiced with reporting · Applied = internship/lab depth · Familiar = lab exposure · Engineering = systems &amp; professional effectiveness.</p>
+    <p class="skills-matrix-note">{{ i18n "skillsNote" | default "Tiers reflect hands-on evidence: Core = regularly practiced with reporting · Applied = internship/lab depth · Familiar = lab exposure · Engineering = systems & professional effectiveness." }}</p>
   </div>
 </section>

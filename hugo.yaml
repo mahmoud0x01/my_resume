@@ -3,6 +3,37 @@ languageCode: "en-us"
 title: "Mahmoud Adel — Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
 theme: hugo-profile
 
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+
+languages:
+  en:
+    languageName: English
+    languageCode: en-us
+    weight: 1
+    title: "Mahmoud Adel — Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
+    params:
+      description: "Application Security & Offensive Security Engineer | B.Sc. Software Engineering — penetration testing, bug bounty, responsible disclosure, security research"
+      keywords: "application security, offensive security, security engineering, junior penetration tester, penetration testing, soc analyst, siem, elk stack, splunk, incident response, cloud security, aws iam, scout suite, prowler, digital forensics, threat hunting, sigma, yara, mitre attack, responsible disclosure, security research, bug bounty, Hall of Fame, Bastion CTF, software engineering, AppArmor RCE, CSRF OAuth, Verisign, Linux Windows AD"
+      location: "Based in Egypt (UTC+2) · Open to Remote & Global Relocation · Visa Sponsorship / B2B Contract"
+  ru:
+    languageName: Русский
+    languageCode: ru
+    weight: 2
+    title: "Махмуд Адель — Инженер по прикладной и наступательной безопасности | Бакалавр программной инженерии"
+    params:
+      description: "Инженер по прикладной и наступательной безопасности — тестирование на проникновение, баг-баунти, ответственное раскрытие, исследования безопасности"
+      keywords: "прикладная безопасность, наступательная безопасность, инженерия безопасности, тестирование на проникновение, soc аналитик, siem, elk stack, splunk, реагирование на инциденты, облачная безопасность, aws iam, цифровая криминалистика, поиск угроз, sigma, yara, mitre attack, ответственное раскрытие, исследование безопасности, баг-баунти, Hall of Fame, Bastion CTF, AppArmor RCE, CSRF OAuth, Verisign, Linux Windows AD"
+      location: "Базируется в Египте (UTC+2) · Открыт к релокации по всему миру (удалённо и на месте) · Визовая поддержка / B2B контракт"
+      hero:
+        intro: "ОТКРЫТ К ПРЕДЛОЖЕНИЯМ · ИНЖЕНЕРИЯ БЕЗОПАСНОСТИ"
+        title: "Махмуд Адель"
+        subtitle: "Инженер по прикладной и наступательной безопасности | Бакалавр программной инженерии"
+        supportingAreas: "Web/API Security · Network Assessment · Linux & Systems"
+        content: "Инженер по прикладной безопасности с бэкграундом в программной инженерии и Linux-системах, фокус на безопасности веб/API, сетевой оценке, исследовании уязвимостей и понимании того, как ломаются реальные системы."
+      about:
+        title: "Обо мне"
+
 outputs:
   home:
     - "HTML"

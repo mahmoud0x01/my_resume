@@ -1,0 +1,67 @@
+# i18n/en.yaml — English UI strings (default language)
+# Tech/tool names, URLs, code blocks remain English by design
+navSecurityFindings: "SECURITY FINDINGS"
+navCredentials: "Credentials"
+navResearch: "Research"
+navExperience: "Experience"
+navSkills: "Skills"
+navAbout: "About"
+
+heroEyebrow: "OPEN TO WORK · SECURITY ENGINEERING"
+heroTitle: "Mahmoud Adel"
+heroSubtitle: "Application Security & Offensive Security Engineer | B.Sc. Software Engineering"
+heroSupportingAreas: "Web/API Security · Network Assessment · Linux & Systems"
+heroTypewriter: "I break things — and I build things that break them."
+heroAvailability: "Remote & Global Relocation · Visa / B2B Contract"
+heroDownloadCV: "Download CV"
+heroEmailMe: "Email Me"
+
+atGlanceKicker: "At a glance"
+atGlanceTitle: "At a Glance"
+atGlanceDek: "I advise you to scroll and enjoy my portfolio in detail but just in case here is a brief"
+atGlanceRoleTitle: "Role"
+atGlanceCoreSkillsTitle: "Core Skills"
+atGlanceCoreSkillsNote: "Hands-on in labs & authorized assessments — including reporting"
+atGlanceQuickLinksTitle: "Quick Links"
+atGlanceExperienceSnapshotTitle: "Experience Snapshot"
+atGlanceEducationTitle: "Education"
+
+disclosuresKicker: "Recognition"
+disclosuresTitle: "SECURITY FINDINGS & RECOGNITION"
+disclosuresDek: "Named disclosures include Verisign, DigitalOcean, Pinterest, and Dell — with 20+ aggregate acknowledgments across Bugcrowd."
+
+credentialsKicker: "HR & ATS · Verified"
+credentialsTitle: "Credentials"
+credentialsDek: "Verified certifications and proficiencies"
+
+writingKicker: "Research"
+writingTitle: "SECURITY RESEARCH and Writeups"
+writingDek: "Selected research and write-ups"
+
+pathKicker: "The path"
+pathTitle: "EVERYTHING ABOUT ME"
+pathViewLabel: "View"
+pathSwitchToList: "Switch to List View"
+pathSwitchToGraph: "Switch to Graph View"
+
+experienceTitle: "Experience"
+experienceKicker: "Experience"
+
+aboutKicker: "Context"
+aboutTitle: "About Me"
+aboutDek: "A practical security perspective shaped by both testing and operating real systems."
+aboutPhilosophyTitle: "How I Approach Security"
+aboutPhilosophyDek: "BREAK / BUILD / OPERATE / SECURE — Find the flaw, understand why it broke, and think about how it should be fixed."
+
+skillsKicker: "Capabilities"
+skillsTitle: "Detailed Skills Matrix"
+skillsDek: "Evidence-tiered and honestly scoped — Core · Applied · Familiar · Engineering — strongest to exposure, no percentage scores."
+skillsNote: "Tiers reflect hands-on evidence: Core = regularly practiced with reporting · Applied = internship/lab depth · Familiar = lab exposure · Engineering = systems & professional effectiveness."
+
+contactKicker: "Next conversation"
+contactTitle: "Let's talk about security."
+contactContent: "Open to application security, offensive security, security engineering, and infrastructure-security roles — worldwide (remote & on-site)."
+
+langSwitchLabel: "Switch language"
+langEN: "EN"
+langRU: "RU"

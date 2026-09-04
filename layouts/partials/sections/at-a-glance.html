@@ -11,24 +11,24 @@
     {{ $locationFull := .Site.Params.location | default "Based in Egypt (UTC+2) · Open to Remote & Global Relocation · Visa Sponsorship / B2B Contract" }}
     <div class="recruiter-container">
         <div class="recruiter-section-heading">
-            <p class="section-kicker">At a glance</p>
-            <h2 id="at-a-glance-title">At a Glance</h2>
-            <p class="section-dek">I advise you to scroll and enjoy my portofolio in detail but just in case here is a brief</p>
+            <p class="section-kicker">{{ i18n "atGlanceKicker" | default "At a glance" }}</p>
+            <h2 id="at-a-glance-title">{{ i18n "atGlanceTitle" | default "At a Glance" }}</h2>
+            <p class="section-dek">{{ i18n "atGlanceDek" | default "I advise you to scroll and enjoy my portfolio in detail but just in case here is a brief" }}</p>
         </div>
 
         <div class="at-a-glance-card" role="region" aria-labelledby="at-a-glance-title">
             <div class="at-a-glance-grid">
                 <!-- Role summary — 1-2 lines from hero subtitle -->
                 <section class="at-a-glance-block at-a-glance-block--role" aria-labelledby="aag-role-title">
-                    <h3 id="aag-role-title">Role</h3>
-                    <p class="at-a-glance-role">{{ .Site.Params.hero.subtitle | default "Application Security & Offensive Security Engineer | B.Sc. Software Engineering" }}</p>
-                    <p class="at-a-glance-supporting">{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</p>
+                    <h3 id="aag-role-title">{{ i18n "atGlanceRoleTitle" | default "Role" }}</h3>
+                    <p class="at-a-glance-role">{{ .Site.Params.hero.subtitle | default (i18n "heroSubtitle" | default "Application Security & Offensive Security Engineer | B.Sc. Software Engineering") }}</p>
+                    <p class="at-a-glance-supporting">{{ .Site.Params.hero.supportingAreas | default (i18n "heroSupportingAreas" | default "Web/API Security · Network Assessment · Linux & Systems") }}</p>
                     <p class="at-a-glance-location"><i class="fas fa-location-dot" aria-hidden="true"></i> {{ $locationFull }}</p>
                 </section>
 
                 <!-- Core skills — 12, recruiter-priority ATS signals (web + infra + AD + cloud + detection + teaming) -->
                 <section class="at-a-glance-block at-a-glance-block--skills" aria-labelledby="aag-skills-title">
-                    <h3 id="aag-skills-title">Core Skills</h3>
+                    <h3 id="aag-skills-title">{{ i18n "atGlanceCoreSkillsTitle" | default "Core Skills" }}</h3>
                     <ul class="at-a-glance-skills" aria-label="Core skills, 12">
                         <li>Web/API Security</li>
                         <li>OWASP & Vulnerability Assessment</li>
@@ -43,12 +43,12 @@
                         <li>Red Teaming — Adversary Simulation</li>
                         <li>Blue Teaming — Incident Response</li>
                     </ul>
-                    <p class="at-a-glance-skills-note">Hands-on in labs & authorized assessments — including reporting</p>
+                    <p class="at-a-glance-skills-note">{{ i18n "atGlanceCoreSkillsNote" | default "Hands-on in labs & authorized assessments — including reporting" }}</p>
                 </section>
 
                 <!-- Quick links -->
                 <section class="at-a-glance-block at-a-glance-block--links" aria-labelledby="aag-links-title">
-                    <h3 id="aag-links-title">Quick Links</h3>
+                    <h3 id="aag-links-title">{{ i18n "atGlanceQuickLinksTitle" | default "Quick Links" }}</h3>
                     <ul class="at-a-glance-links" aria-label="Quick links">
                         <li><a href="/MahmoudAdel_Cybersecurity_Resume.pdf" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Résumé PDF</a></li>
                         <li><a href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
@@ -63,7 +63,7 @@
 
                 <!-- Experience snapshot — 2-line summary -->
                 <section class="at-a-glance-block at-a-glance-block--experience" aria-labelledby="aag-exp-title">
-                    <h3 id="aag-exp-title">Experience Snapshot</h3>
+                    <h3 id="aag-exp-title">{{ i18n "atGlanceExperienceSnapshotTitle" | default "Experience Snapshot" }}</h3>
                     <ul class="at-a-glance-experience">
                         <li>
                             <strong>Bastion Security — Security Engineering Intern</strong>
@@ -78,7 +78,7 @@
 
                 <!-- Education -->
                 <section class="at-a-glance-block at-a-glance-block--education" aria-labelledby="aag-education-title">
-                    <h3 id="aag-education-title">Education</h3>
+                    <h3 id="aag-education-title">{{ i18n "atGlanceEducationTitle" | default "Education" }}</h3>
                     <ul class="at-a-glance-education">
                         <li><strong>B.Sc. Software Engineering</strong><span>Tomsk State University — Conferred Jul 2026</span><small>Sep 2022 – Jul 2026</small></li>
                     </ul>
