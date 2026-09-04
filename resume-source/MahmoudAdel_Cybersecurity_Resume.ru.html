@@ -135,20 +135,50 @@
       line-height: 1.36;
     }
     .summary em { color: #0f766e; font-style: normal; font-weight: 700; }
-    .metric-strip { margin: 1.2mm 0 0; padding: 0; }
+    .portfolio-line { margin: 0.8mm 0 0; font-size: 7pt; line-height: 1.2; }
+    .portfolio-line a { color: #b8ff00; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(184,255,0,0.45); }
+    .metric-strip { margin: 1.6mm 0 0; padding: 0; }
     .metric-pill {
       display: inline-block;
-      margin: 0 1.2mm 1mm 0;
-      padding: 0.5mm 2mm;
-      color: #12253c;
-      background: rgba(184,255,0,0.10);
+      width: 26.5mm;
+      margin: 0 1.5mm 0 0;
+      padding: 1.4mm 1mm;
+      vertical-align: top;
+      text-align: center;
+      color: #ffffff;
+      background: #101b2d;
       border: 1px solid rgba(184,255,0,0.55);
-      border-radius: 999px;
-      font-size: 6.5pt;
-      font-weight: 700;
-      white-space: nowrap;
+      border-radius: 2mm;
+      white-space: normal;
     }
-    .metric-pill span { color: #0f766e; font-weight: 400; }
+    .metric-pill:last-child { margin-right: 0; }
+    .metric-num {
+      display: block;
+      color: #ffffff;
+      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: -0.2pt;
+      line-height: 1.1;
+    }
+    .metric-label {
+      display: block;
+      margin-top: 0.5mm;
+      color: #b8ff00;
+      font-size: 6pt;
+      font-weight: 600;
+      letter-spacing: 0.5pt;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .redacted-reward { white-space: nowrap; }
+    .redacted-wall {
+      color: transparent;
+      background: #182333;
+      border-radius: 0.8mm;
+      padding: 0 1mm;
+    }
+    .metric-pill .redacted-wall { background: #000000; border: 1px solid rgba(184,255,0,0.50); }
     .entry { margin: 0 0 2mm; }
     .entry:last-child { margin-bottom: 0; }
     .entry-head { width: 100%; border-collapse: collapse; }
@@ -263,6 +293,7 @@
             <h1 class="name">Махмуд Адель</h1>
             <p class="role">Прикладная и наступательная безопасность | Бакалавр программной инженерии</p>
             <p class="positioning">Прикладная безопасность · Наступательная инженерия · Бакалавр программной инженерии</p>
+            <div class="portfolio-line"><a href="https://mahmoudouf.com/">mahmoudouf.com</a></div>
           </td>
           <td class="contact-cell">
             <div class="contact-pills"><a class="pill" href="mailto:contact@mahmoudouf.com">Email</a><a class="pill" href="https://www.linkedin.com/in/mahmoudadel0x01/">LinkedIn</a><a class="pill" href="https://github.com/mahmoud0x01">GitHub</a><a class="pill" href="https://t.me/rdmsr">Telegram</a><a class="pill" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges">HTB</a><a class="pill" href="https://tryhackme.com/p/iamkernel">THM</a></div>
@@ -278,8 +309,8 @@
           <td class="main-cell">
             <section class="section">
               <h2 class="section-title">Профиль</h2>
-              <p class="summary"><em>Я ломаю вещи — и создаю вещи, которые ломаются.</em> Инженер по прикладной безопасности: низкоуровневые механизмы — ремесло, пентест Web/API, моделирование угроз и безопасная архитектура. Бакалавр программной инженерии, ТГУ — выпуск июль 2026. Только authorized scope и ответственное раскрытие.</p>
-              <div class="metric-strip"><span class="metric-pill">20+ <span>HoF</span></span><span class="metric-pill">$1,000 <span>Verisign</span></span><span class="metric-pill">Топ 5/100 <span>CTF</span></span><span class="metric-pill">Топ 0.55% <span>HTB</span></span></div>
+              <p class="summary">Инженер по кибербезопасности, увлечённый низкоуровневыми системами и архитектурой. Придя в сферу рано, я увлёкся «механикой ядра» технологий и получил прозвище Kernel. От наступательных механик до SOC-защиты я рассматриваю безопасность инфраструктуры как искусство, построенное на фундаментальных принципах систем.</p>
+              <div class="metric-strip"><span class="metric-pill"><strong class="metric-num">20+</strong><span class="metric-label">HoF</span></span><span class="metric-pill"><strong class="metric-num"><span class="redacted-reward" aria-label="$1,000" title="$1,000">$1,<span class="redacted-wall">REDACTED</span></span></strong><span class="metric-label">Verisign</span></span><span class="metric-pill"><strong class="metric-num">Топ 5/100</strong><span class="metric-label">CTF</span></span><span class="metric-pill"><strong class="metric-num">Топ 0.55%</strong><span class="metric-label">HackTheBox</span></span></div>
             </section>
 
             <section class="section">
@@ -321,18 +352,18 @@
             <section class="section">
               <h2 class="section-title">Признания и доказательства</h2>
               <ul class="evidence-list">
-                <li><strong>Hall of Fame — 20+ отметок</strong> через Bugcrowd (<a class="link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener">bugcrowd.com/h/mahmoud_adel</a>) — Именные: Verisign $1,000 CSRF→захват аккаунта (DomainScope OAuth state, апр 2018), DigitalOcean (апр 2019), Pinterest и Dell (2018). <span class="sev sev-critical">Critical</span></li>
+                <li><strong>Hall of Fame — 20+ отметок</strong> через Bugcrowd (<a class="link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener">bugcrowd.com/h/mahmoud_adel</a>) — Именные: Verisign <span class="redacted-reward" aria-label="$1,000" title="$1,000">$1,<span class="redacted-wall">REDACTED</span></span> CSRF→захват аккаунта (DomainScope OAuth state, апр 2018), DigitalOcean (апр 2019), Pinterest и Dell (2018). <span class="sev sev-critical">Critical</span></li>
                 <li><strong>Соревнования и лабы:</strong> Bastion внутренний CTF <strong>Топ 5/100</strong>; Hack The Box <strong>Топ 0.55% Pro Hacker</strong> — <a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener">verified badges</a>; TryHackMe <strong>Топ 1%</strong> — <a class="link" href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">@iamkernel</a>. <span class="sev sev-info">Verified</span></li>
                 <li><strong>Детекция и исследования:</strong> SOC-лаборатория ELK — 50k+ событий, 5 правил Sigma (MITRE), Kibana и триаж; IR-разбор малвари (Win10 VM, Sysmon/KAPE); AppArmor от RCE; API и пути атак AD. <span class="sev sev-high">Lab</span></li>
               </ul>
             </section>
 
             <section class="section">
-              <h2 class="section-title">Избранные проекты</h2>
+              <h2 class="section-title">Исследования безопасности</h2>
               <ul>
-                <li><strong>ELK SOC Home Lab</strong> — Dockerized ELK 8.12 (Filebeat → Logstash → Elasticsearch → Kibana), 50k+ событий, 5 правил Sigma, оптимизация шумного sudo 180→12/день.</li>
-                <li><strong>IR Lab — разбор малвари Windows</strong> — IR на изолированной Win10 VM, Sysmon / Wireshark / KAPE, локализация и отчёт на 1 страницу.</li>
-                <li><strong>CollabEditor — диплом, редактор реального времени</strong> — Django Channels/Redis + React/Quill, CRDT (Decimal order + Lamport clock), ACL с line-col edit_ranges + server redaction.</li>
+                <li><strong>Verisign CSRF → захват аккаунта</strong> — отсутствие OAuth state → перехват Google-ссылки → устойчивый ATO + установка пароля (награда <span class="redacted-reward" aria-label="$1,000" title="$1,000">$1,<span class="redacted-wall">REDACTED</span></span>, HoF апр 2018). <a class="link" href="https://mahmoudouf.com/ru/blogs/verisign-csrf-account-takeover-domainscope/" target="_blank" rel="noopener">Разбор ↗</a></li>
+                <li><strong>AppArmor RCE Killswitch</strong> — deny /bin/** + сеть → audit DENIED exec /bin/sh → allowlist-контейнмент + харденинг. <a class="link" href="https://mahmoudouf.com/ru/blogs/apparmor-rce-mitigation/" target="_blank" rel="noopener">Разбор ↗</a></li>
+                <li><strong>ELK SOC Detection Engineering</strong> — 50k+ событий, 5 правил Sigma по MITRE, дашборды Kibana и триаж. <a class="link" href="https://mahmoudouf.com/ru/blogs/elk-siem-soc-home-lab-detection-engineering/" target="_blank" rel="noopener">Разбор ↗</a></li>
               </ul>
             </section>
           </td>
@@ -386,7 +417,7 @@
             <section class="side-section">
               <h2 class="section-title">Избранные публикации</h2>
               <ul class="side-list">
-                <li><a href="https://mahmoudouf.com/ru/blogs/verisign-csrf-account-takeover-domainscope/">$1,000 CSRF — Verisign DomainScope ATO</a></li>
+                <li><a href="https://mahmoudouf.com/ru/blogs/verisign-csrf-account-takeover-domainscope/" aria-label="$1,000 CSRF — Verisign DomainScope ATO" title="$1,000 CSRF — Verisign DomainScope ATO"><span class="redacted-reward" aria-label="$1,000" title="$1,000">$1,<span class="redacted-wall">REDACTED</span></span> CSRF — Verisign DomainScope ATO</a></li>
                 <li><a href="https://mahmoudouf.com/ru/blogs/apparmor-rce-mitigation/">AppArmor — защита от RCE</a></li>
                 <li><a href="https://mahmoudouf.com/ru/blogs/elk-siem-soc-home-lab-detection-engineering/">ELK SIEM — домашняя SOC-лаборатория</a></li>
               </ul>
