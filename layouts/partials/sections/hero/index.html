@@ -25,7 +25,7 @@
             <h1 id="hero-title">{{ .Site.Params.hero.title | default "Mahmoud Adel" }}</h1>
             <p class="hero-role-line" aria-label="Role">{{ .Site.Params.hero.subtitle | default (i18n "heroSubtitle" | default "Junior Penetration Tester") }}</p>
 
-            {{ $typewriter := i18n "heroTypewriter" | default "I started cybersecurity because of the series Mr. Robot back in 2016. I was a small kid and started learning more and more with ambition. My cyber friends called me kernel because I always loved the core parts of things — the elementary particle that trillions of them form into the full beautiful scene! I loved the kernel, loved cybersecurity more. Then I also got to know that the field itself — becoming a cyber threat actor or a SOC analyst defending the infra like a gatekeeper — it is a piece of art. Cybersecurity is my dream." }}
+            {{ $typewriter := i18n "heroTypewriter" | default "I started cybersecurity because of the series Mr. Robot back in 2016. I was a small kid and started learning more and more with ambition. My cybersec friends called me kernel because I always loved the core parts of things — the elementary particle that trillions of them form into the full beautiful scene! I loved the kernel, loved cybersecurity more. Then I also got to know that the field itself either becoming a cyber threat actor attacking the citadel gates or a SOC analyst defending the citadel like a gatekeeper — it is a piece of art. Cybersecurity is my dream. And I will keep chasing it." }}
             <p class="hero-value-proposition hero-value-proposition--typewriter" id="hero-typewriter" data-text="{{ $typewriter }}" aria-label="{{ $typewriter }}" aria-live="polite">{{ $typewriter }}</p>
             <script>
             (function(){
@@ -219,7 +219,6 @@
             <div class="identity-card-info">
                 <p class="identity-card-name">Mahmoud Adel</p>
                 <p class="identity-card-role">{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester" }}</p>
-                <p class="identity-card-supporting">{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</p>
                 <dl>
                     <div>
                         <dt>{{ i18n "heroAvailabilityTitle" | default "Availability" }}</dt>
