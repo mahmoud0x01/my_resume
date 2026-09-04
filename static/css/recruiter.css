@@ -2851,20 +2851,20 @@ a.hero-proof-card:focus-visible {
   gap:2px;
 }
 #hero .icon-circle {
-  width:46px;
-  height:46px;
+  width:60px;
+  height:60px;
   border-radius:50%;
-  border:1.5px solid rgba(166,255,0,.32);
-  background:radial-gradient(circle,rgba(140,220,0,.10),rgba(0,0,0,.06) 67%,transparent 68%);
-  box-shadow:0 0 14px rgba(145,255,0,.08), inset 0 0 12px rgba(184,255,0,.06);
+  border:1.6px solid rgba(166,255,0,.34);
+  background:radial-gradient(circle,rgba(140,220,0,.11),rgba(0,0,0,.06) 67%,transparent 68%);
+  box-shadow:0 0 16px rgba(145,255,0,.10), inset 0 0 14px rgba(184,255,0,.07);
   display:grid;
   place-items:center;
   position:relative;
   z-index:12;
 }
 #hero .icon-circle svg {
-  width:22px;
-  height:22px;
+  width:28px;
+  height:28px;
   fill:none;
   stroke:var(--lime);
   stroke-width:2.5;
@@ -3050,19 +3050,19 @@ a.hero-proof-card:focus-visible {
   gap:8px;
 }
 #hero .pro-icon {
-  width:44px;
-  height:44px;
+  width:60px;
+  height:60px;
   border-radius:50%;
-  border:1.5px solid rgba(184,255,0,.32);
+  border:1.6px solid rgba(184,255,0,.34);
   display:grid;
   place-items:center;
-  background:radial-gradient(circle,rgba(140,220,0,.10),rgba(0,0,0,.06) 67%,transparent 68%);
-  box-shadow:0 0 14px rgba(145,255,0,.08), inset 0 0 12px rgba(184,255,0,.06);
+  background:radial-gradient(circle,rgba(140,220,0,.11),rgba(0,0,0,.06) 67%,transparent 68%);
+  box-shadow:0 0 16px rgba(145,255,0,.10), inset 0 0 14px rgba(184,255,0,.07);
   flex:0 0 auto;
 }
 #hero .pro-icon svg {
-  width:20px;
-  height:20px;
+  width:28px;
+  height:28px;
   fill:none;
   stroke:var(--lime);
   stroke-width:2.5;
@@ -3094,9 +3094,9 @@ a.hero-proof-card:focus-visible {
 }
 #hero .pro-hexes svg { width:100%; height:100%; }
 /* ---- Symmetry fix: badge-row + unified Top sizes + aligned inner geometry (2026-09-04) ---- */
-#hero .badge-row { display:flex; align-items:center; gap:9px; min-height:46px; }
-#hero .badge-label { display:inline-flex; align-items:center; justify-content:center; padding:0 9px; height:22px; border:1px solid rgba(184,255,0,.22); border-radius:999px; background:rgba(184,255,0,.08); color:#d8df7a; font-family:var(--cg-mono, 'Courier New', monospace); font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; line-height:1; white-space:nowrap; box-shadow:0 0 6px rgba(184,255,0,.08); }
-#hero .icon-circle--pro { border-color:rgba(184,255,0,.28); background:radial-gradient(circle,rgba(184,255,0,.09),rgba(0,0,0,.04) 67%,transparent 68%); box-shadow:0 0 10px rgba(184,255,0,.07); }
+#hero .badge-row { display:flex; align-items:center; gap:12px; min-height:60px; }
+#hero .badge-label { display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:24px; border:1px solid rgba(184,255,0,.22); border-radius:999px; background:rgba(184,255,0,.08); color:#d8df7a; font-family:var(--cg-mono, 'Courier New', monospace); font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; line-height:1; white-space:nowrap; box-shadow:0 0 6px rgba(184,255,0,.08); }
+#hero .icon-circle--pro { width:60px; height:60px; border-color:rgba(184,255,0,.30); background:radial-gradient(circle,rgba(184,255,0,.10),rgba(0,0,0,.04) 67%,transparent 68%); box-shadow:0 0 12px rgba(184,255,0,.08); }
 #hero .number, #hero .pro-title { margin-top:10px !important; font-size:24px !important; line-height:.95 !important; font-weight:400 !important; letter-spacing:-1px !important; color:#f4f6f5 !important; min-height:28px !important; display:flex !important; align-items:baseline !important; flex-wrap:wrap !important; gap:.18em !important; }
 #hero .number .accent, #hero .pro-title .accent { color:var(--lime) !important; }
 #hero .headline { margin-top:7px !important; font-size:12.5px !important; line-height:1.25 !important; font-weight:600 !important; color:var(--lime) !important; letter-spacing:.12px !important; min-height:16px !important; }
@@ -3114,10 +3114,13 @@ a.hero-proof-card:focus-visible {
   #hero .pro-card { min-height:255px; }
   #hero .top-card .inner,
   #hero .pro-card .inner { padding:15px 13px 13px; }
-  #hero .icon-circle { width:44px; height:44px; border-width:1.5px; }
-  #hero .icon-circle svg { width:21px; height:21px; }
-  #hero .badge-row { min-height:44px; gap:8px; }
-  #hero .badge-label { height:21px; font-size:8.5px; padding:0 8px; }
+  #hero .icon-circle { width:56px; height:56px; border-width:1.6px; }
+  #hero .icon-circle svg { width:26px; height:26px; }
+  #hero .icon-circle--pro { width:56px; height:56px; }
+  #hero .pro-icon { width:56px; height:56px; }
+  #hero .pro-icon svg { width:26px; height:26px; }
+  #hero .badge-row { min-height:56px; gap:11px; }
+  #hero .badge-label { height:22px; font-size:9px; padding:0 9px; }
   #hero .number,
   #hero .pro-title { font-size:23px !important; }
   #hero .headline,
@@ -3140,10 +3143,13 @@ a.hero-proof-card:focus-visible {
   #hero .top-card .inner,
   #hero .pro-card .inner { padding:15px 13px 13px; }
   #hero .pro-wrap { display:contents; margin-top:0; }
-  #hero .icon-circle { width:42px; height:42px; border-width:1.5px; }
-  #hero .icon-circle svg { width:20px; height:20px; }
-  #hero .badge-row { min-height:42px; gap:8px; }
-  #hero .badge-label { height:21px; font-size:8.5px; padding:0 8px; }
+  #hero .icon-circle { width:52px; height:52px; border-width:1.6px; }
+  #hero .icon-circle svg { width:24px; height:24px; }
+  #hero .icon-circle--pro { width:52px; height:52px; }
+  #hero .pro-icon { width:52px; height:52px; }
+  #hero .pro-icon svg { width:24px; height:24px; }
+  #hero .badge-row { min-height:52px; gap:11px; }
+  #hero .badge-label { height:22px; font-size:9px; padding:0 9px; }
   #hero .pro-badge { display:none !important; }
   #hero .crown { width:14px; height:14px; }
   #hero .number, #hero .pro-title { margin-top:10px !important; font-size:22px !important; }
