@@ -3164,3 +3164,50 @@ a.hero-proof-card:focus-visible {
 /* Ensure hero content layout accommodates cards without clipping */
 #hero .hero-recruiter-content { overflow:visible; }
 #hero .hero-cards-page { overflow:visible; }
+
+/* ==== Hero intro — animated sentence (typewriter) ==== */
+.hero-value-proposition--typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--recruiter-accent);
+  max-width: 100%;
+  vertical-align: bottom;
+  box-sizing: border-box;
+  animation: heroTyping 2.2s steps(44, end) 0.35s both, heroBlink 0.75s step-end infinite;
+}
+@keyframes heroTyping { from { width: 0; } to { width: 100%; } }
+@keyframes heroBlink { from, to { border-color: transparent; } 50% { border-color: var(--recruiter-accent); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-value-proposition--typewriter {
+    animation: none !important;
+    border-right: none !important;
+    white-space: normal !important;
+    width: auto !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+}
+@media (max-width: 480px) {
+  .hero-value-proposition--typewriter {
+    display: block;
+    white-space: normal;
+    overflow: visible;
+    border-right: none;
+    animation: none;
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+/* ==== Nav language switch — pill-like near theme toggle (Cyrillic-safe) ==== */
+/* Cyrillic note: Inter supports Cyrillic via unicode-range (Google Fonts v2 serves cyrillic automatically); line-height 1.6 and --cg-mono/--font stacks are language-neutral, no extra Cyrillic line-height override needed. */
+.nav-lang-switch { display:inline-flex; align-items:center; gap:4px; font-family: var(--cg-mono, 'Courier New', monospace); font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; line-height:1; }
+.nav-lang-link { color: var(--recruiter-muted); text-decoration:none; padding:4px 6px; border:1px solid transparent; border-radius:6px; line-height:1; transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; }
+.nav-lang-link:hover { color: var(--recruiter-ink); background: color-mix(in srgb, var(--recruiter-surface) 72%, transparent); border-color: var(--recruiter-border); }
+.nav-lang-active { color: var(--recruiter-ink); background: color-mix(in srgb, var(--recruiter-accent) 10%, var(--recruiter-surface)); border:1px solid var(--recruiter-border); border-radius:6px; padding:4px 6px; line-height:1; }
+.nav-lang-sep { color: var(--recruiter-border); user-select:none; }
+.nav-lang-link:focus-visible, .nav-lang-active:focus-visible { outline:3px solid var(--recruiter-accent) !important; outline-offset:2px; }
+/* 32px tap target alignment */
+.nav-lang-switch .nav-lang-link, .nav-lang-switch .nav-lang-active { min-height:32px; display:inline-flex; align-items:center; justify-content:center; }
+@media (max-width: 360px) { .nav-lang-switch { display:none !important; } }

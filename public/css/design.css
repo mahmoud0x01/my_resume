@@ -203,19 +203,48 @@ body.dark {
     color: var(--text) !important;
 }
 
-/* Theme toggle button */
+/* Theme toggle button — icon-only, transparent (fix weird block background) */
+#theme-toggle,
 .nav-theme-btn {
-    background: none !important;
-    border: none !important;
-    padding: 0.4rem 0.5rem !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 1px solid transparent !important;
+    border-radius: 999px !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
     cursor: pointer;
     color: var(--text-muted) !important;
-    transition: color var(--transition);
-    display: flex;
-    align-items: center;
+    box-shadow: none !important;
+    transition: color var(--transition), background-color var(--transition), border-color var(--transition) !important;
 }
-.nav-theme-btn:hover { color: var(--text) !important; }
-.nav-theme-btn svg { stroke: currentColor; }
+#theme-toggle:hover,
+.nav-theme-btn:hover {
+    background: color-mix(in srgb, var(--recruiter-surface, var(--card-bg)) 72%, transparent) !important;
+    background-image: none !important;
+    background-color: color-mix(in srgb, var(--recruiter-surface, var(--card-bg)) 72%, transparent) !important;
+    border-color: var(--recruiter-border, var(--border)) !important;
+    color: var(--text) !important;
+}
+#theme-toggle svg,
+.nav-theme-btn svg {
+    stroke: currentColor !important;
+    fill: none !important;
+    background: transparent !important;
+    background-image: none !important;
+    width: 18px;
+    height: 18px;
+}
+#theme-toggle:focus-visible,
+.nav-theme-btn:focus-visible {
+    outline: 3px solid var(--recruiter-accent) !important;
+    outline-offset: 2px !important;
+}
 
 /* ----- HERO SECTION ----- */
 #hero {
