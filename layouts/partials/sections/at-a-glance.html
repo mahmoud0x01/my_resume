@@ -47,17 +47,18 @@
                 </section>
 
                 <!-- Quick links -->
+                {{ $resumeURL := "/MahmoudAdel_Cybersecurity_Resume.pdf" }}{{ if eq .Site.Language.Lang "ru" }}{{ $resumeURL = "/MahmoudAdel_Cybersecurity_Resume.ru.pdf" }}{{ end }}
                 <section class="at-a-glance-block at-a-glance-block--links" aria-labelledby="aag-links-title">
                     <h3 id="aag-links-title">{{ i18n "atGlanceQuickLinksTitle" | default "Quick Links" }}</h3>
                     <ul class="at-a-glance-links" aria-label="Quick links">
-                        <li><a href="/MahmoudAdel_Cybersecurity_Resume.pdf" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> Résumé PDF</a></li>
+                        <li><a href="{{ $resumeURL }}" download><i class="fas fa-file-arrow-down" aria-hidden="true"></i> {{ i18n "atGlanceResumePDF" | default "Résumé PDF" }}</a></li>
                         <li><a href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
                         <li><a href="{{ $linkedinURL }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
                         <li><a href="mailto:contact@mahmoudouf.com"><i class="fas fa-envelope" aria-hidden="true"></i> contact@mahmoudouf.com</a></li>
                     </ul>
                     <div class="at-a-glance-ctas">
-                        <a class="at-a-glance-cta at-a-glance-cta--primary" href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>Download CV</a>
-                        <a class="at-a-glance-cta" href="mailto:contact@mahmoudouf.com">Email</a>
+                        <a class="at-a-glance-cta at-a-glance-cta--primary" href="{{ $resumeURL }}" download>{{ i18n "heroDownloadCV" | default "Download CV" }}</a>
+                        <a class="at-a-glance-cta" href="mailto:contact@mahmoudouf.com">{{ i18n "heroEmailMe" | default "Email" }}</a>
                     </div>
                 </section>
 

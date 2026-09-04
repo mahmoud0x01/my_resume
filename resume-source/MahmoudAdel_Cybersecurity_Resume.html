@@ -15,7 +15,7 @@
     }
     .page { width: 210mm; min-height: 297mm; background: #ffffff; }
     .header {
-      padding: 10.5mm 13mm 8.5mm;
+      padding: 8.5mm 13mm 7mm;
       color: #f7fbff;
       background: #101b2d;
       border-bottom: 3px solid #35c9b3;
@@ -58,12 +58,12 @@
       vertical-align: middle;
       text-align: right;
       color: #c5d2e4;
-      font-size: 7.25pt;
-      line-height: 1.65;
+      font-size: 7.1pt;
+      line-height: 1.55;
     }
     .contact-cell a { color: #eafcf8; text-decoration: none; }
     .contact-label { color: #83dcca; font-weight: 700; }
-    .body { padding: 7.5mm 13mm 0; }
+    .body { padding: 5.5mm 13mm 2mm; }
     .main-cell { width: 65%; padding-right: 7mm; vertical-align: top; }
     .side-cell {
       width: 35%;
@@ -71,10 +71,10 @@
       vertical-align: top;
       border-left: 1px solid #d8e0e9;
     }
-    .section { margin: 0 0 5.3mm; }
+    .section { margin: 0 0 3.6mm; }
     .section-title {
-      margin: 0 0 2.2mm;
-      padding-bottom: 1.2mm;
+      margin: 0 0 1.6mm;
+      padding-bottom: 1.0mm;
       color: #167d79;
       border-bottom: 1.2px solid #35c9b3;
       font-size: 7.1pt;
@@ -86,18 +86,19 @@
     .summary {
       margin: 0;
       color: #334155;
-      font-size: 8.8pt;
-      line-height: 1.48;
+      font-size: 7.75pt;
+      line-height: 1.42;
     }
-    .entry { margin: 0 0 4.2mm; }
+    .summary em { color: #167d79; font-style: normal; font-weight: 700; }
+    .entry { margin: 0 0 3.0mm; }
     .entry:last-child { margin-bottom: 0; }
     .entry-head { width: 100%; border-collapse: collapse; }
     .entry-title {
       margin: 0;
       color: #12253c;
-      font-size: 9.5pt;
+      font-size: 8.7pt;
       font-weight: 700;
-      line-height: 1.22;
+      line-height: 1.18;
     }
     .entry-org {
       margin: 0.8mm 0 0;
@@ -105,30 +106,33 @@
       font-size: 8.1pt;
       font-weight: 700;
     }
+    .entry-org a { color: #197f78; text-decoration: none; border-bottom: 1px solid #b6e7df; }
     .entry-date {
-      width: 31mm;
+      width: 36mm;
       padding-left: 2mm;
       color: #66758a;
       font-family: "Liberation Mono", monospace;
-      font-size: 7.1pt;
+      font-size: 6.9pt;
       text-align: right;
       vertical-align: top;
       white-space: nowrap;
     }
-    ul { margin: 1.4mm 0 0; padding: 0 0 0 3.5mm; }
-    li { margin: 0 0 1.05mm; padding-left: 0.5mm; color: #34455a; }
+    ul { margin: 1.0mm 0 0; padding: 0 0 0 3.2mm; }
+    li { margin: 0 0 0.85mm; padding-left: 0.4mm; color: #34455a; font-size: 7.6pt; }
     li::marker { color: #20a493; }
     .evidence-list { list-style: none; padding: 0; margin: 0; }
     .evidence-list li {
-      margin: 0 0 1.5mm;
-      padding: 1.4mm 1.8mm;
+      margin: 0 0 1.1mm;
+      padding: 1.1mm 1.6mm;
       color: #334155;
       border-left: 2px solid #35c9b3;
       background: #f1f8f7;
+      font-size: 7.35pt;
+      line-height: 1.34;
     }
     .evidence-list strong { color: #152b42; }
-    .side-section { margin-bottom: 3mm; }
-    .skill-group { margin: 0 0 2.5mm; }
+    .side-section { margin-bottom: 2.2mm; }
+    .skill-group { margin: 0 0 1.8mm; }
     .skill-group:last-child { margin-bottom: 0; }
     .skill-label {
       margin: 0 0 0.8mm;
@@ -136,17 +140,18 @@
       font-size: 7.7pt;
       font-weight: 700;
     }
-    .skill-text { margin: 0; color: #4b5d72; font-size: 7.5pt; line-height: 1.43; }
+    .skill-text { margin: 0; color: #4b5d72; font-size: 6.75pt; line-height: 1.38; }
     .side-list { margin: 0; padding: 0; list-style: none; }
-    .side-list li { margin: 0 0 1.6mm; padding: 0; color: #415268; font-size: 7.55pt; }
+    .side-list li { margin: 0 0 1.1mm; padding: 0; color: #415268; font-size: 7.15pt; line-height: 1.34; }
     .side-list strong { color: #1c3047; }
+    .side-list a { color: #167d79; text-decoration: none; border-bottom: 1px solid #b6e7df; }
     .link { color: #167d79; text-decoration: none; }
     .footer-note {
-      margin-top: 1mm;
-      padding-top: 3mm;
+      margin-top: 0.5mm;
+      padding-top: 2mm;
       color: #77869a;
       border-top: 1px solid #d8e0e9;
-      font-size: 7pt;
+      font-size: 6.8pt;
       line-height: 1.4;
     }
     .muted { color: #66758a; }
@@ -181,7 +186,7 @@
           <td class="main-cell">
             <section class="section">
               <h2 class="section-title">Profile</h2>
-              <p class="summary">Junior penetration tester &amp; SOC analyst with authorized web/API/network assessment, SIEM detection engineering (ELK home lab, 50k+ events, 5 Sigma rules MITRE-mapped), incident response triage (isolated Windows 10 VM forensics, Sysmon/KAPE) and cloud IAM hardening (AWS lab, ScoutSuite/Prowler), backed by Linux, Windows, Active Directory and software-engineering foundations. Recognized via 20+ Hall of Fame acknowledgments and Top 5/100 Bastion CTF — I deliver reproducible evidence and clear remediation reports.</p>
+              <p class="summary"><em>I break things — and I build things that break them.</em> Application Security &amp; Offensive Security Engineer with Software Engineering foundations (B.Sc. Software Engineering, Tomsk State University — Conferred Jul 2026), specializing in Web/API security, network assessment and vulnerability research. Proven via <strong>20+ Hall of Fame</strong> acknowledgments (Verisign $1,000 CSRF→ATO · DigitalOcean · Pinterest · Dell via Bugcrowd), Bastion Security internship — <strong>11 findings / 8 reports / 0 rework / Top 5/100 CTF</strong> across 8 web apps &amp; 2 ranges (6 Linux + 4 Windows privesc), and hands-on SOC detection engineering (ELK home lab, 50k+ events, 5 Sigma MITRE-mapped). Hack The Box <strong>Top 0.55% Pro Hacker</strong> &amp; TryHackMe Top 1% — delivers reproducible evidence and clear remediation within authorized scope.</p>
             </section>
 
             <section class="section">
@@ -191,15 +196,15 @@
                   <tr>
                     <td>
                       <h3 class="entry-title">Security Engineering Intern (Authorized Scope: Web/API &amp; Network Assessment)</h3>
-                      <p class="entry-org">Bastion Security — Security Engineering Internship</p>
+                      <p class="entry-org"><a href="https://bastion-tech.ru/" target="_blank" rel="noopener">Bastion Security</a> — Security Engineering Internship</p>
                     </td>
-                    <td class="entry-date">May–Sep 2024</td>
+                    <td class="entry-date">July 2024 – Sep 2024</td>
                   </tr>
                 </table>
                 <ul>
-                  <li>Assessed 8 web apps &amp; 2 network ranges in authorized scope — 11 validated findings (auth bypass/injection/privesc), 6 Linux + 4 Windows root validations.</li>
-                  <li>Validated every finding to root where applicable; documented 8 reports with 0 rework, including exploitation paths and remediation notes.</li>
-                  <li>Presented results for internal review; validated via manual testing plus ScoutSuite/Prowler-style cloud checks in lab.</li>
+                  <li>Assessed <strong>8 web apps &amp; 2 network ranges</strong> in authorized scope — <strong>11 validated findings</strong> (auth bypass, injection, privilege escalation), 6 Linux + 4 Windows root validations.</li>
+                  <li>Validated every finding to root where applicable; documented <strong>8 reports with 0 rework</strong> — exploitation paths and remediation notes; presented for internal review.</li>
+                  <li>Validated via manual testing plus cloud posture checks (ScoutSuite / Prowler-style) in lab environment.</li>
                   <li>Ranked <strong>Top 5 of 100</strong> in internal penetration-testing and privilege-escalation challenges.</li>
                 </ul>
               </article>
@@ -208,42 +213,50 @@
                   <tr>
                     <td>
                       <h3 class="entry-title">Software Engineer Intern</h3>
-                      <p class="entry-org">National Research Tomsk State University</p>
+                      <p class="entry-org"><a href="https://www.tsu.ru" target="_blank" rel="noopener">National Research Tomsk State University</a></p>
                     </td>
                     <td class="entry-date">Feb 2025</td>
                   </tr>
                 </table>
                 <ul>
-                  <li>Designed and developed 2 prototypes within university research projects.</li>
-                  <li>Created 12 diagrams (UML, component and activity) and academic-standard technical documentation across the software lifecycle.</li>
+                  <li>Designed and developed <strong>2 prototypes</strong> within university research projects; created <strong>12 diagrams</strong> (UML, component, activity) and academic-standard technical documentation across full SDLC.</li>
+                  <li>Engineering work that builds system reasoning, architecture and tooling — enabling reproducible findings and clearer remediation.</li>
                 </ul>
               </article>
             </section>
 
             <section class="section">
-              <h2 class="section-title">Security evidence</h2>
+              <h2 class="section-title">Security Recognition &amp; Evidence</h2>
               <ul class="evidence-list">
-                <li><strong>Bug-bounty Hall of Fame:</strong> DigitalOcean, Pinterest, Verisign, and Dell through responsible disclosure.</li>
-                <li><strong>Competitive testing:</strong> Top 5 of 100 at Bastion's internal CTF.</li>
-                <li><strong>Security writing:</strong> API security, Active Directory attack paths, Linux hardening, malware analysis, and AppArmor defense validation.</li>
+                <li><strong>Hall of Fame — 20+ acknowledgments</strong> via Bugcrowd ( <a class="link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener">bugcrowd.com/h/mahmoud_adel</a> ) — Named: Verisign $1,000 CSRF→Account Takeover (DomainScope OAuth state, Apr 2018, Critical), DigitalOcean (Critical, Apr 2019), Pinterest &amp; Dell (Hall of Fame, 2018).</li>
+                <li><strong>Competitive &amp; labs:</strong> Bastion internal CTF <strong>Top 5/100</strong>; Hack The Box <strong>Top 0.55% Pro Hacker</strong> — <a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener">verified badges</a>; TryHackMe <strong>Top 1%</strong> — <a class="link" href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">@iamkernel</a>.</li>
+                <li><strong>Detection &amp; research:</strong> ELK SOC Home Lab — 50k+ events, 5 Sigma MITRE-mapped, Kibana dashboards &amp; triage workflow; IR malware triage (isolated Windows 10 VM, Sysmon/KAPE); AppArmor RCE mitigation; API security &amp; AD attack paths.</li>
+              </ul>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Selected Projects</h2>
+              <ul>
+                <li><strong>ELK SOC Home Lab</strong> — Dockerized ELK 8.12 (Filebeat → Logstash → Elasticsearch → Kibana), 50k+ events, 5 Sigma rules, tuned noisy sudo 180→12/day.</li>
+                <li><strong>IR Lab — Windows Malware Triage</strong> — Controlled IR on isolated Win10 VM, Sysmon / Wireshark / KAPE, containment &amp; 1-page executive report.</li>
               </ul>
             </section>
           </td>
 
           <td class="side-cell">
             <section class="side-section">
-              <h2 class="section-title">Core skills</h2>
+              <h2 class="section-title">Core Skills</h2>
               <div class="skill-group">
-                <p class="skill-label">Offensive security</p>
-                <p class="skill-text">Web/API security, vulnerability assessment, OWASP, privilege escalation, red team, exploit development, Burp Suite, Metasploit, Nmap, SQLMap, Nuclei, ffuf, SIEM (ELK lab), Incident Response (lab), Cloud Security (AWS IAM lab)</p>
+                <p class="skill-label">Offensive Security</p>
+                <p class="skill-text">Web/API Security, OWASP &amp; Vulnerability Assessment, Active Directory (Kerberos / BloodHound / Impacket), Privilege Escalation (Linux/Windows lab), Burp Suite, Nmap, SQLMap, Nuclei, ffuf, Red Teaming — Adversary Simulation</p>
               </div>
               <div class="skill-group">
-                <p class="skill-label">Systems &amp; defense</p>
-                <p class="skill-text">Linux, Windows, Active Directory, TCP/IP, network security, Kerberos, firewall, Wireshark, BloodHound, Impacket, AppArmor, MITRE ATT&amp;CK, ELK/SIEM, Splunk (exposure), Sigma, YARA, Suricata (lab), malware analysis, threat intelligence, Incident Response, Cloud Security (AWS IAM)</p>
+                <p class="skill-label">Systems &amp; Defense</p>
+                <p class="skill-text">Linux, Windows, TCP/IP, Network Security, Firewall, Wireshark, MITRE ATT&amp;CK, SIEM (ELK) — Detection Engineering (Sigma, Suricata), Cloud Security (AWS IAM, ScoutSuite, Prowler), Incident Response, Splunk (lab), YARA (lab), AppArmor</p>
               </div>
               <div class="skill-group">
-                <p class="skill-label">Engineering &amp; tooling</p>
-                <p class="skill-text">Python, Bash, JavaScript, C/C++, Assembly, SQL, Docker, Git, Ghidra, Cobalt Strike, Sliver</p>
+                <p class="skill-label">Engineering &amp; Tooling</p>
+                <p class="skill-text">Python, Bash, JavaScript, C/C++, Assembly, SQL, Docker, Git, Ghidra (lab), Metasploit (lab), Cobalt Strike, Sliver</p>
               </div>
             </section>
 
@@ -255,31 +268,30 @@
             </section>
 
             <section class="side-section">
-              <h2 class="section-title">Credentials &amp; training</h2>
+              <h2 class="section-title">Credentials &amp; Training</h2>
               <ul class="side-list">
-                <li><strong>Junior Penetration Tester</strong><br>TryHackMe · 2024</li>
-                <li><strong>Blue Team Junior Analyst</strong><br>SecurityBlue · 2023</li>
-                <li><strong>Cyber Threat Intelligence</strong><br>IBM · 2023</li>
-                <li>CompTIA Linux+ · CCNA</li>
-                <li><strong>OSCP (In Progress)</strong><br>OffSec · 2025</li>
-                <li><strong>PNPT (In Progress)</strong><br>TCM Security · 2025</li>
+                <li><strong>OSCP</strong> — OffSec · 2026 <span class="muted">In Progress · PWK</span><br><a href="https://www.offsec.com/courses-and-certifications/pwk/" target="_blank" rel="noopener">View program ↗</a></li>
+                <li><strong>Blue Team Junior Analyst</strong><br>SecurityBlue Team · 2023<br><a href="https://elearning.securityblue.team/home/certificate/762758116" target="_blank" rel="noopener">Verify ↗</a></li>
+                <li><strong>Cyber Threat Intelligence</strong><br>IBM · 2023<br><a href="https://www.credly.com/badges/3f520809-a774-46de-84bb-c90cf66e30ad" target="_blank" rel="noopener">Verify badge ↗</a></li>
+                <li><strong>Jr Penetration Tester</strong><br>TryHackMe · 2024<br><a href="/Documents/CRF_Jr_Pentester_Completion.pdf" target="_blank" rel="noopener">Verify PDF ↗</a></li>
+                <li class="muted" style="font-size: 7pt; line-height: 1.35;">Additional: CompTIA Linux+ (2024) · CCNA — Cisco (2023) · PNPT — TCM Security (In Progress, 2025) · PITR — IBM (2023)</li>
               </ul>
             </section>
 
             <section class="side-section">
-              <h2 class="section-title">Practical Security Labs &amp; Platforms</h2>
+              <h2 class="section-title">Practical Labs &amp; Platforms</h2>
               <ul class="side-list">
-                <li><a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges" target="_blank" rel="noopener">Hack The Box — Verified Badges</a></li>
-                <li><a class="link" href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">TryHackMe — @iamkernel</a></li>
+                <li><a href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges" target="_blank" rel="noopener">Hack The Box — Verified Badges · Top 0.55% Pro Hacker</a></li>
+                <li><a href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">TryHackMe — @iamkernel · Top 1%</a></li>
               </ul>
             </section>
 
             <section class="side-section">
-              <h2 class="section-title">Selected writing</h2>
+              <h2 class="section-title">Selected Writing</h2>
               <ul class="side-list">
-                <li><a class="link" href="https://mahmoudouf.com/blogs/api-security-testing-vulnerabilities/">API Security Testing</a></li>
-                <li><a class="link" href="https://mahmoudouf.com/blogs/active-directory-attack-paths-red-team/">Active Directory Attack Paths</a></li>
-                <li><a class="link" href="https://mahmoudouf.com/blogs/apparmor-rce-mitigation/">AppArmor RCE Mitigation</a></li>
+                <li><a href="https://mahmoudouf.com/blogs/verisign-csrf-account-takeover-domainscope/">$1,000 CSRF — Verisign DomainScope ATO</a></li>
+                <li><a href="https://mahmoudouf.com/blogs/apparmor-rce-mitigation/">AppArmor RCE Mitigation</a></li>
+                <li><a href="https://mahmoudouf.com/blogs/elk-siem-soc-home-lab-detection-engineering/">ELK SIEM SOC Home Lab</a></li>
               </ul>
             </section>
 
@@ -294,7 +306,7 @@
           </td>
         </tr>
       </table>
-      <p class="footer-note">Portfolio: <a class="link" href="https://mahmoudouf.com/">mahmoudouf.com</a> · All security testing described above was performed in authorized, lab, or responsible-disclosure contexts.</p>
+      <p class="footer-note">Portfolio: <a class="link" href="https://mahmoudouf.com/">mahmoudouf.com</a> · All security testing described was performed in authorized, lab, or responsible-disclosure contexts. · References &amp; assessment logs available upon request.</p>
     </div>
   </div>
 </body>

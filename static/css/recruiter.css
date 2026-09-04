@@ -308,6 +308,7 @@ button:focus-visible {
 }.identity-card-info dl > div {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 1rem;
 }.identity-card-info dt,
 .identity-card-info dd {
@@ -3165,18 +3166,182 @@ a.hero-proof-card:focus-visible {
 #hero .hero-recruiter-content { overflow:visible; }
 #hero .hero-cards-page { overflow:visible; }
 
+/* ==== HERO CARDS — light mode variant (2026-09-04) — glass adapts to light tone ==== */
+body:not(.dark) #hero .card,
+html:not(.dark) #hero .card,
+body.light #hero .card {
+  background:
+    radial-gradient(circle at 18% 6%, color-mix(in srgb, var(--lime) 6%, transparent), transparent 28%),
+    radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--recruiter-accent) 4%, transparent), transparent 36%),
+    linear-gradient(145deg, color-mix(in srgb, var(--recruiter-surface) 94%, white) 0%, color-mix(in srgb, var(--recruiter-bg) 92%, var(--recruiter-surface) 8%) 100%);
+  border-color: color-mix(in srgb, var(--lime) 14%, var(--recruiter-border));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.75), 0 8px 24px rgba(15,23,42,.06);
+  color: var(--recruiter-ink);
+}
+body:not(.dark) #hero .card::before,
+html:not(.dark) #hero .card::before,
+body.light #hero .card::before {
+  opacity: .42;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--lime) 22%, transparent) 0%,
+      color-mix(in srgb, var(--lime) 10%, transparent) 12%,
+      transparent 26%,
+      transparent 74%,
+      color-mix(in srgb, var(--lime) 16%, transparent) 90%,
+      color-mix(in srgb, var(--lime) 24%, transparent) 100%);
+}
+body:not(.dark) #hero .card::after,
+html:not(.dark) #hero .card::after,
+body.light #hero .card::after {
+  opacity: .55;
+  background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--lime) 10%, transparent) 32%, color-mix(in srgb, var(--lime) 34%, transparent) 78%, color-mix(in srgb, var(--lime) 22%, transparent) 100%);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--lime) 12%, transparent);
+}
+body:not(.dark) #hero .glow,
+html:not(.dark) #hero .glow,
+body.light #hero .glow {
+  background: color-mix(in srgb, var(--lime) 5%, transparent);
+  filter: blur(28px);
+}
+body:not(.dark) #hero .hex,
+html:not(.dark) #hero .hex,
+body:not(.dark) #hero .pro-hexes,
+html:not(.dark) #hero .pro-hexes,
+body.light #hero .hex,
+body.light #hero .pro-hexes {
+  opacity: .06;
+}
+body:not(.dark) #hero .icon-circle,
+html:not(.dark) #hero .icon-circle,
+body.light #hero .icon-circle,
+body:not(.dark) #hero .icon-circle--pro,
+html:not(.dark) #hero .icon-circle--pro,
+body.light #hero .icon-circle--pro {
+  border-color: color-mix(in srgb, var(--lime) 22%, var(--recruiter-border));
+  background: radial-gradient(circle, color-mix(in srgb, var(--lime) 10%, transparent), color-mix(in srgb, var(--recruiter-surface) 85%, transparent) 67%, transparent 68%);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--lime) 8%, transparent), inset 0 0 10px color-mix(in srgb, var(--lime) 5%, transparent);
+}
+body:not(.dark) #hero .icon-circle svg,
+html:not(.dark) #hero .icon-circle svg,
+body.light #hero .icon-circle svg {
+  stroke: #6b8e00;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--lime) 22%, transparent));
+}
+body:not(.dark) #hero .number,
+html:not(.dark) #hero .number,
+body:not(.dark) #hero .pro-title,
+html:not(.dark) #hero .pro-title,
+body.light #hero .number,
+body.light #hero .pro-title {
+  color: var(--recruiter-ink) !important;
+}
+body:not(.dark) #hero .number .accent,
+html:not(.dark) #hero .number .accent,
+body:not(.dark) #hero .pro-title .accent,
+html:not(.dark) #hero .pro-title .accent,
+body.light #hero .number .accent,
+body.light #hero .pro-title .accent {
+  color: #5e8200 !important;
+}
+body:not(.dark) #hero .headline,
+html:not(.dark) #hero .headline,
+body.light #hero .headline {
+  color: #5e8200 !important;
+}
+body:not(.dark) #hero .subheadline,
+html:not(.dark) #hero .subheadline,
+body:not(.dark) #hero .pro-subtitle,
+html:not(.dark) #hero .pro-subtitle,
+body.light #hero .subheadline,
+body.light #hero .pro-subtitle {
+  color: var(--recruiter-muted) !important;
+}
+body:not(.dark) #hero .rule,
+body:not(.dark) #hero .pro-rule,
+html:not(.dark) #hero .rule,
+html:not(.dark) #hero .pro-rule,
+body.light #hero .rule,
+body.light #hero .pro-rule {
+  background: color-mix(in srgb, var(--lime) 14%, var(--recruiter-border)) !important;
+}
+body:not(.dark) #hero .bullets,
+html:not(.dark) #hero .bullets,
+body:not(.dark) #hero .pro-feature,
+html:not(.dark) #hero .pro-feature,
+body.light #hero .bullets,
+body.light #hero .pro-feature {
+  color: var(--recruiter-ink) !important;
+}
+body:not(.dark) #hero .dot,
+html:not(.dark) #hero .dot,
+body.light #hero .dot {
+  background: #6b8e00;
+  box-shadow: 0 0 3px color-mix(in srgb, var(--lime) 20%, transparent);
+}
+body:not(.dark) #hero .muted,
+html:not(.dark) #hero .muted,
+body.light #hero .muted {
+  color: var(--recruiter-muted) !important;
+}
+body:not(.dark) #hero .redacted,
+html:not(.dark) #hero .redacted,
+body.light #hero .redacted {
+  background: color-mix(in srgb, var(--recruiter-border) 85%, var(--recruiter-surface));
+  border-color: var(--recruiter-border);
+  color: var(--recruiter-muted) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+}
+body:not(.dark) #hero .check,
+html:not(.dark) #hero .check,
+body.light #hero .check {
+  border-color: #6b8e00;
+  box-shadow: 0 0 4px color-mix(in srgb, var(--lime) 10%, transparent);
+}
+body:not(.dark) #hero .check svg,
+html:not(.dark) #hero .check svg,
+body.light #hero .check svg {
+  stroke: #6b8e00;
+}
+body:not(.dark) #hero .badge-label,
+html:not(.dark) #hero .badge-label,
+body.light #hero .badge-label {
+  border-color: color-mix(in srgb, var(--lime) 18%, var(--recruiter-border));
+  background: color-mix(in srgb, var(--lime) 7%, var(--recruiter-surface));
+  color: #4a6200;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--lime) 7%, transparent);
+}
+body:not(.dark) #hero a.card:hover,
+html:not(.dark) #hero a.card:hover,
+body.light #hero a.card:hover {
+  border-color: color-mix(in srgb, var(--lime) 20%, var(--recruiter-border));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.75), 0 12px 28px rgba(15,23,42,.08);
+}
+body:not(.dark) #hero .feature-title,
+html:not(.dark) #hero .feature-title,
+body.light #hero .feature-title {
+  color: var(--recruiter-ink) !important;
+}
+body:not(.dark) #hero .feature-sub,
+html:not(.dark) #hero .feature-sub,
+body.light #hero .feature-sub {
+  color: var(--recruiter-muted) !important;
+}
+
 /* ==== Hero intro — animated sentence (typewriter) ==== */
 .hero-value-proposition--typewriter {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid var(--recruiter-accent);
-  max-width: 100%;
+  max-width: min(52ch, 100%);
+  width: 0;
   vertical-align: bottom;
   box-sizing: border-box;
-  animation: heroTyping 2.2s steps(44, end) 0.35s both, heroBlink 0.75s step-end infinite;
+  will-change: width;
+  animation: heroTyping 2.2s steps(44, end) 0.35s forwards, heroBlink 0.75s step-end infinite;
 }
-@keyframes heroTyping { from { width: 0; } to { width: 100%; } }
+@keyframes heroTyping { from { width: 0; } to { width: 52ch; } }
 @keyframes heroBlink { from, to { border-color: transparent; } 50% { border-color: var(--recruiter-accent); } }
 @media (prefers-reduced-motion: reduce) {
   .hero-value-proposition--typewriter {

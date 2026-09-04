@@ -10,9 +10,10 @@
     {{ end }}
     {{ $locationFull := .Site.Params.location | default "Based in Egypt (UTC+2) · Open to Remote & Global Relocation · Visa Sponsorship / B2B Contract" }}
 
+    {{ $resumeURL := "/MahmoudAdel_Cybersecurity_Resume.pdf" }}{{ if eq .Site.Language.Lang "ru" }}{{ $resumeURL = "/MahmoudAdel_Cybersecurity_Resume.ru.pdf" }}{{ end }}
     <!-- Sticky Résumé CTA — top-right of hero, visible without scroll (spec: Résumé button in top-right of hero) -->
-    <a class="hero-resume-sticky" href="/MahmoudAdel_Cybersecurity_Resume.pdf" download aria-label="Download Mahmoud Adel résumé PDF">
-        <i class="fas fa-download" aria-hidden="true"></i> Download CV
+    <a class="hero-resume-sticky" href="{{ $resumeURL }}" download aria-label="Download Mahmoud Adel résumé PDF">
+        <i class="fas fa-download" aria-hidden="true"></i> {{ i18n "heroDownloadCV" | default "Download CV" }}
     </a>
 
     <div class="hero-recruiter-shell">
@@ -151,8 +152,8 @@
             </div>
 
             <div class="hero-actions">
-                <a class="hero-action hero-action-primary" href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>Download CV</a>
-                <a class="hero-action hero-action-secondary" href="mailto:contact@mahmoudouf.com">Email Me</a>
+                <a class="hero-action hero-action-primary" href="{{ $resumeURL }}" download>{{ i18n "heroDownloadCV" | default "Download CV" }}</a>
+                <a class="hero-action hero-action-secondary" href="mailto:contact@mahmoudouf.com">{{ i18n "heroEmailMe" | default "Email Me" }}</a>
             </div>
 
             <nav class="hero-micro-links" aria-label="Mahmoud Adel profile links">
@@ -178,6 +179,10 @@
                         <dt>Availability</dt>
                         <dd>Remote & Global Relocation · Visa / B2B Contract</dd>
                     </div>
+                    <div>
+                        <dt>Languages</dt>
+                        <dd>Arabic — Native<br>English — C2 — Proficient<br>Russian — C1 — Advanced</dd>
+                    </div>
                 </dl>
             </div>
         </aside>
@@ -189,7 +194,7 @@
             <span>{{ .Site.Params.hero.subtitle | default "Junior Penetration Tester" }}</span>
             <small>{{ .Site.Params.hero.supportingAreas | default "Web/API Security · Network Assessment · Linux & Systems" }}</small>
             <div class="hero-noscript-links">
-                <a href="/MahmoudAdel_Cybersecurity_Resume.pdf" download>Download résumé</a>
+                <a href="{{ $resumeURL }}" download>{{ i18n "heroDownloadCV" | default "Download résumé" }}</a>
                 <a href="#disclosures">View security work</a>
                 <a href="#disclosures">Disclosures</a>
                 <a href="mailto:contact@mahmoudouf.com">Email me</a>

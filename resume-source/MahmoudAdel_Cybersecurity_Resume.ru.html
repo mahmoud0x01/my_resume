@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Махмуд Адель — Резюме</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; }
+    body {
+      color: #182333;
+      font-family: "Liberation Sans", Arial, sans-serif;
+      font-size: 8.1pt;
+      line-height: 1.32;
+    }
+    .page { width: 210mm; min-height: 297mm; background: #ffffff; }
+    .header {
+      padding: 8.5mm 13mm 7mm;
+      color: #f7fbff;
+      background: #101b2d;
+      border-bottom: 3px solid #35c9b3;
+    }
+    .header-table, .body-table { width: 100%; border-collapse: collapse; }
+    .photo-cell { width: 31mm; vertical-align: middle; }
+    .portrait {
+      width: 27mm;
+      height: 27mm;
+      display: block;
+      border: 2px solid #55ddc6;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .identity-cell { padding-left: 2mm; vertical-align: middle; }
+    .name {
+      margin: 0;
+      color: #ffffff;
+      font-family: "Liberation Sans", Arial, sans-serif;
+      font-size: 25pt;
+      font-weight: 700;
+      letter-spacing: -0.8pt;
+      line-height: 1;
+    }
+    .role {
+      margin: 2.2mm 0 0;
+      color: #8ce9d9;
+      font-size: 10.5pt;
+      font-weight: 700;
+      letter-spacing: 0.3pt;
+    }
+    .positioning {
+      margin: 1.2mm 0 0;
+      color: #c5d2e4;
+      font-size: 8.2pt;
+    }
+    .contact-cell {
+      width: 64mm;
+      padding-left: 5mm;
+      vertical-align: middle;
+      text-align: right;
+      color: #c5d2e4;
+      font-size: 7.1pt;
+      line-height: 1.55;
+    }
+    .contact-cell a { color: #eafcf8; text-decoration: none; }
+    .contact-label { color: #83dcca; font-weight: 700; }
+    .body { padding: 5.5mm 13mm 2mm; }
+    .main-cell { width: 65%; padding-right: 7mm; vertical-align: top; }
+    .side-cell {
+      width: 35%;
+      padding-left: 5.5mm;
+      vertical-align: top;
+      border-left: 1px solid #d8e0e9;
+    }
+    .section { margin: 0 0 3.6mm; }
+    .section-title {
+      margin: 0 0 1.6mm;
+      padding-bottom: 1.0mm;
+      color: #167d79;
+      border-bottom: 1.2px solid #35c9b3;
+      font-size: 7.1pt;
+      font-weight: 700;
+      letter-spacing: 1.25pt;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .summary {
+      margin: 0;
+      color: #334155;
+      font-size: 7.75pt;
+      line-height: 1.42;
+    }
+    .summary em { color: #167d79; font-style: normal; font-weight: 700; }
+    .entry { margin: 0 0 3.0mm; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-head { width: 100%; border-collapse: collapse; }
+    .entry-title {
+      margin: 0;
+      color: #12253c;
+      font-size: 8.7pt;
+      font-weight: 700;
+      line-height: 1.18;
+    }
+    .entry-org {
+      margin: 0.8mm 0 0;
+      color: #197f78;
+      font-size: 8.1pt;
+      font-weight: 700;
+    }
+    .entry-org a { color: #197f78; text-decoration: none; border-bottom: 1px solid #b6e7df; }
+    .entry-date {
+      width: 36mm;
+      padding-left: 2mm;
+      color: #66758a;
+      font-family: "Liberation Mono", monospace;
+      font-size: 6.9pt;
+      text-align: right;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+    ul { margin: 1.0mm 0 0; padding: 0 0 0 3.2mm; }
+    li { margin: 0 0 0.85mm; padding-left: 0.4mm; color: #34455a; font-size: 7.6pt; }
+    li::marker { color: #20a493; }
+    .evidence-list { list-style: none; padding: 0; margin: 0; }
+    .evidence-list li {
+      margin: 0 0 1.1mm;
+      padding: 1.1mm 1.6mm;
+      color: #334155;
+      border-left: 2px solid #35c9b3;
+      background: #f1f8f7;
+      font-size: 7.35pt;
+      line-height: 1.34;
+    }
+    .evidence-list strong { color: #152b42; }
+    .side-section { margin-bottom: 2.2mm; }
+    .skill-group { margin: 0 0 1.8mm; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-label {
+      margin: 0 0 0.8mm;
+      color: #1e3a56;
+      font-size: 7.7pt;
+      font-weight: 700;
+    }
+    .skill-text { margin: 0; color: #4b5d72; font-size: 6.75pt; line-height: 1.38; }
+    .side-list { margin: 0; padding: 0; list-style: none; }
+    .side-list li { margin: 0 0 1.1mm; padding: 0; color: #415268; font-size: 7.15pt; line-height: 1.34; }
+    .side-list strong { color: #1c3047; }
+    .side-list a { color: #167d79; text-decoration: none; border-bottom: 1px solid #b6e7df; }
+    .link { color: #167d79; text-decoration: none; }
+    .footer-note {
+      margin-top: 0.5mm;
+      padding-top: 2mm;
+      color: #77869a;
+      border-top: 1px solid #d8e0e9;
+      font-size: 6.8pt;
+      line-height: 1.4;
+    }
+    .muted { color: #66758a; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <table class="header-table">
+        <tr>
+          <td class="photo-cell">
+            <img class="portrait" src="../static/images/me-avatar.png" alt="Портрет Махмуда Аделя">
+          </td>
+          <td class="identity-cell">
+            <h1 class="name">Махмуд Адель</h1>
+            <p class="role">Инженер по прикладной и наступательной безопасности | Бакалавр программной инженерии</p>
+            <p class="positioning">Прикладная безопасность · Наступательная инженерия · Бакалавр программной инженерии</p>
+          </td>
+          <td class="contact-cell">
+            <div><span class="contact-label">Локация</span> &nbsp;Базируется в Египте (UTC+2) · Открыт к релокации по всему миру (удалённо и на месте) · Визовая поддержка / B2B контракт</div>
+            <div><span class="contact-label">Email</span> &nbsp;<a href="mailto:contact@mahmoudouf.com">contact@mahmoudouf.com</a></div>
+            <div><span class="contact-label">LinkedIn</span> &nbsp;<a href="https://www.linkedin.com/in/mahmoudadel0x01/">mahmoudadel0x01</a></div>
+            <div><span class="contact-label">GitHub</span> &nbsp;<a href="https://github.com/mahmoud0x01">github.com/mahmoud0x01</a></div>
+          </td>
+        </tr>
+      </table>
+    </header>
+
+    <div class="body">
+      <table class="body-table">
+        <tr>
+          <td class="main-cell">
+            <section class="section">
+              <h2 class="section-title">Профиль</h2>
+              <p class="summary"><em>Я ломаю вещи — и создаю вещи, которые ломаются.</em> Инженер по прикладной и наступательной безопасности с фундаментом программной инженерии (Бакалавр программной инженерии, Томский государственный университет — выпуск июль 2026), специализация: безопасность Web/API, сетевая оценка и исследование уязвимостей. Подтверждено: <strong>20+ отметок Hall of Fame</strong> (Verisign $1,000 CSRF→захват аккаунта · DigitalOcean · Pinterest · Dell через Bugcrowd), стажировка Bastion Security — <strong>11 находок / 8 отчётов / 0 доработок / Топ 5/100 CTF</strong> на 8 веб-приложениях и 2 сетевых диапазонах (6 Linux + 4 Windows privesc), и SOC detection engineering в домашней лаборатории ELK (50k+ событий, 5 правил Sigma с MITRE). Hack The Box <strong>Топ 0.55% Pro Hacker</strong> и TryHackMe Топ 1% — воспроизводимые доказательства и понятные рекомендации исключительно в рамках authorized scope.</p>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Опыт работы</h2>
+              <article class="entry">
+                <table class="entry-head">
+                  <tr>
+                    <td>
+                      <h3 class="entry-title">Стажёр по инженерной безопасности (Authorized Scope: оценка Web/API и сетей)</h3>
+                      <p class="entry-org"><a href="https://bastion-tech.ru/" target="_blank" rel="noopener">Bastion Security</a> — стажировка по инженерной безопасности</p>
+                    </td>
+                    <td class="entry-date">Июль 2024 – Сен 2024</td>
+                  </tr>
+                </table>
+                <ul>
+                  <li>Оценил <strong>8 веб-приложений и 2 сетевых диапазона</strong> в рамках authorized scope — <strong>11 подтверждённых находок</strong> (обход аутентификации, инъекции, повышение привилегий), 6 Linux + 4 Windows с доведением до root.</li>
+                  <li>Каждую находку доводил до root где применимо; подготовил <strong>8 отчётов с 0 доработок</strong> — пути эксплуатации и рекомендации по исправлению; презентовал результаты на внутреннем ревью.</li>
+                  <li>Валидация ручным тестированием плюс проверки cloud posture (ScoutSuite / Prowler-style) в лабораторной среде.</li>
+                  <li>Вошёл в <strong>Топ 5 из 100</strong> во внутренних соревнованиях по пентесту и повышению привилегий.</li>
+                </ul>
+              </article>
+              <article class="entry">
+                <table class="entry-head">
+                  <tr>
+                    <td>
+                      <h3 class="entry-title">Стажёр — инженер-программист</h3>
+                      <p class="entry-org"><a href="https://www.tsu.ru" target="_blank" rel="noopener">Национальный исследовательский Томский государственный университет</a></p>
+                    </td>
+                    <td class="entry-date">Фев 2025</td>
+                  </tr>
+                </table>
+                <ul>
+                  <li>Спроектировал и разработал <strong>2 прототипа</strong> в рамках университетских исследований; создал <strong>12 диаграмм</strong> (UML, компонентов, активности) и техническую документацию академического уровня на всех этапах SDLC.</li>
+                  <li>Инженерная работа, формирующая системное мышление, архитектуру и инструментарий — делает находки воспроизводимыми и рекомендации точнее.</li>
+                </ul>
+              </article>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Признания и доказательства</h2>
+              <ul class="evidence-list">
+                <li><strong>Hall of Fame — 20+ отметок</strong> через Bugcrowd ( <a class="link" href="https://bugcrowd.com/h/mahmoud_adel" target="_blank" rel="noopener">bugcrowd.com/h/mahmoud_adel</a> ) — Именные: Verisign $1,000 CSRF→захват аккаунта (DomainScope OAuth state, апр 2018, Critical), DigitalOcean (Critical, апр 2019), Pinterest и Dell (Hall of Fame, 2018).</li>
+                <li><strong>Соревнования и лабы:</strong> Bastion внутренний CTF <strong>Топ 5/100</strong>; Hack The Box <strong>Топ 0.55% Pro Hacker</strong> — <a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener">verified badges</a>; TryHackMe <strong>Топ 1%</strong> — <a class="link" href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">@iamkernel</a>.</li>
+                <li><strong>Детекция и исследования:</strong> Домашняя SOC-лаборатория ELK — 50k+ событий, 5 правил Sigma с MITRE, дашборды Kibana и workflow триажа; IR-разбор малвари (изолированная Win10 VM, Sysmon/KAPE); защита AppArmor от RCE; безопасность API и пути атак AD.</li>
+              </ul>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Избранные проекты</h2>
+              <ul>
+                <li><strong>ELK SOC Home Lab</strong> — Dockerized ELK 8.12 (Filebeat → Logstash → Elasticsearch → Kibana), 50k+ событий, 5 правил Sigma, оптимизация шумного sudo 180→12/день.</li>
+                <li><strong>IR Lab — разбор малвари Windows</strong> — Контролируемый IR на изолированной Win10 VM, Sysmon / Wireshark / KAPE, локализация и отчёт на 1 страницу для руководства.</li>
+              </ul>
+            </section>
+          </td>
+
+          <td class="side-cell">
+            <section class="side-section">
+              <h2 class="section-title">Ключевые навыки</h2>
+              <div class="skill-group">
+                <p class="skill-label">Наступательная безопасность</p>
+                <p class="skill-text">Web/API Security, OWASP &amp; Vulnerability Assessment, Active Directory (Kerberos / BloodHound / Impacket), Privilege Escalation (Linux/Windows lab), Burp Suite, Nmap, SQLMap, Nuclei, ffuf, Red Teaming — Adversary Simulation</p>
+              </div>
+              <div class="skill-group">
+                <p class="skill-label">Системы и защита</p>
+                <p class="skill-text">Linux, Windows, TCP/IP, Network Security, Firewall, Wireshark, MITRE ATT&amp;CK, SIEM (ELK) — Detection Engineering (Sigma, Suricata), Cloud Security (AWS IAM, ScoutSuite, Prowler), Incident Response, Splunk (lab), YARA (lab), AppArmor</p>
+              </div>
+              <div class="skill-group">
+                <p class="skill-label">Инженерия и инструменты</p>
+                <p class="skill-text">Python, Bash, JavaScript, C/C++, Assembly, SQL, Docker, Git, Ghidra (lab), Metasploit (lab), Cobalt Strike, Sliver</p>
+              </div>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Образование</h2>
+              <ul class="side-list">
+                <li><strong>Бакалавр программной инженерии — выпуск июль 2026</strong><br>Томский государственный университет<br><span class="muted">Сен 2022 – Июль 2026</span></li>
+              </ul>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Сертификации и обучение</h2>
+              <ul class="side-list">
+                <li><strong>OSCP</strong> — OffSec · 2026 <span class="muted">В процессе · PWK</span><br><a href="https://www.offsec.com/courses-and-certifications/pwk/" target="_blank" rel="noopener">Программа ↗</a></li>
+                <li><strong>Blue Team Junior Analyst</strong><br>SecurityBlue Team · 2023<br><a href="https://elearning.securityblue.team/home/certificate/762758116" target="_blank" rel="noopener">Подтвердить ↗</a></li>
+                <li><strong>Cyber Threat Intelligence</strong><br>IBM · 2023<br><a href="https://www.credly.com/badges/3f520809-a774-46de-84bb-c90cf66e30ad" target="_blank" rel="noopener">Бейдж ↗</a></li>
+                <li><strong>Jr Penetration Tester</strong><br>TryHackMe · 2024<br><a href="/Documents/CRF_Jr_Pentester_Completion.pdf" target="_blank" rel="noopener">PDF ↗</a></li>
+                <li class="muted" style="font-size: 7pt; line-height: 1.35;">Дополнительно: CompTIA Linux+ (2024) · CCNA — Cisco (2023) · PNPT — TCM Security (в процессе, 2025) · PITR — IBM (2023)</li>
+              </ul>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Лаборатории и платформы</h2>
+              <ul class="side-list">
+                <li><a href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges" target="_blank" rel="noopener">Hack The Box — Verified Badges · Топ 0.55% Pro Hacker</a></li>
+                <li><a href="https://tryhackme.com/p/iamkernel" target="_blank" rel="noopener">TryHackMe — @iamkernel · Топ 1%</a></li>
+              </ul>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Избранные публикации</h2>
+              <ul class="side-list">
+                <li><a href="https://mahmoudouf.com/ru/blogs/verisign-csrf-account-takeover-domainscope/">$1,000 CSRF — Verisign DomainScope ATO</a></li>
+                <li><a href="https://mahmoudouf.com/ru/blogs/apparmor-rce-mitigation/">AppArmor — защита от RCE</a></li>
+                <li><a href="https://mahmoudouf.com/ru/blogs/elk-siem-soc-home-lab-detection-engineering/">ELK SIEM — домашняя SOC-лаборатория</a></li>
+              </ul>
+            </section>
+
+            <section class="side-section">
+              <h2 class="section-title">Языки</h2>
+              <ul class="side-list">
+                <li><strong>Арабский</strong> · Родной</li>
+                <li><strong>Английский</strong> · C2 — Профессиональный</li>
+                <li><strong>Русский</strong> · C1 — Продвинутый</li>
+              </ul>
+            </section>
+          </td>
+        </tr>
+      </table>
+      <p class="footer-note">Портфолио: <a class="link" href="https://mahmoudouf.com/">mahmoudouf.com</a> · Всё тестирование безопасности проводилось исключительно в рамках authorized scope, лабораторий или ответственного раскрытия. · Рекомендации и логи доступны по запросу.</p>
+    </div>
+  </div>
+</body>
+</html>

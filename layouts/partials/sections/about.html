@@ -28,37 +28,6 @@
                     {{ $aboutContent | markdownify }}
                 </div>
 
-                <div class="about-proof-grid" aria-label="Career proof points">
-                    {{ with .Site.Params.about.proofPoints }}
-                    {{ range . }}
-                    {{ $value := .value | default .number | default "" }}
-                    {{ $label := .label | default .title | default .name | default "Proof point" }}
-                    {{ $detail := .detail | default .description | default .text | default "" }}
-                    <article class="about-proof-card">
-                        {{ with $value }}<strong>{{ . }}</strong>{{ end }}
-                        <span>{{ $label }}</span>
-                        {{ with $detail }}<small>{{ . }}</small>{{ end }}
-                    </article>
-                    {{ end }}
-                    {{ else }}
-                    <article class="about-proof-card">
-                        <strong>4</strong>
-                        <span>Hall of Fame recognitions</span>
-                        <small>Responsible disclosure across leading programs.</small>
-                    </article>
-                    <article class="about-proof-card">
-                        <strong>Top 5/100</strong>
-                        <span>CTF placement</span>
-                        <small>Penetration testing and privilege escalation challenges.</small>
-                    </article>
-                    <article class="about-proof-card">
-                        <strong>Red + blue</strong>
-                        <span>Security perspective</span>
-                        <small>Offensive testing grounded in operational defense.</small>
-                    </article>
-                    {{ end }}
-                </div>
-
                 {{/* focusAreas retained for backward compat, BBO is primary */}}
                 {{ with .Site.Params.about.focusAreas }}
                 <div class="about-focus-area">
@@ -82,75 +51,6 @@
                         </article>
                         {{ end }}
                     </div>
-                </div>
-                {{ end }}
-
-                {{/* Philosophy — How I Approach Security merged from direction.html */}}
-                <div class="about-philosophy" aria-labelledby="approach-title">
-                    <div class="subsection-heading">
-                        <p class="section-kicker">Philosophy</p>
-                        <h3 id="approach-title">{{ i18n "aboutPhilosophyTitle" | default "How I Approach Security" }}</h3>
-                        <p class="section-dek" style="margin-top:0.5rem;">{{ i18n "aboutPhilosophyDek" | default "BREAK / BUILD / OPERATE / SECURE — Find the flaw, understand why it broke, and think about how it should be fixed." }}</p>
-                    </div>
-                    <div class="bbo-grid bbo-grid--4">
-                        <article class="bbo-card">
-                            <i class="fa-solid fa-crosshairs" aria-hidden="true"></i>
-                            <h3>BREAK — Offensive Testing</h3>
-                            <ul>
-                                <li>Web/API</li>
-                                <li>Network</li>
-                                <li>Vulnerability Assessment</li>
-                                <li>Privilege Escalation</li>
-                                <li>Responsible Disclosure</li>
-                            </ul>
-                            <p class="bbo-card-note">Find the flaw, validate the impact, and prove it under authorized scope.</p>
-                        </article>
-                        <article class="bbo-card">
-                            <i class="fa-solid fa-code" aria-hidden="true"></i>
-                            <h3>BUILD — Software &amp; Automation</h3>
-                            <ul>
-                                <li>Python · JavaScript · C/C++ · SQL</li>
-                                <li>Git · Security Tooling · Automation</li>
-                            </ul>
-                            <p class="bbo-card-note">Understanding how software is designed makes it easier to see where its logic can fail.</p>
-                        </article>
-                        <article class="bbo-card">
-                            <i class="fa-solid fa-server" aria-hidden="true"></i>
-                            <h3>OPERATE — Infrastructure</h3>
-                            <ul>
-                                <li>Linux · Windows · Networking</li>
-                                <li>Docker · Hardening</li>
-                                <li>System Administration · AD/Kerberos</li>
-                            </ul>
-                            <p class="bbo-card-note">Understanding how systems actually run makes infrastructure weaknesses easier to recognize.</p>
-                        </article>
-                        <article class="bbo-card bbo-card--secure">
-                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-                            <h3>SECURE — Root-Cause Reasoning</h3>
-                            <ul>
-                                <li>AppArmor · LSMs · Namespaces</li>
-                                <li>Filesystem Trust · Defense in Depth</li>
-                            </ul>
-                            <p class="bbo-card-note">Don't stop at 'it broke' — understand why, contain it, and fix the underlying trust boundary.</p>
-                        </article>
-                    </div>
-                    <p class="bbo-lifecycle-caption" style="margin-top:1.2rem">Security inherits every earlier decision — architecture, code, automation, and operations shape where flaws live and how they spread.</p>
-                </div>
-
-                {{ if .Site.Params.about.languages.enable }}
-                <div class="about-languages">
-                    <div class="subsection-heading">
-                        <p class="section-kicker">Communication</p>
-                        <h3>{{ .Site.Params.about.languages.title | default "Languages" }}</h3>
-                    </div>
-                    <dl class="language-list">
-                        {{ range .Site.Params.about.languages.items }}
-                        <div>
-                            <dt class="fw-bold">{{ .language }}</dt>
-                            <dd class="text-secondary">{{ .level }}</dd>
-                        </div>
-                        {{ end }}
-                    </dl>
                 </div>
                 {{ end }}
 
