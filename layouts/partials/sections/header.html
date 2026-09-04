@@ -126,23 +126,22 @@
                 </li>
                 {{ end }}
 
-                <!-- Language switch — EN | RU (near theme toggle, visible on all breakpoints) -->
+                <!-- Language switch — EN | RU (near theme toggle, visible on all breakpoints) — stays on same page when translation exists, fallback to home -->
                 <li class="nav-item nav-lang-switch" role="group" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }}">
                     {{ $curLang := .Site.Language.Lang }}
-                    {{ $allTrans := .Site.Home.AllTranslations }}
-                    {{ if eq (len $allTrans) 1 }}
-                        {{/* Fallback: single translation (build before languages) — show static pair */}}
-                        {{ if eq $curLang "en" }}
-                            <span class="nav-lang-active" aria-current="true">EN</span>
-                            <span class="nav-lang-sep" aria-hidden="true">|</span>
-                            <a class="nav-lang-link" href="/ru/" lang="ru" hreflang="ru" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }} — Русский">RU</a>
-                        {{ else }}
-                            <a class="nav-lang-link" href="/" lang="en" hreflang="en" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }} — English">EN</a>
-                            <span class="nav-lang-sep" aria-hidden="true">|</span>
-                            <span class="nav-lang-active" aria-current="true">RU</span>
+                    {{ $homeTrans := .Site.Home.AllTranslations }}
+                    {{ if .IsTranslated }}
+                        {{ range $i, $t := .AllTranslations }}
+                            {{ if $i }}<span class="nav-lang-sep" aria-hidden="true">|</span>{{ end }}
+                            {{ $lang := $t.Language.Lang }}
+                            {{ if eq $lang $curLang }}
+                                <span class="nav-lang-active" aria-current="true" lang="{{ $lang }}">{{ upper $lang }}</span>
+                            {{ else }}
+                                <a class="nav-lang-link" href="{{ $t.RelPermalink }}" lang="{{ $lang }}" hreflang="{{ $lang }}" aria-label="{{ i18n "langSwitchLabel" | default "Switch language" }} — {{ $t.Language.LanguageName }}">{{ upper $lang }}</a>
+                            {{ end }}
                         {{ end }}
                     {{ else }}
-                        {{ range $i, $t := $allTrans }}
+                        {{ range $i, $t := $homeTrans }}
                             {{ if $i }}<span class="nav-lang-sep" aria-hidden="true">|</span>{{ end }}
                             {{ $lang := $t.Language.Lang }}
                             {{ if eq $lang $curLang }}
