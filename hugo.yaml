@@ -64,13 +64,13 @@ languages:
                   **Контекст:** Университетские исследовательские проекты, требующие программной реализации и документации академического уровня.
 
                   **Обязанности:**
-                  - Спроектировал и разработал 2 прототипа в рамках заданного исследовательского scope
+                  - Спроектировал и разработал 2 MVP в рамках заданного исследовательского scope
                   - Создал 12 диаграмм (UML, компонентные и активности) для визуализации структуры системы и взаимодействий
                   - Подготовил техническую документацию в соответствии с академическими стандартами
                   - Участвовал в полном жизненном цикле разработки — требования, проектирование, реализация, документирование
 
                   **Результаты:**
-                  - Поставил 2 прототипа с полными пакетами документации
+                  - Поставил 2 MVP с полными пакетами документации
                   - Подготовил 12 диаграмм для ревью и передачи
                   - Обеспечил соответствие стандартам документации, готовой к публикации
 
@@ -389,13 +389,13 @@ params:
               **Context:** University research projects requiring software implementation and academic-grade documentation.
 
               **Responsibilities:**
-              - Designed and developed 2 prototypes within defined research scope
+              - Designed and developed 2 MVPs within defined research scope
               - Created 12 diagrams (UML, component and activity) to visualize system structure and interactions
               - Produced technical documentation aligned with academic standards
               - Participated in the full software development lifecycle — requirements, design, implementation, documentation
 
               **Outcomes:**
-              - Delivered 2 prototypes with complete documentation packages
+              - Delivered 2 MVPs with complete documentation packages
               - Provided 12 diagrams supporting review and handover
               - Met publication-ready documentation standards
 
