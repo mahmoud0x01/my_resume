@@ -59,7 +59,7 @@ languages:
             companyUrl: "https://www.tsu.ru"
             jobs:
               - name: "Стажёр — инженер-программист"
-                date: "Фев 2025"
+                date: "Фев 2025 – Июнь 2026"
                 content: |
                   **Контекст:** Университетские исследовательские проекты, требующие программной реализации и документации академического уровня.
 
@@ -384,7 +384,7 @@ params:
         companyUrl: "https://www.tsu.ru"
         jobs:
           - name: "Software Engineer, Intern"
-            date: "Feb 2025"
+            date: "Feb 2025 - June 2026"
             content: |
               **Context:** University research projects requiring software implementation and academic-grade documentation.
 

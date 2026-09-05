@@ -1378,9 +1378,17 @@ a.timeline-company:hover {
     .timeline-item {
         grid-template-columns: 36px 1fr;
         grid-template-rows: auto auto;
+        min-width: 0;
+        max-width: 100%;
     }
     .timeline-left {
         display: none;
+    }
+    /* Safety: dates/companies stay hidden on mobile, but must wrap (not nowrap)
+       if ever shown — prevents "July 2024 - September 2024" overflow at 320px. */
+    .timeline-date,
+    .timeline-company {
+        white-space: normal;
     }
     .timeline-center {
         grid-column: 1;
@@ -1390,12 +1398,49 @@ a.timeline-company:hover {
         grid-column: 2;
         padding-left: 1rem;
         padding-bottom: 2rem;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     .timeline-card {
         padding: 1rem !important;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: anywhere;
+    }
+    .timeline-body {
+        overflow-wrap: anywhere;
     }
     /* Show date inside card on mobile */
     .timeline-role::after {
         content: none;
+    }
+}
+
+/* PWA small-screen hardening — mobile only, desktop unchanged */
+@media (max-width: 480px) {
+    #experience {
+        overflow-x: hidden;
+    }
+    .timeline-right {
+        padding-left: 0.75rem;
+        padding-bottom: 1.5rem;
+    }
+    .timeline-card {
+        padding: 1rem !important;
+    }
+    .timeline-role {
+        font-size: 0.95rem !important;
+    }
+    .timeline-body,
+    .timeline-body * {
+        font-size: 0.85rem !important;
+    }
+    #experience .timeline-card .timeline-credential-btn {
+        max-width: 100%;
+        box-sizing: border-box;
+        white-space: normal;
+        text-align: center;
     }
 }
