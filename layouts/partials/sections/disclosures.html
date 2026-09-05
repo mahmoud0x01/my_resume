@@ -16,7 +16,7 @@
       <article class="disclosure-card disclosure-card--featured">
         <div class="disclosure-card-topline">
           <span class="disclosure-card-kicker"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Verisign · DomainScope</span>
-          <span class="proof-severity proof-severity--critical">{{ i18n "disclosuresSeverityCritical" | default "Critical" }} · <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span></span>
+          <span class="proof-severity proof-severity--critical">{{ i18n "disclosuresSeverityCritical" | default "Critical" }} · $1,000</span>
         </div>
         <h3>{{ i18n "disclosuresVerisignTitle" | default "OAuth CSRF → Account Takeover" }}</h3>
         <p>{{ i18n "disclosuresVerisignDesc" | default "Missing <code>state</code> on <code>GET /connect/google</code> allowed linking an attacker Google identity to the victim’s authenticated DomainScope session → full ATO via <em>Sign in with Google</em> and persistent password set via <em>My Profile</em>." | safeHTML }}</p>

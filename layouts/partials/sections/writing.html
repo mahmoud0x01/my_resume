@@ -17,12 +17,12 @@
         <div class="writing-featured-grid">
             {{ with $featured1 }}
             <article class="writing-card writing-card--featured">
-                <span class="writing-featured-badge">{{ i18n "writingFeaturedBadge1" | default "Featured · Bug Bounty · $1,REDACTED" | safeHTML }}</span>
+                <span class="writing-featured-badge">{{ i18n "writingFeaturedBadge1" | default "Featured · Bug Bounty · $1,000" | safeHTML }}</span>
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $dateFormat }}</time>
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Description }}</p>
                 <div class="writing-sequence" aria-label="CSRF to ATO sequence">
-                    <span>OAuth</span><span aria-hidden="true">→</span><span>CSRF</span><span aria-hidden="true">→</span><span>ATO</span><span aria-hidden="true">→</span><span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>
+                    <span>OAuth</span><span aria-hidden="true">→</span><span>CSRF</span><span aria-hidden="true">→</span><span>ATO</span><span aria-hidden="true">→</span><span>$1,000</span>
                 </div>
                 <a class="writing-read-link" href="{{ .RelPermalink }}">{{ i18n "writingReadResearch" | default "Read research" }} <span aria-hidden="true">↗</span></a>
             </article>

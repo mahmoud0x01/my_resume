@@ -57,7 +57,7 @@ disclosuresTitle: "НАХОДКИ И ПРИЗНАНИЯ"
 disclosuresDek: "Именные раскрытия включают Verisign, DigitalOcean, Pinterest и Dell — плюс 20+ суммарных отметок на Bugcrowd."
 disclosuresVerisignTitle: "OAuth CSRF → Захват аккаунта"
 disclosuresVerisignDesc: "Отсутствие параметра <code>state</code> в <code>GET /connect/google</code> позволило привязать Google-аккаунт злоумышленника к аутентифицированной сессии жертвы в DomainScope → полный захват аккаунта через <em>Sign in with Google</em> и закрепление доступа установкой пароля в <em>My Profile</em>."
-disclosuresVerisignMeta: 'Апрель 2018 · OAuth · CSRF · Захват аккаунта · <span class="redacted-reward" aria-label="Награда $1,000">$1,<span class="redacted-wall" tabindex="0" title="Награда: $1,000 — наведите для просмотра" aria-label="REDACTED">REDACTED</span></span> Награда · Зал славы'
+disclosuresVerisignMeta: 'Апрель 2018 · OAuth · CSRF · Захват аккаунта · $1,000 Награда · Зал славы'
 disclosuresDigitalOceanTitle: "Ответственное раскрытие — Критическая уязвимость"
 disclosuresDigitalOceanDesc: "Подтверждённая критическая уязвимость, выявленная в рамках авторизованной программы bug bounty DigitalOcean и отмеченная в Зале славы."
 disclosuresDigitalOceanMeta: "Апрель 2019 · Bug Bounty · Ответственное раскрытие · Зал славы"
@@ -96,7 +96,7 @@ credentialsVerify: "Подтвердить"
 writingKicker: "Исследования"
 writingTitle: "ИССЛЕДОВАНИЯ И ЗАМЕТКИ"
 writingDek: "Избранные исследования и заметки"
-writingFeaturedBadge1: 'Рекомендуемое · Bug Bounty · <span class="redacted-reward" aria-label="Награда $1,000">$1,<span class="redacted-wall" tabindex="0" title="Награда: $1,000 — наведите для просмотра" aria-label="REDACTED">REDACTED</span></span>'
+writingFeaturedBadge1: 'Рекомендуемое · Bug Bounty · $1,000'
 writingFeaturedBadge2: "Рекомендуемое · Защита Blue Team"
 writingFeaturedBadge3: "Рекомендуемое · SOC · Детектирование"
 writingArchivePrefix: "Перейти ко всем заметкам —"

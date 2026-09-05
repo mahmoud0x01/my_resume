@@ -1,12 +1,12 @@
 ---
-title: "$1,REDACTED CSRF до полного захвата аккаунта в Verisign (DomainScope)"
+title: "$1,000 CSRF до полного захвата аккаунта в Verisign (DomainScope)"
 date: 2018-04-15T10:00:00+00:00
 draft: false
 author: "Mahmoud Adel"
 tags: ["CSRF", "OAuth", "Account Takeover", "Bug Bounty", "Verisign", "Web Security", "Responsible Disclosure"]
 categories: ["Security Research"]
 image: /images/verisign-csrf-reward.png
-description: "Ответственное раскрытие CSRF за $1,REDACTED в привязке Google OAuth сервиса Verisign DomainScope — отсутствие проверки параметра state позволяло злоумышленнику привязать свой Google-аккаунт к профилю жертвы и захватить аккаунт. Включает санитизированный PoC и таймлайн вознаграждения."
+description: "Ответственное раскрытие CSRF за $1,000 в привязке Google OAuth сервиса Verisign DomainScope — отсутствие проверки параметра state позволяло злоумышленнику привязать свой Google-аккаунт к профилю жертвы и захватить аккаунт. Включает санитизированный PoC и таймлайн вознаграждения."
 toc: true
 ---
 
@@ -14,7 +14,7 @@ toc: true
 
 ## Краткое резюме
 
-Выявлена и подтверждена уязвимость Cross-Site Request Forgery (CSRF) в потоке привязки Google OAuth сервиса Verisign DomainScope (`domainscope.com`). Callback `/connect/google` не проверял параметр `state`. Злоумышленник мог заставить аутентифицированную сессию жертвы привязать Google-аккаунт злоумышленника к профилю DomainScope жертвы, а затем войти как жертва через Google OAuth. Последствие — полный захват аккаунта без знания пароля жертвы. Сообщено через Bugcrowd в апреле 2018 года в рамках авторизованной программы Verisign bug bounty, проверено и вознаграждено **<span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>**, отмечено в Verisign Hall of Fame. Находка сделана в ходе участия в программе Bugcrowd в рамках авторизованного тестирования на проникновение.
+Выявлена и подтверждена уязвимость Cross-Site Request Forgery (CSRF) в потоке привязки Google OAuth сервиса Verisign DomainScope (`domainscope.com`). Callback `/connect/google` не проверял параметр `state`. Злоумышленник мог заставить аутентифицированную сессию жертвы привязать Google-аккаунт злоумышленника к профилю DomainScope жертвы, а затем войти как жертва через Google OAuth. Последствие — полный захват аккаунта без знания пароля жертвы. Сообщено через Bugcrowd в апреле 2018 года в рамках авторизованной программы Verisign bug bounty, проверено и вознаграждено **$1,000**, отмечено в Verisign Hall of Fame. Находка сделана в ходе участия в программе Bugcrowd в рамках авторизованного тестирования на проникновение.
 
 ## Контекст — поток привязки OAuth в DomainScope
 
@@ -126,18 +126,18 @@ Scope наблюдался как `email profile` (обобщённо). Допо
 
 Находка была зарепорчена как подтверждённый CSRF-до-захвата-аккаунта в потоке привязки OAuth. Терминология critical/zero-day в оригинальном отчёте не использовалась; проблема была триажирована как вознаграждаемая уязвимость.
 
-## Вознаграждение и таймлайн — <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span> через Bugcrowd, Hall of Fame апрель 2018
+## Вознаграждение и таймлайн — $1,000 через Bugcrowd, Hall of Fame апрель 2018
 
 - **Программа:** Bug bounty Verisign через Bugcrowd (только авторизованное тестирование).
 - **Подход к обнаружению:** Найдено в ходе участия в программе Bugcrowd при анализе OAuth-потоков с ручным перехватом через прокси.
 - **Дата отчёта:** Апрель 2018 (дата Hall of Fame согласно данным awards; совпадает с таймлайном раскрытия).
-- **Триаж и вознаграждение:** Проверено, триажировано и вознаграждено **<span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>** через Bugcrowd.
+- **Триаж и вознаграждение:** Проверено, триажировано и вознаграждено **$1,000** через Bugcrowd.
 - **Признание:** Отмечено в Verisign Hall of Fame, апрель 2018.
 - **Профиль:** Отчёты и признания перечислены в профиле Bugcrowd: [https://bugcrowd.com/h/mahmoud_adel](https://bugcrowd.com/h/mahmoud_adel).
 
 <figure class="verisign-reward-figure" style="margin:1.5rem 0;">
-  <img src="/images/verisign-csrf-reward.png" alt="Подтверждение триажа и вознаграждения Bugcrowd — Verisign CSRF $1,REDACTED — DomainScope" loading="lazy" decoding="async" style="width:100%; max-width:100%; border:1px solid var(--recruiter-border, #e5e7eb); border-radius:0.85rem; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
-  <figcaption style="margin-top:0.6rem; color:var(--recruiter-muted); font-size:0.78rem; text-align:center;">Подтверждение триажа и вознаграждения Bugcrowd — Verisign DomainScope CSRF → захват аккаунта (<span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>) — HoF апрель 2018</figcaption>
+  <img src="/images/verisign-csrf-reward.png" alt="Подтверждение триажа и вознаграждения Bugcrowd — Verisign CSRF $1,000 — DomainScope" loading="lazy" decoding="async" style="width:100%; max-width:100%; border:1px solid var(--recruiter-border, #e5e7eb); border-radius:0.85rem; box-shadow:0 12px 30px rgba(15,23,42,0.08);">
+  <figcaption style="margin-top:0.6rem; color:var(--recruiter-muted); font-size:0.78rem; text-align:center;">Подтверждение триажа и вознаграждения Bugcrowd — Verisign DomainScope CSRF → захват аккаунта ($1,000) — HoF апрель 2018</figcaption>
 </figure>
 
 Дата исправления здесь не утверждается сверх публично подтверждённого. Отчёт был триажирован и вознаграждён; верификация патча, если она была, обрабатывалась через программу.
@@ -191,7 +191,7 @@ delete req.session.oauthState; // одноразовый
 3. **Параметр `state` — это CSRF-токен, привязанный к сессии.** Относитесь к нему соответственно: случайный, непредсказуемый, привязанный к инициирующей сессии, проверяемый точным сравнением и одноразовый. Cookies `SameSite` помогают, но не заменяют проверку `state`.
 4. **Изменяющие состояние GET усиливают CSRF.** Callback использовал `GET`. Любой GET, изменяющий привязку аккаунта, должен быть либо POST с CSRF-токеном, либо защищён проверкой OAuth `state`. Где возможно, предпочитайте POST для завершения привязки.
 5. **Минимум SEO-шума, максимум сигнала.** Эта находка использовала точные ключевые слова — CSRF, OAuth, State Parameter, Google OAuth, Verisign, DomainScope, Account Takeover, Bug Bounty, Responsible Disclosure — в отчёте, описании и заголовках. Чёткие шаги воспроизведения с санитизированными артефактами ускоряют триаж.
-6. **Сообщайте только о проверенном.** Программой на тот момент не присваивался CVSS; таймлайн патча не заявляется сверх триажа и вознаграждения. Сохранение таймлайна в пределах задокументированного (репорт апрель 2018, <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>, HoF) сохраняет точность для будущего ревью.
+6. **Сообщайте только о проверенном.** Программой на тот момент не присваивался CVSS; таймлайн патча не заявляется сверх триажа и вознаграждения. Сохранение таймлайна в пределах задокументированного (репорт апрель 2018, $1,000, HoF) сохраняет точность для будущего ревью.
 
 ## Дисклеймер — ответственное раскрытие
 

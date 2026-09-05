@@ -57,7 +57,7 @@ disclosuresTitle: "SECURITY FINDINGS & RECOGNITION"
 disclosuresDek: "Named disclosures include Verisign, DigitalOcean, Pinterest, and Dell — with 20+ aggregate acknowledgments across Bugcrowd."
 disclosuresVerisignTitle: "OAuth CSRF → Account Takeover"
 disclosuresVerisignDesc: "Missing <code>state</code> on <code>GET /connect/google</code> allowed linking an attacker Google identity to the victim’s authenticated DomainScope session → full ATO via <em>Sign in with Google</em> and persistent password set via <em>My Profile</em>."
-disclosuresVerisignMeta: 'April 2018 · OAuth · CSRF · Account Takeover · <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span> Reward · Hall of Fame'
+disclosuresVerisignMeta: 'April 2018 · OAuth · CSRF · Account Takeover · $1,000 Reward · Hall of Fame'
 disclosuresDigitalOceanTitle: "Responsible Disclosure — Critical Vulnerability"
 disclosuresDigitalOceanDesc: "Validated critical vulnerability reported through DigitalOcean’s authorized bug bounty program and acknowledged in Hall of Fame."
 disclosuresDigitalOceanMeta: "April 2019 · Bug Bounty · Responsible Disclosure · Hall of Fame"
@@ -96,7 +96,7 @@ credentialsVerify: "Verify"
 writingKicker: "Research"
 writingTitle: "SECURITY RESEARCH and Writeups"
 writingDek: "Selected research and write-ups"
-writingFeaturedBadge1: 'Featured · Bug Bounty · <span class="redacted-reward" aria-label="Reward $1,000">$1,<span class="redacted-wall" tabindex="0" title="Reward: $1,000 — hover to reveal" aria-label="REDACTED">REDACTED</span></span>'
+writingFeaturedBadge1: 'Featured · Bug Bounty · $1,000'
 writingFeaturedBadge2: "Featured · Blue-team defense"
 writingFeaturedBadge3: "Featured · SOC · Detection Engineering"
 writingArchivePrefix: "Browse all writing —"
