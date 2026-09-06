@@ -175,6 +175,20 @@
       font-size: 7.5pt;
       line-height: 1.4;
     }
+    /* ---- Print pagination (FlowCV 1:1, no split sections) ---- */
+    .side-section, .main-section, .entry, .skill-group, ul.bullets, ul.evidence-list, li {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .side-title, .main-title {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    p, li { orphans: 3; widows: 3; }
+    #core-skills, #security-research {
+      break-before: page;
+      page-break-before: always;
+    }
   </style>
 </head>
 <body>
@@ -206,7 +220,7 @@
           <p class="summary">Cybersecurity Engineer driven by a deep fascination with low-level systems and system architecture. Inspired to enter the field early on, I developed a passion for understanding the &quot;core mechanics&quot; of technology—earning the moniker Kernel. From offensive mechanics to SOC defense, I view infrastructure security as an art form built on fundamental system principles.</p>
         </section>
 
-        <section class="side-section">
+        <section class="side-section" id="core-skills">
           <h2 class="side-title">Core Skills</h2>
           <div class="skill-group">
             <p class="skill-label">CORE</p>
@@ -304,7 +318,7 @@
           </ul>
         </section>
 
-        <section class="main-section">
+        <section class="main-section" id="security-research">
           <h2 class="main-title">Security Research</h2>
           <ul class="bullets">
             <li><strong>Verisign CSRF → Account Takeover</strong> — Missing OAuth state → Google-link hijack → persistent ATO + password set ($1,000 reward, HoF Apr 2018). <a class="link" href="https://mahmoudouf.com/blogs/verisign-csrf-account-takeover-domainscope/">Write-up ↗</a></li>

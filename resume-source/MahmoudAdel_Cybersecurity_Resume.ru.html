@@ -17,7 +17,7 @@
     /* ---- Sidebar (FlowCV grayscale rail) ---- */
     .sidebar {
       width: 68mm;
-      padding: 8mm 6mm 8mm;
+      padding: 6mm;
       vertical-align: top;
       color: #333333;
       background: #ECEFF1;
@@ -98,7 +98,7 @@
     .side-list a { color: #333333; font-weight: 600; text-decoration: none; }
     .muted { color: #777777; }
     /* ---- Main column ---- */
-    .main { padding: 8mm 8mm 8mm; vertical-align: top; background: #ffffff; }
+    .main { padding: 6mm 7mm; vertical-align: top; background: #ffffff; }
     .section { margin: 0 0 5mm; }
     .summary { margin: 0; color: #333333; font-size: 8.7pt; line-height: 1.4; }
     .summary em { color: #222222; font-style: normal; font-weight: 700; }
@@ -177,6 +177,23 @@
       font-size: 7.6pt;
       line-height: 1.45;
     }
+    .edu-line { margin: 0; color: #333333; font-size: 8.7pt; line-height: 1.4; }
+    .edu-line strong { color: #222222; }
+    .edu-line .muted { color: #777777; }
+    /* ---- Print pagination (FlowCV 1:1, no split sections) ---- */
+    .side-section, .section, .entry, .skill-group, ul.bullets, ul.evidence, ul.research-list, li {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .side-title, .section-title {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    p, li { orphans: 3; widows: 3; }
+    #core-skills, #security-research {
+      break-before: page;
+      page-break-before: always;
+    }
     a { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   </style>
 </head>
@@ -206,6 +223,13 @@
         </section>
 
         <section class="side-section">
+          <h2 class="side-title">Профиль</h2>
+          <p class="summary">Инженер по кибербезопасности, увлечённый низкоуровневыми системами и архитектурой. Придя в сферу рано, я увлёкся «механикой ядра» технологий и получил прозвище <em>Kernel</em>. От наступательных механик до SOC-защиты я рассматриваю безопасность инфраструктуры как искусство, построенное на фундаментальных принципах систем.</p>
+          <div class="metric-strip"><span class="metric-pill"><strong class="metric-num">20+</strong><span class="metric-label">Hall of Fame</span></span><span class="metric-pill"><strong class="metric-num">Топ 0.55%</strong><span class="metric-label">Pro Hacker</span></span></div>
+          <p class="portfolio-line">Портфолио: <a href="https://mahmoudouf.com/">mahmoudouf.com</a></p>
+        </section>
+
+        <section class="side-section" id="core-skills">
           <h2 class="side-title">Навыки</h2>
           <div class="skill-group">
             <p class="skill-label">CORE</p>
@@ -226,26 +250,11 @@
         </section>
 
         <section class="side-section">
-          <h2 class="side-title">Образование</h2>
-          <ul class="side-list">
-            <li><strong>Бакалавр программной инженерии — выпуск июль 2026</strong><br>Томский государственный университет<br><span class="muted">Сен 2022 – Июль 2026</span></li>
-          </ul>
-        </section>
-
-        <section class="side-section">
           <h2 class="side-title">Сертификаты</h2>
           <ul class="side-list">
             <li><strong>Blue Team Junior Analyst</strong><br>SecurityBlue Team · 2023<br><a href="https://elearning.securityblue.team/home/certificate/762758116">Подтвердить ↗</a></li>
             <li><strong>Cyber Threat Intelligence</strong><br>IBM · 2023<br><a href="https://www.credly.com/badges/3f520809-a774-46de-84bb-c90cf66e30ad">Бейдж ↗</a></li>
             <li><strong>Jr Penetration Tester</strong><br>TryHackMe · 2024<br><a href="https://mahmoudouf.com/Documents/CRF_Jr_Pentester_Completion.pdf">PDF ↗</a></li>
-          </ul>
-        </section>
-
-        <section class="side-section">
-          <h2 class="side-title">Лаборатории</h2>
-          <ul class="side-list">
-            <li><a href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges">Hack The Box — подтверждённые бейджи · Топ 0.55% Pro Hacker</a></li>
-            <li><a href="https://tryhackme.com/p/iamkernel">TryHackMe — @iamkernel · Топ 1%</a></li>
           </ul>
         </section>
 
@@ -260,13 +269,6 @@
       </td>
 
       <td class="main">
-        <section class="section">
-          <h2 class="section-title">Профиль</h2>
-          <p class="summary">Инженер по кибербезопасности, увлечённый низкоуровневыми системами и архитектурой. Придя в сферу рано, я увлёкся «механикой ядра» технологий и получил прозвище <em>Kernel</em>. От наступательных механик до SOC-защиты я рассматриваю безопасность инфраструктуры как искусство, построенное на фундаментальных принципах систем.</p>
-          <div class="metric-strip"><span class="metric-pill"><strong class="metric-num">20+</strong><span class="metric-label">Hall of Fame</span></span><span class="metric-pill"><strong class="metric-num">Топ 0.55%</strong><span class="metric-label">Pro Hacker</span></span></div>
-          <p class="portfolio-line">Портфолио: <a href="https://mahmoudouf.com/">mahmoudouf.com</a></p>
-        </section>
-
         <section class="section">
           <h2 class="section-title">Опыт работы</h2>
           <article class="entry">
@@ -304,6 +306,11 @@
         </section>
 
         <section class="section">
+          <h2 class="section-title">Образование</h2>
+          <p class="edu-line"><strong>Бакалавр программной инженерии — выпуск июль 2026</strong><br>Томский государственный университет<br><span class="muted">Сен 2022 – Июль 2026</span></p>
+        </section>
+
+        <section class="section">
           <h2 class="section-title">Признание</h2>
           <ul class="evidence">
             <li><strong>Hall of Fame — 20+ отметок</strong> через Bugcrowd (<a class="link" href="https://bugcrowd.com/h/mahmoud_adel">bugcrowd.com/h/mahmoud_adel</a>) — именные: Verisign $1,000 CSRF → захват аккаунта (DomainScope OAuth state, апр 2018), DigitalOcean (апр 2019), Pinterest и Dell (2018). <span class="sev sev-critical">Critical</span></li>
@@ -313,6 +320,14 @@
         </section>
 
         <section class="section">
+          <h2 class="section-title">Лаборатории</h2>
+          <ul class="bullets">
+            <li><a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges">Hack The Box — подтверждённые бейджи · Топ 0.55% Pro Hacker</a></li>
+            <li><a class="link" href="https://tryhackme.com/p/iamkernel">TryHackMe — @iamkernel · Топ 1%</a></li>
+          </ul>
+        </section>
+
+        <section class="section" id="security-research">
           <h2 class="section-title">Исследования безопасности</h2>
           <ul class="research-list">
             <li><strong>Verisign CSRF → захват аккаунта</strong> — отсутствие OAuth state → перехват Google-ссылки → устойчивый захват аккаунта и установка пароля (награда $1,000, Hall of Fame, апр 2018). <a class="link" href="https://mahmoudouf.com/ru/blogs/verisign-csrf-account-takeover-domainscope/">Разбор ↗</a></li>
