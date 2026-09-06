@@ -259,7 +259,7 @@ params:
     button:
       enable: true
       name: "Resume"
-      url: /MahmoudAdel_Cybersecurity_Resume.pdf
+      url: /MahmoudAdel_Cybersecurity_Resume.pdf?v=2
       download: true
       newPage: false
     socialLinks:
