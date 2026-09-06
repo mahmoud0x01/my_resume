@@ -239,9 +239,9 @@ var PORTFOLIO_DATA = (function () {
             id: 'exp-bastion', type: 'experience', cat: 'experience',
             name: 'Security Engineering Intern', icon: 'fas fa-user-secret',
             subtitle: 'Bastion Security',
-            date: 'May 2024 - Sep 2024',
-            companyUrl: '',
-            content: 'Authorized scope: assessed 8 web apps & 2 network ranges for auth bypass, injection and privesc — 11 validated findings (6 Linux + 4 Windows root), 8 reports 0 rework. Ranked Top 5 / 100 in Bastion internal CTF.',
+            date: 'July 10 – September 10, 2024',
+            companyUrl: 'https://bastion-tech.ru/',
+            content: 'Completed Penetration Testing & Application Security internship track: company-led lectures, CTF challenges, vulnerability-exploitation lab work. Researched web cache-attack techniques (cache poisoning/deception) [PLACEHOLDER: needs real detail from Mahmoud on methodology/findings before this becomes a full bullet — do not invent specifics]. Ranked Top 5 of 100 in internal penetration-testing and privilege-escalation challenges.',
             relatedSkills: ['redteam', 'privesc', 'vulnassess', 'linux', 'netsec', 'websec'],
         },
     ];
