@@ -78,23 +78,13 @@ languages:
           - company: "Bastion Security"
             companyUrl: "https://bastion-tech.ru/"
             jobs:
-              - name: "Стажёр по инженерии безопасности (Scope: оценка веб/API и сетей)"
-                date: "Июль 2024 – Сентябрь 2024"
+              - name: "Стажёр по инженерии безопасности"
+                date: "10 июля – 10 сентября 2024"
                 content: |
-                  **Роль и scope:** Стажёр — только авторизованные оценки, под ревью команды. Без самостоятельных клиентских проектов.
+                  Завершил стажировку по треку Penetration Testing & Application Security: лекции компании, CTF-задачи, лабораторные работы по эксплуатации уязвимостей.
 
-                  **Контекст:** Авторизованные оценки веб-приложений и сетей в контролируемых и согласованных с клиентом окружениях в рамках стажировки в Bastion.
-
-                  **Обязанности:**
-                  - Вручную оценил **8 веб-приложений и 2 сетевых диапазона** — аутентификация, обработка входных данных и границы привилегий
-                  - Проверял векторы обхода аутентификации, инъекций и повышения привилегий — **11 подтверждённых находок** (обход аутентификации / инъекция / повышение привилегий)
-                  - Валидировал находки до уровня root: **6 Linux + 4 Windows** валидаций до root в лабах/авторизованных целях
-                  - Подготовил **8 отчётов без доработок** — пути эксплуатации и рекомендации по remediation; представил результаты на внутреннее ревью
-
-                  **Результаты:** **11 подтверждённых находок · 8 отчётов · 0 доработок · Топ-5 / 100 CTF**
-                  - Подготовил **8** технических отчётов, проверенных старшей командой, с **0 циклов доработки**
-                  - Продемонстрировал дисциплину ручной валидации и отчётности в роли стажёра
-                  - Внешний показатель: **Топ-5 / 100** во внутреннем CTF Bastion (задачи по пентесту и повышению привилегий)
+                  - Изучал техники атак на веб-кеш (cache poisoning/deception) [PLACEHOLDER: needs real detail from Mahmoud on methodology/findings before this becomes a full bullet — do not invent specifics].
+                  - Занял Топ-5 из 100 во внутренних задачах по тестированию на проникновение и повышению привилегий.
 
                   [**Смотреть подтверждение →**](/Documents/CRF_internship_company_bastion.pdf)
 
@@ -404,23 +394,13 @@ params:
       - company: "Bastion Security"
         companyUrl: "https://bastion-tech.ru/"
         jobs:
-          - name: "Security Engineering Intern (Authorized Scope: Web/API & Network Assessment)"
-            date: "July 2024 - September 2024"
+          - name: "Security Engineering Intern"
+            date: "July 10 – September 10, 2024"
             content: |
-              **Role & Scope:** Intern — authorized assessments only, team-reviewed. No independent client engagements.
+              Completed Penetration Testing & Application Security internship track: company-led lectures, CTF challenges, vulnerability-exploitation lab work.
 
-              **Context:** Authorized web and network assessments in controlled and client-authorized environments as part of Bastion's internship program.
-
-              **Responsibilities:**
-              - Manually assessed **8 web apps & 2 network ranges** — authentication, input handling and privilege boundaries
-              - Tested for authentication bypass, injection and privilege-escalation paths — **11 validated findings** (auth bypass/injection/privesc)
-              - Validated findings to root level: **6 Linux + 4 Windows** root validations in lab/authorized targets
-              - Documented **8 reports with 0 rework** — exploitation paths and remediation notes; presented results for internal review
-
-              **Outcomes:** **11 validated findings · 8 reports · 0 rework · Top 5 / 100 CTF**
-              - Delivered **8** technical reports reviewed by senior team with **0 rework** cycles
-              - Demonstrated hands-on validation and reporting discipline in an intern capacity
-              - External measure: **Top 5 / 100** in Bastion internal CTF (penetration-testing and privilege-escalation challenges)
+              - Researched web cache-attack techniques (cache poisoning/deception) [PLACEHOLDER: needs real detail from Mahmoud on methodology/findings before this becomes a full bullet — do not invent specifics].
+              - Ranked Top 5 of 100 in internal penetration-testing and privilege-escalation challenges.
 
               [**View Credential →**](/Documents/CRF_internship_company_bastion.pdf)
 
