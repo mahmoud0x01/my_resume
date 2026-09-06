@@ -241,7 +241,7 @@ var PORTFOLIO_DATA = (function () {
             subtitle: 'Bastion Security',
             date: 'July 10 – September 10, 2024',
             companyUrl: 'https://bastion-tech.ru/',
-            content: 'Completed Penetration Testing & Application Security internship track: company-led lectures, CTF challenges, vulnerability-exploitation lab work. Researched web cache-attack techniques (cache poisoning/deception) [PLACEHOLDER: needs real detail from Mahmoud on methodology/findings before this becomes a full bullet — do not invent specifics]. Ranked Top 5 of 100 in internal penetration-testing and privilege-escalation challenges.',
+            content: 'Completed Penetration Testing & Application Security internship track: company-led lectures, CTF challenges, vulnerability-exploitation lab work. Conducted a research project analyzing web application cache-attack techniques. Ranked Top 5 of 100 in internal penetration-testing and privilege-escalation challenges.',
             relatedSkills: ['redteam', 'privesc', 'vulnassess', 'linux', 'netsec', 'websec'],
         },
     ];
