@@ -10,7 +10,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Mahmoud Adel",
-  "jobTitle": "Application Security & Offensive Security Engineer",
+  "jobTitle": "{{ if eq .Site.Language.Lang "ru" }}Junior специалист по анализу защищённости (пентест){{ else }}Application Security & Offensive Security Engineer{{ end }}",
   "url": "https://mahmoudouf.com/",
   "image": "https://mahmoudouf.com/images/me-avatar.png",
   "description": "{{ .Site.Params.description | plainify }}",
