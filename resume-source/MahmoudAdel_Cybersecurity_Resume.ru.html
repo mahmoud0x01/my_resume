@@ -4,208 +4,180 @@
   <meta charset="utf-8">
   <title>Махмуд Адель — Резюме</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
     @page { size: A4; margin: 0; }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: #ffffff; }
     body {
-      color: #1f2f42;
-      font-family: "Inter", "Liberation Sans", Arial, sans-serif;
-      font-size: 9pt;
-      line-height: 1.42;
+      color: #333333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+      font-size: 8.7pt;
+      line-height: 1.4;
     }
     .layout { width: 210mm; border-collapse: collapse; table-layout: fixed; }
-    /* ---- Sidebar (light FlowCV rail) ---- */
+    /* ---- Sidebar (FlowCV grayscale rail) ---- */
     .sidebar {
       width: 68mm;
       padding: 8mm 6mm 8mm;
       vertical-align: top;
-      color: #2b3a4a;
-      background: #eef1f4;
-      border-right: 1px solid rgba(15,118,110,0.18);
+      color: #333333;
+      background: #ECEFF1;
     }
-    .photo-wrap { text-align: center; margin: 0 0 4mm; }
+    .photo-wrap { margin: 0 0 4mm; }
     .portrait {
-      width: 32mm;
-      height: 32mm;
-      display: inline-block;
-      border: 2px solid rgba(15,118,110,0.55);
-      border-radius: 50%;
+      display: block;
+      width: 100%;
+      height: auto;
+      border: none;
+      border-radius: 12px;
       object-fit: cover;
-      background: #ffffff;
+      background: #D8DBDF;
     }
     .side-name {
       margin: 0;
-      color: #12253c;
-      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
-      font-size: 20pt;
-      font-weight: 700;
+      color: #222222;
+      font-size: 22pt;
+      font-weight: 800;
       letter-spacing: -0.4pt;
       line-height: 1.05;
       text-align: center;
     }
     .side-role {
       margin: 2mm 0 0;
-      color: #0f766e;
-      font-size: 9pt;
-      font-weight: 700;
+      color: #555555;
+      font-size: 11pt;
+      font-weight: 400;
       line-height: 1.3;
       text-align: center;
     }
     .side-degree {
       margin: 1mm 0 0;
-      color: #5b6b7f;
-      font-size: 7.8pt;
+      color: #555555;
+      font-size: 8.5pt;
       text-align: center;
     }
     .side-section { margin: 5mm 0 0; }
-    .side-title {
-      margin: 0 0 2mm;
-      padding-bottom: 1.2mm;
-      color: #0f766e;
-      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
-      border-bottom: 1.5px solid rgba(15,118,110,0.35);
-      font-size: 8.5pt;
+    .side-title,
+    .section-title {
+      margin: 0 0 2.5mm;
+      padding: 1.4mm 0;
+      color: #2b2b2b;
+      border-top: 1px solid #333333;
+      border-bottom: 1px solid #333333;
+      font-size: 10pt;
       font-weight: 700;
-      letter-spacing: 1.4pt;
+      letter-spacing: 1pt;
+      line-height: 1.3;
       text-transform: uppercase;
+      text-align: center;
     }
     .contact-list { margin: 0; padding: 0; list-style: none; }
-    .contact-list li { margin: 0 0 1.4mm; font-size: 8.2pt; line-height: 1.35; }
-    .contact-list a { color: #0f766e; font-weight: 600; text-decoration: none; }
-    .contact-label { display: inline-block; min-width: 17mm; color: #5b6b7f; font-weight: 700; }
-    .side-location { margin: 2mm 0 0; color: #5b6b7f; font-size: 7.6pt; line-height: 1.4; }
+    .contact-list li { margin: 0 0 1.4mm; color: #333333; font-size: 8.5pt; line-height: 1.35; }
+    .contact-list a { color: #333333; font-weight: 600; text-decoration: none; }
+    .contact-label { display: inline-block; min-width: 17mm; color: #555555; font-weight: 700; }
+    .side-location { margin: 2mm 0 0; color: #555555; font-size: 8pt; line-height: 1.4; }
     .skill-group { margin: 0 0 2.4mm; }
     .skill-group:last-child { margin-bottom: 0; }
-    .skill-label { margin: 0 0 1mm; color: #12253c; font-size: 8.2pt; font-weight: 700; letter-spacing: 0.6pt; }
-    .skill-pills { margin: 0; padding: 0; }
+    .skill-label { margin: 0 0 1mm; color: #222222; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.6pt; }
+    .skill-pills { margin: 0; padding: 0; color: #333333; font-size: 8.5pt; line-height: 1.45; }
     .skill-pills span {
-      display: inline-block;
-      margin: 0 1mm 1.2mm 0;
-      padding: 0.6mm 2mm;
-      color: #2b3a4a;
-      background: #ffffff;
-      border: 1px solid rgba(31,47,66,0.16);
-      border-radius: 999px;
-      font-size: 7.6pt;
-      line-height: 1.3;
-      white-space: nowrap;
+      display: inline;
+      margin: 0;
+      padding: 0;
+      color: #333333;
+      background: none;
+      border: none;
+      border-radius: 0;
+      font-size: 8.5pt;
+      line-height: 1.45;
     }
+    .skill-pills span::after { content: ", "; }
+    .skill-pills span:last-child::after { content: ""; }
     .side-list { margin: 0; padding: 0; list-style: none; }
-    .side-list li { margin: 0 0 2mm; font-size: 8.3pt; line-height: 1.4; }
-    .side-list strong { color: #12253c; }
-    .side-list a { color: #0f766e; font-weight: 600; text-decoration: none; }
-    .muted { color: #66758a; }
+    .side-list li { margin: 0 0 2mm; color: #333333; font-size: 8.5pt; line-height: 1.4; }
+    .side-list strong { color: #222222; }
+    .side-list a { color: #333333; font-weight: 600; text-decoration: none; }
+    .muted { color: #777777; }
     /* ---- Main column ---- */
     .main { padding: 8mm 8mm 8mm; vertical-align: top; background: #ffffff; }
     .section { margin: 0 0 5mm; }
-    .section-title {
-      margin: 0 0 2.2mm;
-      padding-bottom: 1.4mm;
-      color: #0f766e;
-      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
-      border-bottom: 1.5px solid rgba(15,118,110,0.30);
-      font-size: 10pt;
-      font-weight: 700;
-      letter-spacing: 1.6pt;
-      text-transform: uppercase;
-    }
-    .summary { margin: 0; color: #334155; font-size: 9pt; line-height: 1.5; }
-    .summary em { color: #0f766e; font-style: normal; font-weight: 700; }
-    .portfolio-line { margin: 2mm 0 0; font-size: 8.4pt; }
-    .portfolio-line a { color: #0f766e; font-weight: 700; text-decoration: none; }
-    .metric-strip { margin: 3mm 0 0; padding: 0; }
+    .summary { margin: 0; color: #333333; font-size: 8.7pt; line-height: 1.4; }
+    .summary em { color: #222222; font-style: normal; font-weight: 700; }
+    .portfolio-line { margin: 2mm 0 0; color: #333333; font-size: 8.5pt; }
+    .portfolio-line a { color: #333333; font-weight: 700; text-decoration: none; }
+    .metric-strip { margin: 3mm 0 0; padding: 0; color: #333333; font-size: 8.7pt; }
     .metric-pill {
-      display: inline-block;
-      width: 34mm;
-      margin: 0 2.5mm 0 0;
-      padding: 2.4mm 2mm;
-      vertical-align: top;
-      text-align: center;
-      color: #12253c;
-      background: rgba(15,118,110,0.07);
-      border: 1px solid rgba(15,118,110,0.35);
-      border-radius: 2.5mm;
+      display: inline;
+      margin: 0;
+      padding: 0;
+      color: #333333;
+      background: none;
+      border: none;
+      border-radius: 0;
     }
-    .metric-pill:last-child { margin-right: 0; }
-    .metric-num {
-      display: block;
-      color: #12253c;
-      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
-      font-size: 12pt;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-    .metric-label {
-      display: block;
-      margin-top: 1mm;
-      color: #0f766e;
-      font-size: 7pt;
-      font-weight: 700;
-      letter-spacing: 0.7pt;
-      text-transform: uppercase;
-    }
+    .metric-pill + .metric-pill::before { content: " · "; color: #555555; }
+    .metric-num { display: inline; color: #222222; font-size: 11pt; font-weight: 800; line-height: 1.2; }
+    .metric-label { display: inline; margin-left: 1.5mm; color: #555555; font-size: 8pt; font-weight: 700; letter-spacing: 0.6pt; text-transform: uppercase; }
     .entry { margin: 0 0 4mm; }
     .entry:last-child { margin-bottom: 0; }
     .entry-head { width: 100%; border-collapse: collapse; }
-    .entry-title { margin: 0; color: #12253c; font-size: 10pt; font-weight: 700; line-height: 1.25; }
-    .entry-org { margin: 1mm 0 0; color: #0f766e; font-size: 9pt; font-weight: 700; }
-    .entry-org a { color: #0f766e; text-decoration: none; }
+    .entry-title { margin: 0; color: #222222; font-size: 10pt; font-weight: 700; line-height: 1.25; }
+    .entry-org { margin: 1mm 0 0; color: #333333; font-size: 9pt; font-weight: 700; }
+    .entry-org a { color: #333333; text-decoration: none; }
     .entry-date {
       width: 44mm;
       padding-left: 3mm;
-      color: #66758a;
-      font-family: "Liberation Mono", monospace;
+      color: #777777;
+      font-family: "Liberation Mono", "DejaVu Sans Mono", monospace;
       font-size: 8pt;
       text-align: right;
       vertical-align: top;
       white-space: nowrap;
     }
     ul.bullets { margin: 1.6mm 0 0; padding: 0 0 0 4mm; }
-    ul.bullets li { margin: 0 0 1.2mm; color: #34455a; font-size: 8.8pt; line-height: 1.45; }
-    ul.bullets li::marker { color: #0f766e; }
-    .cred-link-line { margin: 1.6mm 0 0; font-size: 8.2pt; }
-    .cred-link-line a { color: #0f766e; font-weight: 700; text-decoration: none; }
-    .evidence { margin: 0; padding: 0; list-style: none; }
+    ul.bullets li { margin: 0 0 1.2mm; color: #333333; font-size: 8.7pt; line-height: 1.4; }
+    ul.bullets li::marker { color: #555555; }
+    ul.bullets strong { color: #222222; }
+    .cred-link-line { margin: 1.6mm 0 0; color: #333333; font-size: 8.2pt; }
+    .cred-link-line a { color: #333333; font-weight: 700; text-decoration: none; }
+    .evidence { list-style: disc; padding: 0 0 0 4mm; margin: 1mm 0 0; }
     .evidence li {
-      margin: 0 0 2.4mm;
-      padding: 2.2mm 3mm;
-      color: #334155;
-      background: rgba(15,118,110,0.05);
-      border: 1px solid rgba(15,118,110,0.20);
-      border-left: 3px solid rgba(15,118,110,0.65);
-      border-radius: 2mm;
-      font-size: 8.8pt;
-      line-height: 1.45;
+      margin: 0 0 1mm;
+      padding: 0 0 0 0.4mm;
+      color: #333333;
+      background: none;
+      border: none;
+      font-size: 8.7pt;
+      line-height: 1.4;
     }
-    .evidence strong { color: #12253c; }
+    .evidence li:last-child { margin-bottom: 0; }
+    .evidence strong { color: #222222; }
     .sev {
-      display: inline-block;
-      margin-left: 1.6mm;
-      padding: 0.5mm 2.2mm;
-      border-radius: 999px;
-      font-size: 7pt;
+      display: inline;
+      margin: 0 0 0 1.5mm;
+      padding: 0;
+      color: #555555;
+      background: none;
+      border: none;
+      border-radius: 0;
+      font-size: 7.5pt;
       font-weight: 700;
       letter-spacing: 0.5pt;
       text-transform: uppercase;
       white-space: nowrap;
-      vertical-align: 1px;
     }
-    .sev-critical { color: #7f1d1d; background: rgba(220,38,38,0.10); border: 1px solid rgba(220,38,38,0.35); }
-    .sev-high { color: #78350f; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.40); }
-    .sev-info { color: #0f766e; background: rgba(15,118,110,0.10); border: 1px solid rgba(15,118,110,0.40); }
-    .link { color: #0f766e; font-weight: 600; text-decoration: none; }
+    .link { color: #333333; font-weight: 600; text-decoration: none; }
     .research-list { margin: 0; padding: 0; list-style: none; }
-    .research-list li { margin: 0 0 2.6mm; font-size: 8.8pt; line-height: 1.45; color: #334155; }
-    .research-list strong { color: #12253c; }
+    .research-list li { margin: 0 0 2.6mm; font-size: 8.7pt; line-height: 1.4; color: #333333; }
+    .research-list strong { color: #222222; }
     .footer-note {
       margin: 1mm 0 0;
       padding-top: 2mm;
-      color: #77869a;
-      border-top: 1px solid rgba(31,47,66,0.14);
+      color: #777777;
+      border-top: 1px solid #CCCCCC;
       font-size: 7.6pt;
       line-height: 1.45;
     }
+    a { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   </style>
 </head>
 <body>

@@ -4,198 +4,177 @@
   <meta charset="utf-8">
   <title>Mahmoud Adel — Cybersecurity Resume</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
     @page { size: A4; margin: 0; }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: #ffffff; }
     body {
-      color: #212529;
-      font-family: "Inter", "Liberation Sans", Arial, sans-serif;
-      font-size: 8.4pt;
-      line-height: 1.38;
+      color: #333;
+      font-family: Helvetica, Arial, "Liberation Sans", sans-serif;
+      font-size: 8.7pt;
+      line-height: 1.4;
     }
     .page { width: 210mm; background: #ffffff; }
     .layout { display: table; width: 100%; border-collapse: collapse; }
-    /* ---- Sidebar (FlowCV light gray) ---- */
+    /* ---- Sidebar (FlowCV light gray, flat) ---- */
     .sidebar {
       display: table-cell;
-      width: 67mm;
-      padding: 7mm 6mm 7mm;
+      width: 68mm;
+      padding: 6mm;
       vertical-align: top;
-      color: #212529;
-      background: #E9ECEF;
+      color: #333;
+      background: #ECEFF1;
     }
     .photo {
       display: block;
-      width: 36mm;
-      height: 36mm;
-      margin: 0 auto 3mm;
-      border: 2px solid #ffffff;
-      border-radius: 50%;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      margin: 0 0 4mm;
+      border: none;
+      border-radius: 12px;
       object-fit: cover;
     }
     .name {
       margin: 0;
-      color: #111418;
-      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
-      font-size: 19pt;
-      font-weight: 700;
-      letter-spacing: -0.4pt;
+      color: #222;
+      font-size: 22pt;
+      font-weight: 800;
       line-height: 1.05;
-      text-align: center;
+      text-align: left;
     }
     .role {
       margin: 2mm 0 0;
-      color: #134E4A;
-      font-size: 8.6pt;
+      color: #555;
+      font-size: 11pt;
+      font-weight: 400;
+      line-height: 1.3;
+      text-align: left;
+    }
+    .positioning {
+      margin: 1mm 0 0;
+      color: #555;
+      font-size: 8.5pt;
+      line-height: 1.35;
+      text-align: left;
+    }
+    .side-section { margin: 4mm 0 0; }
+    .side-title,
+    .main-title {
+      margin: 0 0 2.5mm;
+      padding: 2mm 0;
+      color: #2b2b2b;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      font-size: 10pt;
       font-weight: 700;
       line-height: 1.3;
       text-align: center;
     }
-    .positioning {
-      margin: 1mm 0 0;
-      color: #495057;
-      font-size: 7.4pt;
-      line-height: 1.35;
-      text-align: center;
-    }
-    .side-section { margin: 4.5mm 0 0; }
-    .side-title {
-      margin: 0 0 2mm;
-      padding-bottom: 1.2mm;
-      color: #111418;
-      border-bottom: 1.4px solid #134E4A;
-      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
-      font-size: 8pt;
-      font-weight: 700;
-      letter-spacing: 1.2pt;
-      text-transform: uppercase;
-    }
     .contact-list { margin: 0; padding: 0; list-style: none; }
-    .contact-list li { margin: 0 0 1.2mm; color: #343A40; font-size: 7.6pt; line-height: 1.35; }
+    .contact-list li { margin: 0 0 1.2mm; color: #333; font-size: 8.5pt; line-height: 1.4; }
     .contact-list .label {
-      display: block;
-      color: #6C757D;
-      font-size: 6.6pt;
+      display: inline;
+      color: #333;
+      font-size: 8.5pt;
       font-weight: 700;
-      letter-spacing: 0.6pt;
-      text-transform: uppercase;
     }
-    .contact-list a, .side-list a, .summary a { color: #0B6E5E; text-decoration: none; }
-    .summary { margin: 0; color: #343A40; font-size: 7.9pt; line-height: 1.42; }
-    .summary em { color: #134E4A; font-style: normal; font-weight: 700; }
+    .contact-list a, .side-list a, .summary a, .main a { color: #333; text-decoration: none; }
+    .sidebar a:not(.verify-link)::after, .main a:not(.verify-link)::after { content: " \2197"; font-size: 0.9em; }
+    .summary { margin: 0; color: #333; font-size: 8.7pt; line-height: 1.4; }
     .skill-group { margin: 0 0 2.2mm; }
     .skill-group:last-child { margin-bottom: 0; }
     .skill-label {
       margin: 0 0 1mm;
-      color: #111418;
-      font-size: 7.6pt;
-      font-weight: 700;
-      letter-spacing: 0.5pt;
+      color: #222;
+      font-size: 8.7pt;
+      font-weight: 800;
     }
-    .skill-pills { margin: 0; padding: 0; }
+    .skill-pills { margin: 0; padding: 0; color: #333; font-size: 8.7pt; line-height: 1.4; }
     .skill-pills span {
-      display: inline-block;
-      margin: 0 1mm 1mm 0;
-      padding: 0.5mm 2mm;
-      color: #212529;
-      background: #FFFFFF;
-      border: 1px solid #ADB5BD;
-      border-radius: 999px;
-      font-size: 7pt;
-      line-height: 1.3;
-      white-space: nowrap;
+      display: inline;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: none;
+      border: none;
+      font-size: 8.7pt;
+      line-height: 1.4;
+      white-space: normal;
     }
+    .skill-pills span::after { content: ", "; }
+    .skill-pills span:last-child::after { content: ""; }
     .side-list { margin: 0; padding: 0; list-style: none; }
-    .side-list li { margin: 0 0 2mm; padding: 0; color: #343A40; font-size: 7.7pt; line-height: 1.38; }
+    .side-list li { margin: 0 0 2mm; padding: 0; color: #333; font-size: 8.7pt; line-height: 1.4; }
     .side-list li:last-child { margin-bottom: 0; }
-    .side-list strong { color: #111418; }
-    .side-list .muted { color: #6C757D; }
-    .verify-link { display: inline-block; margin-top: 0.6mm; font-size: 7.4pt; font-weight: 600; }
+    .side-list strong { color: #222; }
+    .side-list .muted { color: #555; }
+    .verify-link { display: inline-block; margin-top: 0.6mm; font-size: 8.5pt; font-weight: 400; }
     /* ---- Main (white) ---- */
     .main {
       display: table-cell;
-      padding: 7mm 8mm 7mm;
+      padding: 6mm 7mm;
       vertical-align: top;
       background: #ffffff;
     }
     .main-section { margin: 0 0 5mm; }
     .main-section:last-child { margin-bottom: 0; }
-    .main-title {
-      margin: 0 0 2.5mm;
-      padding-bottom: 1.2mm;
-      color: #111418;
-      border-bottom: 1.4px solid #134E4A;
-      font-family: "Space Grotesk", "Liberation Sans", Arial, sans-serif;
-      font-size: 9pt;
-      font-weight: 700;
-      letter-spacing: 1.2pt;
-      text-transform: uppercase;
-    }
     .entry { margin: 0 0 3.5mm; }
     .entry:last-child { margin-bottom: 0; }
     .entry-head { width: 100%; border-collapse: collapse; }
-    .entry-title { margin: 0; color: #111418; font-size: 9.4pt; font-weight: 700; line-height: 1.2; }
-    .entry-org { margin: 0.8mm 0 0; color: #134E4A; font-size: 8.2pt; font-weight: 700; }
-    .entry-org a { color: #134E4A; text-decoration: none; }
+    .entry-title { margin: 0; color: #222; font-size: 9pt; font-weight: 700; line-height: 1.2; }
+    .entry-org { margin: 0.8mm 0 0; color: #333; font-size: 8.7pt; font-weight: 700; }
+    .entry-org a { color: #333; text-decoration: none; }
     .entry-date {
       width: 38mm;
       padding-left: 2mm;
-      color: #6C757D;
-      font-family: "Liberation Mono", monospace;
-      font-size: 7.4pt;
+      color: #555;
+      font-size: 8.5pt;
       text-align: right;
       vertical-align: top;
       white-space: nowrap;
     }
     ul.bullets { margin: 1mm 0 0; padding: 0 0 0 4mm; }
-    ul.bullets li { margin: 0 0 1mm; padding-left: 0.4mm; color: #343A40; font-size: 8pt; line-height: 1.38; }
-    ul.bullets li::marker { color: #134E4A; }
-    ul.bullets strong { color: #111418; }
-    .cred-link-line { margin: 1.2mm 0 0; font-size: 7.6pt; }
-    .cred-link-line a { color: #0B6E5E; font-weight: 600; text-decoration: none; }
-    .cred-link-line .muted { color: #6C757D; }
-    .evidence-list { list-style: none; padding: 0; margin: 0; }
+    ul.bullets li { margin: 0 0 1mm; padding-left: 0.4mm; color: #333; font-size: 8.7pt; line-height: 1.4; }
+    ul.bullets li::marker { color: #333; }
+    ul.bullets strong { color: #222; }
+    .cred-link-line { margin: 1.2mm 0 0; font-size: 8.5pt; }
+    .cred-link-line a { color: #333; font-weight: 400; text-decoration: none; }
+    .cred-link-line .muted { color: #555; }
+    .evidence-list { list-style: disc; padding: 0 0 0 4mm; margin: 1mm 0 0; }
     .evidence-list li {
-      margin: 0 0 2mm;
-      padding: 2mm 2.5mm;
-      color: #343A40;
-      background: #F1F3F5;
-      border-left: 2.4px solid #134E4A;
-      border-radius: 2mm;
-      font-size: 7.9pt;
+      margin: 0 0 1mm;
+      padding: 0 0 0 0.4mm;
+      color: #333;
+      background: none;
+      border: none;
+      font-size: 8.7pt;
       line-height: 1.4;
     }
     .evidence-list li:last-child { margin-bottom: 0; }
-    .evidence-list strong { color: #111418; }
-    .link { color: #0B6E5E; text-decoration: none; }
+    .evidence-list strong { color: #222; }
+    .link { color: #333; text-decoration: none; }
     .sev {
-      display: inline-block;
-      margin-left: 1.2mm;
-      padding: 0.3mm 2mm;
-      border-radius: 999px;
-      font-size: 6.6pt;
+      display: inline;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: none;
+      border: none;
+      font-size: inherit;
       font-weight: 700;
-      letter-spacing: 0.4pt;
-      text-transform: uppercase;
-      vertical-align: 1px;
-      white-space: nowrap;
+      vertical-align: baseline;
+      white-space: normal;
     }
-    .sev-critical { color: #7F1D1D; background: #FDECEC; border: 1px solid #E8A0A0; }
-    .sev-high { color: #7C4A03; background: #FDF3E0; border: 1px solid #E3C07A; }
-    .sev-info { color: #0B4F47; background: #E3F2EF; border: 1px solid #93C9BE; }
-    .edu-line { margin: 0; color: #343A40; font-size: 8pt; line-height: 1.4; }
-    .edu-line strong { color: #111418; }
-    .edu-line .muted { color: #6C757D; }
+    .edu-line { margin: 0; color: #333; font-size: 8.7pt; line-height: 1.4; }
+    .edu-line strong { color: #222; }
+    .edu-line .muted { color: #555; }
     .footer-note {
       margin: 4mm 0 0;
       padding-top: 2mm;
-      color: #6C757D;
-      border-top: 1px solid #DEE2E6;
-      font-size: 7pt;
+      color: #555;
+      border-top: 1px solid #333;
+      font-size: 7.5pt;
       line-height: 1.4;
     }
-    a { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   </style>
 </head>
 <body>
@@ -211,14 +190,14 @@
         <section class="side-section">
           <h2 class="side-title">Contact</h2>
           <ul class="contact-list">
-            <li><span class="label">Email</span><a href="mailto:contact@mahmoudouf.com">contact@mahmoudouf.com</a></li>
-            <li><span class="label">Location</span>Based in Egypt (UTC+2)</li>
-            <li><span class="label">Availability</span>Open to Remote &amp; Global Relocation<br>Visa Sponsorship / B2B Contract</li>
-            <li><span class="label">Portfolio</span><a href="https://mahmoudouf.com/">mahmoudouf.com</a></li>
-            <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/mahmoudadel0x01/">linkedin.com/in/mahmoudadel0x01</a></li>
-            <li><span class="label">GitHub</span><a href="https://github.com/mahmoud0x01">github.com/mahmoud0x01</a></li>
-            <li><span class="label">Telegram</span><a href="https://t.me/rdmsr">t.me/rdmsr</a></li>
-            <li><span class="label">Date of Birth</span>22/09/2002</li>
+            <li><span class="label">Email:</span> <a href="mailto:contact@mahmoudouf.com">contact@mahmoudouf.com</a></li>
+            <li><span class="label">Location:</span> Based in Egypt (UTC+2)</li>
+            <li><span class="label">Availability:</span> Open to Remote &amp; Global Relocation<br>Visa Sponsorship / B2B Contract</li>
+            <li><span class="label">Portfolio:</span> <a href="https://mahmoudouf.com/">mahmoudouf.com</a></li>
+            <li><span class="label">LinkedIn:</span> <a href="https://www.linkedin.com/in/mahmoudadel0x01/">linkedin.com/in/mahmoudadel0x01</a></li>
+            <li><span class="label">GitHub:</span> <a href="https://github.com/mahmoud0x01">github.com/mahmoud0x01</a></li>
+            <li><span class="label">Telegram:</span> <a href="https://t.me/rdmsr">t.me/rdmsr</a></li>
+            <li><span class="label">Date of Birth:</span> 22/09/2002</li>
           </ul>
         </section>
 
@@ -299,7 +278,7 @@
               <li>Conducted a research project analyzing web application cache-attack techniques.</li>
               <li>Ranked <strong>Top 5 of 100</strong> in internal penetration-testing and privilege-escalation challenges.</li>
             </ul>
-            <p class="cred-link-line"><a href="https://mahmoudouf.com/Documents/CRF_internship_company_bastion.pdf">View Credential →</a> <span class="muted">· Bastion Security internship certificate</span></p>
+            <p class="cred-link-line"><a href="https://mahmoudouf.com/Documents/CRF_internship_company_bastion.pdf">View Credential ↗</a> <span class="muted">· Bastion Security internship certificate</span></p>
           </article>
         </section>
 
@@ -311,9 +290,9 @@
         <section class="main-section">
           <h2 class="main-title">Security Recognition &amp; Evidence</h2>
           <ul class="evidence-list">
-            <li><strong>Hall of Fame — 20+ acknowledgments</strong> via Bugcrowd (<a class="link" href="https://bugcrowd.com/h/mahmoud_adel">bugcrowd.com/h/mahmoud_adel</a>) — Named: Verisign $1,000 CSRF→Account Takeover (DomainScope OAuth state, Apr 2018), DigitalOcean (Apr 2019), Pinterest &amp; Dell (2018). <span class="sev sev-critical">Critical</span></li>
-            <li><strong>Competitive &amp; labs:</strong> Bastion internal CTF <strong>Top 5/100</strong>; Hack The Box <strong>Top 0.55% Pro Hacker</strong> — <a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges">verified badges</a>; TryHackMe <strong>Top 1%</strong> — <a class="link" href="https://tryhackme.com/p/iamkernel">@iamkernel</a>. <span class="sev sev-info">Verified</span></li>
-            <li><strong>Detection &amp; research:</strong> ELK SOC Home Lab — 50k+ events, 5 Sigma MITRE-mapped, Kibana dashboards &amp; triage workflow; IR malware triage (isolated Windows 10 VM, Sysmon/KAPE); AppArmor RCE mitigation; API security &amp; AD attack paths. <span class="sev sev-high">Lab</span></li>
+            <li><strong>Hall of Fame — 20+ acknowledgments</strong> via Bugcrowd (<a class="link" href="https://bugcrowd.com/h/mahmoud_adel">bugcrowd.com/h/mahmoud_adel</a>) — Named: Verisign $1,000 CSRF→Account Takeover (DomainScope OAuth state, Apr 2018), DigitalOcean (Apr 2019), Pinterest &amp; Dell (2018). <span class="sev">Critical</span></li>
+            <li><strong>Competitive &amp; labs:</strong> Bastion internal CTF <strong>Top 5/100</strong>; Hack The Box <strong>Top 0.55% Pro Hacker</strong> — <a class="link" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&amp;tab=badges">verified badges</a>; TryHackMe <strong>Top 1%</strong> — <a class="link" href="https://tryhackme.com/p/iamkernel">@iamkernel</a>. <span class="sev">Verified</span></li>
+            <li><strong>Detection &amp; research:</strong> ELK SOC Home Lab — 50k+ events, 5 Sigma MITRE-mapped, Kibana dashboards &amp; triage workflow; IR malware triage (isolated Windows 10 VM, Sysmon/KAPE); AppArmor RCE mitigation; API security &amp; AD attack paths. <span class="sev">Lab</span></li>
           </ul>
         </section>
 
