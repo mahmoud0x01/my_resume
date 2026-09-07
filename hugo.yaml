@@ -422,6 +422,11 @@ params:
     title: "Training & Learning"
     index: false
     items:
+      - title: "Certified Network Security Practitioner (CNSP)"
+        school:
+          name: "The SecOps Group"
+          url: "https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXfCJHnD28VyX4iB70u4nYjCdVbxfcTlxsomPAmHtAXyn2Btp0pzW48xRYvydBmbaSYYE6hWBM38+p4zlE65OXS8="
+        date: "2026"
       - title: "OSCP (In Progress)"
         school:
           name: "OffSec"
@@ -468,6 +473,9 @@ params:
     enable: true
     title: "Credentials"
     items:
+      - title: "Certified Network Security Practitioner (CNSP) — with Merit"
+        content: "The SecOps Group · 2026 · ID 11896945"
+        url: "https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXfCJHnD28VyX4iB70u4nYjCdVbxfcTlxsomPAmHtAXyn2Btp0pzW48xRYvydBmbaSYYE6hWBM38+p4zlE65OXS8="
       - title: "Jr Pentester Completion"
         content: Junior Penetration Tester certification from TryHackMe, demonstrating proficiency in penetration testing methodologies and techniques.
         url: https://tryhackme.com/
