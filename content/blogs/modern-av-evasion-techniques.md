@@ -2,7 +2,7 @@
 title: "Modern AV Evasion Techniques: Understanding Detection and Bypass Methods"
 date: 2024-12-18T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - Red Team
   - AV Evasion

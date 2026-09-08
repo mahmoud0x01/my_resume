@@ -107,7 +107,7 @@ var PORTFOLIO_DATA = (function () {
 
     // ---- Central node ----
     var meNode = {
-        id: 'me', type: 'me', name: 'Mahmoud Adel', cat: 'me',
+        id: 'me', type: 'me', name: 'Mahmoud Ouf', cat: 'me',
         roles: ['Application Security & Offensive Security Engineer', 'B.Sc. Software Engineering'],
         subtitle: 'Application Security & Offensive Security Engineer | B.Sc. Software Engineering',
         terminalTitle: 'zsh — mahmoud@portfolio',

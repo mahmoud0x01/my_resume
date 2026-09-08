@@ -2,7 +2,7 @@
 title: "Пути атак на Active Directory: взгляд Red Team"
 date: 2024-12-12T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Active Directory","Red Team","Penetration Testing","Windows Security","Privilege Escalation","Kerberos"]
 categories: []
 image: /images/ad-attack-paths.png

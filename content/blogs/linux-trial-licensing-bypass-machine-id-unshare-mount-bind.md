@@ -2,7 +2,7 @@
 title: "Linux Third-Party Desktop Software Trial Bypass Vulnerability"
 date: 2026-08-28T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Linux","Trial Bypass","machine-id","unshare","mount","Namespaces","Reverse Engineering","Responsible Disclosure"]
 categories: ["Security Research"]
 image: /images/linux-machine-id-trial-bypass.png

@@ -2,7 +2,7 @@
 title: "Два обхода капчи — IDOR и повторное использование токенов"
 date: 2024-01-25T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Security","Bug Bounty","Web Security","IDOR","CAPTCHA","Vulnerability Research"]
 categories: []
 image: /images/post.jpg

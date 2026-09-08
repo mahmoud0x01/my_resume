@@ -2,7 +2,7 @@
 title: "Основы компьютерной безопасности и бинарного хакинга: концепции и базовые техники"
 date: 2024-01-15T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Security","Binary Hacking","Penetration Testing","Cybersecurity","Exploitation","Buffer Overflow"]
 categories: []
 image: /images/virtual-memory-management.jpeg

@@ -2,7 +2,7 @@
 title: "AppArmor as an RCE Killswitch: A Blue-Team Defense Validation"
 date: 2025-02-10T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - AppArmor
   - Linux

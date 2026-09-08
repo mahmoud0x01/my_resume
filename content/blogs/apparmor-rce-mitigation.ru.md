@@ -2,7 +2,7 @@
 title: "AppArmor как аварийный выключатель RCE: валидация защиты на стороне Blue Team"
 date: 2025-02-10T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - AppArmor
   - Linux

@@ -2,7 +2,7 @@
 title: "Харденинг Linux-серверов: чек-лист для продакшена"
 date: 2024-12-15T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Linux","Security","System Administration","Hardening","Server Security","DevSecOps"]
 categories: []
 image: /images/linux-hardening.png

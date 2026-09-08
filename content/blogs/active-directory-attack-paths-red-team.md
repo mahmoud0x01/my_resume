@@ -2,7 +2,7 @@
 title: "Active Directory Attack Paths: A Red Team Perspective"
 date: 2024-12-12T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - Active Directory
   - Red Team

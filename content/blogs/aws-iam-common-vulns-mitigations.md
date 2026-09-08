@@ -2,7 +2,7 @@
 title: "AWS IAM Common Vulnerabilities & Mitigations: Lessons from Real Bug-Hunting and Lab Simulations"
 date: 2026-03-28T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Cloud Security", "AWS", "IAM", "Misconfiguration", "Privilege Escalation", "Bug Bounty", "DevSecOps"]
 categories: ["Security Research"]
 image: /images/aws-iam-lab.png

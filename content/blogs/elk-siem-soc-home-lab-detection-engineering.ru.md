@@ -2,7 +2,7 @@
 title: "Домашняя SOC-лаборатория на ELK: детектирование с Auditd, Sigma и Kibana — от шумных логов к триажируемым алертам"
 date: 2026-03-15T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["SIEM", "ELK Stack", "SOC", "Detection Engineering", "Sigma", "Kibana", "Auditd", "Incident Response"]
 categories: ["Security Research"]
 image: /images/elk-siem-lab.png
@@ -193,7 +193,7 @@ title: SSH Brute Force — Multiple Failed Passwords
 id: 3f3a2d1e-8b4a-4c9e-9f1d-2a6b7c8d9e0f
 status: experimental
 description: Detects 10+ Failed password from same IP in 5m — lab SSH brute via hydra.
-author: Mahmoud Adel (lab)
+author: Mahmoud Ouf (lab)
 date: 2026/03/14
 logsource:
   product: linux

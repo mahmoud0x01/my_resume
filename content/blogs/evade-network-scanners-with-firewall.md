@@ -2,7 +2,7 @@
 title: "Evade Network Scanners with Firewall"
 date: 2024-01-20T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - Security
   - Network Security

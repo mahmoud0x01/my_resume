@@ -2,7 +2,7 @@
 title: "Two Captcha Bypasses — IDOR and Token Reuse"
 date: 2024-01-25T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - Security
   - Bug Bounty

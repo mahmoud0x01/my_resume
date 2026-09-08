@@ -2,7 +2,7 @@
 title: "Building a Home Lab Monitoring Stack with Prometheus and Grafana"
 date: 2024-12-10T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - Monitoring
   - Prometheus

@@ -2,7 +2,7 @@
 title: "Обход сетевых сканеров с помощью firewall"
 date: 2024-01-20T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Security","Network Security","Firewall","NMAP","Defense","TCP/IP"]
 categories: []
 image: /images/firewall-technique.png

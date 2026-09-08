@@ -2,7 +2,7 @@
 title: "Домашний стек мониторинга на Prometheus и Grafana с Docker"
 date: 2024-12-10T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Monitoring","Prometheus","Grafana","Docker","System Administration","DevOps","Home Lab"]
 categories: []
 image: /images/prometheus-grafana-stack.png

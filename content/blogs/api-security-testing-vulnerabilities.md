@@ -2,7 +2,7 @@
 title: "API Security Testing: Finding Vulnerabilities in Modern Web APIs"
 date: 2024-12-05T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags:
   - API Security
   - Web Security

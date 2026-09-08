@@ -2,7 +2,7 @@
 title: "Современные техники обхода антивирусов: детекция и методы обхода"
 date: 2024-12-18T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["Red Team","AV Evasion","Malware Development","Penetration Testing","Security Research","Offensive Security"]
 categories: []
 image: /images/av-evasion.png

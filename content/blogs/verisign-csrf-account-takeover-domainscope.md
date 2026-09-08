@@ -2,7 +2,7 @@
 title: "$1,000 CSRF to Full Account Takeover at Verisign (DomainScope)"
 date: 2018-04-15T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["CSRF", "OAuth", "Account Takeover", "Bug Bounty", "Verisign", "Web Security", "Responsible Disclosure"]
 categories: ["Security Research"]
 image: /images/verisign-csrf-reward.png

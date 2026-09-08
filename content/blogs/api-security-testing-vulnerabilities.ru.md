@@ -2,7 +2,7 @@
 title: "Тестирование безопасности API: поиск уязвимостей в современных веб-API"
 date: 2024-12-05T10:00:00+00:00
 draft: false
-author: "Mahmoud Adel"
+author: "Mahmoud Ouf"
 tags: ["API Security","Web Security","Penetration Testing","OWASP","Bug Bounty","Application Security"]
 categories: []
 image: /images/api-security.png
