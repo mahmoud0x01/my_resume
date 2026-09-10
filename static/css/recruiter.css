@@ -3407,3 +3407,96 @@ body.light #hero .feature-sub {
 /* 32px tap target alignment */
 .nav-lang-switch .nav-lang-link, .nav-lang-switch .nav-lang-active { min-height:32px; display:inline-flex; align-items:center; justify-content:center; }
 @media (max-width: 360px) { .nav-lang-switch { display:none !important; } }
+
+/* ==== Hero card top caps — decorative badge-chip frames (BUG BOUNTY / CTF) ==== */
+/* Scoped to #hero only (no global leak). Caps are direct first children of
+   a.card.top-card (flex column, overflow:hidden), so width:100% + margin:0
+   already bleeds full-width to the card edges — no negative margin needed
+   (card itself has no padding; padding lives on .inner). Radius 12px top
+   matches .top-card 12px. Decorative: aria-hidden in markup, parent <a>
+   aria-label preserved, always visible (no hover-only), no animation.
+   Touch: parent link is the 44px+ target (min-height 260px card); cap is
+   non-interactive decoration. Focus-visible outline on a.card untouched. */
+#hero .card-cap {
+  position: relative;
+  z-index: 11;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 12px 12px 0 0;
+  font-family: var(--cg-mono, 'Courier New', monospace);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+  animation: none;
+  transition: none;
+}
+#hero .card-cap i {
+  font-size: 0.62rem;
+  line-height: 1;
+}
+/* --bounty: amber prestige (light) — solid gradient keeps 4.5:1 for #7c2d12 */
+#hero .card-cap--bounty {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+  background-color: #f59e0b;
+  color: #7c2d12;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.30);
+}
+/* --ctf: HTB neon green (light) — solid gradient keeps 4.5:1 for #1a2e05 */
+#hero .card-cap--ctf {
+  background: linear-gradient(180deg, #9fef00 0%, #84cc16 100%);
+  background-color: #9fef00;
+  color: #1a2e05;
+  border-bottom: 1px solid rgba(132, 204, 22, 0.30);
+}
+/* Dark mode: deep-tinted bars with pale text (glass-friendly, high contrast) */
+body.dark #hero .card-cap--bounty,
+html.dark #hero .card-cap--bounty {
+  background: linear-gradient(180deg, #7c2d12 0%, #451a03 100%);
+  background-color: #451a03;
+  color: #fde68a;
+  border-bottom-color: rgba(245, 158, 11, 0.30);
+}
+body.dark #hero .card-cap--ctf,
+html.dark #hero .card-cap--ctf {
+  background: linear-gradient(180deg, #243b06 0%, #1a2e05 100%);
+  background-color: #1a2e05;
+  color: #ecfccb;
+  border-bottom-color: rgba(132, 204, 22, 0.30);
+}
+/* Light-mode re-affirm (repo convention: base card is dark glass, light via :not(.dark)/.light) */
+body:not(.dark) #hero .card-cap--bounty,
+html:not(.dark) #hero .card-cap--bounty,
+body.light #hero .card-cap--bounty {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+  background-color: #f59e0b;
+  color: #7c2d12;
+  border-bottom-color: rgba(217, 119, 6, 0.30);
+}
+body:not(.dark) #hero .card-cap--ctf,
+html:not(.dark) #hero .card-cap--ctf,
+body.light #hero .card-cap--ctf {
+  background: linear-gradient(180deg, #9fef00 0%, #84cc16 100%);
+  background-color: #9fef00;
+  color: #1a2e05;
+  border-bottom-color: rgba(132, 204, 22, 0.30);
+}
+@media (max-width: 480px) {
+  #hero .card-cap { font-size: 0.58rem; padding: 6px 8px; letter-spacing: 0.10em; }
+  #hero .card-cap i { font-size: 0.58rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero .card-cap { animation: none !important; transition: none !important; }
+}
