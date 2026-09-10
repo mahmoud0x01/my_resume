@@ -2718,7 +2718,7 @@ a.hero-proof-card:focus-visible {
     line-height: 1.25;
 }
 /* ==== HERO CARDS — cyber_achievement_cards.html art scaled to old frames ~0.65x (2026-09-10) — dark-only art ==== */
-/* Tokens copied verbatim from art (:root --orange #ff941d/#ffbd58 + --green #82ff38/#b8ff73), scoped under #hero. .scene -> .hero-cards-page. Cards stay dark even in light mode per art (no light-mode overrides). Geometry scaled to 620px frames; notch/square clip-paths, badge/cube SVGs, scan/hover/arrow animations verbatim. */
+/* Tokens copied verbatim from art (:root --orange #ff941d/#ffbd58 + --green #82ff38/#b8ff73), scoped under #hero. .scene -> .hero-cards-page. Dark is default; light-mode palette below under body:not(.dark)/html:not(.dark)/body.light keeps geometry/animations identical. Geometry scaled to 620px frames; notch/square clip-paths, badge/cube SVGs, scan/hover/arrow animations verbatim. */
 #hero .hero-cards-page {
   --orange:#ff941d;
   --orange2:#ffbd58;
@@ -2996,6 +2996,155 @@ a.hero-proof-card:focus-visible {
 @keyframes scan {
   from { left:-30%; }
   to { left:125%; }
+}
+/* ==== HERO CARDS — light-mode palette (dark layout/geometry/animations untouched) ==== */
+/* Scoped per repo convention: body:not(.dark) / html:not(.dark) / body.light. */
+/* Card: white→#f6f7f8 + accent radial 8%, border accent 35%, soft shadow. Text: #1a1e1f / #5b6668 (4.5:1 on white). Badge icons darkened for contrast (#c26a00 / #4d9a00). Cap gradients + scan sheen 12% kept. */
+body:not(.dark) #hero .hero-cards-page,
+html:not(.dark) #hero .hero-cards-page,
+body.light #hero .hero-cards-page {
+  --text:#1a1e1f;
+  --muted:#5b6668;
+}
+body:not(.dark) #hero .card,
+html:not(.dark) #hero .card,
+body.light #hero .card {
+  border-color:color-mix(in srgb,var(--accent) 35%,#dfe3e4);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,0) 22%),
+    radial-gradient(circle at 78% 27%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 26%),
+    linear-gradient(150deg,#ffffff,#f6f7f8 72%);
+  box-shadow:
+    0 0 0 1px rgba(26,30,31,.04) inset,
+    0 12px 32px rgba(0,0,0,.12),
+    0 0 32px color-mix(in srgb,var(--accent) 8%,transparent);
+  color:#1a1e1f;
+}
+body:not(.dark) #hero a.card:hover,
+html:not(.dark) #hero a.card:hover,
+body.light #hero a.card:hover {
+  transform:translateY(-9px) rotateX(1deg);
+  box-shadow:
+    0 0 0 1px rgba(26,30,31,.06) inset,
+    0 18px 44px rgba(0,0,0,.16),
+    0 0 44px color-mix(in srgb,var(--accent) 14%,transparent);
+}
+body:not(.dark) #hero .card::before,
+html:not(.dark) #hero .card::before,
+body.light #hero .card::before {
+  border-color:color-mix(in srgb,var(--accent) 20%,transparent);
+}
+body:not(.dark) #hero .card::after,
+html:not(.dark) #hero .card::after,
+body.light #hero .card::after {
+  border-color:color-mix(in srgb,var(--accent) 20%,transparent);
+  box-shadow:0 0 32px color-mix(in srgb,var(--accent) 8%,transparent);
+}
+body:not(.dark) #hero .number,
+html:not(.dark) #hero .number,
+body.light #hero .number,
+body:not(.dark) #hero .card h2,
+html:not(.dark) #hero .card h2,
+body.light #hero .card h2 {
+  color:#1a1e1f;
+}
+body:not(.dark) #hero .number b,
+html:not(.dark) #hero .number b,
+body.light #hero .number b {
+  color:var(--accent);
+  text-shadow:0 0 12px color-mix(in srgb,var(--accent) 18%,transparent);
+}
+body:not(.dark) #hero .label,
+html:not(.dark) #hero .label,
+body.light #hero .label {
+  color:#5b6668;
+}
+body:not(.dark) #hero .rule,
+html:not(.dark) #hero .rule,
+body.light #hero .rule {
+  background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 30%,transparent),rgba(26,30,31,.1),transparent);
+}
+body:not(.dark) #hero .detail,
+html:not(.dark) #hero .detail,
+body.light #hero .detail {
+  border-color:color-mix(in srgb,var(--accent) 20%,#e2e6e7);
+  background:rgba(255,255,255,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+}
+body:not(.dark) #hero .detail-row,
+html:not(.dark) #hero .detail-row,
+body.light #hero .detail-row {
+  color:#1a1e1f;
+}
+body:not(.dark) #hero .detail strong,
+html:not(.dark) #hero .detail strong,
+body.light #hero .detail strong {
+  color:#1a1e1f;
+}
+body:not(.dark) #hero .subtle,
+html:not(.dark) #hero .subtle,
+body.light #hero .subtle {
+  color:#5b6668;
+}
+body:not(.dark) #hero .rank-pill,
+html:not(.dark) #hero .rank-pill,
+body.light #hero .rank-pill {
+  border-color:color-mix(in srgb,var(--accent) 35%,#dfe3e4);
+  color:#5b6668;
+  background:rgba(255,255,255,.7);
+  box-shadow:inset 0 0 12px color-mix(in srgb,var(--accent) 6%,transparent);
+}
+body:not(.dark) #hero .badge,
+html:not(.dark) #hero .badge,
+body.light #hero .badge {
+  border-color:color-mix(in srgb,var(--accent) 45%,#dfe3e4);
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 12%,#ffffff),#ffffff 72%);
+  box-shadow:
+    0 0 0 7px rgba(26,30,31,.03),
+    0 0 18px color-mix(in srgb,var(--accent) 14%,transparent),
+    inset 0 0 16px color-mix(in srgb,var(--accent) 8%,transparent);
+}
+body:not(.dark) #hero .card.bounty .badge,
+html:not(.dark) #hero .card.bounty .badge,
+body.light #hero .card.bounty .badge {
+  color:#c26a00;
+}
+body:not(.dark) #hero .card.ctf .badge,
+html:not(.dark) #hero .card.ctf .badge,
+body.light #hero .card.ctf .badge {
+  color:#4d9a00;
+}
+body:not(.dark) #hero .badge svg,
+html:not(.dark) #hero .badge svg,
+body.light #hero .badge svg {
+  filter:drop-shadow(0 0 5px currentColor);
+}
+body:not(.dark) #hero .card.bounty .cap,
+html:not(.dark) #hero .card.bounty .cap,
+body.light #hero .card.bounty .cap {
+  color:#1a1000;
+}
+body:not(.dark) #hero .card.ctf .cap,
+html:not(.dark) #hero .card.ctf .cap,
+body.light #hero .card.ctf .cap {
+  color:#1a2e05;
+}
+body:not(.dark) #hero .cube,
+html:not(.dark) #hero .cube,
+body.light #hero .cube {
+  filter:drop-shadow(0 0 8px color-mix(in srgb,var(--accent) 15%,transparent));
+}
+body:not(.dark) #hero .scan,
+html:not(.dark) #hero .scan,
+body.light #hero .scan {
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 12%,transparent),transparent);
+}
+body:not(.dark) #hero .arrow,
+html:not(.dark) #hero .arrow,
+body.light #hero .arrow {
+  border-color:color-mix(in srgb,var(--accent) 25%,#dfe3e4);
+  color:#1a1e1f;
+  background:rgba(255,255,255,.85);
 }
 @media (max-width:800px) {
   #hero .hero-cards-page { grid-template-columns:1fr; gap:10px; max-width:620px; margin-inline:0; }
