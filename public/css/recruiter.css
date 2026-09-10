@@ -3002,13 +3002,13 @@ a.hero-proof-card:focus-visible {
 /* Card: white→#f6f7f8 + accent radial 8%, border accent 35%, soft shadow. Text: #1a1e1f / #5b6668 (4.5:1 on white). Badge icons darkened for contrast (#c26a00 / #4d9a00). Cap gradients + scan sheen 12% kept. */
 body:not(.dark) #hero .hero-cards-page,
 html:not(.dark) #hero .hero-cards-page,
-body.light #hero .hero-cards-page {
+body.light:not(.dark) #hero .hero-cards-page {
   --text:#1a1e1f;
   --muted:#5b6668;
 }
 body:not(.dark) #hero .card,
 html:not(.dark) #hero .card,
-body.light #hero .card {
+body.light:not(.dark) #hero .card {
   border-color:color-mix(in srgb,var(--accent) 35%,#dfe3e4);
   background:
     linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,0) 22%),
@@ -3022,7 +3022,7 @@ body.light #hero .card {
 }
 body:not(.dark) #hero a.card:hover,
 html:not(.dark) #hero a.card:hover,
-body.light #hero a.card:hover {
+body.light:not(.dark) #hero a.card:hover {
   transform:translateY(-9px) rotateX(1deg);
   box-shadow:
     0 0 0 1px rgba(26,30,31,.06) inset,
@@ -3031,64 +3031,64 @@ body.light #hero a.card:hover {
 }
 body:not(.dark) #hero .card::before,
 html:not(.dark) #hero .card::before,
-body.light #hero .card::before {
+body.light:not(.dark) #hero .card::before {
   border-color:color-mix(in srgb,var(--accent) 20%,transparent);
 }
 body:not(.dark) #hero .card::after,
 html:not(.dark) #hero .card::after,
-body.light #hero .card::after {
+body.light:not(.dark) #hero .card::after {
   border-color:color-mix(in srgb,var(--accent) 20%,transparent);
   box-shadow:0 0 32px color-mix(in srgb,var(--accent) 8%,transparent);
 }
 body:not(.dark) #hero .number,
 html:not(.dark) #hero .number,
-body.light #hero .number,
+body.light:not(.dark) #hero .number,
 body:not(.dark) #hero .card h2,
 html:not(.dark) #hero .card h2,
-body.light #hero .card h2 {
+body.light:not(.dark) #hero .card h2 {
   color:#1a1e1f;
 }
 body:not(.dark) #hero .number b,
 html:not(.dark) #hero .number b,
-body.light #hero .number b {
+body.light:not(.dark) #hero .number b {
   color:var(--accent);
   text-shadow:0 0 12px color-mix(in srgb,var(--accent) 18%,transparent);
 }
 body:not(.dark) #hero .label,
 html:not(.dark) #hero .label,
-body.light #hero .label {
+body.light:not(.dark) #hero .label {
   color:#5b6668;
 }
 body:not(.dark) #hero .rule,
 html:not(.dark) #hero .rule,
-body.light #hero .rule {
+body.light:not(.dark) #hero .rule {
   background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 30%,transparent),rgba(26,30,31,.1),transparent);
 }
 body:not(.dark) #hero .detail,
 html:not(.dark) #hero .detail,
-body.light #hero .detail {
+body.light:not(.dark) #hero .detail {
   border-color:color-mix(in srgb,var(--accent) 20%,#e2e6e7);
   background:rgba(255,255,255,.7);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
 }
 body:not(.dark) #hero .detail-row,
 html:not(.dark) #hero .detail-row,
-body.light #hero .detail-row {
+body.light:not(.dark) #hero .detail-row {
   color:#1a1e1f;
 }
 body:not(.dark) #hero .detail strong,
 html:not(.dark) #hero .detail strong,
-body.light #hero .detail strong {
+body.light:not(.dark) #hero .detail strong {
   color:#1a1e1f;
 }
 body:not(.dark) #hero .subtle,
 html:not(.dark) #hero .subtle,
-body.light #hero .subtle {
+body.light:not(.dark) #hero .subtle {
   color:#5b6668;
 }
 body:not(.dark) #hero .rank-pill,
 html:not(.dark) #hero .rank-pill,
-body.light #hero .rank-pill {
+body.light:not(.dark) #hero .rank-pill {
   border-color:color-mix(in srgb,var(--accent) 35%,#dfe3e4);
   color:#5b6668;
   background:rgba(255,255,255,.7);
@@ -3096,7 +3096,7 @@ body.light #hero .rank-pill {
 }
 body:not(.dark) #hero .badge,
 html:not(.dark) #hero .badge,
-body.light #hero .badge {
+body.light:not(.dark) #hero .badge {
   border-color:color-mix(in srgb,var(--accent) 45%,#dfe3e4);
   background:radial-gradient(circle,color-mix(in srgb,var(--accent) 12%,#ffffff),#ffffff 72%);
   box-shadow:
@@ -3106,42 +3106,42 @@ body.light #hero .badge {
 }
 body:not(.dark) #hero .card.bounty .badge,
 html:not(.dark) #hero .card.bounty .badge,
-body.light #hero .card.bounty .badge {
+body.light:not(.dark) #hero .card.bounty .badge {
   color:#c26a00;
 }
 body:not(.dark) #hero .card.ctf .badge,
 html:not(.dark) #hero .card.ctf .badge,
-body.light #hero .card.ctf .badge {
+body.light:not(.dark) #hero .card.ctf .badge {
   color:#4d9a00;
 }
 body:not(.dark) #hero .badge svg,
 html:not(.dark) #hero .badge svg,
-body.light #hero .badge svg {
+body.light:not(.dark) #hero .badge svg {
   filter:drop-shadow(0 0 5px currentColor);
 }
 body:not(.dark) #hero .card.bounty .cap,
 html:not(.dark) #hero .card.bounty .cap,
-body.light #hero .card.bounty .cap {
+body.light:not(.dark) #hero .card.bounty .cap {
   color:#1a1000;
 }
 body:not(.dark) #hero .card.ctf .cap,
 html:not(.dark) #hero .card.ctf .cap,
-body.light #hero .card.ctf .cap {
+body.light:not(.dark) #hero .card.ctf .cap {
   color:#1a2e05;
 }
 body:not(.dark) #hero .cube,
 html:not(.dark) #hero .cube,
-body.light #hero .cube {
+body.light:not(.dark) #hero .cube {
   filter:drop-shadow(0 0 8px color-mix(in srgb,var(--accent) 15%,transparent));
 }
 body:not(.dark) #hero .scan,
 html:not(.dark) #hero .scan,
-body.light #hero .scan {
+body.light:not(.dark) #hero .scan {
   background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 12%,transparent),transparent);
 }
 body:not(.dark) #hero .arrow,
 html:not(.dark) #hero .arrow,
-body.light #hero .arrow {
+body.light:not(.dark) #hero .arrow {
   border-color:color-mix(in srgb,var(--accent) 25%,#dfe3e4);
   color:#1a1e1f;
   background:rgba(255,255,255,.85);
@@ -3149,20 +3149,20 @@ body.light #hero .arrow {
 /* CTF light-mode deep-green override — dark keeps neon #82ff38/#9fef00, bounty amber untouched */
 body:not(.dark) #hero .card.ctf,
 html:not(.dark) #hero .card.ctf,
-body.light #hero .card.ctf {
+body.light:not(.dark) #hero .card.ctf {
   --accent:#15803d;
   --accent2:#16a34a;
 }
 body:not(.dark) #hero .card.ctf .cap,
 html:not(.dark) #hero .card.ctf .cap,
-body.light #hero .card.ctf .cap {
+body.light:not(.dark) #hero .card.ctf .cap {
   background:linear-gradient(180deg,#16a34a,#15803d);
   color:#f0fdf4;
   filter:drop-shadow(0 0 15px rgba(22,163,74,.18));
 }
 body:not(.dark) #hero .card.ctf .badge,
 html:not(.dark) #hero .card.ctf .badge,
-body.light #hero .card.ctf .badge {
+body.light:not(.dark) #hero .card.ctf .badge {
   color:#15803d;
   border-color:rgba(22,163,74,.45);
   box-shadow:
@@ -3172,38 +3172,227 @@ body.light #hero .card.ctf .badge {
 }
 body:not(.dark) #hero .card.ctf .number b,
 html:not(.dark) #hero .card.ctf .number b,
-body.light #hero .card.ctf .number b,
+body.light:not(.dark) #hero .card.ctf .number b,
 body:not(.dark) #hero .card.ctf h2,
 html:not(.dark) #hero .card.ctf h2,
-body.light #hero .card.ctf h2 {
+body.light:not(.dark) #hero .card.ctf h2 {
   color:#15803d;
 }
 body:not(.dark) #hero .card.ctf .cube,
 html:not(.dark) #hero .card.ctf .cube,
-body.light #hero .card.ctf .cube {
+body.light:not(.dark) #hero .card.ctf .cube {
   color:#15803d;
   filter:drop-shadow(0 0 8px rgba(22,163,74,.25));
 }
 body:not(.dark) #hero .card.ctf .rule,
 html:not(.dark) #hero .card.ctf .rule,
-body.light #hero .card.ctf .rule {
+body.light:not(.dark) #hero .card.ctf .rule {
   background:linear-gradient(90deg,rgba(22,163,74,.25),rgba(26,30,31,.1),transparent);
 }
 body:not(.dark) #hero .card.ctf .detail,
 html:not(.dark) #hero .card.ctf .detail,
-body.light #hero .card.ctf .detail {
+body.light:not(.dark) #hero .card.ctf .detail {
   border-color:rgba(22,163,74,.25);
 }
 body:not(.dark) #hero .card.ctf .arrow,
 html:not(.dark) #hero .card.ctf .arrow,
-body.light #hero .card.ctf .arrow {
+body.light:not(.dark) #hero .card.ctf .arrow {
   border-color:rgba(22,163,74,.25);
 }
 body:not(.dark) #hero .card.ctf .rank-pill,
 html:not(.dark) #hero .card.ctf .rank-pill,
-body.light #hero .card.ctf .rank-pill {
+body.light:not(.dark) #hero .card.ctf .rank-pill {
   border-color:rgba(22,163,74,.35);
   color:#15803d;
+}
+/* ==== HERO CARDS — dark explicit overrides (body.dark/html.dark win in dark) ==== */
+/* Base #hero .card is unguarded dark; body carries .light permanently (baseof.html), dark = body.light.dark. Light arms above are tightened to :not(.dark) so they drop in dark; these explicit dark copies sit AFTER light so dark wins when body/html carry .dark. Colors verbatim from dark base; layout/animations untouched. */
+body.dark #hero .hero-cards-page,
+html.dark #hero .hero-cards-page {
+  --orange:#ff941d;
+  --orange2:#ffbd58;
+  --green:#82ff38;
+  --green2:#b8ff73;
+  --text:#f3f7f6;
+  --muted:#91a0a2;
+}
+body.dark #hero .card,
+html.dark #hero .card {
+  border-color:color-mix(in srgb,var(--accent) 72%,#cbd5d6);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.055),transparent 22%),
+    radial-gradient(circle at 78% 27%,color-mix(in srgb,var(--accent) 17%,transparent),transparent 25%),
+    linear-gradient(150deg,#11191b,#080d0f 72%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.035) inset,
+    0 25px 70px rgba(0,0,0,.55),
+    0 0 45px color-mix(in srgb,var(--accent) 12%,transparent);
+  color:#f3f7f6;
+}
+body.dark #hero .card.bounty,
+html.dark #hero .card.bounty {
+  --accent:var(--orange);
+  --accent2:var(--orange2);
+}
+body.dark #hero .card.ctf,
+html.dark #hero .card.ctf {
+  --accent:var(--green);
+  --accent2:var(--green2);
+}
+body.dark #hero a.card:hover,
+html.dark #hero a.card:hover {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05) inset,
+    0 32px 90px rgba(0,0,0,.62),
+    0 0 65px color-mix(in srgb,var(--accent) 19%,transparent);
+}
+body.dark #hero .card::before,
+html.dark #hero .card::before {
+  border-color:color-mix(in srgb,var(--accent) 23%,transparent);
+}
+body.dark #hero .card::after,
+html.dark #hero .card::after {
+  border-color:color-mix(in srgb,var(--accent) 25%,transparent);
+  box-shadow:0 0 50px color-mix(in srgb,var(--accent) 10%,transparent);
+}
+body.dark #hero .number,
+html.dark #hero .number,
+body.dark #hero .card h2,
+html.dark #hero .card h2 {
+  color:#f3f7f6;
+}
+body.dark #hero .card h2,
+html.dark #hero .card h2 {
+  color:var(--accent);
+}
+body.dark #hero .number b,
+html.dark #hero .number b {
+  color:var(--accent);
+  text-shadow:0 0 25px color-mix(in srgb,var(--accent) 22%,transparent);
+}
+body.dark #hero .label,
+html.dark #hero .label {
+  color:#91a0a2;
+}
+body.dark #hero .rule,
+html.dark #hero .rule {
+  background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 38%,transparent),rgba(255,255,255,.08),transparent);
+}
+body.dark #hero .detail,
+html.dark #hero .detail {
+  border-color:color-mix(in srgb,var(--accent) 23%,#243034);
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+body.dark #hero .detail-row,
+html.dark #hero .detail-row {
+  color:#d4dcda;
+}
+body.dark #hero .detail strong,
+html.dark #hero .detail strong {
+  color:#f0f4f2;
+}
+body.dark #hero .subtle,
+html.dark #hero .subtle {
+  color:#a6b0af;
+}
+body.dark #hero .dot,
+html.dark #hero .dot {
+  background:var(--accent);
+  box-shadow:0 0 10px var(--accent);
+}
+body.dark #hero .rank-pill,
+html.dark #hero .rank-pill {
+  border-color:color-mix(in srgb,var(--accent) 35%,#263133);
+  color:color-mix(in srgb,var(--accent) 74%,#d7dfdc);
+  background:rgba(255,255,255,.025);
+  box-shadow:inset 0 0 18px color-mix(in srgb,var(--accent) 5%,transparent);
+}
+body.dark #hero .badge,
+html.dark #hero .badge {
+  border-color:color-mix(in srgb,var(--accent) 75%,transparent);
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 17%,#111),#0d1314 67%);
+  box-shadow:
+    0 0 0 7px rgba(255,255,255,.015),
+    0 0 28px color-mix(in srgb,var(--accent) 25%,transparent),
+    inset 0 0 25px color-mix(in srgb,var(--accent) 10%,transparent);
+  color:var(--accent);
+}
+body.dark #hero .badge svg,
+html.dark #hero .badge svg {
+  filter:drop-shadow(0 0 8px currentColor);
+}
+body.dark #hero .cap,
+html.dark #hero .cap {
+  color:#07100a;
+  background:linear-gradient(180deg,var(--accent2),var(--accent));
+  filter:drop-shadow(0 0 15px color-mix(in srgb,var(--accent) 38%,transparent));
+}
+body.dark #hero .card.bounty .cap,
+html.dark #hero .card.bounty .cap,
+body.dark #hero .card.ctf .cap,
+html.dark #hero .card.ctf .cap {
+  color:#07100a;
+  background:linear-gradient(180deg,var(--accent2),var(--accent));
+  filter:drop-shadow(0 0 15px color-mix(in srgb,var(--accent) 38%,transparent));
+}
+body.dark #hero .cube,
+html.dark #hero .cube {
+  color:var(--accent);
+  filter:drop-shadow(0 0 14px color-mix(in srgb,var(--accent) 27%,transparent));
+}
+body.dark #hero .scan,
+html.dark #hero .scan {
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 12%,transparent),transparent);
+}
+body.dark #hero .arrow,
+html.dark #hero .arrow {
+  border-color:color-mix(in srgb,var(--accent) 25%,#263438);
+  color:#dce7e5;
+  background:rgba(10,20,22,.65);
+}
+body.dark #hero .card.ctf .cap,
+html.dark #hero .card.ctf .cap {
+  background:linear-gradient(180deg,var(--accent2),var(--accent));
+  color:#07100a;
+  filter:drop-shadow(0 0 15px color-mix(in srgb,var(--accent) 38%,transparent));
+}
+body.dark #hero .card.ctf .badge,
+html.dark #hero .card.ctf .badge {
+  color:var(--accent);
+  border-color:color-mix(in srgb,var(--accent) 75%,transparent);
+  box-shadow:
+    0 0 0 7px rgba(255,255,255,.015),
+    0 0 28px color-mix(in srgb,var(--accent) 25%,transparent),
+    inset 0 0 25px color-mix(in srgb,var(--accent) 10%,transparent);
+}
+body.dark #hero .card.ctf .number b,
+html.dark #hero .card.ctf .number b,
+body.dark #hero .card.ctf h2,
+html.dark #hero .card.ctf h2 {
+  color:var(--accent);
+}
+body.dark #hero .card.ctf .cube,
+html.dark #hero .card.ctf .cube {
+  color:var(--accent);
+  filter:drop-shadow(0 0 14px color-mix(in srgb,var(--accent) 27%,transparent));
+}
+body.dark #hero .card.ctf .rule,
+html.dark #hero .card.ctf .rule {
+  background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 38%,transparent),rgba(255,255,255,.08),transparent);
+}
+body.dark #hero .card.ctf .detail,
+html.dark #hero .card.ctf .detail {
+  border-color:color-mix(in srgb,var(--accent) 23%,#243034);
+}
+body.dark #hero .card.ctf .arrow,
+html.dark #hero .card.ctf .arrow {
+  border-color:color-mix(in srgb,var(--accent) 25%,#263438);
+}
+body.dark #hero .card.ctf .rank-pill,
+html.dark #hero .card.ctf .rank-pill {
+  border-color:color-mix(in srgb,var(--accent) 35%,#263133);
+  color:color-mix(in srgb,var(--accent) 74%,#d7dfdc);
 }
 @media (max-width:800px) {
   #hero .hero-cards-page { grid-template-columns:1fr; gap:10px; max-width:620px; margin-inline:0; }
