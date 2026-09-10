@@ -290,7 +290,7 @@ params:
       I test strictly within authorized scope, practice responsible disclosure, and align assessments with frameworks like OWASP ASVS, NIST CSF, ISO 27001, and GDPR guidelines to build fundamentally resilient systems.
     proofPoints:
       - value: "20+"
-        label: "HoF Acknowledgments"
+        label: "Bug Bounty HoF Acknowledgments"
         detail: "Responsible disclosure"
       - value: "Top 5 / 100"
         label: "Bastion Security · Internal CTF"
