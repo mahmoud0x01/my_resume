@@ -70,73 +70,73 @@
             })();
             </script>
 
-            <div class="hero-cards-page page" aria-label="Selected proof points">
-                <section class="top-grid">
-                    <!-- CARD 1 : Hall of Fame -->
-                    <a class="card top-card" href="#disclosures" data-fallback="#track-record" aria-label="20+ Bug Bounty Hall of Fame Acknowledgments — view disclosures" onclick="if(!document.getElementById('disclosures')){var t=document.getElementById('track-record');if(t){event.preventDefault();t.scrollIntoView({behavior:'smooth'});history.replaceState(null,'','#track-record');}}">
-                        <span class="card-cap card-cap--bounty" aria-hidden="true"><i class="fas fa-bug" aria-hidden="true"></i> BUG BOUNTY</span>
-                        <div class="glow" style="left:-70px;top:-70px;"></div>
-                        <div class="hex">
-                            <svg viewBox="0 0 255 294" aria-hidden="true">
-                                <polygon points="127,5 250,76 250,218 127,289 4,218 4,76" fill="none" stroke="#a9df00" stroke-width="2"></polygon>
-                                <polygon points="127,67 196,107 196,187 127,227 58,187 58,107" fill="none" stroke="#91bd00" stroke-width="1.5"></polygon>
-                            </svg>
-                        </div>
+            <div class="hero-cards-page" aria-label="Selected proof points">
+                    <!-- CARD 1 : Bug Bounty — cyber_achievement_cards.html 1:1 -->
+                    <a class="card bounty" href="#disclosures" data-fallback="#track-record" aria-label="20+ Bug Bounty Hall of Fame — view disclosures" onclick="if(!document.getElementById('disclosures')){var t=document.getElementById('track-record');if(t){event.preventDefault();t.scrollIntoView({behavior:'smooth'});history.replaceState(null,'','#track-record');}}">
+                        <div class="scan" aria-hidden="true"></div>
+                        <div class="cap" aria-hidden="true"><i class="fas fa-skull" aria-hidden="true"></i> BUG BOUNTY</div>
                         <div class="inner">
-                            <div class="icon-circle">
-                                <svg viewBox="0 0 64 64">
-                                    <path d="M22 21h20v24H22z"></path>
-                                    <path d="M22 25h-9c0 10 3 14 9 14"></path>
-                                    <path d="M42 25h9c0 10-3 14-9 14"></path>
-                                    <path d="M32 45v8"></path>
-                                    <path d="M24 55h16"></path>
-                                    <path d="M32 27l2.1 4.2 4.6.7-3.3 3.2.8 4.6-4.2-2.2-4.2 2.2.8-4.6-3.3-3.2 4.6-.7z"></path>
-                                </svg>
-                            </div>
-                            <div class="number">20<span class="accent">+</span></div>
-                            <div class="headline">{{ i18n "heroCard1Headline" | default "Bug Bounty Hall of Fame" }}</div>
-                            <div class="subheadline">{{ i18n "heroCard1Subheadline" | default "Acknowledgments" }}</div>
-                            <div class="rule"></div>
-                            <div class="bullets">
-                                <div class="bullet">
-                                    <span class="dot"></span>
-                                    <div>{{ i18n "heroCard1NamedLabel" | default "Named:" }}<br><span class="muted">{{ i18n "heroCard1Muted" | default "Verisign, DigitalOcean,<br>Pinterest, Dell •<br>Bugcrowd" | safeHTML }}</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- CARD 4 : Hack The Box — redesigned for symmetry: invented Pro Hacker badge + aligned geometry -->
-                    <a class="card top-card card--htb" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?utm_medium=copy_url&tab=badges" target="_blank" rel="noopener noreferrer" aria-label="Hack The Box Pro Hacker rank Top 0.55% — view verified badges">
-                        <span class="card-cap card-cap--ctf" aria-hidden="true"><i class="fas fa-flag" aria-hidden="true"></i> CTF</span>
-                        <div class="glow" style="left:-70px;top:-70px;"></div>
-                        <div class="hex small">
-                            <svg viewBox="0 0 255 294" aria-hidden="true">
-                                <polygon points="127,5 250,76 250,218 127,289 4,218 4,76" fill="none" stroke="#a9df00" stroke-width="2"></polygon>
-                                <polygon points="127,67 196,107 196,187 127,227 58,187 58,107" fill="none" stroke="#91bd00" stroke-width="1.5"></polygon>
-                            </svg>
-                        </div>
-                        <div class="inner">
-                            <div class="badge-row">
-                                <div class="icon-circle icon-circle--pro" aria-hidden="true">
-                                    <svg viewBox="0 0 64 64">
-                                        <path d="M32 9l18 7v14c0 12-7.5 21-18 25-10.5-4-18-13-18-25V16z"></path>
-                                        <path d="M22 26l6 6 4-10 4 10 6-6-2.2 8H24.2z"></path>
-                                        <path d="M24 42l6 4 2-4 2 4 6-4"></path>
+                            <div class="top">
+                                <div class="badge" aria-hidden="true">
+                                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M18 24h28v20H18z"/><path d="M23 24v-5h18v5M25 44v8m14-8v8M20 52h24"/>
+                                        <path d="M26 31h12v8H26z"/><path d="M29 28v-4m6 4v-4"/>
                                     </svg>
                                 </div>
-                                <span class="badge-label">{{ i18n "heroCard4Badge" | default "PRO HACKER RANK" }}</span>
                             </div>
-                            <div class="number">{{ i18n "heroCard4NumberTop" | default "Top" }} <span class="accent">{{ i18n "heroCard4NumberPct" | default "0.55%" }}</span></div>
-                            <div class="headline">{{ i18n "heroCard4Headline" | default "Hack The Box" }}</div>
-                            <div class="subheadline">{{ i18n "heroCard4Subheadline" | default "Rank progression" }}</div>
-                            <div class="rule"></div>
-                            <div class="bullets">
-                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard4Bullet1" | default "Verified badges" }}</div></div>
-                                <div class="bullet"><span class="dot"></span><div>{{ i18n "heroCard4Bullet2" | default "Top 0.55% rank" }}</div></div>
+                            <div class="hero">
+                                <div class="number">20<b>+</b></div>
+                                <div class="cube" aria-hidden="true">
+                                    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M60 13 98 35v43L60 100 22 78V35L60 13Z" opacity=".18"/>
+                                        <path d="m60 13 38 22-38 23-38-23 38-22Z" opacity=".18"/>
+                                        <path d="M60 58v42" opacity=".18"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h2>{{ i18n "heroCard1Headline" | default "Bug Bounty Hall of Fame" }}</h2>
+                            <div class="label">{{ i18n "heroCard1Subheadline" | default "Acknowledgments" }}</div>
+                            <div class="rule" aria-hidden="true"></div>
+                            <div class="detail">
+                                <div class="detail-row"><span class="dot" aria-hidden="true"></span><div><strong>{{ i18n "heroCard1NamedLabel" | default "Named:" }}</strong><br><span class="subtle">{{ i18n "heroCard1Muted" | default "Verisign, DigitalOcean,<br>Pinterest, Dell •<br>Bugcrowd" | safeHTML }}</span></div></div>
+                                <div class="arrow" aria-hidden="true">›</div>
                             </div>
                         </div>
                     </a>
-                </section>
+                    <!-- CARD 2 : CTF — cyber_achievement_cards.html 1:1 -->
+                    <a class="card ctf" href="https://profile.hackthebox.com/profile/01a06332-c1fc-7068-b977-afe90a591943?tab=badges" target="_blank" rel="noopener noreferrer" aria-label="HTB Pro Hacker Top 0.55% — view verified badges">
+                        <div class="scan" aria-hidden="true"></div>
+                        <div class="cap" aria-hidden="true"><i class="fas fa-flag" aria-hidden="true"></i> CTF</div>
+                        <div class="inner">
+                            <div class="top">
+                                <div class="badge" aria-hidden="true">
+                                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+                                        <path d="M32 10 49 16v14c0 12-7 19-17 25C22 49 15 42 15 30V16l17-6Z"/>
+                                        <path d="m23 34 6-7 4 5 5-9 4 12H23Z"/>
+                                    </svg>
+                                </div>
+                                <div class="rank-pill">{{ i18n "heroCard4Badge" | default "PRO HACKER RANK" }}</div>
+                            </div>
+                            <div class="hero">
+                                <div class="number">{{ i18n "heroCard4NumberTop" | default "Top" }} <b>{{ i18n "heroCard4NumberPct" | default "0.55%" }}</b></div>
+                                <div class="cube" aria-hidden="true">
+                                    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3">
+                                        <path d="m60 18 34 20v39L60 98 26 77V38l34-20Z"/>
+                                        <path d="m26 38 34 21 34-21M60 59v39"/>
+                                        <path d="M44 28 78 49" opacity=".45"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h2>{{ i18n "heroCard4Headline" | default "Hack The Box" }}</h2>
+                            <div class="label">{{ i18n "heroCard4Subheadline" | default "Rank progression" }}</div>
+                            <div class="rule" aria-hidden="true"></div>
+                            <div class="detail">
+                                <div class="detail-row"><span class="dot" aria-hidden="true"></span><div><strong>{{ i18n "heroCard4Bullet1" | default "Verified badges" }}</strong></div></div>
+                                <div class="detail-row"><span class="dot" aria-hidden="true"></span><div><strong>{{ i18n "heroCard4Bullet2" | default "Top 0.55% rank" }}</strong></div></div>
+                                <div class="arrow" aria-hidden="true">›</div>
+                            </div>
+                        </div>
+                    </a>
             </div>
 
             <div class="hero-actions">
