@@ -2865,7 +2865,7 @@ a.hero-proof-card:focus-visible {
     inset 0 0 25px color-mix(in srgb,var(--accent) 10%,transparent);
   color:var(--accent);
 }
-#hero .badge svg { width:27px; height:27px; filter:drop-shadow(0 0 8px currentColor); }
+#hero .badge svg { width:38px; height:38px; filter:drop-shadow(0 0 8px currentColor); }
 #hero .rank-pill {
   display:inline-flex;
   align-items:center;
@@ -3146,9 +3146,69 @@ body.light #hero .arrow {
   color:#1a1e1f;
   background:rgba(255,255,255,.85);
 }
+/* CTF light-mode deep-green override — dark keeps neon #82ff38/#9fef00, bounty amber untouched */
+body:not(.dark) #hero .card.ctf,
+html:not(.dark) #hero .card.ctf,
+body.light #hero .card.ctf {
+  --accent:#15803d;
+  --accent2:#16a34a;
+}
+body:not(.dark) #hero .card.ctf .cap,
+html:not(.dark) #hero .card.ctf .cap,
+body.light #hero .card.ctf .cap {
+  background:linear-gradient(180deg,#16a34a,#15803d);
+  color:#f0fdf4;
+  filter:drop-shadow(0 0 15px rgba(22,163,74,.18));
+}
+body:not(.dark) #hero .card.ctf .badge,
+html:not(.dark) #hero .card.ctf .badge,
+body.light #hero .card.ctf .badge {
+  color:#15803d;
+  border-color:rgba(22,163,74,.45);
+  box-shadow:
+    0 0 0 7px rgba(26,30,31,.03),
+    0 0 18px rgba(22,163,74,.18),
+    inset 0 0 16px rgba(22,163,74,.10);
+}
+body:not(.dark) #hero .card.ctf .number b,
+html:not(.dark) #hero .card.ctf .number b,
+body.light #hero .card.ctf .number b,
+body:not(.dark) #hero .card.ctf h2,
+html:not(.dark) #hero .card.ctf h2,
+body.light #hero .card.ctf h2 {
+  color:#15803d;
+}
+body:not(.dark) #hero .card.ctf .cube,
+html:not(.dark) #hero .card.ctf .cube,
+body.light #hero .card.ctf .cube {
+  color:#15803d;
+  filter:drop-shadow(0 0 8px rgba(22,163,74,.25));
+}
+body:not(.dark) #hero .card.ctf .rule,
+html:not(.dark) #hero .card.ctf .rule,
+body.light #hero .card.ctf .rule {
+  background:linear-gradient(90deg,rgba(22,163,74,.25),rgba(26,30,31,.1),transparent);
+}
+body:not(.dark) #hero .card.ctf .detail,
+html:not(.dark) #hero .card.ctf .detail,
+body.light #hero .card.ctf .detail {
+  border-color:rgba(22,163,74,.25);
+}
+body:not(.dark) #hero .card.ctf .arrow,
+html:not(.dark) #hero .card.ctf .arrow,
+body.light #hero .card.ctf .arrow {
+  border-color:rgba(22,163,74,.25);
+}
+body:not(.dark) #hero .card.ctf .rank-pill,
+html:not(.dark) #hero .card.ctf .rank-pill,
+body.light #hero .card.ctf .rank-pill {
+  border-color:rgba(22,163,74,.35);
+  color:#15803d;
+}
 @media (max-width:800px) {
   #hero .hero-cards-page { grid-template-columns:1fr; gap:10px; max-width:620px; margin-inline:0; }
   #hero .card { min-height:260px; }
+  #hero .badge svg { width:34px; height:34px; }
 }
 @media (max-width:500px) {
   #hero .hero-cards-page { max-width:100%; margin-inline:0; }
@@ -3157,7 +3217,7 @@ body.light #hero .arrow {
   #hero .cap { width:60%; height:32px; font-size:10px; }
   #hero .cap i { font-size:9px; }
   #hero .badge { width:52px; height:52px; flex-basis:52px; }
-  #hero .badge svg { width:24px; height:24px; }
+  #hero .badge svg { width:32px; height:32px; }
   #hero .number { font-size:30px; }
   #hero .cube { width:70px; height:70px; }
   #hero .cube svg { width:62px; height:62px; }
