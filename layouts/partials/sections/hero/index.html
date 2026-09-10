@@ -21,7 +21,7 @@
             <h1 id="hero-title">{{ .Site.Params.hero.title | default "Mahmoud Ouf" }}</h1>
             <p class="hero-role-line" aria-label="Role">{{ .Site.Params.hero.subtitle | default (i18n "heroSubtitle" | default "Junior Penetration Tester") }}</p>
 
-            {{ $typewriter := i18n "heroTypewriter" | default "either becoming a cyber threat actor attacking the citadel gates or a SOC analyst defending the citadel like a gatekeeper — it is a piece of art. Cybersecurity is my dream. And I will keep chasing it." }}
+            {{ $typewriter := i18n "heroTypewriter" | default "Living after 0x7c00" }}
             <p class="hero-value-proposition hero-value-proposition--typewriter" id="hero-typewriter" data-text="{{ $typewriter }}" aria-label="{{ $typewriter }}" aria-live="polite">{{ $typewriter }}</p>
             <script>
             (function(){
